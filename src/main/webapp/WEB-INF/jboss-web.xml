@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!-- ./standalone.sh -b 0.0.0.0 -Djboss.http.port=80 & -->
+<!-- pg_ctl -D /usr/local/var/postgres status -->
+<jboss-web>
+	<context-root>/</context-root>
+<!-- 	<context-root>app</context-root> -->
+<!-- 	<context-root>sm</context-root> -->
+<!-- 	<context-root>smingressos</context-root> -->
+</jboss-web>

@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="#{msg.txt_usuario}" />
+
+	<ui:define name="content">
+		<h:form id="usuarioForm" prependId="false">
+
+			<div class="row wrap-btn-form-topo">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandButton id="voltarBtn"
+							action="usuarios?faces-redirect=true" immediate="true"
+							value="Voltar"
+							styleClass="btn btn-default btn-icon icon-arrow-undo">
+						</h:commandButton>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_nome}" />
+						<h:inputText value="#{usuarioCadastroBean.usuario.nome}"
+							required="true" styleClass="form-control" maxlength="40">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_email}" />
+						<h:inputText id="emailIT" styleClass="form-control"
+							pt:placeholder="email@dominio.com.br"
+							value="#{usuarioCadastroBean.usuario.email}" required="true"
+							maxlength="40">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_maiusc_cpf}" />
+						<h:inputText value="#{usuarioCadastroBean.usuario.cpf}"
+							required="true" styleClass="form-control cpf" maxlength="15">
+							<f:converter
+								converterId="br.com.nx.tickets.converter.InputCpfCnpjConverter" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_maiusc_rg}" />
+						<h:inputText id="rgIT" styleClass="form-control"
+							value="#{usuarioCadastroBean.usuario.rg}" required="true"
+							maxlength="9">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<label class="com-aux"> <h:outputText
+								value="#{msg.txt_emissor}" /> <h:outputText
+								value="#{msg.txt_ex_emissor_rg}" styleClass="aux" />
+						</label>
+						<h:inputText id="emissorIT" styleClass="form-control"
+							maxlength="12">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_login}" />
+						<h:inputText value="#{usuarioCadastroBean.usuario.login}"
+							styleClass="form-control" required="true" maxlength="30">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_senha}" />
+						<h:inputSecret value="#{usuarioCadastroBean.usuario.senha}"
+							styleClass="form-control" required="true" maxlength="30">
+						</h:inputSecret>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_skype}" />
+						<h:inputText value="#{usuarioCadastroBean.usuario.skype}"
+							styleClass="form-control" maxlength="30">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_gtalk}" />
+						<h:inputText value="#{usuarioCadastroBean.usuario.gtalk}"
+							styleClass="form-control" maxlength="30">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-24">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_nivel}" />
+						<h:selectOneMenu id="nivelSOM" styleClass="form-control"
+							value="#{usuarioCadastroBean.idNivelSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="nivel" value="#{usuarioCadastroBean.niveis}"
+								itemValue="#{nivel.id}" itemLabel="#{nivel.descricao}"
+								required="true" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-8 esq"></div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<h:commandButton id="salvarBtn"
+						action="#{usuarioCadastroBean.salvar}" value="Salvar"
+						styleClass="btn btn-default btn-success btn-lg">
+					</h:commandButton>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,300 @@
+﻿<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+
+	<ui:param name="pagina" value=" " />
+	<ui:param name="nomeUsuario" value="#{loginBean.usuarioLogado.nome}" />
+
+	<ui:define name="content">
+
+		<h:form id="homeForm" prependId="false">
+		
+			<div class="form">
+				<h:outputLabel value="Eventos" styleClass="sr-only" />
+				<h:selectOneMenu id="eventoSOM"
+					value="#{homeBean.idEventoSelecionado}"
+					styleClass="form-control">
+					<f:selectItem itemLabel="SELECIONE O EVENTO..." />
+					<f:selectItems value="#{homeBean.eventos}" var="evento"
+						itemValue="#{evento.id}" itemLabel="#{evento.descricao}" />
+				</h:selectOneMenu>
+			</div>
+
+			<h:panelGroup rendered="#{empty homeBean.extratos}">
+				<h:outputText value="Não há pedidos até o momento!" />
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{not empty homeBean.extratos}">
+
+				<div class="scroll-horizontal">
+					<h:dataTable id="extratoDT" value="#{homeBean.extratos}"
+						columnClasses=",align-center,align-center,align-center,align-center,align-center,align-center"
+						styleClass="table" var="item">
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Guichê" />
+							</f:facet>
+							<h:outputText value="#{item.nome}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Qtd" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.quantidade}" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{homeBean.extratoEventoTotal.quantidade}" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Valor" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.valorTotal}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{homeBean.extratoEventoTotal.valorTotal}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Taxa" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.valorTotalTaxaAdministrativa}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{homeBean.extratoEventoTotal.valorTotalTaxaAdministrativa}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Total" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.total}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{homeBean.extratoEventoTotal.total}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Disponível" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.totalRetirada}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{homeBean.extratoEventoTotal.totalRetirada}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+							<h:commandLink>
+								<img src="../resources/images/ico/16x16/basket.png"
+									title="Ver detalhes" />
+								<f:ajax execute="@this" render="extratoPG"
+									listener="#{homeBean.detalharGuiche(item.id)}" />
+							</h:commandLink>
+							<f:facet name="footer">
+								<div class="align-center">
+									<h:commandLink>
+										<img src="../resources/images/ico/16x16/basket.png"
+											title="Ver detalhes" />
+										<f:ajax execute="@this" render="extratoPG"
+											listener="#{homeBean.detalharGuiche(0)}" />
+									</h:commandLink>
+								</div>
+							</f:facet>
+						</h:column>
+
+					</h:dataTable>
+				</div>
+			</h:panelGroup>
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-24">
+					<h:commandLink styleClass="btn btn-success btn-block"
+						action="#{homeBean.buscarExtrato}">
+						Atualizar
+					</h:commandLink>
+				</div>
+			</div>
+
+			<h:panelGroup id="extratoPG">
+				<nx:modal id="extratoModal"
+					titulo="Extrato - #{homeBean.guiche.descricao}"
+					exibirModal="#{homeBean.exibirExtratoModal}"
+					fecharModal="#{homeBean.fecharModal()}"
+					render="extratoPG">
+
+					<div class="scroll">
+						<nx:extratoTable bean="#{homeBean}"
+							total="#{homeBean.extratoGuiche}" />
+					</div>
+
+					<h:panelGroup id="historicoPG" rendered="#{homeBean.guiche ne null}">
+
+						<h4>
+							<h:outputText value="Histórico de Retiradas" />
+						</h4>
+
+						<div class="margin-bottom-40">
+							<h:panelGroup
+								rendered="#{empty homeBean.extratoRetirada.retiradas}">
+								Não há retiradas!
+							</h:panelGroup>
+
+							<h:dataTable var="retirada" styleClass="table"
+								value="#{homeBean.extratoRetirada.retiradas}"
+								rendered="#{not empty homeBean.extratoRetirada.retiradas}"
+								columnClasses=",align-center,align-center">
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Usuário" />
+									</f:facet>
+									<nx:abreviado value="#{retirada.usuario.nome}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<div class="align-center">
+											<h:outputText value="Data da Retirada" />
+										</div>
+									</f:facet>
+
+									<nx:outputCalendar value="#{retirada.dataCadastro.time}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<div class="align-center">
+											<h:outputText value="Valor" />
+										</div>
+									</f:facet>
+
+									<h:outputText value="#{retirada.valor}"
+										converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+									<f:facet name="footer">
+										<div class="align-center">
+											<strong> <h:outputText
+													value="#{homeBean.extratoRetirada.saldoRetirada}"
+													converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+											</strong>
+										</div>
+									</f:facet>
+								</h:column>
+							</h:dataTable>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12 col-sm-offset-12 wrap-extrato-pdv">
+								<p>
+									<span><h:outputText value="Total" /></span> <strong>
+										<h:outputText
+											value="#{homeBean.extratoRetirada.total + homeBean.extratoRetirada.totalTaxaAdministrativa}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</p>
+
+								<p>
+									<span><h:outputText value="Disponível" /></span> <strong>
+										<h:outputText
+											value="#{homeBean.extratoRetirada.saldoDisponivel + 0}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12 col-sm-offset-12">
+								<div class="input-group">
+									<span class="input-group-addon">R$</span>
+
+									<h:inputText id="valorRetiradaIT"
+										value="#{homeBean.valorRetirada}"
+										styleClass="form-control text-right moeda"
+										pt:placeholder="0,00">
+										<f:converter
+											converterId="br.com.nx.tickets.converter.InputMoedaConverter" />
+									</h:inputText>
+
+									<div class="input-group-btn">
+										<h:commandButton value="Efetuar Retirada"
+											onclick="return confirm('Deseja realmente efetuar a retirada?')"
+											styleClass="btn btn-default btn-success">
+											<f:ajax execute="valorRetiradaIT" event="click"
+												render="historicoPG valorRetiradaIT retiradaMessages"
+												listener="#{homeBean.salvarRetirada()}"></f:ajax>
+										</h:commandButton>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h:messages id="retiradaMessages"
+						layout="table" />
+					</h:panelGroup>
+
+				</nx:modal>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>

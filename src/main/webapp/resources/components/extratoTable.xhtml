@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+
+		<composite:attribute name="id" />
+		<composite:attribute name="bean" required="true" />
+		<composite:attribute name="total" required="false" />
+
+	</composite:interface>
+
+	<composite:implementation>
+
+		<h:panelGroup id="extratosPG">
+			<h:panelGroup rendered="#{empty cc.attrs.bean.extratosGuiches}">
+				Não há Pedidos!
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{not empty cc.attrs.bean.extratosGuiches}">
+				<!-- <div class="scroll-horizontal"> -->
+					<h:dataTable id="extratoDT" value="#{cc.attrs.bean.extratosGuiches}"
+						columnClasses=",align-center,align-center,align-center,align-center"
+						styleClass="table" var="item">
+
+						<h:column rendered="false">
+							<f:facet name="header">
+								<h:outputText value="Pgto" />
+							</f:facet>
+							<h:outputText value="#{item.pagamentoTipo}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_tipo_ingresso}" />
+							</f:facet>
+							<h:outputText value="#{item.ingressoTipo}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Qtd" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.quantidade}" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{cc.attrs.total.quantidade}" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Valor" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.valorTotal}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{cc.attrs.total.valorTotal}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Taxa" />
+								</div>
+							</f:facet>
+
+							<h:outputText value="#{item.valorTotalTaxaAdministrativa}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{cc.attrs.total.valorTotalTaxaAdministrativa}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Total" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.total}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+							<f:facet name="footer">
+								<div class="align-center">
+									<strong> <h:outputText
+											value="#{(cc.attrs.total.valorTotal + cc.attrs.total.valorTotalTaxaAdministrativa)}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+									</strong>
+								</div>
+							</f:facet>
+						</h:column>
+						
+					</h:dataTable>
+				<!-- </div> -->
+			</h:panelGroup>
+		</h:panelGroup>
+	</composite:implementation>
+</ui:composition>

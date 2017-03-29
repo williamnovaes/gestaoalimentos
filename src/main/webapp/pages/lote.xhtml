@@ -1,0 +1,297 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="#{msg.txt_lote}" />
+
+	<ui:define name="content">
+		<h:form id="loteForm" prependId="false">
+
+			<div class="row wrap-btn-form-topo">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandButton id="voltarBtn" action="lotes?faces-redirect=true"
+							immediate="true" value="Voltar"
+							styleClass="btn btn-default btn-icon icon-arrow-undo">
+						</h:commandButton>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_evento}" />
+						<h:selectOneMenu id="eventoSOM" styleClass="form-control"
+							disabled="#{loteCadastroBean.lote.id ne null}"
+							required="true" value="#{loteCadastroBean.idEventoSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="evento" value="#{loteCadastroBean.eventos}"
+								itemValue="#{evento.id}" itemLabel="#{evento.descricao}"
+								required="true" />
+							<f:ajax execute="@this" render="ingressoTipoSOM guichePG guichesPG" event="change"
+								listener="#{loteCadastroBean.obterIngressosTiposPorCliente()}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_tipo_ingresso}" />
+						<h:selectOneMenu id="ingressoTipoSOM" styleClass="form-control"
+							required="true" disabled="#{loteCadastroBean.lote.id ne null}"
+							value="#{loteCadastroBean.idIngressoTipoSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="ingressoTipo"
+								value="#{loteCadastroBean.ingressosTipos}"
+								itemValue="#{ingressoTipo.id}"
+								itemLabel="#{ingressoTipo.descricao}" required="true" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_numero}" />
+						<h:inputText value="#{loteCadastroBean.lote.numero}"
+							required="true" styleClass="form-control" maxlength="2"
+							disabled="#{loteCadastroBean.lote.id ne null}">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="com-aux"> <h:outputText value="Quantidade" />
+						</label>
+						<h:inputText value="#{loteCadastroBean.lote.quantidadeIngressos}"
+							required="true" styleClass="form-control numeros" maxlength="7"
+							disabled="#{loteCadastroBean.lote.id ne null}">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora Início do Lote" />
+						<h:inputText id="dataInicioIT"
+							styleClass="form-control input-datahora"
+							value="#{loteCadastroBean.dataInicio}" required="true">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora Expiração do Lote" />
+						<h:inputText id="dataFimIT"
+							styleClass="form-control input-datahora"
+							value="#{loteCadastroBean.dataFim}" required="true">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_valor}" />
+						<div class="input-group">
+							<span class="input-group-addon">R$</span>
+							<h:inputText value="#{loteCadastroBean.valor}" required="true"
+								styleClass="form-control moeda" pt:placeholder="0,00"
+								maxlength="6">
+								<f:converter
+									converterId="br.com.nx.tickets.converter.InputMoedaConverter" />
+							</h:inputText>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Taxa" />
+						<div class="input-group">
+							<span class="input-group-addon">R$</span>
+							<h:inputText
+								value="#{loteCadastroBean.lote.valorTaxaAdministrativa}"
+								required="true" pt:placeholder="0,00"
+								styleClass="form-control moeda" maxlength="6">
+								<f:converter
+									converterId="br.com.nx.tickets.converter.InputMoedaConverter" />
+							</h:inputText>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- 			<h:panelGroup id="guichePG" rendered="false"> -->
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col-sm-24"> -->
+<!-- 						<div class="form-group"> -->
+<!-- 							<h:outputLabel value="#{msg.txt_guiches}" /> -->
+<!-- 							<div class="input-group"> -->
+<!-- 								<h:selectOneMenu id="guicheSOM" styleClass="form-control" -->
+<!-- 									value="#{loteCadastroBean.idGuicheSelecionado}"> -->
+<!-- 									<f:selectItem itemLabel="#{msg.txt_selecione}" -->
+<!-- 										noSelectionOption="true" /> -->
+<!-- 									<f:selectItems var="guiche" -->
+<!-- 										value="#{loteCadastroBean.guichesDisponiveis}" -->
+<!-- 										itemValue="#{guiche.id}" itemLabel="#{guiche.descricao}"/> -->
+<!-- 								</h:selectOneMenu> -->
+
+<!-- 								<span class="input-group-btn"> <h:commandLink  -->
+<!-- 										id="adicionarGuicheCL" value="Adicionar" -->
+<!-- 										styleClass="btn btn-info" disabled="false"> -->
+<!-- 										<f:ajax execute="guicheSOM" render="guichesPG guichePG" -->
+<!-- 											listener="#{loteCadastroBean.associarGuiches()}" /> -->
+<!-- 									</h:commandLink> -->
+<!-- 								</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</h:panelGroup> -->
+			
+			<h:panelGroup id="guichePG">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<h:outputLabel value="Tipo Guichê" />
+							<h:selectOneMenu id="tipoGuicheSOM" styleClass="form-control"
+								value="#{loteCadastroBean.tipoGuicheSelecionado}">
+								<f:selectItems var="item"
+									value="#{loteCadastroBean.tiposGuiches}"
+									itemLabel="#{item.label}" itemValue="#{item.label}" />
+								<f:ajax execute="tipoGuicheSOM" event="change" render="guichePG"
+									listener="#{loteCadastroBean.obterGuiches()}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="col-sm-18">
+						<div class="form-group">
+							<h:outputLabel value="#{msg.txt_guiches}" />
+							<h:selectManyMenu id="guicheSMM" styleClass="input-100-porc"
+								value="#{loteCadastroBean.guichesSelecionados}">
+								<f:selectItems var="item"
+									value="#{loteCadastroBean.guichesDisponiveis}" 
+									itemLabel="#{item.descricao}" itemValue="#{item.id}"/>
+							</h:selectManyMenu>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row margin-bottom-40">
+					<div class="col-sm-24">
+						<h:commandLink 
+							id="adicionarGuicheCL" value="Adicionar"
+							styleClass="btn btn-info btn-block" disabled="false">
+							<f:ajax execute="guicheSMM" render="guichesPG guichePG"
+								listener="#{loteCadastroBean.associarGuiches()}" />
+						</h:commandLink>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="guichesPG">
+				<div class="row margin-bottom-40">
+					<div class="col-sm-24">
+						<h:panelGroup
+							rendered="#{empty loteCadastroBean.guichesAssociados}">
+								Não há Guichês!
+						</h:panelGroup>
+
+						<h:panelGroup
+							rendered="#{not empty loteCadastroBean.guichesAssociados}">
+							<div class="scroll">
+								<h:dataTable value="#{loteCadastroBean.guichesAssociados}"
+									var="guiche" styleClass="table table-striped table-hover"
+									columnClasses="align-center,,align-center,align-center">
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_maiusc_id}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{guiche.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_descricao}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{guiche.descricao}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="Offline" />
+											</div>
+										</f:facet>
+										<h:panelGroup rendered="#{guiche.offline eq 'TRUE'}">
+											<img
+												src="#{pageContext.request.contextPath}/resources/images/ico/16x16/bullet_green.png"
+												title="#{guiche.offline.label}" />
+										</h:panelGroup>
+										<h:panelGroup rendered="#{guiche.offline ne 'TRUE'}">
+											<img
+												src="#{pageContext.request.contextPath}/resources/images/ico/16x16/bullet_red.png"
+												title="#{guiche.offline.label}" />
+										</h:panelGroup>
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_opcoes}" />
+											</div>
+										</f:facet>
+										<div class="wrap-btn-sistema">
+											<h:commandLink id="removerBtn" disabled="false">
+												<img src="../resources/images/ico/16x16/cross.png"
+													title="#{msg.txt_remover}" />
+												<f:ajax execute="@this" render="guichesPG guichePG"
+													listener="#{loteCadastroBean.removerGuiches(guiche)}" />
+											</h:commandLink>
+										</div>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-8 esq"></div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<h:commandButton id="salvarBtn" action="#{loteCadastroBean.salvar}"
+						value="Salvar" styleClass="btn btn-default btn-success btn-lg">
+					</h:commandButton>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

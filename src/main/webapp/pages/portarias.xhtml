@@ -1,0 +1,198 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:nx="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pagina" value="#{msg.txt_portarias}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="portariasForm" prependId="false">
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							value="Voltar">
+						</h:commandLink>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm">
+						<nx:novoBotao id="portariaNovoNB" pagina="portaria" />
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h:panelGroup id="portariasPG">
+					<nx:dataTable id="portariaDT" bean="#{portariaListagemBean}"
+						columnClass="align-center,,,align-center,align-center"
+						componenteBtn="false">
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_maiusc_id}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_descricao}" />
+							</f:facet>
+							<h:outputText value="#{item.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_local}" />
+							</f:facet>
+							<h:outputText value="#{item.local.descricao}" />
+						</h:column>
+
+						<h:column rendered="false">
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_situacao}" />
+								</div>
+							</f:facet>
+							<nx:situacao item="#{item}" render="portariasPG"
+								bean="#{portariaListagemBean}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+							<h:commandLink disabled="false">
+								<img src="../resources/images/ico/16x16/user.png"
+									title="Usuário Retirada" alt="Usuário Retirada" />
+								<f:ajax execute="@this" render="usuariosPG"
+									listener="#{portariaListagemBean.obterUsuariosPorPortaria(item)}" />
+							</h:commandLink>
+						</h:column>
+					</nx:dataTable>
+				</h:panelGroup>
+			</div>
+
+			<h:panelGroup id="usuariosPG">
+				<nx:modal id="usuarioModal"
+					titulo="Usuário - #{portariaListagemBean.portaria.descricao}"
+					exibirModal="#{portariaListagemBean.exibirModalUsuario}"
+					salvar="#{portariaListagemBean.salvarUsuarioPortaria()}"
+					render="pontosVendasPG"
+					fecharModal="#{portariaListagemBean.fecharModal}">
+
+					<h:panelGroup id="conteudoPG">
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active"><a
+								href="#usuarioAssociadoDIV" data-toggle="tab">Associado</a></li>
+							<li role="presentation"><a href="#usuariosDisponiveisDIV"
+								data-toggle="tab">Disponíveis</a></li>
+
+						</ul>
+
+						<div class="tab-content">
+							<div id="usuarioAssociadoDIV" class="tab-pane fade in active">
+
+								<h:panelGroup
+									rendered="#{portariaListagemBean.portaria.usuario eq null}">
+									Não há Usuário Associado!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{portariaListagemBean.portaria.usuario ne null}">
+									<div class="scroll">
+										<h:dataTable id="usuarioAssociadoDT"
+											value="#{portariaListagemBean.portaria.usuario}" var="item"
+											columnClasses="align-center,,align-center" styleClass="table">
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_maiusc_id}" />
+													</div>
+												</f:facet>
+												<h:outputText value="#{item.id}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_nome}" />
+												</f:facet>
+												<h:outputText value="#{item.nome}" />
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+
+							<div id="usuariosDisponiveisDIV" class="tab-pane fade">
+
+								<h:panelGroup
+									rendered="#{empty portariaListagemBean.usuariosDisponiveis}">
+									Não há mais Usuários Disponíveis!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{not empty portariaListagemBean.usuariosDisponiveis}">
+									<div class="scroll">
+										<h:dataTable id="usuariosDisponiveisDT"
+											value="#{portariaListagemBean.usuariosDisponiveis}"
+											var="item" columnClasses="align-center,,align-center"
+											styleClass="table">
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_maiusc_id}" />
+													</div>
+												</f:facet>
+												<h:outputText value="#{item.id}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_nome}" />
+												</f:facet>
+												<h:outputText value="#{item.nome}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_opcoes}" />
+													</div>
+												</f:facet>
+												<h:panelGroup>
+													<h:commandLink
+														disabled="#{portariaListagemBean.portaria.usuario ne null}">
+														<img src="../resources/images/ico/16x16/plus.png"
+															title="#{msg.txt_eventos}" />
+														<f:ajax execute="@this" render="usuarioModal:conteudoPG"
+															listener="#{portariaListagemBean.adicionarUsuario(item)}" />
+													</h:commandLink>
+												</h:panelGroup>
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+						</div>
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+
+		<composite:attribute name="id" required="true" />
+		<composite:attribute name="exibirModal" required="true" />
+		<composite:attribute name="titulo" required="true" />
+		<composite:attribute name="render" required="false" />
+
+		<composite:attribute name="fecharModal"
+			method-signature="java.lang.String  action()" required="false" />
+		
+ 			
+		<composite:attribute name="salvar"
+			method-signature="java.lang.String  action()" required="false" />
+			
+
+	</composite:interface>
+
+	<div class="modal fade" id="#{cc.attrs.id}" tabindex="-1" role="dialog" 
+		aria-labelledby="modal" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><h:outputText value="#{cc.attrs.titulo}" /></h4>
+				</div>
+
+				<div class="modal-body">
+					<composite:insertChildren />
+				</div>
+
+				<div class="modal-footer">
+					<h:commandLink value="Salvar" styleClass="btn btn-default btn-success"
+								   rendered="#{cc.attrs.salvar ne null}">
+						<f:ajax render="#{cc.attrs.id}:controleModalPG #{cc.attrs.render}" 
+								event="click"
+								listener="#{cc.attrs.salvar}" />
+					</h:commandLink>
+				
+					<h:commandLink value="Fechar" styleClass="btn btn-default">
+						<f:ajax render="#{cc.attrs.id}:controleModalPG" 
+								event="click"
+								listener="#{cc.attrs.fecharModal}" />
+					</h:commandLink>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h:panelGroup id="controleModalPG">
+		<h:panelGroup rendered="#{cc.attrs.exibirModal}">
+			<script type="text/javascript">
+				$(document).ready(function() {
+					bsModal('##{cc.attrs.id}', 'mostra');
+				});
+			</script>
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{!cc.attrs.exibirModal}">
+			<script type="text/javascript">
+				$(document).ready(function() {
+					bsModal('##{cc.attrs.id}', 'esconde');
+				});
+			</script>
+		</h:panelGroup>
+	</h:panelGroup>
+
+</ui:composition>
+
