@@ -3,7 +3,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<display-name>Ingressos</display-name>
+	<display-name>Gestao</display-name>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -11,7 +11,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.nx</url-pattern>
+		<url-pattern>*.ppd</url-pattern>
 	</servlet-mapping>
 	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
@@ -60,27 +60,27 @@
 	</env-entry>
 	<error-page>
 		<error-code>401</error-code>
-		<location>/error/401.nx</location>
+		<location>/error/401.ppd</location>
 	</error-page>
 	<error-page>
 		<error-code>403</error-code>
-		<location>/error/403.nx</location>
+		<location>/error/403.ppd</location>
 	</error-page>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error/404.nx</location>
+		<location>/error/404.ppd</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/error/500.nx</location>
+		<location>/error/500.ppd</location>
 	</error-page>
 	<error-page>
 		<error-code>503</error-code>
-		<location>/error/503.nx</location>
+		<location>/error/503.ppd</location>
 	</error-page>
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/pages/home.nx</location>
+		<location>/pages/home.ppd</location>
 	</error-page>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

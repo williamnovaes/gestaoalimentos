@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="#{pageContext.request.contextPath}/template_net/template.xhtml"
+	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pagina" value="#{msg.txt_nivel}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_cadastro_edicao}" />
+
+	<ui:define name="content">
+		<h:form id="nivelForm" prependId="false">
+
+			<div class="contorno-cont">
+				<div class="wrap-cont">
+					<div class="cont">
+											
+						<h:panelGroup id="nivelPG">
+						
+								<div class="form-group">
+									<h:outputLabel value="#{msg.txt_descricao}" />
+									<div class="control">
+										<h:inputText id="descricaoIT"
+											value="#{nivelCadastroBean.nivel.descricao}"
+											styleClass="form-control input-m" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<h:outputLabel value="#{msg.txt_nivel} #{msg.txt_tipo}" />
+									<div class="control">
+										<h:selectOneMenu id="tipoNivelSOM"
+											value="#{nivelCadastroBean.tipoNivel}"
+											styleClass="form-control input-m">
+											<f:selectItem itemLabel="#{msg.txt_selecione}" noSelectionOption="true" />
+											<f:selectItems
+												value="#{nivelCadastroBean.tiposNivel}"
+												var="tipo" itemValue="#{tipo}"
+												itemLabel="#{tipo.descricao}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<h:outputLabel value="#{msg.txt_icone}" />
+									<div class="control">
+										<h:inputText id="iconeIT"
+											value="#{nivelCadastroBean.nivel.icone}"
+											styleClass="form-control input-m" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<h:outputLabel value="#{msg.txt_alias}" />
+									<div class="control">
+										<h:inputText id="aliasIT"
+											value="#{nivelCadastroBean.nivel.alias}"
+											styleClass="form-control input-m" />
+									</div>
+								</div>
+						</h:panelGroup>
+
+						<div class="wrap-btn-sistema">
+							<h:commandLink id="voltarBtn" action="niveis"
+								immediate="true" styleClass="btn ico ico-voltar">
+								<i></i>
+								<span><h:outputText value="#{msg.txt_voltar}" /></span>
+							</h:commandLink>
+							<h:commandLink id="salvarBtn"
+								action="#{nivelCadastroBean.salvar}"
+								styleClass="btn ico ico-salvar">
+								<i></i>
+								<span><h:outputText value="#{msg.txt_salvar}" /></span>
+							</h:commandLink>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

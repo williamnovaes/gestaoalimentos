@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ingressos</name>
+	<name>gestaoalimentos</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -41,12 +41,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<name>net.sf.eclipsecs.core.CheckstyleBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>net.sf.eclipsecs.core.CheckstyleBuilder</name>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -65,4 +65,24 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
 	</natures>
+	<filteredResources>
+		<filter>
+			<id>1500941114927</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-.class</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1500941114929</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-_.java</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>

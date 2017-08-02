@@ -5,7 +5,7 @@
 	version="2.0">
 
 	<lifecycle>
-   		<phase-listener>br.com.nx.tickets.phase.AutorizacaoListener</phase-listener>
+   		<phase-listener>br.com.will.gestao.phase.AutorizacaoListener</phase-listener>
 	</lifecycle>
 
 	<application>
@@ -17,12 +17,12 @@
 		</locale-config>
 
 		<resource-bundle>
-			<base-name>br.com.nx.tickets.internationalization.messages</base-name>
+			<base-name>br.com.will.gestao.internationalization.messages</base-name>
 			<var>msg</var>
 		</resource-bundle>
 
 	  <message-bundle>
-	  	br.com.nx.tickets.internationalization.messages_pt_BR
+	  	br.com.will.gestao.internationalization.messages_pt_BR
 	  </message-bundle>
 	</application>
 

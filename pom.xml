@@ -4,9 +4,8 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<!-- mvn integration-test -Dtype=integration -->
 	<modelVersion>4.0.0</modelVersion>
-	<name>ingressos</name>
-	<groupId>ingressos</groupId>
-	<artifactId>ingressos</artifactId>
+	<name>gestaoalimentos</name>
+	<groupId>gestaoalimentos</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<properties>
@@ -97,7 +96,16 @@
 	</profiles>
 	<dependencyManagement>
 		<dependencies>
-
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>9.4.1208-jdbc42-atlassian-hosted</version>
+			</dependency>
+<!-- 			<dependency> -->
+<!-- 			    <groupId>org.postgresql</groupId> -->
+<!-- 			    <artifactId>postgresql</artifactId> -->
+<!-- 		    	<version>9.4.1212</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
@@ -471,4 +479,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<artifactId>gestaoalimentos</artifactId>
 </project>

@@ -4,7 +4,5 @@
 <!-- pg_ctl -D /usr/local/var/postgres status -->
 <jboss-web>
 	<context-root>/</context-root>
-<!-- 	<context-root>app</context-root> -->
-<!-- 	<context-root>sm</context-root> -->
-<!-- 	<context-root>smingressos</context-root> -->
+	<!-- <context-root>gestao</context-root> -->
 </jboss-web>
