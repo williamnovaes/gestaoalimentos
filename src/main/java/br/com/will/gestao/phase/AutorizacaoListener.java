@@ -18,7 +18,7 @@ public class AutorizacaoListener implements PhaseListener {
 		try {
 			FacesContext facesContext = event.getFacesContext();
 			String currentPage = facesContext.getViewRoot().getViewId();
-			if (currentPage != null && !currentPage.startsWith("/pub")) {
+			if (currentPage != null && !currentPage.startsWith("/home")) {
 				LoginBean loginBean = facesContext.getApplication().evaluateExpressionGet(facesContext, "#{loginBean}",
 						LoginBean.class);
 //				if (!currentPage.contains("login") && !currentPage.contains("menu") && !currentPage.contains("error")) {

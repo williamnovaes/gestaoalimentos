@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -30,7 +31,8 @@ import br.com.will.gestao.util.SistemaConstantes;
 import br.com.will.gestao.util.Util;
 
 @Entity
-@Table(name = "produto", schema = "gestao")
+@Table(name = "produto", schema = "gestao", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "index", "_produto_tipo", "_empresa" }) })
 @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Produto implements SituacaoAlteravel, Descritivel, Paginavel {
 	
@@ -47,8 +49,7 @@ public class Produto implements SituacaoAlteravel, Descritivel, Paginavel {
 	private String nome;
 	
 	@NotNull
-	@Column(name = "index", nullable = false, unique = true
-	)
+	@Column(name = "index", nullable = false)
 	private Integer index;
 
 	@NotNull

@@ -56,6 +56,7 @@ public class HomeBean extends BaseBean implements Modable {
 	
 	public void carregarProdutosPorTipo(Integer idTipo) {
 		try {
+			abaSelecionada = idTipo;
 			produtos = produtoServico.obterTodosPorIdTipo(idTipo);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,6 +2,8 @@ package br.com.will.gestao.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
@@ -50,7 +52,8 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
 			sql.append(" WHERE pt.situacao =:_situacao ");
-			sql.append(" AND pt.empresa =:_empresa ORDER BY pt.descricao ");
+			sql.append(" AND pt.empresa =:_empresa ");
+			sql.append(" ORDER BY pt.descricao ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
 						  .setParameter("_situacao", ESituacao.ATIVO)
@@ -61,4 +64,24 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
-}
+
+	public ProdutoTipo consultarCompletoPorId(Integer id) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT pt FROM ProdutoTipo pt ");
+			sql.append(" JOIN FETCH pt.empresa e ");
+			sql.append(" LEFT JOIN FETCH pt.tamanhos t ");
+			sql.append(" WHERE pt.id =:_id ");
+			
+			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
+						  .setParameter("_id", id)
+						  .getSingleResult();
+		} catch (NoResultException nre) {
+			getLog().info("NENHUM PRODUTO TIPO ENCONTRADO PARA O ID: " + id);
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+}	

@@ -31,4 +31,12 @@ public class ProdutoTipoServico extends BaseServico<ProdutoTipo> {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}
+
+	public ProdutoTipo obterCompletoPorId(Integer id) throws BaseServicoException {
+		try {
+			return produtoTipoDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
 }

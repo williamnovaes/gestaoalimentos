@@ -65,6 +65,20 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="col-sm-8">
+				<div class="form-group">
+					<h:outputLabel value="#{msg.txt_tipo}" />
+					<h:selectOneMenu id="tipoSOM" styleClass="form-control"
+						value="#{produtoCadastroBean.produtoTipoSelecionado}">
+						<f:selectItem itemLabel="#{msg.txt_selecione}" />
+						<f:selectItems var="tipo"
+							value="#{produtoCadastroBean.produtosTipos}"
+							itemValue="#{tipo.id}" itemLabel="#{tipo.descricao}"
+							required="true" />
+					</h:selectOneMenu>
+				</div>
+			</div>
 
 			<div class="row wrap-btn-form">
 				<div class="col-sm-8 esq"></div>

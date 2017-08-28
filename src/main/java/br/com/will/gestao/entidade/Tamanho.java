@@ -1,5 +1,7 @@
 package br.com.will.gestao.entidade;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,12 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
-@Table(name = "tamanho", schema = "gestao")
+@Table(name = "tamanho", schema = "gestao", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "sequencia", "_tamanho_tipo" }) })
 public class Tamanho {
 	
 	private static final long serialVersionUID = 1L;
@@ -35,6 +39,10 @@ public class Tamanho {
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO, nullable = false, unique = true)
 	private String descricao;
 	
+	@NotNull
+	@Column(name = "sequencia", nullable = false)
+	private Integer sequencia;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_tamanho_tipo", foreignKey = @ForeignKey(name = "fk_tamanho_tipo"))
 	private TamanhoTipo tamanhoTipo;
@@ -42,7 +50,10 @@ public class Tamanho {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
 	private ProdutoTipo produtoTipo;
-
+	
+	@Column(name = "valor", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal valor;
+	
 	public Tamanho(Integer id) {
 		this.id = id;
 	}
@@ -94,10 +105,26 @@ public class Tamanho {
 	public void setProdutoTipo(ProdutoTipo produtoTipo) {
 		this.produtoTipo = produtoTipo;
 	}
+	
+	public BigDecimal getValor() {
+		return valor;
+	}
+	
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
 
 	@Override
 	public String toString() {
 		return "Situacao [id=" + id + "]";
+	}
+	
+	public Integer getSequencia() {
+		return sequencia;
+	}
+	
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
 	}
 
 	@Override

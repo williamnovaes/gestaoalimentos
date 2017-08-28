@@ -1,5 +1,7 @@
 package br.com.will.gestao.bean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
@@ -8,7 +10,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.servico.ProdutoTipoServico;
+import br.com.will.gestao.servico.TamanhoServico;
 
 @Named
 @ViewScoped
@@ -18,8 +22,12 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 
 	@EJB
 	private ProdutoTipoServico produtoTipoServico;
+	@EJB
+	private TamanhoServico tamanhoServico;
 
 	private ProdutoTipo produtoTipo;
+	private Tamanho tamanho;
+	private List<Tamanho> tamanhos;
 	
 	@PostConstruct
 	public void inicializar() {
@@ -28,9 +36,9 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 			if (produtoTipo == null) {
 				ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
 				String idParam = ctx.getRequestParameterMap().get("id");
-				if (idParam != null && !idParam.equals("")) {
+				if (idParam != null && !idParam.isEmpty()) {
 					try {
-						produtoTipo = produtoTipoServico.obterPorId(Integer.parseInt(idParam));
+						produtoTipo = produtoTipoServico.obterCompletoPorId(Integer.parseInt(idParam));
 					} catch (Exception e) {
 						e.printStackTrace();
 						adicionarError("Erro ao Buscar Página ");
@@ -38,6 +46,8 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 				}
 				if (this.produtoTipo == null) {
 					this.produtoTipo = new ProdutoTipo();
+				} else {
+					this.tamanhos = tamanhoServico.obterPorProdutoTipo(this.produtoTipo);
 				} 
 			}
 		} catch (Exception e) {

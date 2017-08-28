@@ -1,5 +1,7 @@
 package br.com.will.gestao.entidade;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -46,6 +49,9 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
+	
+	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
+	private List<Tamanho> tamanhos;
 
 	public ProdutoTipo() {
 
@@ -83,6 +89,14 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public ESituacao getSituacao() {
 		return situacao;
+	}
+	
+	public List<Tamanho> getTamanhos() {
+		return tamanhos;
+	}
+	
+	public void setTamanhos(List<Tamanho> tamanhos) {
+		this.tamanhos = tamanhos;
 	}
 
 
@@ -153,6 +167,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	public String getJoin() {
 		StringBuilder str = new StringBuilder();
 		str.append(" JOIN FETCH pt.empresa em ");
+		str.append(" LEFT JOIN FETCH pt.tamanhos t ");
 		return str.toString();
 	}
 }

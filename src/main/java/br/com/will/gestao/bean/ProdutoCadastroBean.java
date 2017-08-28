@@ -59,10 +59,14 @@ public class ProdutoCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			if (produtoTipoSelecionado != null && this.produtoTipoSelecionado > 0) {
-				produtoTipo = produtoTipoServico.obterPorId(produtoTipoSelecionado);
-				this.produto.setProdutoTipo(produtoTipo);
+			if (produtoTipoSelecionado == null && this.produtoTipoSelecionado <= 0) {
+				adicionarError("Selecione um Tipo");
+				return null;
 			}
+			
+			produtoTipo = produtoTipoServico.obterPorId(produtoTipoSelecionado);
+			this.produto.setProdutoTipo(produtoTipo);
+			
 			if (this.produto.getId() != null) {
 				produtoServico.alterar(this.produto);
 			} else {
