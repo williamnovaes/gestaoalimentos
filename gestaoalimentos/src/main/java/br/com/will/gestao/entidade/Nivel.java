@@ -60,6 +60,10 @@ public class Nivel implements SituacaoAlteravel, Descritivel, Comparable<Nivel>,
 	@JoinColumn(name = "_nivel_tipo", foreignKey = @ForeignKey(name = "fk_nivel_tipo"))
 	@ManyToOne(fetch = FetchType.LAZY)
 	private NivelTipo nivelTipo;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	private EBoolean editarView = EBoolean.FALSE;
 
 	@OneToMany(mappedBy = "nivel")
 	private List<PaginaNivel> paginaNivel;
@@ -145,6 +149,14 @@ public class Nivel implements SituacaoAlteravel, Descritivel, Comparable<Nivel>,
 
 	public void setAlias(String alias) {
 		this.alias = alias;
+	}
+	
+	public EBoolean getEditarView() {
+		return editarView;
+	}
+	
+	public void setEditarView(EBoolean editarView) {
+		this.editarView = editarView;
 	}
 	
 	public List<PaginaNivel> getPaginaNivel() {
@@ -236,5 +248,4 @@ public class Nivel implements SituacaoAlteravel, Descritivel, Comparable<Nivel>,
 		return " JOIN FETCH n.nivelTipo nt "
 			 + " JOIN FETCH n.paginaNivel pn ";
 	}
-
 }

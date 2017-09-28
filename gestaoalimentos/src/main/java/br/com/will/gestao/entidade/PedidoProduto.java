@@ -1,6 +1,7 @@
 package br.com.will.gestao.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -34,11 +35,18 @@ public class PedidoProduto
 	@JoinColumn(name = "_produto", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_produto"))
 	private Produto produto;
 	
+	@JoinColumn(name = "_tamanho", foreignKey = @ForeignKey(name = "fk_tamanho"))
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Tamanho tamanho;
+	
 	@Column(name = "observacao", length = SistemaConstantes.DUZENTOS_CINQUENTA)
 	private String observacao;
 	
 	@Column(name = "quantidade")
 	private Integer quantidade;
+	
+	@Column(name = "preco_final")
+	private BigDecimal precoFinal;
 
 
 	public PedidoProduto() {
@@ -60,6 +68,22 @@ public class PedidoProduto
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+	
+	public Tamanho getTamanho() {
+		return tamanho;
+	}
+	
+	public void setTamanho(Tamanho tamanho) {
+		this.tamanho = tamanho;
+	}
+	
+	public BigDecimal getPrecoFinal() {
+		return precoFinal;
+	}
+	
+	public void setPrecoFinal(BigDecimal precoFinal) {
+		this.precoFinal = precoFinal;
 	}
 
 	@Override

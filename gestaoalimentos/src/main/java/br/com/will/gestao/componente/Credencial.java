@@ -9,10 +9,9 @@ public class Credencial {
 
 	private String username;
 	private String password;
-
+	
 	public Credencial() {
-		username = "NXADMIN";
-		password = "NXADMIN";
+		
 	}
 
 	public Credencial(String username, String password) {

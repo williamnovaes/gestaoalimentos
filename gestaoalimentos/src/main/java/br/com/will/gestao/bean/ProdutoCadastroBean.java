@@ -9,8 +9,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 
@@ -24,6 +26,8 @@ public class ProdutoCadastroBean extends BaseBean {
 	private ProdutoServico produtoServico;
 	@EJB
 	private ProdutoTipoServico produtoTipoServico;
+	@EJB
+	private EmpresaServico empresaServico;
 
 	private Produto produto;
 	private ProdutoTipo produtoTipo;
@@ -49,7 +53,12 @@ public class ProdutoCadastroBean extends BaseBean {
 					this.produto = new Produto();
 				}
 				
-				produtosTipos = produtoTipoServico.obterTodosAtivosPorEmpresa(getLoginBean().getEmpresa());
+				if (getLoginBean().getEmpresa() != null) {
+					produtosTipos = produtoTipoServico.obterTodosAtivosPorEmpresa(getLoginBean().getEmpresa());
+				} else {
+					Empresa empresa = empresaServico.obterPorId(1);
+					produtosTipos = produtoTipoServico.obterTodosAtivosPorEmpresa(empresa);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,13 +73,13 @@ public class ProdutoCadastroBean extends BaseBean {
 				return null;
 			}
 			
-			produtoTipo = produtoTipoServico.obterPorId(produtoTipoSelecionado);
+			produtoTipo = produtoTipoServico.obterCompletoPorId(produtoTipoSelecionado);
 			this.produto.setProdutoTipo(produtoTipo);
 			
 			if (this.produto.getId() != null) {
 				produtoServico.alterar(this.produto);
 			} else {
-				this.produto.setEmpresa(getLoginBean().getEmpresa());
+				this.produto.setEmpresa(produtoTipo.getEmpresa());
 				produtoServico.salvar(this.produto);
 			}
 			return "produtos?faces-redirect=true";

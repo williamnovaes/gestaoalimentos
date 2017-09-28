@@ -1,5 +1,6 @@
 package br.com.will.gestao.bean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,9 +14,12 @@ import javax.inject.Named;
 
 import br.com.will.gestao.componente.Credencial;
 import br.com.will.gestao.entidade.Empresa;
+import br.com.will.gestao.entidade.Produto;
+import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.permissao.Menu;
 import br.com.will.gestao.entidade.permissao.Pagina;
+import br.com.will.gestao.entidade.util.ETipoNivel;
 import br.com.will.gestao.servico.PaginaServico;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.servico.exception.BaseServicoException;
@@ -32,11 +36,15 @@ public class LoginBean extends BaseBean {
 	private UsuarioServico usuarioServico;
 	@EJB
 	private PaginaServico paginaServico;
+	
+	
 	private Usuario usuarioLogado;
 	private boolean logado;
 	private List<Pagina> paginas;
 	private HashMap<Menu, List<Pagina>> paginasPorMenu;
 	private Empresa empresa;
+	private List<Produto> carrinho; 
+	private boolean exibirModalLogin = false;
 
 	public String fazerLogin() {
 		try {
@@ -44,6 +52,7 @@ public class LoginBean extends BaseBean {
 			if (usuarioLogado != null) {
 				configurarPermissao();
 				logado = true;
+				exibirModalLogin = false;
 				return "home?faces-redirect=true";
 			}
 			return null;
@@ -59,7 +68,7 @@ public class LoginBean extends BaseBean {
 			logado = false;
 			usuarioLogado = null;
 			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-			return "login?faces-redirect=true";
+			return "home.ppd?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
@@ -132,7 +141,15 @@ public class LoginBean extends BaseBean {
 	}
 
 	public boolean isAdministrador() {
-		if (this.usuarioLogado != null && this.usuarioLogado.getNivel().getDescricao().equals("ADMINISTRADOR")) {
+		if (this.usuarioLogado != null && (this.usuarioLogado.getNivel().getDescricao().equals("ADMINISTRADOR")
+				|| this.usuarioLogado.getTipoNivel().equals(ETipoNivel.ADMINISTRADOR))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isSuperUser() {
+		if (this.usuarioLogado != null && this.usuarioLogado.getTipoNivel().equals(ETipoNivel.ADMINISTRADOR)) {
 			return true;
 		}
 		return false;
@@ -147,5 +164,37 @@ public class LoginBean extends BaseBean {
 	
 	public Empresa getEmpresa() {
 		return empresa;
+	}
+	
+	public void adicionarProduto(Produto produto, Integer qnt, Tamanho tamanho) {
+		produto.setTamanhoSelecionado(tamanho);
+		for (int i = 1 ; i < qnt ; i++) {
+			carrinho.add(produto);
+		}
+	}
+	
+	public BigDecimal valorTotal() {
+		return null;
+	}
+	
+	public BigDecimal valorPorProduto(Produto produto) {
+		return null;
+	}
+	
+	public boolean isCliente() {
+		return this.usuarioLogado != null
+				&& this.usuarioLogado.getTipoNivel().equals(ETipoNivel.CLIENTE) ? true : false;
+	}
+	
+	public void abrirModalLogin() {
+		exibirModalLogin = true;
+	}
+	
+	public boolean isExibirModalLogin() {
+		return exibirModalLogin;
+	}
+	
+	public void fecharModalLogin() {
+		exibirModalLogin = false;
 	}
 }

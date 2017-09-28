@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
@@ -64,10 +65,6 @@ public class Produto implements SituacaoAlteravel, Descritivel, Paginavel {
 	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
 	private ProdutoTipo produtoTipo;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "_tamanho", foreignKey = @ForeignKey(name = "fk_tamanho"))
-//	private Tamanho tamanho;
-	
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
@@ -80,6 +77,10 @@ public class Produto implements SituacaoAlteravel, Descritivel, Paginavel {
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Empresa empresa;
+	
+	@XmlTransient
+	@Transient
+	private Tamanho tamanhoSelecionado;
 	
 	public Produto() {
 	}
@@ -185,6 +186,14 @@ public class Produto implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public ESituacao getSituacao() {
 		return situacao;
+	}
+	
+	public Tamanho getTamanhoSelecionado() {
+		return tamanhoSelecionado;
+	}
+	
+	public void setTamanhoSelecionado(Tamanho tamanhoSelecionado) {
+		this.tamanhoSelecionado = tamanhoSelecionado;
 	}
 	
 	@Override

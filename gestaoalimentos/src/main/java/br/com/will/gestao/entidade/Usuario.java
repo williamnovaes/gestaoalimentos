@@ -26,6 +26,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.Email;
 
 import br.com.will.gestao.entidade.util.ESituacao;
+import br.com.will.gestao.entidade.util.ETipoNivel;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
 import br.com.will.gestao.util.Util;
@@ -49,15 +50,12 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 	@Column(name = "cpf", length = SistemaConstantes.ONZE, nullable = false)
 	private String cpf;
 
-	@Column(name = "rg", length = SistemaConstantes.VINTE)
-	private String rg;
-
 	@Email(message = "Email inválido")
 	@Column(name = "email", length = SistemaConstantes.EMAIL, nullable = false)
 	private String email;
 
 	@Column(name = "login", length = SistemaConstantes.CINQUENTA, nullable = false)
-	private String login;
+	private String login = email;
 
 	@Column(name = "senha", length = SistemaConstantes.CENTO_CINQUENTA, nullable = false)
 	private String senha;
@@ -134,14 +132,6 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
 	}
 
 	public String getEmail() {
@@ -239,12 +229,16 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 	public void setSelecionado(Boolean selecionado) {
 		this.selecionado = selecionado;
 	}
+	
+	public ETipoNivel getTipoNivel() {
+		return ETipoNivel.valueOf(this.nivel.getNivelTipo().getDescricao());
+	}
 
 	@Override
 	public void alterarSituacao() {
 		this.situacao = Util.alteraSituacao(this.situacao);
 	}
-
+	
 	@Override
 	public String exportar() {
 		return null;

@@ -48,7 +48,7 @@
 						<h:outputLabel value="#{msg.txt_nome}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.nome}"
 							required="true" styleClass="form-control txt-transform-none" maxlength="70">
-							<f:converter converterId="br.com.nx.tickets.converter.InputNormalStringConverter" />
+							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 						<h:outputLabel value="#{msg.txt_rotulo}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.rotulo}"
 							required="true" styleClass="form-control txt-transform-none" maxlength="70">
-							<f:converter converterId="br.com.nx.tickets.converter.InputNormalStringConverter" />
+							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 						<h:outputLabel value="#{msg.txt_bean}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.bean}"
 							required="true" styleClass="form-control txt-transform-none" maxlength="100">
-							<f:converter converterId="br.com.nx.tickets.converter.InputNormalStringConverter" />
+							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
 					</div>
 				</div>
@@ -134,7 +134,7 @@
 					<div class="col-sm-24">
 						<h:panelGroup
 							rendered="#{empty paginaCadastroBean.niveisAssociados}">
-								Não há pedidos!
+								Não há niveis associados!
 						</h:panelGroup>
 						<h:panelGroup
 							rendered="#{not empty paginaCadastroBean.niveisAssociados}">

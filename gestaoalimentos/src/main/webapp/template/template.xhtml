@@ -12,25 +12,25 @@
 </h:head>
 
 <body>
-	
-	<div id="preloader"></div>
-	
 	<ui:include src="header.xhtml" />
 	
 	<div class="espaco"></div>
 	
 	<div class="container">
-	<h:messages layout="list"
-		id="message"
-		infoClass=""
-		warnClass=""
-		errorClass="" 
-		fatalClass="" />
+		<h:messages layout="list"
+			id="message"
+			infoClass=""
+			warnClass=""
+			errorClass="" 
+			fatalClass="" />
+<!-- 		<ui:include src="carousel.xhtml" /> -->
 		<div class="row">
-			<div class="col-md-6">
-				<ui:include src="navVertical.xhtml" />
-			</div>
-			
+			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
+				<div class="col-md-6">
+					<ui:include src="navVertical.xhtml" />
+				</div>
+			</h:panelGroup>
+		
 			<div class="col-md-18">
 				<ui:include src="topo.xhtml" />
 				<ui:insert name="content" />
@@ -40,7 +40,7 @@
 	<!--/ .container -->
 	
 	<div class="espaco"></div>
-	
+	<div style="height: 3000px;"></div>
 	<ui:include src="footer.xhtml" />
 	<!-- <ui:include src="loader.xhtml" /> -->
 	
@@ -65,10 +65,5 @@
 			});
 		}
 	</script>
-	
 </body>
 </html>
-
-
-
-

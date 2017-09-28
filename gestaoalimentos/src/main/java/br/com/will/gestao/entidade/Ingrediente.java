@@ -7,9 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -59,6 +63,11 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	
 	@Column(name = "valor", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal valorAdicional;
+	
+	@NotNull
+	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Empresa empresa;
 	
 	public Ingrediente() {
 	}
@@ -166,32 +175,31 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", descricao=" + descricao + "]";
+		return "Ingrediente [id=" + id + ", descricao=" + descricao + "]";
 	}
 
 	@Override
 	@XmlTransient
 	public String getSqlSelect() {
-		return "SELECT distinct(p) FROM Produto p ";
+		return "SELECT distinct(i) FROM Ingrediente i ";
 	}
 
 	@Override
 	@XmlTransient
 	public String getSqlCount() {
-		return "SELECT count(distinct p) FROM Produto p ";
+		return "SELECT COUNT(DISTINCT i) FROM Ingrediente i ";
 	}
 
 	@Override
 	@XmlTransient
 	public String getObjetoRetorno() {
-		return "p";
+		return "i";
 	}
 
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH p.produtoTipo pt "
-				+ "LEFT JOIN p.produtoPai pp ";
+		return " JOIN FETCH i.empresa em ";
 	}
 	
 	public static final Comparator<Ingrediente> COMPARAR_POR_DESCRICAO = new Comparator<Ingrediente>() {

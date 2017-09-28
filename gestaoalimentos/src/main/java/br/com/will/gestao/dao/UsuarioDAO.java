@@ -39,15 +39,16 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT u FROM Usuario u ");
 			sql.append(" JOIN FETCH u.nivel n ");
-			sql.append(" JOIN FETCH u.empresa em ");
+			sql.append(" JOIN FETCH n.nivelTipo nt ");
+			sql.append(" LEFT JOIN FETCH u.empresa em ");
 			sql.append(" WHERE u.login =:_login ");
 			sql.append(" AND u.senha =:_senha ");
-//			sql.append(" AND u.situacao =:_ativo ");
+			sql.append(" AND u.situacao =:_ativo ");
 
 			return getEm().createQuery(sql.toString(), Usuario.class)
 						   .setParameter("_login", credencial.getUsername().toUpperCase().trim())
 						   .setParameter("_senha", senha)
-//						   .setParameter("_ativo", ESituacao.ATIVO)
+						   .setParameter("_ativo", ESituacao.ATIVO)
 						   .getSingleResult();
 		} catch (NoResultException nre) {
 			throw new BaseDAOException("Usuário e/ou senha inválido(s)");

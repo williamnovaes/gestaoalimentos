@@ -9,8 +9,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Tamanho;
+import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.TamanhoServico;
 
@@ -24,10 +26,14 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	private ProdutoTipoServico produtoTipoServico;
 	@EJB
 	private TamanhoServico tamanhoServico;
+	@EJB
+	private EmpresaServico empresaServico;
 
 	private ProdutoTipo produtoTipo;
 	private Tamanho tamanho;
 	private List<Tamanho> tamanhos;
+	private List<Empresa> empresas;
+	private Integer empresaSelecionada;
 	
 	@PostConstruct
 	public void inicializar() {
@@ -61,7 +67,16 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 			if (this.produtoTipo.getId() != null) {
 				produtoTipoServico.alterar(this.produtoTipo);
 			} else {
-				this.produtoTipo.setEmpresa(getLoginBean().getEmpresa());
+				if (getLoginBean().getEmpresa() != null) {
+					this.produtoTipo.setEmpresa(getLoginBean().getEmpresa());
+				} else {
+//					if (empresaSelecionada == null || empresaSelecionada <= 0) {
+//						adicionarError("Campo Empresa obrigatório!");
+//						return null;
+//					}
+					Empresa empresa = empresaServico.obterPorId(1);
+					this.produtoTipo.setEmpresa(empresa);
+				}
 				produtoTipoServico.salvar(this.produtoTipo);
 			}
 			return "produtosTipo?faces-redirect=true";
@@ -78,5 +93,17 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	
 	public void setProdutoTipo(ProdutoTipo produtoTipo) {
 		this.produtoTipo = produtoTipo;
+	}
+	
+	public List<Empresa> getEmpresas() {
+		return empresas;
+	}
+	
+	public Integer getEmpresaSelecionada() {
+		return empresaSelecionada;
+	}
+	
+	public void setEmpresaSelecionada(Integer empresaSelecionada) {
+		this.empresaSelecionada = empresaSelecionada;
 	}
 }

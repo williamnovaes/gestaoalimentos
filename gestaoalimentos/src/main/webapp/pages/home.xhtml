@@ -17,32 +17,54 @@
 			<div class="form">
 				<h:outputLabel value="Produtos" styleClass="sr-only" />
 			</div>
-
+			
 			<h:panelGroup>
 				<h:panelGroup id="produtosTipoPG"
-					rendered="#{not empty homeBean.produtosTipo}">
+					rendered="#{not empty homeBean.produtosCache}">
 
 					<ul class="nav nav-tabs">
-						<ui:repeat var="tipo" value="#{homeBean.produtosTipo}">
-							<li role="presentation"
-								class="#{homeBean.isAbaAtiva(tipo.id) ? 'active' : ''}"><h:commandLink
-									value="#{tipo.descricao}" data-toggle="tab">
-									<f:ajax listener="#{homeBean.carregarProdutosPorTipo(tipo.id)}"
-										render="produtosTipoPG" />
-								</h:commandLink> <!-- 								<a href="#{'#'.concat(item.descricao).concat('DIV')}" -->
-								<!-- 									data-toggle="tab" onclick="#{homeBean.carregarProdutosPorTipo(item.id)}"> -->
-								<!-- 									#{tipo.descricao} </a> --></li>
+						<ui:repeat var="tipo" value="#{homeBean.produtosTipoCache}">
+							<li>
+								<h4>#{tipo.descricao}</h4>
+								<ui:repeat var="produto" value="#{homeBean.getProdutosPorTipo(tipo)}">
+									<ul class="table table-hover table-striped">
+										<li>#{produto.descricao}</li>
+									</ul>
+								</ui:repeat>
+							</li>
 						</ui:repeat>
 					</ul>
-
-					<div class="tab-content">
-						<ui:repeat var="prod" value="#{homeBean.produtos}">
-							
-						</ui:repeat>						
-					</div>
-
 				</h:panelGroup>
 			</h:panelGroup>
+			
+			
+			
+
+<!-- 			<h:panelGroup rendered="false"> -->
+<!-- 				<h:panelGroup id="produtosTipoPG" -->
+<!-- 					rendered="#{not empty homeBean.produtosTipo}"> -->
+
+<!-- 					<ul class="nav nav-tabs"> -->
+<!-- 						<ui:repeat var="tipo" value="#{homeBean.produtosTipo}"> -->
+<!-- 							<li role="presentation" -->
+<!-- 								class="#{homeBean.isAbaAtiva(tipo.id) ? 'active' : ''}"><h:commandLink -->
+<!-- 									value="#{tipo.descricao}" data-toggle="tab"> -->
+<!-- 									<f:ajax listener="#{homeBean.carregarProdutosPorTipo(tipo.id)}" -->
+<!-- 										render="produtosTipoPG" /> -->
+<!-- 								</h:commandLink> 								<a href="#{'#'.concat(item.descricao).concat('DIV')}" -->
+<!-- 																	data-toggle="tab" onclick="#{homeBean.carregarProdutosPorTipo(item.id)}"> -->
+<!-- 																	#{tipo.descricao} </a></li> -->
+<!-- 						</ui:repeat> -->
+<!-- 					</ul> -->
+
+<!-- 					<div class="tab-content"> -->
+<!-- 						<ui:repeat var="prod" value="#{homeBean.produtos}"> -->
+							
+<!-- 						</ui:repeat>						 -->
+<!-- 					</div> -->
+
+<!-- 				</h:panelGroup> -->
+<!-- 			</h:panelGroup> -->
 
 			<!-- 			<div id="float-banner" class="float-banner">teste baner flutuante</div> -->
 

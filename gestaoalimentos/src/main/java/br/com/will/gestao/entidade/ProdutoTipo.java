@@ -1,5 +1,6 @@
 package br.com.will.gestao.entidade;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import javax.validation.constraints.NotNull;
 
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.Descritivel;
+import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
@@ -45,10 +47,20 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"))
 	private Empresa empresa;
 	
+	@Column(name = "preco_base", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal precoBase;
+	
+	@Column(name = "index")
+	private Integer index;
+	
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	private EBoolean somaPrecoBase = EBoolean.FALSE;
 	
 	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
 	private List<Tamanho> tamanhos;
@@ -98,7 +110,38 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	public void setTamanhos(List<Tamanho> tamanhos) {
 		this.tamanhos = tamanhos;
 	}
-
+	
+	public BigDecimal getPrecoBase() {
+		return precoBase;
+	}
+	
+	public void setPrecoBase(BigDecimal precoBase) {
+		this.precoBase = precoBase;
+	}
+	
+	public EBoolean getSomaPrecoBase() {
+		return somaPrecoBase;
+	}
+	
+	public void setSomaPrecoBase(EBoolean somaPrecoBase) {
+		this.somaPrecoBase = somaPrecoBase;
+	}
+	
+	public boolean isSomaPrecoBase() {
+		return Util.converterENumBooleanToBoolean(this.somaPrecoBase);
+	}
+	
+	public void setSomaPreco(Boolean somaPreco) {
+		this.somaPrecoBase = Util.converterBooleanToEnumBoolean(somaPreco);
+	}
+	
+	public Integer getIndex() {
+		return index;
+	}
+	
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
 
 	@Override
 	public int hashCode() {
@@ -166,7 +209,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public String getJoin() {
 		StringBuilder str = new StringBuilder();
-		str.append(" JOIN FETCH pt.empresa em ");
+		str.append(" LEFT JOIN FETCH pt.empresa em ");
 		str.append(" LEFT JOIN FETCH pt.tamanhos t ");
 		return str.toString();
 	}

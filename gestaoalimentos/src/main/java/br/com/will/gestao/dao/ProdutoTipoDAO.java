@@ -53,7 +53,7 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
 			sql.append(" WHERE pt.situacao =:_situacao ");
 			sql.append(" AND pt.empresa =:_empresa ");
-			sql.append(" ORDER BY pt.descricao ");
+			sql.append(" ORDER BY pt.index ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
 						  .setParameter("_situacao", ESituacao.ATIVO)
@@ -79,6 +79,25 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 		} catch (NoResultException nre) {
 			getLog().info("NENHUM PRODUTO TIPO ENCONTRADO PARA O ID: " + id);
 			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<ProdutoTipo> consultarTodosAtivosPorEmpresas(List<Empresa> empresas) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
+			sql.append(" JOIN FETCH pt.empresa em ");
+			sql.append(" WHERE pt.situacao =:_situacao ");
+			sql.append(" AND em IN (:_empresa) ");
+			sql.append(" ORDER BY em.id, pt.index ");
+			
+			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
+						  .setParameter("_situacao", ESituacao.ATIVO)
+						  .setParameter("_empresa", empresas)
+						  .getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BaseDAOException(e.getMessage());

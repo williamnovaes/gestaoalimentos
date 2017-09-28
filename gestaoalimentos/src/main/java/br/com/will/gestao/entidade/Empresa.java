@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ import org.hibernate.envers.RelationTargetAuditMode;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
+import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "empresa", schema = "gestao")
@@ -66,6 +69,11 @@ public class Empresa implements Exportavel, SituacaoAlteravel {
 	@JoinColumn(name = "_endereco", foreignKey = @ForeignKey(name = "fk_endereco"))
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Endereco endereco;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
+	private ESituacao situacao = ESituacao.ATIVO;
 
 	@NotAudited
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
@@ -155,6 +163,10 @@ public class Empresa implements Exportavel, SituacaoAlteravel {
 		this.dataCadastro = dataCadastro;
 	}
 	
+	public void setSituacao(ESituacao situacao) {
+		this.situacao = situacao;
+	}
+	
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + ", cnpj=" + cnpj + ", nomeFantasia=" + nomeFantasia + ", razaoSocial="
@@ -213,10 +225,11 @@ public class Empresa implements Exportavel, SituacaoAlteravel {
 
 	@Override
 	public void alterarSituacao() {
+		this.situacao = Util.alteraSituacao(this.getSituacao());
 	}
 
 	@Override
 	public ESituacao getSituacao() {
-		return null;
+		return this.situacao;
 	}
 }

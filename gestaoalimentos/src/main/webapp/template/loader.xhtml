@@ -15,15 +15,12 @@
 			if (typeof jsf !== 'undefined') {
 				jsf.ajax.addOnEvent(function(data) {
 					var ajaxStatus = data.status;
-	
 					switch (ajaxStatus) {
 					case 'begin':
 						mostraPreloader();
 						break;
-	
 					case 'complete':
 						break;
-	
 					case 'success':
 						escondePreloader();
 						carregaJS();

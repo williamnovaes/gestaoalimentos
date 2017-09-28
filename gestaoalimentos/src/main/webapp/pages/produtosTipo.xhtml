@@ -19,6 +19,13 @@
 							styleClass="btn btn-default btn-icon icon-arrow-undo"
 							value="Voltar">
 						</h:commandLink>
+						
+						<h:commandLink
+							styleClass="btn btn-default btn-icon icon-magnifier"
+							value="Buscar">
+							<f:ajax render="produtosPG" 
+								listener="#{produtoListagemBean.buscarRegistros()}" />
+						</h:commandLink>
 					</div>
 				</div>
 

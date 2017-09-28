@@ -48,7 +48,7 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			sql.append(" SELECT p FROM Produto p ");
 			sql.append(" JOIN FETCH p.produtoTipo pt ");
 			sql.append(" WHERE pt =:_produtoTipo ");
-			sql.append(" ORDER BY p.id ");
+			sql.append(" ORDER BY p.index ");
 			
 			return getEm().createQuery(sql.toString(), Produto.class)
 						  .setParameter("_produtoTipo", produtoTipo)
