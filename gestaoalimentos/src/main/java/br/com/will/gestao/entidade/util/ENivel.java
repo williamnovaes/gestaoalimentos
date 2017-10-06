@@ -4,7 +4,7 @@ public enum ENivel {
 	
 	SUPER_USER(1, "SUPERUSER", ETipoNivel.ADMINISTRADOR),
 	ADMINISTRADOR(2, "ADMINISTRADOR", ETipoNivel.FUNCIONARIO),
-	CLIENTE(10,  "CLIENTE", ETipoNivel.CLIENTE);
+	CLIENTE(3,  "CLIENTE", ETipoNivel.CLIENTE);
 	
 	private final int id;
 	private final String descricao;

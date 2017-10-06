@@ -42,4 +42,19 @@ public class EmpresaDAO extends BaseDAO<Empresa> {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
+
+	public Empresa consultarEmpresa() {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT em FROM Empresa em ");
+			sql.append(" WHERE em.situaoca =:_situacao ");
+			sql.append(" ORDER BY em.id ");
+			return getEm().createQuery(sql.toString(), Empresa.class)
+						  .setParameter("_situacao", ESituacao.ATIVO)
+						  .setMaxResults(1)
+						  .getSingleResult();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
 }

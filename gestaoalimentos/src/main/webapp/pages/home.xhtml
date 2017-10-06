@@ -28,7 +28,12 @@
 								<h4>#{tipo.descricao}</h4>
 								<ui:repeat var="produto" value="#{homeBean.getProdutosPorTipo(tipo)}">
 									<ul class="table table-hover table-striped">
-										<li>#{produto.descricao}</li>
+										<li>#{produto.descricao}
+											<h:commandLink styleClass="glyphicon glyphicon-plus-sign btn">
+												<f:ajax event="click" 
+													listener="#{homeBean.adiconarProduto(produto)}"/>
+											</h:commandLink>
+										</li>
 									</ul>
 								</ui:repeat>
 							</li>
@@ -66,19 +71,11 @@
 <!-- 				</h:panelGroup> -->
 <!-- 			</h:panelGroup> -->
 
-			<!-- 			<div id="float-banner" class="float-banner">teste baner flutuante</div> -->
+<!-- 			<div id="float-banner" class="float-banner" data-spy="affix" data-offset-top="197"> -->
+<!-- 				teste baner flutuante -->
+<!-- 			</div> -->
 
-			<script type="text/javascript">
-				jQuery(document).ready(function() {
-    				$(window).scroll(function () {
-       					set = $(document).scrollTop()+"px";
-       					jQuery('#float-banner').animate(
-          		  			{top:set},
-          		  			{duration:10, queue:false}
-        				);
-    				});
-				});
-			</script>
+			
 
 			<!-- 			<h:panelGroup rendered="#{empty homeBean.extratos}"> -->
 			<!-- 				<h:outputText value="Não há pedidos até o momento!" /> -->

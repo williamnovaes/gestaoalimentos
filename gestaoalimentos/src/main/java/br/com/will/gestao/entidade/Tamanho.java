@@ -20,7 +20,7 @@ import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
 @Table(name = "tamanho", schema = "gestao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "sequencia", "_tamanho_tipo" }) })
+		@UniqueConstraint(columnNames = { "descricao", "_tamanho_tipo", "_produto" }) })
 public class Tamanho {
 	
 	private static final long serialVersionUID = 1L;
@@ -39,20 +39,16 @@ public class Tamanho {
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO, nullable = false, unique = true)
 	private String descricao;
 	
-	@NotNull
-	@Column(name = "sequencia", nullable = false)
-	private Integer sequencia;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_tamanho_tipo", foreignKey = @ForeignKey(name = "fk_tamanho_tipo"))
 	private TamanhoTipo tamanhoTipo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
-	private ProdutoTipo produtoTipo;
+	@JoinColumn(name = "_produto", foreignKey = @ForeignKey(name = "fk_produto"))
+	private Produto produto;
 	
-	@Column(name = "valor", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal valor;
+	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal preco;
 	
 	public Tamanho(Integer id) {
 		this.id = id;
@@ -98,20 +94,12 @@ public class Tamanho {
 		this.tamanhoTipo = tamanhoTipo;
 	}
 	
-	public ProdutoTipo getProdutoTipo() {
-		return produtoTipo;
+	public BigDecimal getPreco() {
+		return this.preco;
 	}
 	
-	public void setProdutoTipo(ProdutoTipo produtoTipo) {
-		this.produtoTipo = produtoTipo;
-	}
-	
-	public BigDecimal getValor() {
-		return valor;
-	}
-	
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 
 	@Override
@@ -119,14 +107,6 @@ public class Tamanho {
 		return "Situacao [id=" + id + "]";
 	}
 	
-	public Integer getSequencia() {
-		return sequencia;
-	}
-	
-	public void setSequencia(Integer sequencia) {
-		this.sequencia = sequencia;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

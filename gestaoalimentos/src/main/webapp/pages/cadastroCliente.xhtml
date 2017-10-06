@@ -88,42 +88,16 @@
 				</div>
 			</div>
 
-			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and loginBean.administrador}">
-				<div class="row">
-					<div class="col-sm-24">
-						<div class="form-group">
-							<h:outputLabel value="#{msg.txt_nivel}" />
-							<h:selectOneMenu id="nivelSOM" styleClass="form-control"
-								value="#{usuarioCadastroBean.idNivelSelecionado}">
-								<f:selectItem itemLabel="#{msg.txt_selecione}" />
-								<f:selectItems var="nivel" value="#{usuarioCadastroBean.niveis}"
-									itemValue="#{nivel.id}" itemLabel="#{nivel.descricao}"
-									required="true" />
-							</h:selectOneMenu>
-						</div>
-					</div>
-				</div>
-			</h:panelGroup>
-
 			<div class="row wrap-btn-form">
 				<div class="col-sm-8 esq"></div>
 
 				<div class="col-sm-8 centro"></div>
 
 				<div class="col-sm-8 dir">
-					<h:panelGroup rendered="#{usuarioCadastroBean.usuario.id eq null}">
-						<h:commandButton id="salvarBtn"
-							action="#{usuarioCadastroBean.salvar}" value="Salvar"
-							styleClass="btn btn-default btn-success btn-lg">
-						</h:commandButton>
-					</h:panelGroup>
-					<h:panelGroup rendered="#{usuarioCadastroBean.usuario.id ne null}">
-						<h:commandButton id="salvarBtn"
-							action="#{usuarioCadastroBean.salvar}" value="Atualizar"
-							styleClass="btn btn-default btn-success btn-lg">
-						</h:commandButton>
-					</h:panelGroup>
-					
+					<h:commandButton id="salvarBtn"
+						action="#{usuarioCadastroBean.salvar}" value="Salvar"
+						styleClass="btn btn-default btn-success btn-lg">
+					</h:commandButton>
 				</div>
 			</div>
 

@@ -13,6 +13,7 @@ import br.com.will.gestao.entidade.Caixa;
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.servico.CaixaServico;
 import br.com.will.gestao.servico.EmpresaServico;
@@ -22,7 +23,7 @@ import br.com.will.gestao.servico.UsuarioServico;
 
 @Named
 @ViewScoped
-public class HomeBean extends BaseBean implements Modable {
+public class HomeBean extends BaseBean {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -43,8 +44,18 @@ public class HomeBean extends BaseBean implements Modable {
 	private List<ProdutoTipo> produtosTipo;
 	private Map<ProdutoTipo, List<Produto>> produtosCache;
 	private List<Empresa> empresas;
+	private boolean exbirModalSabores = false;
+	private boolean exibirModalObservacao = false;
+	private boolean exibirModalTamanho = false;
+	private List<Produto> saboresDisponiveis;
+	private List<Produto> saboresSelecionados; 
+	
+	private Tamanho tamanhoSelecionado;
+	private ProdutoTipo produtoTipoSelecionado;
+	private Produto produtoSelecionado;
 	
 	private Integer abaSelecionada;
+
 	
 	@PostConstruct
 	public void inicializar() {
@@ -62,13 +73,7 @@ public class HomeBean extends BaseBean implements Modable {
 					produtosTipo.add(pt);
 				}
 			}
-			
-//			if (produtosTipo != null && !produtosTipo.isEmpty()) {
-//				abaSelecionada = produtosTipo.get(0).getId();
-//			} else {
-				abaSelecionada = 0;
-//			}
-//			carregarProdutosPorTipo(abaSelecionada);
+			abaSelecionada = 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,7 +89,34 @@ public class HomeBean extends BaseBean implements Modable {
 		}
 	}
 	
-	@Override
+	public void adicionarProduto(ProdutoTipo tipo, Produto produto) {
+		try {
+			switch (tipo.getOrigemPreco()) {
+				case PRODUTO:
+					this.produtoSelecionado = produto;
+					this.produtoTipoSelecionado = tipo;
+					this.exibirModalObservacao = true;
+					break;
+				case TIPO_PRODUTO:
+					this.produtoSelecionado = produto;
+					this.produtoTipoSelecionado = tipo;
+					this.exibirModalObservacao = true;
+					break;
+				case TAMANHO: 
+					this.produtoSelecionado = produto;
+					this.produtoTipoSelecionado = tipo;
+					this.exibirModalTamanho = true;
+					break;
+				default:
+					adicionarError("Selecione um produto");
+					break;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void fecharModal() {
 		
  	}
@@ -135,5 +167,45 @@ public class HomeBean extends BaseBean implements Modable {
 	
 	public List<Produto> getProdutosPorTipo(ProdutoTipo pt) {
 		return produtosCache.get(pt);
+	}
+	
+	public void adicionarProduto(Produto produto) {
+		
+	}
+	
+	public void abrirModalSabores(ProdutoTipo produtoTipo) {
+		this.setExibirModalSabores(true);
+	}
+	
+	public boolean isExbirModalSabores() {
+		return exbirModalSabores;
+	}
+	
+	public void setExibirModalSabores(boolean exibirModalSabres) {
+		this.setExibirModalSabores(exibirModalSabres);
+	}
+	
+	public List<Produto> getSaboresDisponiveis() {
+		return saboresDisponiveis;
+	}
+	
+	public void setSaboresDisponiveis(List<Produto> saboresDisponiveis) {
+		this.saboresDisponiveis = saboresDisponiveis;
+	}
+	
+	public List<Produto> getSaboresSelecionados() {
+		return saboresSelecionados;
+	}
+	
+	public void setSaboresSelecionados(List<Produto> saboresSelecionados) {
+		this.saboresSelecionados = saboresSelecionados;
+	}
+	
+	public Produto getProdutoSelecionado() {
+		return produtoSelecionado;
+	}
+	
+	public void setProdutoSelecionado(Produto produtoSelecionado) {
+		this.produtoSelecionado = produtoSelecionado;
 	}
 }

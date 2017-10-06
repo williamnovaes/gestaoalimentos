@@ -1031,6 +1031,30 @@ footer .social-footer li:hover a {
 	margin-top: 150px;
 }
 
+.affix {
+      top: 1;
+      left: 70%;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      background-color: white;
+}
+
+/* .float-banner { */
+/*     position: fixed; */
+/*     left: 70%; */
+/*     width: 200px;  */
+/*     height: 200px; */
+/*     padding: 10px 5px; */
+/*     text-align: center; */
+/*     background-color: white; */
+/*     border: 1px solid black; */
+/* } */
+
+/* .affix + .container-fluid { */
+/*       padding-top: 70px; */
+/* } */
+
 @media(max-width:992px) {
 	h1 {
 		font-size: 36px;
@@ -1113,7 +1137,8 @@ footer .social-footer li:hover a {
 	}
 }
 
-
-
-
-
+@media(max-width: 500px) {
+	.float-banner {
+		display: none;
+	}
+}

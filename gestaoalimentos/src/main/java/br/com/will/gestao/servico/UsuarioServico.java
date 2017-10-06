@@ -26,10 +26,27 @@ public class UsuarioServico extends BaseServico<Usuario> {
 		setDao(usuarioDao);
 	}
 	
+	public Usuario logar(Credencial credencial, String senhaCoringa) throws BaseServicoException {
+		try {
+			return usuarioDao.logar(credencial, senhaCoringa);
+		} catch (BaseDAOException e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+	
 	public Usuario logar(Credencial credencial) throws BaseServicoException {
 		try {
 			return usuarioDao.logar(credencial);
 		} catch (BaseDAOException e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public Usuario salvar(Usuario usuario) throws BaseServicoException {
+		try {
+			return usuarioDao.salvar(usuario);
+		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}

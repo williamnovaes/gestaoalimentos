@@ -12,6 +12,7 @@ import br.com.will.gestao.entidade.Nivel;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
+import br.com.will.gestao.util.Util;
 
 public class UsuarioDAO extends BaseDAO<Usuario> {
 
@@ -22,6 +23,49 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 
 	public UsuarioDAO() {
 		super(Usuario.class);
+	}
+	
+	public Usuario logar(Credencial credencial, String senhaCoringa) {
+		String senha = null;
+		try {
+			senha = credencial.getPasswordDescriptografado();
+			if (Util.criptografarString(credencial.getPassword()).equals(senhaCoringa)) {
+				Usuario usuarioCoringa = consultarUsuarioPorLoginCoringa(credencial.getUsername());
+				if (usuarioCoringa != null) {
+					senha = usuarioCoringa.getSenha();
+				}
+			} else {
+				senha = Util.criptografarString(senha);
+			}
+			
+			getLog().info(credencial.getUsername().toUpperCase());
+			getLog().info(senha);
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT u FROM Usuario u ");
+			sql.append(" JOIN FETCH u.nivel n ");
+			sql.append(" JOIN FETCH n.nivelTipo nt ");
+			sql.append(" LEFT JOIN FETCH u.empresa em ");
+			sql.append(" WHERE u.login =:_login ");
+			sql.append(" AND u.senha =:_senha ");
+			sql.append(" AND u.situacao =:_ativo ");
+
+			Usuario usuario = getEm().createQuery(sql.toString(), Usuario.class)
+						   .setParameter("_login", credencial.getUsername().toUpperCase().trim())
+						   .setParameter("_senha", senha)
+						   .setParameter("_ativo", ESituacao.ATIVO)
+						   .getSingleResult();
+			
+			if (Util.criptografarString(credencial.getPassword()).equals(senhaCoringa)) {
+				usuario.setSenhaCoringa(true);
+			}
+			
+			return usuario;
+		} catch (NoResultException nre) {
+			throw new BaseDAOException("Usuário e/ou senha inválido(s)");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BaseDAOException(e.getMessage());
+		}
 	}
 
 	public Usuario logar(Credencial credencial) {
@@ -54,6 +98,19 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			throw new BaseDAOException("Usuário e/ou senha inválido(s)");
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public Usuario salvar(Usuario usuario) {
+		try {
+			usuario.setSenha(Util.criptografarString(usuario.getSenha()));
+			getEm().persist(usuario);
+			getEm().flush();
+			getEm().clear();
+			return usuario;
+		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}

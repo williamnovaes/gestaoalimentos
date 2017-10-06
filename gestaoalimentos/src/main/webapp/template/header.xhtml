@@ -28,7 +28,9 @@
 					<ul class="nav navbar-nav navbar-right main-nav">
 						<li><a href="home.ppd">Home</a></li>
 						<li><a href="minhaConta.ppd">Conta</a></li>
-						<li><a href="cadastro.ppd">Cadastre-se</a></li>
+						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
+							<li><a href="cadastroCliente.ppd">Cadastre-se</a></li>
+						</h:panelGroup>
 						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
 							<li><h:commandLink title="Login"
 									styleClass="glyphicon glyphicon-log-in btn btn-blue"

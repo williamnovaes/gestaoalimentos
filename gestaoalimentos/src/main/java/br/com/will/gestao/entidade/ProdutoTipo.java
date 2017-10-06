@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.Descritivel;
 import br.com.will.gestao.entidade.util.EBoolean;
+import br.com.will.gestao.entidade.util.EOrigemPreco;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
@@ -47,11 +48,11 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"))
 	private Empresa empresa;
 	
-	@Column(name = "preco_base", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal precoBase;
+	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal preco;
 	
-	@Column(name = "index")
-	private Integer index;
+	@Column(name = "sequencia")
+	private Integer sequencia;
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -60,13 +61,20 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
-	private EBoolean somaPrecoBase = EBoolean.FALSE;
+	private EBoolean somaPrecoSabor = EBoolean.FALSE;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(name = "origem_preco", columnDefinition = SistemaConstantes.E_ORIGEM_PRECO_DEFAULT_PRODUTO)
+	private EOrigemPreco origemPreco= EOrigemPreco.PRODUTO;
 	
 	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
-	private List<Tamanho> tamanhos;
-
+	private List<Produto> produtos;
+	
+	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
+	private List<Sabor> sabores;
+	
 	public ProdutoTipo() {
-
 	}
 	
 	public ProdutoTipo(Integer id) {
@@ -76,12 +84,20 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	public ProdutoTipo(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public ProdutoTipo(Integer id, String descricao) {
+		this.id = id;
+		this.descricao = descricao;
+	}
 
 	public Integer getId() {
 		return id;
 	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-	@Override
 	public String getDescricao() {
 		return descricao;
 	}
@@ -103,44 +119,20 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 		return situacao;
 	}
 	
-	public List<Tamanho> getTamanhos() {
-		return tamanhos;
+	public Integer getSequencia() {
+		return this.sequencia;
 	}
 	
-	public void setTamanhos(List<Tamanho> tamanhos) {
-		this.tamanhos = tamanhos;
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
 	}
 	
-	public BigDecimal getPrecoBase() {
-		return precoBase;
+	public EOrigemPreco getOrigemPreco() {
+		return origemPreco;
 	}
 	
-	public void setPrecoBase(BigDecimal precoBase) {
-		this.precoBase = precoBase;
-	}
-	
-	public EBoolean getSomaPrecoBase() {
-		return somaPrecoBase;
-	}
-	
-	public void setSomaPrecoBase(EBoolean somaPrecoBase) {
-		this.somaPrecoBase = somaPrecoBase;
-	}
-	
-	public boolean isSomaPrecoBase() {
-		return Util.converterENumBooleanToBoolean(this.somaPrecoBase);
-	}
-	
-	public void setSomaPreco(Boolean somaPreco) {
-		this.somaPrecoBase = Util.converterBooleanToEnumBoolean(somaPreco);
-	}
-	
-	public Integer getIndex() {
-		return index;
-	}
-	
-	public void setIndex(Integer index) {
-		this.index = index;
+	public void setOrigemPreco(EOrigemPreco origemPreco) {
+		this.origemPreco = origemPreco;
 	}
 
 	@Override

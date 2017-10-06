@@ -29,10 +29,9 @@ public class Credencial {
 
 	public String getPassword() {
 		if (password != null) {
-			return Util.criptografarString(password.toUpperCase());
-		} else {
-			return password;
-		}
+			password =  Util.criptografarString(password.toUpperCase());
+		} 
+		return password;
 	}
 
 	public String getPasswordDescriptografado() {

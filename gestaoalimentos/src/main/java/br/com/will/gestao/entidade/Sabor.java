@@ -2,7 +2,6 @@ package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -26,7 +24,6 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import br.com.will.gestao.componente.Paginavel;
-import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
@@ -34,9 +31,9 @@ import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "produto", schema = "gestao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"_produto_tipo", "_empresa" }) })
+		@UniqueConstraint(columnNames = {"nome", "_produto_tipo", "_empresa" }) })
 @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-public class Produto implements SituacaoAlteravel, Paginavel {
+public class Sabor implements SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -51,8 +48,12 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	private String nome;
 	
 	@NotNull
-	@Column(name = "sequencia", nullable = false)
-	private Integer sequencia;
+	@Column(name = "index", nullable = false)
+	private Integer index;
+
+	@NotNull
+	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO)
+	private String descricao;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
@@ -71,34 +72,20 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Empresa empresa;
 	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "permite_sabores", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
-	private EBoolean permiteSabores = EBoolean.FALSE;
-	
-	@NotNull
-	@Column(name = "quantidade_sabor", nullable = false)
-	private Integer quantidadeSabor = 1;
-	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
-	private List<Tamanho> tamanhos;
-	
-	@XmlTransient
-	private List<Sabor> sabores;
-	
-	public Produto() {
+	public Sabor() {
 	}
 	
-	public Produto(Integer id, String nome) {
+	public Sabor(Integer id, String descricao) {
 		this.id = id;
+		this.descricao = descricao;
 	}
 	
-	public Produto(Integer id) {
+	public Sabor(Integer id) {
 		this.id = id;
 	}
 
-	public Produto(String nome) {
-		this.nome = nome;
+	public Sabor(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Integer getId() {
@@ -117,14 +104,22 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		this.nome = nome;
 	}
 	
-	public Integer getSequencia() {
-		return sequencia;
+	public Integer getIndex() {
+		return index;
 	}
 	
-	public void setSequencia(Integer sequencia) {
-		this.sequencia = sequencia;
+	public void setIndex(Integer index) {
+		this.index = index;
 	}
 	
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public void setSituacao(ESituacao situacao) {
 		this.situacao = situacao;
 	}
@@ -156,22 +151,6 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		this.empresa = empresa;
 	}
 	
-	public EBoolean getPermiteSabores() {
-		return permiteSabores;
-	}
-	
-	public void setPermiteSabores(EBoolean permiteSabores) {
-		this.permiteSabores = permiteSabores;
-	}
-	
-	public Integer getQuantidadeSabor() {
-		return quantidadeSabor;
-	}
-	
-	public void setQuantidadeSabor(Integer quantidadeSabor) {
-		this.quantidadeSabor = quantidadeSabor;
-	}
-	
 	@Override
 	public void alterarSituacao() {
 		this.situacao = Util.alteraSituacao(this.situacao);
@@ -180,22 +159,6 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@Override
 	public ESituacao getSituacao() {
 		return situacao;
-	}
-	
-	public List<Tamanho> getTamanhos() {
-		return tamanhos;
-	}
-	
-	public void setTamanhos(List<Tamanho> tamanhos) {
-		this.tamanhos = tamanhos;
-	}
-	
-	public List<Sabor> getSabores() {
-		return sabores;
-	}
-	
-	public void setSabores(List<Sabor> sabores) {
-		this.sabores = sabores;
 	}
 	
 	@Override
@@ -217,7 +180,7 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Produto other = (Produto) obj;
+		Sabor other = (Sabor) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -230,7 +193,7 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + "]";
+		return "Produto [id=" + id + ", descricao=" + descricao + "]";
 	}
 
 	@Override
@@ -254,16 +217,16 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH p.produtoTipo pt "
-			 + " LEFT JOIN FETCH p.empresa em ";
+		return " JOIN FETCH p.produtoTipo pt ";
 	}
 	
-	public static final Comparator<Produto> COMPARAR_POR_NOME = new Comparator<Produto>() {
+	public static final Comparator<Sabor> COMPARAR_POR_DESCRICAO = new Comparator<Sabor>() {
+
 		@Override
-		public int compare(Produto o1, Produto o2) {
-			if (o1.getNome().compareTo(o2.getNome()) > 0) {
+		public int compare(Sabor o1, Sabor o2) {
+			if (o1.getDescricao().compareTo(o2.getDescricao()) > 0) {
 				return 1;
-			} else if (o1.getNome().compareTo(o2.getNome()) < 0) {
+			} else if (o1.getDescricao().compareTo(o2.getDescricao()) < 0) {
 				return -1;
 			}
 			return 0;

@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -80,8 +81,8 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 	private Calendar dataUltimaInteracao;
 
 	@NotAudited
-	@Column(name = "data_cadastro", updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro", updatable = false)
 	private Calendar dataCadastro;
 
 	@Temporal(TemporalType.DATE)
@@ -194,8 +195,9 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Calendar dataCadastro) {
-		this.dataCadastro = dataCadastro;
+	@PrePersist
+	public void setDataCadastro() {
+		this.dataCadastro = Calendar.getInstance();
 	}
 
 	public Calendar getDataNascimento() {

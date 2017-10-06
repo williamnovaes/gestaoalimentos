@@ -15,14 +15,15 @@ import javax.inject.Named;
 import br.com.will.gestao.componente.Credencial;
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
-import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.permissao.Menu;
 import br.com.will.gestao.entidade.permissao.Pagina;
+import br.com.will.gestao.entidade.util.ENivel;
 import br.com.will.gestao.entidade.util.ETipoNivel;
 import br.com.will.gestao.servico.PaginaServico;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.servico.exception.BaseServicoException;
+import br.com.will.gestao.util.ConfiguracaoSistemaConstantes;
 
 @Named
 @SessionScoped
@@ -37,18 +38,18 @@ public class LoginBean extends BaseBean {
 	@EJB
 	private PaginaServico paginaServico;
 	
-	
 	private Usuario usuarioLogado;
 	private boolean logado;
 	private List<Pagina> paginas;
 	private HashMap<Menu, List<Pagina>> paginasPorMenu;
 	private Empresa empresa;
-	private List<Produto> carrinho; 
+	private List<Produto> carrinho = new ArrayList<>();
 	private boolean exibirModalLogin = false;
 
 	public String fazerLogin() {
 		try {
-			usuarioLogado = usuarioServico.logar(credencial);
+			usuarioLogado = usuarioServico.logar(credencial, getConfiguracaoApplication()
+					.obterConfiguracaoSistema(ConfiguracaoSistemaConstantes.SENHA_CORINGA).getValor());
 			if (usuarioLogado != null) {
 				configurarPermissao();
 				logado = true;
@@ -117,7 +118,7 @@ public class LoginBean extends BaseBean {
 	}
 	
 	public String irParaHome() {
-		return "home?faces-redirect=true";
+		return "/pages/home.ppd?faces-redirect=true";
 	}
 	
 	public Usuario getUsuarioLogado() {
@@ -166,13 +167,6 @@ public class LoginBean extends BaseBean {
 		return empresa;
 	}
 	
-	public void adicionarProduto(Produto produto, Integer qnt, Tamanho tamanho) {
-		produto.setTamanhoSelecionado(tamanho);
-		for (int i = 1 ; i < qnt ; i++) {
-			carrinho.add(produto);
-		}
-	}
-	
 	public BigDecimal valorTotal() {
 		return null;
 	}
@@ -196,5 +190,26 @@ public class LoginBean extends BaseBean {
 	
 	public void fecharModalLogin() {
 		exibirModalLogin = false;
+	}
+	
+	public List<Produto> getCarrinho() {
+		return carrinho;
+	}
+	
+	public void setCarrinho(List<Produto> carrinho) {
+		this.carrinho = carrinho;
+	}
+	
+	public void adicionarProduto(Produto produto) {
+		this.carrinho.add(produto);
+	}
+	
+	public Credencial getCredencial() {
+		return credencial;
+	}
+	
+	public boolean isCLiente() {
+		return this.usuarioLogado != null
+				&& this.usuarioLogado.getNivel().getDescricao().equals(ENivel.CLIENTE.getDescricao());
 	}
 }

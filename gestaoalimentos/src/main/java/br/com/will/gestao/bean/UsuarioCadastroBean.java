@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import br.com.will.gestao.entidade.Nivel;
 import br.com.will.gestao.entidade.Usuario;
+import br.com.will.gestao.entidade.util.ENivel;
 import br.com.will.gestao.servico.NivelServico;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.servico.exception.BaseServicoException;
@@ -59,10 +60,27 @@ public class UsuarioCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			usuario.setNivel(nivelServico.obterPorId(this.idNivelSelecionado));
-			usuario = usuarioServico.salvar(usuario);
+			Nivel nivel = null;
+			if (getLoginBean().getUsuarioLogado() != null) {
+				nivel = nivelServico.obterPorId(this.idNivelSelecionado);
+			} else {
+				nivel = nivelServico.obterPorId(3);
+			}
+			usuario.setNivel(nivel);
+			if (usuario.getId() != null) {
+				usuarioServico.alterar(usuario);
+			} else {
+				usuario = usuarioServico.salvar(usuario);
+			}
 			adicionarInfo("Usuario Salvo com Sucesso.");
-			return "usuarios?faces-redirect=true";
+			if (nivel.getDescricao().equals(ENivel.CLIENTE.getDescricao())
+					&& (getLoginBean().getUsuarioLogado() == null || getLoginBean().isCliente())) {
+				getLoginBean().getCredencial().setUsername(usuario.getLogin());
+				getLoginBean().getCredencial().setPassword(usuario.getSenha());
+				getLoginBean().fazerLogin();
+				return "/pages/home.ppd?faces-redirect=true";
+			}
+			return "usuarios.ppd?faces-redirect=true";
 		} catch (BaseServicoException e) {
 			e.printStackTrace();
 			adicionarError("Erro ao Salvar Usuario.");

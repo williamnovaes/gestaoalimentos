@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.com.will.gestao.dao.EmpresaDAO;
 import br.com.will.gestao.entidade.Empresa;
+import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
 public class EmpresaServico extends BaseServico<Empresa> {
@@ -18,5 +19,13 @@ public class EmpresaServico extends BaseServico<Empresa> {
 	@PostConstruct
 	public void inicializar() {
 		setDao(empresaDao);
+	}
+
+	public Empresa obterEmpresa() throws BaseServicoException {
+		try {
+			return empresaDao.consultarEmpresa();
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
 	}
 }

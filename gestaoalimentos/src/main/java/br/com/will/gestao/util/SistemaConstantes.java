@@ -133,6 +133,10 @@ public final class SistemaConstantes {
 
 	public static final String E_SITUACAO_DEFAULT_ATIVO = "varchar(10) default 'ATIVO'";
 	public static final String E_SITUACAO_DEFAULT_INATIVO = "varchar(10) default 'INATIVO'";
+	
+	public static final String E_ORIGEM_PRECO_DEFAULT_PRODUTO = "varchar(10) default 'PRODUTO'";
+	public static final String E_ORIGEM_PRECO_DEFAULT_TAMANHO = "varchar(10) default 'TAMANHO'";
+	public static final String E_ORIGEM_PRECO_DEFAULT_TIPO_PROTUDO = "varchar(10) default 'TIPO_PRODUTO'";
 
 	public static final String E_MOBILE_LADO_DEFAULT_LEFT = "varchar(10) default 'LEFT'";
 	public static final String E_SISTEMA_OPERACIONAL_MOBILE_DEFAULT_AMBOS = "varchar(10) default 'AMBOS'";
@@ -193,6 +197,7 @@ public final class SistemaConstantes {
 	public static final String MONDAY = "Mon";
 	public static final String UTIL_DAYS = "Mon, Tue, Wed, Thu, Fri, Sat";
 	public static final String ALL_DAYS = "Mon, Tue, Wed, Thu, Fri, Sat, Sun";
+	public static final String ALL_DAYS_WITHOUT_MONDAY = "Sun, Tue, Wed, Thu, Fri, Sat";
 	public static final int SCRIPT = 100000;
 
 	public static final int TAMANHO_MAXIMO_ARQUIVO_FEEDBACK = 10485760; 

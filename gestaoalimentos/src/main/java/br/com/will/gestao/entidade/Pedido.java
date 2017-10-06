@@ -32,7 +32,7 @@ import br.com.will.gestao.util.SistemaConstantes;
 @Table(name = "pedido", schema = "gestao")
 public class Pedido implements Paginavel {
 
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(name = "pedidoSeq", sequenceName = "pedido_id_multi_seq", allocationSize = 1, schema = "gestao")
@@ -56,13 +56,21 @@ public class Pedido implements Paginavel {
 	private ETipoEntrega tipoEntrega;
 	
 	@NotNull
-	@JoinColumn(name = "_usuario", foreignKey = @ForeignKey(name = "fk_usuario"))
+	@JoinColumn(name = "_cliente", foreignKey = @ForeignKey(name = "fk_cliente"))
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Usuario usuario;
+	private Usuario cliente;
 	
 	@NotNull
-	@Column(name = "total", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal total = new BigDecimal("0");
+	@Column(name = "valor_total", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal valorTotal = new BigDecimal("0");
+	
+	@NotNull
+	@Column(name = "valor_cobrado", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal valorCobrado = new BigDecimal("0");
+	
+	@NotNull
+	@Column(name = "valor_desconto", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	private BigDecimal valorDesconto = new BigDecimal("0");
 	
 	@NotNull
 	@JoinColumn(name = "_caixa", foreignKey = @ForeignKey(name = "fk_caixa"))
@@ -111,12 +119,28 @@ public class Pedido implements Paginavel {
 		this.formaPagamento = formaPagamento;
 	}
 	
-	public BigDecimal getTotal() {
-		return total;
+	public BigDecimal getValorTotal() {
+		return valorTotal;
 	}
 	
-	public void setTotal(BigDecimal total) {
-		this.total = total;
+	public void setValorTotal(BigDecimal total) {
+		this.valorTotal = total;
+	}
+	
+	public BigDecimal getValorCobrado() {
+		return valorCobrado;
+	}
+	
+	public void setValorCobrado(BigDecimal valorCobrado) {
+		this.valorCobrado = valorCobrado;
+	}
+	
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+	
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
 	}
 	
 	public ETipoEntrega getTipoEntrega() {
@@ -143,27 +167,27 @@ public class Pedido implements Paginavel {
 		this.statusAtendimento = statusAtendimento;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
+	public Usuario getCliente() {
+		return cliente;
 	}
 	
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCliente(Usuario cliente) {
+		this.cliente= cliente;
 	}
 	
 	@Override
 	public String getSqlSelect() {
-		return "SELECT distinct(pd) FROM Pedido pd ";
+		return " SELECT distinct(pd) FROM Pedido pd ";
 	}
 
 	@Override
 	public String getSqlCount() {
-		return "SELECT count(distinct pd.id) FROM Pedido pd ";
+		return " SELECT count(distinct pd.id) FROM Pedido pd ";
 	}
 
 	@Override
 	public String getObjetoRetorno() {
-		return "pd";
+		return " pd ";
 	}
 
 	@Override

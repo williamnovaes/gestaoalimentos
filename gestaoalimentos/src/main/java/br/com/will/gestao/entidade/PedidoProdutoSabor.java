@@ -1,7 +1,6 @@
 package br.com.will.gestao.entidade;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -14,11 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import br.com.will.gestao.componente.Paginavel;
-import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
-@Table(name = "pedido_produto", schema = "gestao")
-public class PedidoProduto
+@Table(name = "pedido_produto_sabor", schema = "gestao")
+public class PedidoProdutoSabor
 		implements Serializable, Paginavel, Exportavel {
 	private static final long serialVersionUID = 1L;
 
@@ -35,20 +33,18 @@ public class PedidoProduto
 	@JoinColumn(name = "_produto", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_produto"))
 	private Produto produto;
 	
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_saobor", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_sabor"))
+	private Sabor sabor;
+	
 	@Column(name = "referencia")
 	private Integer referencia;
 	
-	@Column(name = "observacao", length = SistemaConstantes.DUZENTOS_CINQUENTA)
-	private String observacao;
-	
-	@Column(name = "preco_final")
-	private BigDecimal precoFinal;
-
-
-	public PedidoProduto() {
+	public PedidoProdutoSabor() {
 	}
 
-	public PedidoProduto(Pedido pedido, Produto produto) {
+	public PedidoProdutoSabor(Pedido pedido, Produto produto) {
 		this.id = new PedidoProdutoPK(pedido.getId(), produto.getId());
 		this.produto = produto;
 		this.pedido = pedido;
@@ -66,12 +62,12 @@ public class PedidoProduto
 		this.produto = produto;
 	}
 	
-	public BigDecimal getPrecoFinal() {
-		return precoFinal;
+	public Sabor getSabor() {
+		return sabor;
 	}
 	
-	public void setPrecoFinal(BigDecimal precoFinal) {
-		this.precoFinal = precoFinal;
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
 	}
 	
 	public Integer getReferencia() {
@@ -101,7 +97,7 @@ public class PedidoProduto
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		PedidoProduto other = (PedidoProduto) obj;
+		PedidoProdutoSabor other = (PedidoProdutoSabor) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -114,30 +110,30 @@ public class PedidoProduto
 
 	@Override
 	public String toString() {
-		return "PedidoProduto [id=" + id + "]";
+		return "PedidoProdutoSabor [id=" + id + "]";
 	}
 
 	@Override
 	public String getSqlSelect() {
-		return " ";
+		return " SELECT pps FROM PedidoProdutoSabor pps";
 	}
 
 	@Override
 	public String getSqlCount() {
-		return " SELECT count(pp.id) FROM PedidoProduto pp ";
+		return " SELECT count(pps.id) FROM PedidoProdutoSabor pps ";
 	}
 
 	@Override
 	public String getObjetoRetorno() {
-		return " pp ";
+		return " pps ";
 	}
 
 	@Override
 	public String getJoin() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(" JOIN FETCH pp.pedido pd ");
-		sb.append(" JOIN FETCH pd.cliente cl ");
-		sb.append(" JOIN FETCH pp.produto pr ");
+		sb.append(" JOIN pps.pedido pd ");
+		sb.append(" JOIN pps.produto pr ");
+		sb.append(" JOIN pps.sabor sb ");
 		return sb.toString();
 	}
 

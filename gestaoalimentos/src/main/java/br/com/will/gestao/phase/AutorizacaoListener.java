@@ -28,7 +28,7 @@ public class AutorizacaoListener implements PhaseListener {
 //										"É necessário estar autenticado para acessar este conteúdo."
 //												+ "Caso a dificuldade persista, por favor limpe o cache do navegador",
 //										null));
-//						redirecionar(facesContext, "/pages/login?faces-redirect=true");
+//						redirecionar(facesContext, "/pages/home?faces-redirect=true");
 //						return;
 //					}
 					
@@ -43,7 +43,7 @@ public class AutorizacaoListener implements PhaseListener {
 					// loginBean.fazerLogout();
 					//
 					// redirecionar(facesContext,
-					// "/pages/login?faces-redirect=true");
+					// "/pages/home?faces-redirect=true");
 					// return;
 					// }
 
