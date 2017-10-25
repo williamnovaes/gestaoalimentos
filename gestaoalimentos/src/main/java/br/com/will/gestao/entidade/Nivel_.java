@@ -1,12 +1,13 @@
 package br.com.will.gestao.entidade;
 
-import br.com.will.gestao.entidade.permissao.PaginaNivel;
-import br.com.will.gestao.entidade.util.EBoolean;
-import br.com.will.gestao.entidade.util.ESituacao;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import br.com.will.gestao.entidade.permissao.PaginaNivel;
+import br.com.will.gestao.entidade.util.EBoolean;
+import br.com.will.gestao.entidade.util.ESituacao;
 
 @Generated(value="Dali", date="2017-07-24T22:48:50.464-0300")
 @StaticMetamodel(Nivel.class)

@@ -51,6 +51,10 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@NotNull
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO)
 	private String descricao;
+	
+	@NotNull
+	@Column(name = "sequencia", nullable = false)
+	private Integer sequencia;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -61,7 +65,7 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Column(name = "adicional", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean adicional = EBoolean.FALSE;
 	
-	@Column(name = "valor", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
+	@Column(name = "valor_adicional", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal valorAdicional;
 	
 	@NotNull
@@ -133,6 +137,22 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 		this.valorAdicional = valor;
 	}
 	
+	public Integer getSequencia() {
+		return sequencia;
+	}
+	
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
+	}
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
 	@Override
 	public void alterarSituacao() {
 		this.situacao = Util.alteraSituacao(this.situacao);
@@ -193,7 +213,7 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	@XmlTransient
 	public String getObjetoRetorno() {
-		return "i";
+		return " i ";
 	}
 
 	@Override

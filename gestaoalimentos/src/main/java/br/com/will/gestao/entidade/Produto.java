@@ -1,6 +1,7 @@
 package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,12 +19,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
-
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
 
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.EBoolean;
@@ -35,7 +34,6 @@ import br.com.will.gestao.util.Util;
 @Entity
 @Table(name = "produto", schema = "gestao", uniqueConstraints = {
 		@UniqueConstraint(columnNames = {"_produto_tipo", "_empresa" }) })
-@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Produto implements SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
@@ -77,14 +75,19 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	private EBoolean permiteSabores = EBoolean.FALSE;
 	
 	@NotNull
-	@Column(name = "quantidade_sabor", nullable = false)
-	private Integer quantidadeSabor = 1;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tamanho", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	private EBoolean tamanho = EBoolean.FALSE;
 	
 	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
 	private List<Tamanho> tamanhos;
 	
-	@XmlTransient
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY)
 	private List<Sabor> sabores;
+	
+	@XmlTransient
+	@Transient
+	private String observacao;
 	
 	public Produto() {
 	}
@@ -156,20 +159,12 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		this.empresa = empresa;
 	}
 	
-	public EBoolean getPermiteSabores() {
+	public EBoolean getPermiteSaboresEBool() {
 		return permiteSabores;
 	}
 	
-	public void setPermiteSabores(EBoolean permiteSabores) {
+	public void setPermiteSaboresEBool(EBoolean permiteSabores) {
 		this.permiteSabores = permiteSabores;
-	}
-	
-	public Integer getQuantidadeSabor() {
-		return quantidadeSabor;
-	}
-	
-	public void setQuantidadeSabor(Integer quantidadeSabor) {
-		this.quantidadeSabor = quantidadeSabor;
 	}
 	
 	@Override
@@ -191,11 +186,42 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	}
 	
 	public List<Sabor> getSabores() {
+		if (this.sabores == null) {
+			this.sabores = new ArrayList<>();
+		}
 		return sabores;
 	}
 	
 	public void setSabores(List<Sabor> sabores) {
 		this.sabores = sabores;
+	}
+	
+	public boolean isPermiteSabores() {
+		return Util.converterENumBooleanToBoolean(this.permiteSabores);
+	}
+	
+	public void permiteSabores(boolean permite) {
+		this.permiteSabores = Util.converterBooleanToEnumBoolean(permite);
+	}
+	
+	public EBoolean getTamanho() {
+		return tamanho;
+	}
+	
+	public void setTamanho(EBoolean tamanho) {
+		this.tamanho = tamanho;
+	}
+	
+	public boolean isTamanho() {
+		return Util.converterENumBooleanToBoolean(this.tamanho);
+	}
+	
+	public String getObservacao() {
+		return observacao;
+	}
+	
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 	
 	@Override

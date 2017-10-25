@@ -12,8 +12,10 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.sql.Timestamp;
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -713,5 +715,13 @@ public final class Util {
 			zeros += "0";
 		}
 		return zeros + cpf;
+	}
+	
+	public static List<Integer> converterIds(List<String> idsString) {
+		List<Integer> ids = new ArrayList<>();
+		for (String str : idsString) {
+			ids.add(Integer.parseInt(str));
+		}
+		return ids;
 	}
 }

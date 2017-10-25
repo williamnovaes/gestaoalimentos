@@ -17,16 +17,16 @@
 	<div class="espaco"></div>
 	
 	<div style="top: 120px;" class="container">
-		<h:messages layout="list"
-			id="message"
-			infoClass=""
-			warnClass=""
-			errorClass="" 
-			fatalClass="" />
-<!-- 		<ui:include src="carousel.xhtml" /> -->
+		<h:messages id="message" layout="list" 
+			styleClass="mensagens-sistema"
+			infoClass="mensagem info" 
+			warnClass="mensagem atencao"
+			errorClass="mensagem erro" 
+			fatalClass="mensagem erro strong" />
+
 		<div class="row">
 			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<ui:include src="navVertical.xhtml" />
 				</div>
 			</h:panelGroup>
@@ -40,30 +40,8 @@
 	<!--/ .container -->
 	
 	<div class="espaco"></div>
-	<div style="height: 2000px;"></div>
+<!-- 	<div style="height: 2000px;"></div> -->
 	<ui:include src="footer.xhtml" />
 	<!-- <ui:include src="loader.xhtml" /> -->
-	
-	<script type="text/javascript">
-		if (typeof jsf !== 'undefined') {
-			jsf.ajax.addOnEvent(function(data) {
-				var ajaxStatus = data.status;
-
-				switch (ajaxStatus) {
-				case 'begin':
-					mostraPreloader();
-					break;
-
-				case 'complete':
-					break;
-
-				case 'success':
-					escondePreloader();
-					carregaJS();
-					break;
-				}
-			});
-		}
-	</script>
 </body>
 </html>

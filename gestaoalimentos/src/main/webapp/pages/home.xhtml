@@ -23,16 +23,22 @@
 					rendered="#{not empty homeBean.produtosCache}">
 
 					<ul class="nav nav-tabs">
-						<ui:repeat var="tipo" value="#{homeBean.produtosTipoCache}">
+						<ui:repeat var="produto" value="#{homeBean.produtos}">
 							<li>
-								<h4>#{tipo.descricao}</h4>
-								<ui:repeat var="produto" value="#{homeBean.getProdutosPorTipo(tipo)}">
-									<ul class="table table-hover table-striped">
-										<li>#{produto.descricao}
-											<h:commandLink styleClass="glyphicon glyphicon-plus-sign btn">
-												<f:ajax event="click" 
-													listener="#{homeBean.adiconarProduto(produto)}"/>
-											</h:commandLink>
+								<h4>#{produto.nome}</h4>
+								<ui:repeat var="sabor" value="#{produto.sabores}">
+									<ul class="">
+<!-- 									listar tamanhos disponiveis -->
+										<li>
+											<div><h1>#{sabor.index}</h1></div>
+											<div>#{sabor.nome} </div>
+											<div>
+												<h:commandLink
+													styleClass="glyphicon glyphicon-plus-sign btn">
+													<f:ajax event="click"
+														listener="#{homeBean.adiconarSabor(sabor)}" />
+												</h:commandLink>
+											</div>
 										</li>
 									</ul>
 								</ui:repeat>
@@ -42,7 +48,27 @@
 				</h:panelGroup>
 			</h:panelGroup>
 			
-			
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
+			<div>texto</div>
 			
 
 <!-- 			<h:panelGroup rendered="false"> -->

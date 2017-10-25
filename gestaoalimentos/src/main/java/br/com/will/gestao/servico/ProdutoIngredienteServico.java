@@ -5,10 +5,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.com.will.gestao.dao.ProdutoIngredienteDAO;
-import br.com.will.gestao.entidade.ProdutoIngrediente;
+import br.com.will.gestao.entidade.SaborIngrediente;
 
 @Stateless
-public class ProdutoIngredienteServico extends BaseServico<ProdutoIngrediente> {
+public class ProdutoIngredienteServico extends BaseServico<SaborIngrediente> {
 
 	private static final long serialVersionUID = 1L;
 	@Inject

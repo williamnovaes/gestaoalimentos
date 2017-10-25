@@ -1,9 +1,10 @@
 package br.com.will.gestao.entidade;
 
-import br.com.will.gestao.entidade.util.ESituacao;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import br.com.will.gestao.entidade.util.ESituacao;
 
 @Generated(value="Dali", date="2017-06-08T23:15:01.333-0300")
 @StaticMetamodel(Cidade.class)

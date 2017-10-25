@@ -9,6 +9,7 @@ import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.Caixa;
+import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -66,6 +67,26 @@ public class CaixaDAO extends BaseDAO<Caixa> {
 				   .setParameter("_aberto", EBoolean.TRUE)
 				   .setParameter("_idCaixa", caixa.getId())
 				   .executeUpdate();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public Caixa consultarCaixaAberto(Empresa empresa) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT cx FROM Caixa cx ");
+			sql.append(" JOIN FETCH cx.empresa em ");
+			sql.append(" WHERE cx.aberto =:_aberto ");
+			sql.append(" AND em = :_empresa ");
+			sql.append(" ORDER BY cx.dataAbertura DESC ");
+			
+			return getEm().createQuery(sql.toString(), Caixa.class)
+						  .setParameter("_aberto", EBoolean.TRUE)
+						  .setParameter("_empresa", empresa)
+						  .getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

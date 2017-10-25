@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -16,12 +18,15 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import br.com.will.gestao.entidade.util.ESituacao;
+import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
+import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "tamanho", schema = "gestao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "descricao", "_tamanho_tipo", "_produto" }) })
-public class Tamanho {
+		@UniqueConstraint(columnNames = { "descricao", "_produto" }) })
+public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +44,10 @@ public class Tamanho {
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO, nullable = false, unique = true)
 	private String descricao;
 	
+	@NotNull
+	@Column(name = "sequencia", nullable = false)
+	private Integer sequencia;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_tamanho_tipo", foreignKey = @ForeignKey(name = "fk_tamanho_tipo"))
 	private TamanhoTipo tamanhoTipo;
@@ -49,6 +58,15 @@ public class Tamanho {
 	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal preco;
+	
+	@NotNull
+	@Column(name = "limite_sabores", nullable = false)
+	private Integer limiteSabores = 1;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
+	private ESituacao situacao = ESituacao.ATIVO;
 	
 	public Tamanho(Integer id) {
 		this.id = id;
@@ -101,10 +119,48 @@ public class Tamanho {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-
+	
+	public Integer getLimiteSabores() {
+		return limiteSabores;
+	}
+	
+	public void setLimiteSabores(Integer limiteSabores) {
+		this.limiteSabores = limiteSabores;
+	}
+	
+	public Produto getProduto() {
+		return produto;
+	}
+	
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+	
+	public Integer getSequencia() {
+		return sequencia;
+	}
+	
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
+	}
+	
+	@Override
+	public ESituacao getSituacao() {
+		return situacao;
+	}
+	
+	public void setSituacao(ESituacao situacao) {
+		this.situacao = situacao;
+	}
+	
+	@Override
+	public void alterarSituacao() {
+		this.situacao = Util.alteraSituacao(this.situacao);
+	}
+	
 	@Override
 	public String toString() {
-		return "Situacao [id=" + id + "]";
+		return "Tamanho [id=" + id + "]";
 	}
 	
 	@Override
@@ -137,7 +193,8 @@ public class Tamanho {
 		return true;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@Override
+	public int compareTo(Tamanho o) {
+		return this.descricao.compareTo(o.getDescricao());
 	}
 }

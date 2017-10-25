@@ -8,16 +8,16 @@
 	template="#{pageContext.request.contextPath}/template/template.xhtml"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:param name="produtoTipo" value="#{msg.txt_produto}" />
+	<ui:param name="saborTipo" value="#{msg.txt_sabor}" />
 
 	<ui:define name="content">
-		<h:form id="produtoForm" prependId="false">
+		<h:form id="saborForm" prependId="false">
 
 			<div class="row wrap-btn-form-topo">
 				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandButton id="voltarBtn"
-							action="produtos?faces-redirect=true" immediate="true"
+							action="sabors?faces-redirect=true" immediate="true"
 							value="Voltar"
 							styleClass="btn btn-default btn-icon icon-arrow-undo">
 						</h:commandButton>
@@ -37,7 +37,7 @@
 				<div class="col-sm-3">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_indice}" />
-						<h:inputText value="#{produtoCadastroBean.produto.sequencia}"
+						<h:inputText value="#{saborCadastroBean.sabor.index}"
 							required="true" styleClass="form-control numeros" maxlength="3" size="3">
 						</h:inputText>
 					</div>
@@ -48,7 +48,17 @@
 				<div class="col-sm-12">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nome}" />
-						<h:inputText value="#{produtoCadastroBean.produto.nome}"
+						<h:inputText value="#{saborCadastroBean.sabor.nome}"
+							required="true" styleClass="form-control txt-transform-none" maxlength="70">
+							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
+						</h:inputText>
+					</div>
+				</div>
+				
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_descricao}" />
+						<h:inputText value="#{saborCadastroBean.sabor.descricao}"
 							required="true" styleClass="form-control txt-transform-none" maxlength="70">
 							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
@@ -56,28 +66,32 @@
 				</div>
 			</div>
 			
-			<div class="col-sm-8">
-				<div class="form-group">
-					<h:outputLabel value="#{msg.txt_tipo}" />
-					<h:selectOneMenu id="tipoSOM" styleClass="form-control"
-						value="#{produtoCadastroBean.produtoTipoSelecionado}">
-						<f:selectItem itemLabel="#{msg.txt_selecione}" />
-						<f:selectItems var="tipo"
-							value="#{produtoCadastroBean.produtosTipos}"
-							itemValue="#{tipo.id}" itemLabel="#{tipo.descricao}"
-							required="true" />
-					</h:selectOneMenu>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_limite_preco}" />
+						<h:inputText value="#{tamanhoCadastroBean.tamanho.preco}"
+							required="true" styleClass="form-control moeda" maxlength="7">
+							<f:converter converterId="br.com.will.gestao.converter.InputMoedaConverter" />
+						</h:inputText>
+					</div>
 				</div>
 			</div>
 			
 			<div class="col-sm-8">
 				<div class="form-group">
-					<h:outputLabel value="#{msg.txt_permite_sabores}" />
-					<h:selectBooleanCheckbox id="permiteSaboresSOM" styleClass="form-control"
-						value="#{produtoCadastroBean.produto.permiteSabores}" />
+					<h:outputLabel value="#{msg.txt_produto}" />
+					<h:selectOneMenu id="produtSOM" styleClass="form-control"
+						value="#{saborCadastroBean.idProduto}">
+						<f:selectItem itemLabel="#{msg.txt_selecione}" />
+						<f:selectItems var="p"
+							value="#{saborCadastroBean.produtos}"
+							itemValue="#{p.id}" itemLabel="#{p.descricao}"
+							required="true" />
+					</h:selectOneMenu>
 				</div>
 			</div>
-
+			
 			<div class="row wrap-btn-form">
 				<div class="col-sm-8 esq"></div>
 
@@ -85,7 +99,7 @@
 
 				<div class="col-sm-8 dir">
 					<h:commandButton id="salvarBtn"
-						action="#{produtoCadastroBean.salvar}" value="Salvar"
+						action="#{saborCadastroBean.salvar}" value="Salvar"
 						styleClass="btn btn-success btn-lg">
 					</h:commandButton>
 				</div>

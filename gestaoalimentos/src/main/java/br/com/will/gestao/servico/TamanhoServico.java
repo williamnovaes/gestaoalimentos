@@ -31,4 +31,28 @@ public class TamanhoServico extends BaseServico<Tamanho> {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}
+
+	public Tamanho obterCompletoPorId(Integer id) throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> obterTodosDisponiveis(String coluna) throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarTodosDisponiveis(coluna);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> obterPorIds(List<Integer> ids) throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarPorIds(ids);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
 }

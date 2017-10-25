@@ -1,9 +1,10 @@
 package br.com.will.gestao.entidade.permissao;
 
-import br.com.will.gestao.entidade.Nivel;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import br.com.will.gestao.entidade.Nivel;
 
 @Generated(value="Dali", date="2017-06-08T23:30:32.057-0300")
 @StaticMetamodel(PaginaNivel.class)

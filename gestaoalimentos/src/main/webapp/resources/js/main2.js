@@ -126,7 +126,7 @@ jQuery(function($) {
 		}
 	});
 
-	$('body').on('click', '.mobile-nav a.close-link', function(event) {
+	$('body').on('click', '.mobile-nav a.close-link-2', function(event) {
 		$('.mobile-nav').removeClass('active');
 		event.preventDefault();
 	});
@@ -158,78 +158,14 @@ jQuery(function($) {
 		$dialog.css("margin-top", offset);
 	}
 	
-	function apenasNumeros() {
-		$('.numeros').keyup(function(e) {
-			var valorTemp = $(this).val();
-
-			if (/\D/g.test(valorTemp)) {
-				// Substitui caracteres que nao sejam numeros por ''
-				$(this).val(valorTemp.replace(/\D/g, ''));
-			}
-		});
-	}
-
-	function maskCEP() {
-		$('.cep').mask('00000-000');
-	}
-
-	function maskCNPJ() {
-		$('.cnpj').mask('00.000.000/0000-00');
-	}
-
-	function maskCPF() {
-		$('.cpf').mask('000.000.000-00');
-	}
-	
-	function maskData() {
-		$('.input-datepicker').mask('00/00/0000');
-		$('.input-datepicker').mask("00/00/0000", {placeholder: '__/__/____'});
-	}
-
-	function maskDataHora() {
-		$('.input-datahora').mask('00/00/0000 00:00');
-		$('.input-datahora').mask("00/00/0000 00:00", {placeholder: '__/__/____ __:__'});
-	}
-	
-	function maskMoeda() {
-		$('.moeda').mask('000.000.000.000.000,00', {reverse: true});
-		// $('.moeda').mask('#.##0,00', {reverse: true});
-	}
-
-	function maskTelefone() {
-		var masks = ['00 00000-0000', '00 0000-00009'];
-
-		$('.telefone').mask(masks[1], {
-			onKeyPress : function(val, e, field, options) {
-				field.mask(val.length > 14 ? masks[0] : masks[1], options);
-			}
-		});
-	}
-
 	$('.modal').on('show.bs.modal', centerModal);
 
-	$('.modal-popup .close-link').click(function(event){s
-		event.preventDefault();
-		$('#modal1').modal('hide');
+	$('.modal-popup .close-link').click(function(event){
+//		event.preventDefault();
+		$('#loginModal').modal('hide');
 	});
 
 	$(window).on("resize", function() {
 		$('.modal:visible').each(centerModal);
-	});
-	
-	function carregaJS() {
-//		ano('.ano-sistema'); // Ano exibido no rodape do sistema
-		apenasNumeros();
-		maskCEP();
-		maskCNPJ(); 
-		maskCPF(); 
-		maskData();
-		maskDataHora();
-		maskMoeda();
-		maskTelefone();
-	}
-
-	$(document).ready(function(){
-		carregaJS();
 	});
 });

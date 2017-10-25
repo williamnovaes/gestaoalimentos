@@ -66,13 +66,10 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "origem_preco", columnDefinition = SistemaConstantes.E_ORIGEM_PRECO_DEFAULT_PRODUTO)
-	private EOrigemPreco origemPreco= EOrigemPreco.PRODUTO;
+	private EOrigemPreco origemPreco  = EOrigemPreco.PRODUTO;
 	
 	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
 	private List<Produto> produtos;
-	
-	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
-	private List<Sabor> sabores;
 	
 	public ProdutoTipo() {
 	}

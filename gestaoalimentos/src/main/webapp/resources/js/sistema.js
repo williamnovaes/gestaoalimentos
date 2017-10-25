@@ -105,6 +105,9 @@ function escondePreloader() {
 }
 
 /* ***** */
+function fecharModal() {
+    $('#loginModal').modal('hide');
+}
 
 function bsModal(a, b, c, d, e) {
 	var acao;
@@ -114,7 +117,7 @@ function bsModal(a, b, c, d, e) {
 	// c = Nome da Tab
 	// d = Numero da Tab (index 0)
 	// e = Titulo da Modal
-
+	
 	if (b === 'mostra') {
 		acao = 'show';
 	} else if (b === 'esconde') {

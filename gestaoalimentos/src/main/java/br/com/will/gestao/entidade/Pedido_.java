@@ -1,13 +1,14 @@
 package br.com.will.gestao.entidade;
 
-import br.com.will.gestao.entidade.util.EFormaPagamento;
-import br.com.will.gestao.entidade.util.EStatus;
-import br.com.will.gestao.entidade.util.ETipoEntrega;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import br.com.will.gestao.entidade.util.EFormaPagamento;
+import br.com.will.gestao.entidade.util.EStatus;
+import br.com.will.gestao.entidade.util.ETipoEntrega;
 
 @Generated(value="Dali", date="2017-06-12T22:06:06.126-0300")
 @StaticMetamodel(Pedido.class)

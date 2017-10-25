@@ -1,11 +1,12 @@
 package br.com.will.gestao.entidade;
 
-import br.com.will.gestao.entidade.util.EBoolean;
-import br.com.will.gestao.entidade.util.ESituacao;
 import java.math.BigDecimal;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+
+import br.com.will.gestao.entidade.util.EBoolean;
+import br.com.will.gestao.entidade.util.ESituacao;
 
 @Generated(value="Dali", date="2017-06-27T22:01:15.475-0300")
 @StaticMetamodel(Ingrediente.class)

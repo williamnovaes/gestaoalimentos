@@ -53,7 +53,7 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
 			sql.append(" WHERE pt.situacao =:_situacao ");
 			sql.append(" AND pt.empresa =:_empresa ");
-			sql.append(" ORDER BY pt.index ");
+			sql.append(" ORDER BY pt.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
 						  .setParameter("_situacao", ESituacao.ATIVO)

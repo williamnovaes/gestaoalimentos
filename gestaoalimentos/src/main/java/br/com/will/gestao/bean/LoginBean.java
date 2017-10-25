@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.will.gestao.componente.Credencial;
+import br.com.will.gestao.dto.ProdutoPedidoDTO;
+import br.com.will.gestao.entidade.Caixa;
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.Usuario;
@@ -20,6 +22,7 @@ import br.com.will.gestao.entidade.permissao.Menu;
 import br.com.will.gestao.entidade.permissao.Pagina;
 import br.com.will.gestao.entidade.util.ENivel;
 import br.com.will.gestao.entidade.util.ETipoNivel;
+import br.com.will.gestao.servico.CaixaServico;
 import br.com.will.gestao.servico.PaginaServico;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.servico.exception.BaseServicoException;
@@ -37,6 +40,8 @@ public class LoginBean extends BaseBean {
 	private UsuarioServico usuarioServico;
 	@EJB
 	private PaginaServico paginaServico;
+	@EJB
+	private CaixaServico caixaServico;
 	
 	private Usuario usuarioLogado;
 	private boolean logado;
@@ -44,16 +49,24 @@ public class LoginBean extends BaseBean {
 	private HashMap<Menu, List<Pagina>> paginasPorMenu;
 	private Empresa empresa;
 	private List<Produto> carrinho = new ArrayList<>();
+	private List<ProdutoPedidoDTO> carrinhoDto = new ArrayList<>();
 	private boolean exibirModalLogin = false;
+	private Caixa caixa;
 
 	public String fazerLogin() {
 		try {
+			exibirModalLogin = false;
+			if (credencial == null || credencial.getPasswordDescriptografado() == null
+					|| credencial.getPasswordDescriptografado().isEmpty()
+					|| credencial.getUsername() == null || credencial.getUsername().isEmpty()) {
+				adicionarInfo("Login e Senha obrigatorios");
+				return null; 
+			}
 			usuarioLogado = usuarioServico.logar(credencial, getConfiguracaoApplication()
 					.obterConfiguracaoSistema(ConfiguracaoSistemaConstantes.SENHA_CORINGA).getValor());
 			if (usuarioLogado != null) {
 				configurarPermissao();
 				logado = true;
-				exibirModalLogin = false;
 				return "home?faces-redirect=true";
 			}
 			return null;
@@ -76,6 +89,14 @@ public class LoginBean extends BaseBean {
 			// return NavegacaoBean.redirecionarParaLogin();
 		}
 		return "";
+	}
+	
+	public void carregarCaixa() {
+		try {
+			caixa = caixaServico.obterCaixaAberto(this.empresa);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void configurarPermissao() {
@@ -196,12 +217,15 @@ public class LoginBean extends BaseBean {
 		return carrinho;
 	}
 	
-	public void setCarrinho(List<Produto> carrinho) {
-		this.carrinho = carrinho;
+	public void adicionarProduto(Produto produto) {
+		if (this.carrinho == null) {
+			this.carrinho = new ArrayList<>();
+		}
+		this.carrinho.add(produto);
 	}
 	
-	public void adicionarProduto(Produto produto) {
-		this.carrinho.add(produto);
+	public void setCarrinho(List<Produto> carrinho) {
+		this.carrinho = carrinho;
 	}
 	
 	public Credencial getCredencial() {
@@ -211,5 +235,28 @@ public class LoginBean extends BaseBean {
 	public boolean isCLiente() {
 		return this.usuarioLogado != null
 				&& this.usuarioLogado.getNivel().getDescricao().equals(ENivel.CLIENTE.getDescricao());
+	}
+	
+	public List<ProdutoPedidoDTO> getCarrinhoDto() {
+		if (this.carrinhoDto == null) {
+			this.carrinhoDto = new ArrayList<>();
+		}
+		return carrinhoDto;
+	}
+	
+	public void setCarrinhoDto(List<ProdutoPedidoDTO> carrinhoDto) {
+		this.carrinhoDto = carrinhoDto;
+	}
+	
+	public void adicionarProdutoDto(ProdutoPedidoDTO produto) {
+		this.carrinhoDto.add(produto);
+	}
+	
+	public Caixa getCaixa() {
+		return caixa;
+	}
+	
+	public void setCaixa(Caixa caixa) {
+		this.caixa = caixa;
 	}
 }

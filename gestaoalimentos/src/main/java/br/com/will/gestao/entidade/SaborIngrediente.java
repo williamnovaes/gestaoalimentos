@@ -16,18 +16,17 @@ import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
-@Table(name = "produto_ingrediente", schema = "gestao")
-public class ProdutoIngrediente
-		implements Serializable, Paginavel, Exportavel {
+@Table(name = "sabor_ingrediente", schema = "gestao")
+public class SaborIngrediente implements Serializable, Paginavel, Exportavel {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private ProdutoIngredientePK id;
+	private SaborIngredientePK id;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_produto", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_produto"))
-	private Produto produto;
+	@JoinColumn(name = "_sabor", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_sabor"))
+	private Sabor sabor;
 	
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -41,25 +40,25 @@ public class ProdutoIngrediente
 	private Integer quantidade;
 
 
-	public ProdutoIngrediente() {
+	public SaborIngrediente() {
 	}
 
-	public ProdutoIngrediente(Produto produto, Ingrediente ingrediente) {
-		this.id = new ProdutoIngredientePK(produto.getId(), ingrediente.getId());
-		this.produto = produto;
+	public SaborIngrediente(Sabor sabor, Ingrediente ingrediente) {
+		this.id = new SaborIngredientePK(sabor.getId(), ingrediente.getId());
+		this.sabor = sabor;
 		this.ingrediente = ingrediente;
 	}
 
-	public ProdutoIngredientePK getId() {
+	public SaborIngredientePK getId() {
 		return this.id;
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public Sabor getSabor() {
+		return sabor;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setSabor(Sabor sabor) {
+		this.sabor = sabor;
 	}
 	
 	public Ingrediente getIngrediente() {
@@ -105,7 +104,7 @@ public class ProdutoIngrediente
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		ProdutoIngrediente other = (ProdutoIngrediente) obj;
+		SaborIngrediente other = (SaborIngrediente) obj;
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -118,7 +117,7 @@ public class ProdutoIngrediente
 
 	@Override
 	public String toString() {
-		return "PedidoProduto [id=" + id + "]";
+		return "SaborIngrediente [id=" + id + "]";
 	}
 
 	@Override
@@ -128,19 +127,19 @@ public class ProdutoIngrediente
 
 	@Override
 	public String getSqlCount() {
-		return " SELECT count(pp.id) FROM PedidoProduto pp ";
+		return " SELECT count(si.id) FROM SaborIngrediente si ";
 	}
 
 	@Override
 	public String getObjetoRetorno() {
-		return " pp ";
+		return " si ";
 	}
 
 	@Override
 	public String getJoin() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(" JOIN pp.pedido pd ");
-		sb.append(" JOIN pp.produto pr ");
+		sb.append(" JOIN si.sabor sb ");
+		sb.append(" JOIN si.ingrediente i ");
 		return sb.toString();
 	}
 

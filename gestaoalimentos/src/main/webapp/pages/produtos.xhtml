@@ -57,9 +57,23 @@
 
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="#{msg.txt_descricao}" />
+								<h:outputText value="#{msg.txt_nome}" />
 							</f:facet>
-							<h:outputText value="#{item.descricao}" />
+							<h:outputText value="#{item.nome}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_indice}" />
+							</f:facet>
+							<h:outputText value="#{item.sequencia}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_permitir_sabores}" />
+							</f:facet>
+							<h:outputText value="#{item.permiteSaboresEBool.label}" />
 						</h:column>
 
 						<h:column>

@@ -5,16 +5,16 @@ import java.util.List;
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
-import br.com.will.gestao.entidade.ProdutoIngrediente;
+import br.com.will.gestao.entidade.SaborIngrediente;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 
-public class ProdutoIngredienteDAO extends BaseDAO<ProdutoIngrediente> {
+public class ProdutoIngredienteDAO extends BaseDAO<SaborIngrediente> {
 
 	private static final long serialVersionUID = 1L;
 
 	public ProdutoIngredienteDAO() {
-		super(ProdutoIngrediente.class);
+		super(SaborIngrediente.class);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class ProdutoIngredienteDAO extends BaseDAO<ProdutoIngrediente> {
 	}
 
 	@Override
-	public void verificarDuplicidade(ProdutoIngrediente t) throws ViolacaoDeConstraintException {
+	public void verificarDuplicidade(SaborIngrediente t) throws ViolacaoDeConstraintException {
 	}
 
 	@Override

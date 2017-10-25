@@ -62,7 +62,7 @@ public class Nivel implements SituacaoAlteravel, Descritivel, Comparable<Nivel>,
 	private NivelTipo nivelTipo;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	@Column(name = "editar_view", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean editarView = EBoolean.FALSE;
 
 	@OneToMany(mappedBy = "nivel")

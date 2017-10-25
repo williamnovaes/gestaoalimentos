@@ -2,6 +2,7 @@ package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,14 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
-
-import org.hibernate.envers.Audited;
-import org.hibernate.envers.RelationTargetAuditMode;
 
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.ESituacao;
@@ -30,16 +29,14 @@ import br.com.will.gestao.util.SistemaConstantes;
 import br.com.will.gestao.util.Util;
 
 @Entity
-@Table(name = "produto", schema = "gestao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"nome", "_produto_tipo", "_empresa" }) })
-@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+@Table(name = "sabor", schema = "gestao")
 public class Sabor implements SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "produtoSeq", sequenceName = "produto_id_multi_seq", allocationSize = 1, schema = "gestao")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "produtoSeq")
+	@SequenceGenerator(name = "saborSeq", sequenceName = "sabor_id_multi_seq", allocationSize = 1, schema = "gestao")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "saborSeq")
 	@Column(unique = true, nullable = false)
 	private Integer id;
 	
@@ -54,11 +51,12 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	@NotNull
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO)
 	private String descricao;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
-	private ProdutoTipo produtoTipo;
 	
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_produto", foreignKey = @ForeignKey(name = "fk_produto"), nullable = false)
+	private Produto produto;
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
@@ -71,6 +69,13 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Empresa empresa;
+	
+	@OneToMany(mappedBy = "sabor", fetch = FetchType.LAZY)
+	private List<SaborIngrediente> ingredientes;
+	
+	@XmlTransient
+	@Transient
+	private boolean marcado;
 	
 	public Sabor() {
 	}
@@ -123,15 +128,15 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	public void setSituacao(ESituacao situacao) {
 		this.situacao = situacao;
 	}
-
-	public ProdutoTipo getProdutoTipo() {
-		return produtoTipo;
-	}
-
-	public void setProdutoTipo(ProdutoTipo produtoTipo) {
-		this.produtoTipo = produtoTipo;
+	
+	public Produto getProduto() {
+		return produto;
 	}
 	
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
 	public BigDecimal getPreco() {
 		if (preco == null) {
 			return new BigDecimal(0);
@@ -159,6 +164,22 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	@Override
 	public ESituacao getSituacao() {
 		return situacao;
+	}
+	
+	public List<SaborIngrediente> getIngredientes() {
+		return ingredientes;
+	}
+	
+	public void setIngredientes(List<SaborIngrediente> ingredientes) {
+		this.ingredientes = ingredientes;
+	}
+	
+	public boolean isMarcado() {
+		return marcado;
+	}
+	
+	public void setMarcado(boolean marcado) {
+		this.marcado = marcado;
 	}
 	
 	@Override
@@ -193,31 +214,31 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", descricao=" + descricao + "]";
+		return "Sabor [id=" + id + ", descricao=" + descricao + "]";
 	}
 
 	@Override
 	@XmlTransient
 	public String getSqlSelect() {
-		return "SELECT distinct(p) FROM Produto p ";
+		return "SELECT distinct(s) FROM Sabor s ";
 	}
 
 	@Override
 	@XmlTransient
 	public String getSqlCount() {
-		return " SELECT count(distinct p) FROM Produto p ";
+		return " SELECT count(distinct s) FROM Sabor s ";
 	}
 
 	@Override
 	@XmlTransient
 	public String getObjetoRetorno() {
-		return " p ";
+		return " s ";
 	}
 
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH p.produtoTipo pt ";
+		return " JOIN FETCH s.produto p ";
 	}
 	
 	public static final Comparator<Sabor> COMPARAR_POR_DESCRICAO = new Comparator<Sabor>() {

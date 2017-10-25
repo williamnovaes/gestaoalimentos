@@ -13,7 +13,7 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						data-toggle="collapse" data-target="#bs-navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span> 
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span> 
@@ -24,7 +24,7 @@
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
+					id="bs-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right main-nav">
 						<li><a href="home.ppd">Home</a></li>
 						<li><a href="minhaConta.ppd">Conta</a></li>
@@ -33,19 +33,18 @@
 						</h:panelGroup>
 						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
 							<li><h:commandLink title="Login"
-									styleClass="glyphicon glyphicon-log-in btn btn-blue"
-									onclick="$('.modal').modal('show');" immediate="true">
-									<i>Login</i>
-									<f:ajax render="LoginModal"
-										listener="#{loginBean.abrirModalLogin()}" />
-								</h:commandLink></li>
+									styleClass="glyphicon glyphicon-log-in btn btn-blue" >
+									<i> Login</i>
+									<f:ajax render="loginModalPG loginModal" execute="@this" 
+										event="click" listener="#{loginBean.abrirModalLogin()}" />
+							</h:commandLink></li>
 						</h:panelGroup>
 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null}">
 							<li><h:commandLink action="#{loginBean.fazerLogout()}"
 									styleClass="glyphicon glyphicon-log-out btn btn-blue"
 									onclick="return confirm('Tem certeza que deseja realizar o logoff?')">
-									<i>Logout</i>
-								</h:commandLink></li>
+									<i> Logout</i>
+							</h:commandLink></li>
 						</h:panelGroup>
 						<!-- 						<li><a href="#" data-toggle="modal" data-target="#modal1" -->
 <!-- 							class="btn btn-blue">Sign Up</a></li> -->
@@ -138,37 +137,45 @@
 <!-- 			</div> -->
 <!-- 		</nav> -->
 
-		<h:panelGroup id="loginModalPG">
-			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
-				aria-labelledby="modal" data-backdrop="static" data-keyboard="false">
-				<div class="modal-dialog  modal-popup">
-					<div class="modal-content">
-						<h:commandLink class="close-link"
-							onclick="$(.modal').modal('hide');" immediate="true">
-							<i class="icon_close_alt2"></i>
-							<f:ajax render="loginModal"
-								listener="#{loginBean.fecharModalLogin()}" />
-						</h:commandLink>
-						<div class="modal-header">
-							<h3 class="modal-title">Login</h3>
-						</div>
+		<ppd:loginModal id="loginModal" 
+			exibirModal="#{loginBean.exibirModalLogin}"
+			titulo="Login" render="loginModalPG headerForm"
+			botoes="true" botaoFechar="false"
+			styleBotao="btn btn-submit"
+			salvar="#{loginBean.fazerLogin()}"
+			fecharModal="#{loginBean.fecharModalLogin()}">
+			
+			<h:inputText id="login" class="form-control form-white"
+				placeholder="Login" value="#{credencial.username}">
+			</h:inputText>
 
-						<h:inputText id="login" class="form-control form-white"
-							placeholder="Login" value="#{credencial.username}"
-							required="true" />
-						<h:inputSecret id="passwd" class="form-control form-white"
-							placeholder="Password" value="#{credencial.password}"
-							required="true" />
+			<h:inputSecret id="passwd" class="form-control form-white"
+				placeholder="Password" value="#{credencial.password}" >
+			</h:inputSecret>
+		</ppd:loginModal>
+<!-- 			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" -->
+<!-- 				aria-labelledby="modal" data-backdrop="static" data-keyboard="false"> -->
+<!-- 				<div class="modal-dialog  modal-popup"> -->
+<!-- 					<div class="modal-content"> -->
+<!-- 						<h:commandLink title="Fechar" styleClass="close-link" -->
+<!-- 							immediate="true"> -->
+<!-- 							<i class="icon_close_alt2"></i> -->
+<!-- 						</h:commandLink> -->
 
-						<h:commandLink value="Sign in" styleClass="btn tn-submit"
-							onclick="$('.modal').modal('hide');" immediate="true">
-							<f:ajax render="loginModal"
-								execute="login passwd" listener="#{loginBean.fazerLogin()}" />
-						</h:commandLink>
-					</div>
-				</div>
-			</div>
-		</h:panelGroup>
+<!-- 						<div class="modal-header"> -->
+<!-- 							<h3 class="modal-title">Login</h3> -->
+<!-- 						</div> -->
+
+<!-- 						<h:inputText id="login" class="form-control form-white" -->
+<!-- 							placeholder="Login" value="#{credencial.username}" /> -->
+							
+<!-- 						<h:inputSecret id="passwd" class="form-control form-white" -->
+<!-- 							placeholder="Password" value="#{credencial.password}" /> -->
+
+<!-- 						<h:commandLink value="Sign in" styleClass="btn btn-submit" action="#{loginBean.fazerLogin()}" /> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 	</h:form>
 </ui:composition>
 </html>

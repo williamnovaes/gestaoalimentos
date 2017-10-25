@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import br.com.will.gestao.dao.CaixaDAO;
 import br.com.will.gestao.entidade.Caixa;
+import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
@@ -34,6 +35,14 @@ public class CaixaServico extends BaseServico<Caixa> {
 	public void abrirCaixa(Caixa caixa) throws BaseServicoException {
 		try {
 			caixaDao.abrirCaixa(caixa);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public Caixa obterCaixaAberto(Empresa empresa) throws BaseServicoException {
+		try {
+			return caixaDao.consultarCaixaAberto(empresa);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

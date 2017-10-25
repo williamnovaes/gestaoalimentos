@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.ProdutoTipo;
-import br.com.will.gestao.entidade.Tamanho;
+import br.com.will.gestao.entidade.util.EOrigemPreco;
 import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.TamanhoServico;
@@ -30,10 +30,10 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	private EmpresaServico empresaServico;
 
 	private ProdutoTipo produtoTipo;
-	private Tamanho tamanho;
-	private List<Tamanho> tamanhos;
 	private List<Empresa> empresas;
 	private Integer empresaSelecionada;
+	private EOrigemPreco[] origensPrecos; 
+	private EOrigemPreco origemPrecoSelecionado;
 	
 	@PostConstruct
 	public void inicializar() {
@@ -53,8 +53,10 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 				if (this.produtoTipo == null) {
 					this.produtoTipo = new ProdutoTipo();
 				} else {
-					this.tamanhos = tamanhoServico.obterPorProdutoTipo(this.produtoTipo);
+					
 				} 
+				origensPrecos = EOrigemPreco.values();
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,5 +107,17 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	
 	public void setEmpresaSelecionada(Integer empresaSelecionada) {
 		this.empresaSelecionada = empresaSelecionada;
+	}
+	
+	public EOrigemPreco[] getOrigensPrecos() {
+		return origensPrecos;
+	}
+	
+	public EOrigemPreco getOrigemPrecoSelecionado() {
+		return origemPrecoSelecionado;
+	}
+	
+	public void setOrigemPrecoSelecionado(EOrigemPreco origemPrecoSelecionado) {
+		this.origemPrecoSelecionado = origemPrecoSelecionado;
 	}
 }

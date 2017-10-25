@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import br.com.will.gestao.dao.IngredienteDAO;
 import br.com.will.gestao.entidade.Ingrediente;
+import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
 public class IngredienteServico extends BaseServico<Ingrediente> {
@@ -18,5 +19,13 @@ public class IngredienteServico extends BaseServico<Ingrediente> {
 	@PostConstruct
 	public void inicializar() {
 		setDao(ingredienteDao);
+	}
+
+	public Ingrediente obterCompletoPorId(Integer id) throws BaseServicoException {
+		try {
+			return ingredienteDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
 	}
 }

@@ -10,7 +10,7 @@ public enum ESQL {
 	private final String join;
 	private final String alias;
 	private final String where;
-	private final String whereHierarquia = " hc.usuario.id =:_usuario ";
+//	private final String whereHierarquia = " hc.usuario.id =:_usuario ";
 
 	ESQL(ENivel eNivel,  String join, String alias, String where) {
 		this.nivel	   = eNivel;
@@ -34,8 +34,7 @@ public enum ESQL {
 	public String getWhere() {
 		return where;
 	}
-	
-	public String getWhereHierarquia() {
-		return whereHierarquia;
-	}
+//	public String getWhereHierarquia() {
+//		return whereHierarquia;
+//	}
 }

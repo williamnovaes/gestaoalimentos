@@ -6,26 +6,26 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class ProdutoIngredientePK implements Serializable {
+public class SaborIngredientePK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name = "_produto")
-	private int produto;
+	@Column(name = "_sabor")
+	private int sabor;
 
 	@Column(name = "_ingrediente")
 	private int ingrediente;
 
-	public ProdutoIngredientePK(int produto, int ingrediente) {
-		this.produto = produto;
+	public SaborIngredientePK(int sabor, int ingrediente) {
+		this.sabor = sabor;
 		this.ingrediente = ingrediente;
 	}
 
-	public ProdutoIngredientePK() {
+	public SaborIngredientePK() {
 	}
 	
-	public int getProduto() {
-		return produto;
+	public int getSabor() {
+		return sabor;
 	}
 	
 	public int getIngrediente() {
@@ -37,7 +37,7 @@ public class ProdutoIngredientePK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + produto;
+		result = prime * result + sabor;
 		result = prime * result + ingrediente;
 		return result;
 	}
@@ -53,8 +53,8 @@ public class ProdutoIngredientePK implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		ProdutoIngredientePK other = (ProdutoIngredientePK) obj;
-		if (produto != other.produto) {
+		SaborIngredientePK other = (SaborIngredientePK) obj;
+		if (sabor != other.sabor) {
 			return false;
 		}
 		if (ingrediente != other.ingrediente) {
@@ -65,6 +65,6 @@ public class ProdutoIngredientePK implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ProdutoIngredientePK [produto=" + produto + ", ingrediente=" + ingrediente + "]";
+		return "SaborIngredientePK [sabor=" + sabor + ", ingrediente=" + ingrediente + "]";
 	}
 }

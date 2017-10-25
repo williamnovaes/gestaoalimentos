@@ -3,6 +3,7 @@ package br.com.will.gestao.servico;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -17,6 +18,8 @@ public class ProdutoServico extends BaseServico<Produto> {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private ProdutoDAO produtoDao;
+	@EJB
+	private SaborServico saborServico;
 	
 	@Override
 	@PostConstruct
@@ -43,6 +46,18 @@ public class ProdutoServico extends BaseServico<Produto> {
 	public Produto obterCompletoPorId(Integer id) throws BaseServicoException {
 		try {
 			return produtoDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Produto> obterTodosParaMenu(String ordem) throws BaseServicoException {
+		try {
+			List<Produto> produtos = produtoDao.consultarTodosParaMenu(ordem);
+			for (Produto produto : produtos) {
+				produto.setSabores(saborServico.obterTodosPorProduto(produto));
+			}
+			return produtos;
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

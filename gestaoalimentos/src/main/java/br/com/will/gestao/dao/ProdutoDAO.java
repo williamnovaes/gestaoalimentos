@@ -3,6 +3,7 @@ package br.com.will.gestao.dao;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
@@ -34,8 +35,13 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 	@Override
 	public Paginador<Paginavel> consultarPorFiltro(Paginador<Paginavel> paginador, Filtravel filtravel) {
 		try {
-			return new SQLFilter.SQLFilterBuilder(Produto.class, getEm(), filtravel).setupPaginador(paginador)
-					.filterSimpleBy("p.nome").orderBy("p.index").sortedBy(ESortedBy.ASC).build().dadosPaginados();
+			return new SQLFilter.SQLFilterBuilder(Produto.class, getEm(), filtravel)
+							    .setupPaginador(paginador)
+							    .filterSimpleBy("p.nome")
+							    .orderBy("p.sequencia")
+							    .sortedBy(ESortedBy.ASC)
+							    .build()
+							    .dadosPaginados();
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BaseDAOException(e.getMessage());
@@ -88,6 +94,26 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 						  .getSingleResult();
 		} catch (NoResultException nre){
 			return null;
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Produto> consultarTodosParaMenu(String ordem) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT p FROM Produto p ");
+			sql.append(" JOIN FETCH p.empresa em ");
+			sql.append(" JOIN FETCH p.produtoTipo pt ");
+			sql.append(" JOIN FETCH p.tamanhos ts ");
+//			sql.append(" JOIN FETCH p.sabores sb ");
+			if (ordem != null && !ordem.isEmpty()) {
+				sql.append(" ORDER BY P." + ordem + " ASC");
+			}
+			
+			Query q = getEm().createQuery(sql.toString(), Produto.class);
+			return q.getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

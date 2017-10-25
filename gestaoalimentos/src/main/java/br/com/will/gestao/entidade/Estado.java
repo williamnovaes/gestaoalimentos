@@ -15,7 +15,7 @@ import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
 @Table(name = "estado", schema = "gestao")
-public class Estado implements Serializable, Comparable<Estado> {
+public class Estado implements Serializable, Comparable<Estado>, Cloneable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -108,5 +108,15 @@ public class Estado implements Serializable, Comparable<Estado> {
 		} else if (!uf.equals(other.uf))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public Estado clone() {
+		try {
+			return (Estado) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
