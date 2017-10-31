@@ -38,43 +38,53 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "caixaSeq")
 	@Column(unique = true, nullable = false)
 	private Integer id;
-	
+
 	@NotNull
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Empresa empresa;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "aberto", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean aberto = EBoolean.TRUE;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "entraga", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_TRUE)
 	private EBoolean entrega = EBoolean.TRUE;
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_abertura")
 	private Calendar dataAbertura;
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_fechamento")
 	private Calendar dataFechamento;
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_cadastro")
 	private Calendar dataCadastro;
-	
+
 	@Column(name = "observacao", length = SistemaConstantes.DUZENTOS_CINQUENTA)
 	private String observacao;
-	
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
+	private ESituacao situacao = ESituacao.ATIVO;
+
+	@NotNull
+	@JoinColumn(name = "_usuario", foreignKey = @ForeignKey(name = "fk_usuario"), nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Usuario usuario;
+
 	public Caixa() {
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -98,7 +108,7 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 	public void setAberto(EBoolean aberto) {
 		this.aberto = aberto;
 	}
-	
+
 	public boolean isAberto() {
 		return Util.converterENumBooleanToBoolean(this.aberto);
 	}
@@ -126,11 +136,11 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 	public void setDataFechamento(Calendar dataFechamento) {
 		this.dataFechamento = dataFechamento;
 	}
-	
+
 	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
-	
+
 	@PrePersist
 	public void setDataCadastro() {
 		this.dataCadastro = Calendar.getInstance();
@@ -144,11 +154,19 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 		this.observacao = observacao;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public String toString() {
 		return "Caixa [id=" + id + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -181,34 +199,36 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 
 	@Override
 	public void alterarSituacao() {
+		this.situacao = Util.alteraSituacao(this.situacao);
 	}
 
 	@Override
 	public ESituacao getSituacao() {
-		return null;
+		return this.situacao;
+	}
+
+	public void setSituacao(ESituacao situacao) {
+		this.situacao = situacao;
 	}
 
 	@Override
 	public String getSqlSelect() {
-		// TODO Auto-generated method stub
-		return null;
+		return " SELECT DISTINCT(cx) FROM Caixa cx ";
 	}
 
 	@Override
 	public String getSqlCount() {
-		// TODO Auto-generated method stub
-		return null;
+		return " SELECT count(distinct cx) FROM Caixa cx ";
 	}
 
 	@Override
 	public String getObjetoRetorno() {
-		// TODO Auto-generated method stub
-		return null;
+		return " cx ";
 	}
 
 	@Override
 	public String getJoin() {
-		// TODO Auto-generated method stub
-		return null;
+		return " JOIN FETCH cx.empresa em " 
+			 + " JOIN FETCH cx.usuario us ";
 	}
 }

@@ -1,0 +1,470 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="#{msg.txt_evento}" />
+
+	<ui:define name="content">
+		<h:form id="eventoForm" prependId="false">
+
+			<div class="row wrap-btn-form-topo">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandButton id="voltarBtn"
+							action="eventos?faces-redirect=true" immediate="true"
+							value="Voltar"
+							styleClass="btn btn-default btn-icon icon-arrow-undo">
+						</h:commandButton>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-24">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_cliente}" />
+						<h:selectOneMenu id="clienteSOM" styleClass="form-control"
+							value="#{eventoCadastroBean.idClienteSelecionado}"
+							disabled="#{eventoCadastroBean.evento.id ne null}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}"
+								noSelectionOption="false" />
+							<f:selectItems var="cliente"
+								value="#{eventoCadastroBean.clientes}" itemValue="#{cliente.id}"
+								itemLabel="#{cliente.nome}" required="true" />
+							<f:ajax execute="@this"
+								render="pontosVendasPG pontosVendasAssociadosPG" event="change"
+								listener="#{eventoCadastroBean.obterPontosVendasPorCliente()}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-16">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_descricao}" />
+						<h:inputText value="#{eventoCadastroBean.evento.descricao}"
+							required="true" styleClass="form-control" maxlength="50">
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="Descrição para o Ingresso" />
+						<h:inputText
+							value="#{eventoCadastroBean.evento.descricaoImpressao}"
+							styleClass="form-control" maxlength="14">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-16">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_tipo_evento}" />
+						<h:selectOneMenu id="eventoTipoSOM" styleClass="form-control"
+							value="#{eventoCadastroBean.idEventoTipoSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="eventoTipo"
+								value="#{eventoCadastroBean.eventosTipos}"
+								itemValue="#{eventoTipo.id}" itemLabel="#{eventoTipo.descricao}"
+								required="true" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_classificacao_etaria}" />
+						<h:inputText
+							value="#{eventoCadastroBean.evento.classificacaoEtaria}"
+							required="true" styleClass="form-control" maxlength="2">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora Evento" />
+						<h:inputText id="dataEventoIT"
+							styleClass="form-control input-datahora"
+							value="#{eventoCadastroBean.dataEvento}" required="true"
+							converterMessage="Data hora evento errado">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_local}" />
+						<h:selectOneMenu id="localSOM" styleClass="form-control"
+							value="#{eventoCadastroBean.idLocalSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="local" value="#{eventoCadastroBean.locais}"
+								itemValue="#{local.id}" itemLabel="#{local.descricao}"
+								required="true" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_capacidade_maxima}" />
+						<h:inputText value="#{eventoCadastroBean.evento.capacidadeMaxima}"
+							pt:placeholder="0" styleClass="form-control numeros"
+							maxlength="5">
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora Abert. dos Portões" />
+						<h:inputText id="dataAberturaPortaoIT"
+							styleClass="form-control input-datahora"
+							value="#{eventoCadastroBean.dataAberturaPortao}" required="true"
+							converterMessage="Abertura portoes errado">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora In. Venda Ingressos" />
+						<h:inputText id="dataInicioVendaIngressoIT"
+							styleClass="form-control input-datahora"
+							value="#{eventoCadastroBean.dataInicioVendaIngresso}"
+							required="true" converterMessage="Inicio da venda errado">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group">
+						<h:outputLabel value="Data/Hora Térm. Venda Ingressos" />
+						<h:inputText id="dataFimVendaIngressoIT"
+							styleClass="form-control input-datahora"
+							value="#{eventoCadastroBean.dataFimVendaIngresso}"
+							required="true" converterMessage="Fim da venda errado">
+							<f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm" />
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-24">
+					<div class="form-group">
+						<label class="com-aux"> <h:outputText
+								value="#{msg.txt_observacao}" /> <h:outputText
+								value="Informação que aparecerá no ingresso." styleClass="aux" />
+						</label>
+						<h:inputText value="#{eventoCadastroBean.evento.observacao}"
+							required="true" styleClass="form-control txt-transform-none"
+							maxlength="90">
+							<f:converter
+								converterId="br.com.nx.tickets.converter.InputNormalStringConverter" />
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<h:panelGroup id="usuarioPG">
+				<div class="row">
+					<div class="col-sm-24">
+						<div class="form-group">
+							<h:outputLabel value="Usuário Retirada" />
+							<div class="input-group">
+								<h:selectOneMenu id="usuarioSOM"
+									disabled="#{empty eventoCadastroBean.usuariosDisponiveis}"
+									styleClass="form-control"
+									value="#{eventoCadastroBean.idUsuarioSelecionado}">
+									<f:selectItem itemLabel="#{msg.txt_selecione}" />
+									<f:selectItems var="usuario"
+										value="#{eventoCadastroBean.usuariosDisponiveis}"
+										itemValue="#{usuario.id}" itemLabel="#{usuario.nome}"
+										required="true" />
+								</h:selectOneMenu>
+
+								<span class="input-group-btn"> <h:commandLink
+										id="adicionarUsuarioCL" value="Adicionar"
+										styleClass="btn btn-info">
+										<f:ajax execute="usuarioSOM" render="usuariosPG usuarioPG"
+											listener="#{eventoCadastroBean.adicionarUsuario()}" />
+									</h:commandLink>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 				<div class="row margin-bottom-40"> -->
+				<!-- 					<div class="col-sm-24"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+			</h:panelGroup>
+
+			<h:panelGroup id="usuariosPG">
+				<div class="row margin-bottom-40">
+					<div class="col-sm-24">
+						<h:panelGroup
+							rendered="#{empty eventoCadastroBean.usuariosAssociados}">
+								Não há Usuários!
+						</h:panelGroup>
+
+						<h:panelGroup
+							rendered="#{not empty eventoCadastroBean.usuariosAssociados}">
+							<div class="scroll">
+								<h:dataTable value="#{eventoCadastroBean.usuariosAssociados}"
+									var="usuario" styleClass="table table-striped table-hover"
+									columnClasses=",,align-center">
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_maiusc_id}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{usuario.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_nome}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{usuario.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_opcoes}" />
+											</div>
+										</f:facet>
+										<div class="wrap-btn-sistema">
+											<h:commandLink id="removerBtn">
+												<img src="../resources/images/ico/16x16/cross.png"
+													title="#{msg.txt_remover}" />
+												<f:ajax execute="@this" render="usuariosPG usuarioPG"
+													listener="#{eventoCadastroBean.removerUsuairo(usuario)}" />
+											</h:commandLink>
+										</div>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="pontosVendasPG">
+				<div class="row">
+					<div class="col-sm-24">
+						<div class="form-group">
+							<h:outputLabel value="#{msg.txt_pontos_vendas}" />
+							<div class="input-group">
+								<h:selectOneMenu id="pontoVendaSOM"
+									disabled="#{empty eventoCadastroBean.pontosVendasDisponiveis}"
+									styleClass="form-control"
+									value="#{eventoCadastroBean.idPontoVendaSelecionado}">
+									<f:selectItem itemLabel="#{msg.txt_selecione}" />
+									<f:selectItems var="pontoVenda"
+										value="#{eventoCadastroBean.pontosVendasDisponiveis}"
+										itemValue="#{pontoVenda.id}" itemLabel="#{pontoVenda.nome}"
+										required="true" />
+								</h:selectOneMenu>
+
+								<span class="input-group-btn"> <h:commandLink
+										id="adicionarPontoVendaCL" value="Adicionar"
+										styleClass="btn btn-info">
+										<f:ajax execute="pontoVendaSOM"
+											render="pontosVendasPG pontosVendasAssociadosPG"
+											listener="#{eventoCadastroBean.adicionarPontoVenda()}" />
+									</h:commandLink>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="pontosVendasAssociadosPG">
+				<div class="row margin-bottom-40">
+					<div class="col-sm-24">
+						<h:panelGroup
+							rendered="#{empty eventoCadastroBean.pontosVendasAssociados}">
+								Não há Pontos de Venda!
+						</h:panelGroup>
+
+						<h:panelGroup
+							rendered="#{not empty eventoCadastroBean.pontosVendasAssociados}">
+							<div class="scroll">
+								<h:dataTable
+									value="#{eventoCadastroBean.pontosVendasAssociados}" var="item"
+									styleClass="table table-striped table-hover"
+									columnClasses=",,align-center">
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_maiusc_id}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{item.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_nome}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{item.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_opcoes}" />
+											</div>
+										</f:facet>
+										<div class="wrap-btn-sistema">
+											<h:commandLink id="removerBtn">
+												<img src="../resources/images/ico/16x16/cross.png"
+													title="#{msg.txt_remover}" />
+												<f:ajax execute="@this"
+													render="pontosVendasPG pontosVendasAssociadosPG"
+													listener="#{eventoCadastroBean.removerPontoVenda(item)}" />
+											</h:commandLink>
+										</div>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="atracaoPG">
+				<div class="row">
+					<div class="col-sm-24">
+						<div class="form-group">
+							<h:outputLabel value="#{msg.txt_atracoes_disponiveis}" />
+							<div class="input-group">
+								<h:selectOneMenu id="atracaoSOM"
+									disabled="#{empty eventoCadastroBean.atracoesDisponiveis}"
+									styleClass="form-control"
+									value="#{eventoCadastroBean.idAtracaoSelecionada}">
+									<f:selectItem itemLabel="#{msg.txt_selecione}" />
+									<f:selectItems var="atracao"
+										value="#{eventoCadastroBean.atracoesDisponiveis}"
+										itemValue="#{atracao.id}" itemLabel="#{atracao.nome}"
+										required="true" />
+									<f:ajax execute="@this" render="atracoesPG" />
+								</h:selectOneMenu>
+
+								<span class="input-group-btn"> <h:commandLink
+										id="adicionarAtracaoCL" value="Adicionar"
+										styleClass="btn btn-info">
+										<f:ajax execute="atracaoSOM" render="atracoesPG atracaoPG"
+											listener="#{eventoCadastroBean.adicionarAtracao()}" />
+									</h:commandLink>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="atracoesPG">
+				<div class="row margin-bottom-40">
+					<div class="col-sm-24">
+						<h:panelGroup
+							rendered="#{empty eventoCadastroBean.atracoesAssociadas}">
+								Não há Atrações!
+						</h:panelGroup>
+
+						<h:panelGroup
+							rendered="#{not empty eventoCadastroBean.atracoesAssociadas}">
+							<div class="scroll">
+								<h:dataTable value="#{eventoCadastroBean.atracoesAssociadas}"
+									var="atracao" styleClass="table table-striped table-hover"
+									columnClasses=",,align-center">
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_maiusc_id}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{atracao.id}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="">
+												<h:outputText value="#{msg.txt_nome}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{atracao.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_opcoes}" />
+											</div>
+										</f:facet>
+										<div class="wrap-btn-sistema">
+											<h:commandLink id="removerBtn">
+												<img src="../resources/images/ico/16x16/cross.png"
+													title="#{msg.txt_remover}" />
+												<f:ajax execute="@this" render="atracoesPG atracaoPG"
+													listener="#{eventoCadastroBean.removerAtracao(atracao)}" />
+											</h:commandLink>
+										</div>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</h:panelGroup>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-8 esq"></div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<h:commandButton id="salvarBtn"
+						action="#{eventoCadastroBean.salvar}" value="Salvar"
+						styleClass="btn btn-default btn-primary  btn-success btn-lg">
+					</h:commandButton>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

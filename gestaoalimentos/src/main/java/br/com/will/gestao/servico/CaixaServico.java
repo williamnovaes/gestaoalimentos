@@ -47,4 +47,12 @@ public class CaixaServico extends BaseServico<Caixa> {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}
+
+	public Caixa obterCompletoPorId(Integer id) throws BaseServicoException {
+		try {
+			return caixaDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
 }

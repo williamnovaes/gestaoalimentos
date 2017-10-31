@@ -81,4 +81,55 @@ public class SaborDAO extends BaseDAO<Sabor> {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
+
+	public List<Sabor> consultarPorProdutoAssociados(Produto produto) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT sb FROM Sabor sb ");
+			sql.append(" WHERE sb.produto =:_produto ");
+			sql.append(" AND sb.situacao =:_situacao ");
+			sql.append(" ORDER BY sb.index ");
+			
+			return getEm().createQuery(sql.toString(), Sabor.class)
+						  .setParameter("_produto", produto)
+						  .setParameter("_situacao", ESituacao.ATIVO)
+						  .getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<Sabor> consultarTodosPorSituacao(ESituacao situacao, boolean desassociados) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT sb FROM Sabor sb ");
+			sql.append(" WHERE  sb.situacao =:_situacao ");
+			if (desassociados) {
+				sql.append(" AND sb.produto IS NULL ");
+			}
+			sql.append(" ORDER BY sb.index ");
+			
+			return getEm().createQuery(sql.toString(), Sabor.class)
+						  .setParameter("_situacao", situacao)
+					.getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public void alterarProduto(Sabor sabor) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" UPDATE Sabor ");
+			sql.append(" SET produto =:_produto ");
+			sql.append(" WHERE id =:_idSabor ");
+			
+			getEm().createQuery(sql.toString())
+				   .setParameter("_produto", sabor.getProduto())
+				   .setParameter("_idSabor", sabor.getId())
+				   .executeUpdate();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
 }

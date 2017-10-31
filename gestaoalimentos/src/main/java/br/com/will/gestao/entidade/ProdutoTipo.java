@@ -49,7 +49,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	private Empresa empresa;
 	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal preco;
+	private BigDecimal preco = new BigDecimal(0);
 	
 	@Column(name = "sequencia")
 	private Integer sequencia;
@@ -60,7 +60,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	private ESituacao situacao = ESituacao.ATIVO;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	@Column(name = "soma_preco_sabor", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean somaPrecoSabor = EBoolean.FALSE;
 	
 	@NotNull
@@ -131,7 +131,23 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	public void setOrigemPreco(EOrigemPreco origemPreco) {
 		this.origemPreco = origemPreco;
 	}
-
+	
+	public BigDecimal getPreco() {
+		return preco;
+	}
+	
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+	
+	public EBoolean getSomaPrecoSabor() {
+		return somaPrecoSabor;
+	}
+	
+	public void setSomaPrecoSabor(EBoolean somaPrecoSabor) {
+		this.somaPrecoSabor = somaPrecoSabor;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -198,8 +214,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public String getJoin() {
 		StringBuilder str = new StringBuilder();
-		str.append(" LEFT JOIN FETCH pt.empresa em ");
-		str.append(" LEFT JOIN FETCH pt.tamanhos t ");
+		str.append(" JOIN FETCH pt.empresa em ");
 		return str.toString();
 	}
 }

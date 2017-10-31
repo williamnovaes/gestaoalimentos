@@ -2,7 +2,7 @@ package br.com.will.gestao.entidade.util;
 
 public enum EOrigemPreco {
 	PRODUTO("PRODUTO"),
-	TIPO_PRODUTO("TIPO DO PRODUTO"), 
+	SABOR("SABOR"),
 	TAMANHO("TAMANHO"); 
 	
 	private final String texto;

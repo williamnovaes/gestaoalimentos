@@ -22,7 +22,6 @@ public class ProdutoTipoListagemBean extends BaseListagemBean implements Modable
 	@PostConstruct
 	public void inicializar() {
 		configurarPaginador(getFiltroPermissaoUsuario(), produtoTipoServico, SistemaConstantes.DEZ);
-		buscarRegistros();
 	}
 
 	public void buscarRegistros() {

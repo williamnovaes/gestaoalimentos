@@ -58,4 +58,12 @@ public class UsuarioServico extends BaseServico<Usuario> {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}
+
+	public Usuario obterCompletoPorId(Integer id) throws BaseServicoException {
+		try {
+			return usuarioDao.consultarCompletoPorId(id);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
 }

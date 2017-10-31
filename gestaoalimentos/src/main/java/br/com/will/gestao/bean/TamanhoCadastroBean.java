@@ -1,5 +1,6 @@
 package br.com.will.gestao.bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -31,6 +32,8 @@ public class TamanhoCadastroBean extends BaseBean {
 	private List<Produto> produtos;
 	private Tamanho tamanho;
 	private Integer idProduto;
+	
+	private String preco = "0";
 
 	
 	@PostConstruct
@@ -54,6 +57,7 @@ public class TamanhoCadastroBean extends BaseBean {
 					if (tamanho.getProduto() != null) {
 						idProduto = tamanho.getProduto().getId();
 					}
+					this.preco = tamanho.getPreco().toString();
 				}
 			}
 			produtos = produtoServico.obterTodos("sequencia");
@@ -65,9 +69,14 @@ public class TamanhoCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
+			this.tamanho.setEmpresa(getLoginBean().getEmpresa());
 			if (idProduto != null && idProduto > 0) {
 				Produto produto = produtoServico.obterPorId(idProduto);
 				this.tamanho.setProduto(produto);
+			}
+			
+			if (this.preco != null && !this.preco.isEmpty()) {
+				this.tamanho.setPreco(new BigDecimal(this.preco));
 			}
 			
 			if (this.tamanho.getId() != null) {
@@ -98,5 +107,13 @@ public class TamanhoCadastroBean extends BaseBean {
 	
 	public List<Produto> getProdutos() {
 		return produtos;
+	}
+	
+	public String getPreco() {
+		return preco;
+	}
+	
+	public void setPreco(String preco) {
+		this.preco = preco;
 	}
 }

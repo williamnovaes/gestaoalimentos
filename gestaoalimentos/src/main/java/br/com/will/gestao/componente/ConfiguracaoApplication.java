@@ -34,6 +34,7 @@ public class ConfiguracaoApplication implements Serializable {
 	private ConfiguracaoSistemaServico configuracaoSistemaServico;
 	@EJB
 	private CaixaServico caixaServico;
+	
 	private Map<String, ConfiguracaoSistema> cacheConfiguracaoSistema;
 	private Caixa caixa;
 

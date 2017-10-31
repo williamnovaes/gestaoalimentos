@@ -7,8 +7,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.com.will.gestao.dao.TamanhoDAO;
+import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Tamanho;
+import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
@@ -51,6 +53,30 @@ public class TamanhoServico extends BaseServico<Tamanho> {
 	public List<Tamanho> obterPorIds(List<Integer> ids) throws BaseServicoException {
 		try {
 			return tamanhoDao.consultarPorIds(ids);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> obterPorProdutoAssociados(Produto produto) throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarPorProdutoAssociados(produto);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> obterTodosPorSituacao(ESituacao situacao, boolean desassociados) throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarTodosPorSituacao(situacao, desassociados);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public void alterarProduto(Tamanho t) throws BaseServicoException {
+		try {
+			tamanhoDao.alterarProduto(t);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

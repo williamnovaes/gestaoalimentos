@@ -1,5 +1,7 @@
 package br.com.will.gestao.bean;
 
+import java.math.BigDecimal;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
@@ -61,13 +63,20 @@ public class IngredienteCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
+			this.ingrediente.setEmpresa(getLoginBean().getEmpresa());
+			this.ingrediente.setAdicional(adicionalSelecionado);
+			if (this.valorAdicional != null && !this.valorAdicional.isEmpty()) {
+				this.ingrediente.setValorAdicional(new BigDecimal(this.valorAdicional));
+			}
 			if (this.ingrediente.getId() != null) {
 				ingredienteServico.alterar(this.ingrediente);
+				adicionarInfo("Produto " + this.ingrediente.getNome() + " alterado com sucesso");
 			} else {
 				ingredienteServico.salvar(this.ingrediente);
+				adicionarInfo("Produto cadastrado com sucesso");
 			}
 			
-			return "ingredientes?faces-redirect=true";
+			return "ingredientes";
 		} catch (Exception e) {
 			adicionarError(e.getMessage());
 			return null;

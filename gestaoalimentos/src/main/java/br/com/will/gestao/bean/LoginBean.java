@@ -20,7 +20,6 @@ import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.permissao.Menu;
 import br.com.will.gestao.entidade.permissao.Pagina;
-import br.com.will.gestao.entidade.util.ENivel;
 import br.com.will.gestao.entidade.util.ETipoNivel;
 import br.com.will.gestao.servico.CaixaServico;
 import br.com.will.gestao.servico.PaginaServico;
@@ -31,7 +30,7 @@ import br.com.will.gestao.util.ConfiguracaoSistemaConstantes;
 @Named
 @SessionScoped
 public class LoginBean extends BaseBean {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Inject
@@ -42,7 +41,7 @@ public class LoginBean extends BaseBean {
 	private PaginaServico paginaServico;
 	@EJB
 	private CaixaServico caixaServico;
-	
+
 	private Usuario usuarioLogado;
 	private boolean logado;
 	private List<Pagina> paginas;
@@ -57,10 +56,10 @@ public class LoginBean extends BaseBean {
 		try {
 			exibirModalLogin = false;
 			if (credencial == null || credencial.getPasswordDescriptografado() == null
-					|| credencial.getPasswordDescriptografado().isEmpty()
-					|| credencial.getUsername() == null || credencial.getUsername().isEmpty()) {
+					|| credencial.getPasswordDescriptografado().isEmpty() || credencial.getUsername() == null
+					|| credencial.getUsername().isEmpty()) {
 				adicionarInfo("Login e Senha obrigatorios");
-				return null; 
+				return null;
 			}
 			usuarioLogado = usuarioServico.logar(credencial, getConfiguracaoApplication()
 					.obterConfiguracaoSistema(ConfiguracaoSistemaConstantes.SENHA_CORINGA).getValor());
@@ -68,6 +67,21 @@ public class LoginBean extends BaseBean {
 				configurarPermissao();
 				logado = true;
 				return "home?faces-redirect=true";
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			adicionarError(e.getMessage());
+			return null;
+		}
+	}
+
+	public String fazerLoginPosCadastro() {
+		try {
+			if (usuarioLogado != null) {
+				configurarPermissao();
+				logado = true;
+				return "/pages/home.ppd?faces-redirect=true";
 			}
 			return null;
 		} catch (Exception e) {
@@ -90,7 +104,7 @@ public class LoginBean extends BaseBean {
 		}
 		return "";
 	}
-	
+
 	public void carregarCaixa() {
 		try {
 			caixa = caixaServico.obterCaixaAberto(this.empresa);
@@ -122,7 +136,7 @@ public class LoginBean extends BaseBean {
 	public boolean isExibirPagina(String pagina) {
 		return termPermissaoPagina(pagina);
 	}
-	
+
 	public boolean termPermissaoPagina(String pagina) {
 		if (paginasPorMenu == null) {
 			return true;
@@ -137,13 +151,17 @@ public class LoginBean extends BaseBean {
 		}
 		return false;
 	}
-	
+
 	public String irParaHome() {
 		return "/pages/home.ppd?faces-redirect=true";
 	}
-	
+
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
 
 	public boolean isLogado() {
@@ -169,94 +187,95 @@ public class LoginBean extends BaseBean {
 		}
 		return false;
 	}
-	
+
 	public boolean isSuperUser() {
 		if (this.usuarioLogado != null && this.usuarioLogado.getTipoNivel().equals(ETipoNivel.ADMINISTRADOR)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public boolean isVendedor() {
 		if (this.usuarioLogado != null && this.usuarioLogado.getNivel().getDescricao().equals("VENDEDOR")) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
+
 	public BigDecimal valorTotal() {
 		return null;
 	}
-	
+
 	public BigDecimal valorPorProduto(Produto produto) {
 		return null;
 	}
-	
+
 	public boolean isCliente() {
-		return this.usuarioLogado != null
-				&& this.usuarioLogado.getTipoNivel().equals(ETipoNivel.CLIENTE) ? true : false;
+		return this.usuarioLogado != null && this.usuarioLogado.getTipoNivel().equals(ETipoNivel.CLIENTE);
 	}
-	
+
 	public void abrirModalLogin() {
 		exibirModalLogin = true;
 	}
-	
+
 	public boolean isExibirModalLogin() {
 		return exibirModalLogin;
 	}
-	
+
 	public void fecharModalLogin() {
 		exibirModalLogin = false;
 	}
-	
+
 	public List<Produto> getCarrinho() {
 		return carrinho;
 	}
-	
+
 	public void adicionarProduto(Produto produto) {
 		if (this.carrinho == null) {
 			this.carrinho = new ArrayList<>();
 		}
 		this.carrinho.add(produto);
 	}
-	
+
 	public void setCarrinho(List<Produto> carrinho) {
 		this.carrinho = carrinho;
 	}
-	
+
 	public Credencial getCredencial() {
 		return credencial;
 	}
-	
-	public boolean isCLiente() {
-		return this.usuarioLogado != null
-				&& this.usuarioLogado.getNivel().getDescricao().equals(ENivel.CLIENTE.getDescricao());
-	}
-	
+
 	public List<ProdutoPedidoDTO> getCarrinhoDto() {
 		if (this.carrinhoDto == null) {
 			this.carrinhoDto = new ArrayList<>();
 		}
 		return carrinhoDto;
 	}
-	
+
 	public void setCarrinhoDto(List<ProdutoPedidoDTO> carrinhoDto) {
 		this.carrinhoDto = carrinhoDto;
 	}
-	
+
 	public void adicionarProdutoDto(ProdutoPedidoDTO produto) {
 		this.carrinhoDto.add(produto);
 	}
-	
+
 	public Caixa getCaixa() {
 		return caixa;
 	}
-	
+
 	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
+	}
+
+	public boolean isFuncionario() {
+		if (this.usuarioLogado != null && this.usuarioLogado.getTipoNivel().equals(ETipoNivel.FUNCIONARIO)) {
+			return true;
+		}
+		return false;
 	}
 }

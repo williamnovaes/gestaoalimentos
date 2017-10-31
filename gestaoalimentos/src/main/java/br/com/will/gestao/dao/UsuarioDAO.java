@@ -159,4 +159,24 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
+
+	public Usuario consultarCompletoPorId(Integer id) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT us FROM Usuario us ");
+			sql.append(" JOIN FETCH us.nivel n ");
+			sql.append(" JOIN FETCH n.nivelTipo nt ");
+			sql.append(" JOIN FETCH us.empresa em ");
+			sql.append(" WHERE us.id =:_id ");
+			
+			return getEm().createQuery(sql.toString(), Usuario.class)
+						  .setParameter("_id", id)
+					.getSingleResult();
+		} catch (NoResultException nre) {
+			getLog().error("Usuario nao encontrado por id");
+			return null;
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
 }

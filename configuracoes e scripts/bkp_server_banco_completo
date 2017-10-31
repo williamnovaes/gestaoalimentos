@@ -1,0 +1,2596 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2017-10-31 10:59:36 -02
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'md53175bce1d3201d16594cebf9d7eb3f9d';
+CREATE ROLE williamfermino;
+ALTER ROLE williamfermino WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'md5f026aaac98799fb076294f51e5e5fcaa';
+
+
+
+
+
+
+--
+-- Database creation
+--
+
+CREATE DATABASE gestaoalimentos WITH TEMPLATE = template0 OWNER = postgres;
+REVOKE CONNECT,TEMPORARY ON DATABASE template1 FROM PUBLIC;
+GRANT CONNECT ON DATABASE template1 TO PUBLIC;
+CREATE DATABASE williamfermino WITH TEMPLATE = template0 OWNER = williamfermino;
+
+
+\connect gestaoalimentos
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
+
+-- Started on 2017-10-31 10:59:36 -02
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 7 (class 2615 OID 17260)
+-- Name: gestao; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA gestao;
+
+
+ALTER SCHEMA gestao OWNER TO postgres;
+
+--
+-- TOC entry 10 (class 2615 OID 16793)
+-- Name: permissao; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA permissao;
+
+
+ALTER SCHEMA permissao OWNER TO postgres;
+
+--
+-- TOC entry 4 (class 2615 OID 16792)
+-- Name: revisao; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA revisao;
+
+
+ALTER SCHEMA revisao OWNER TO postgres;
+
+--
+-- TOC entry 1 (class 3079 OID 12655)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2793 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = gestao, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 200 (class 1259 OID 17261)
+-- Name: arquivo; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE arquivo (
+    id integer NOT NULL,
+    caminho_arquivo character varying(250) NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    nome_arquivo character varying(250) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _arquivo_tipo integer NOT NULL,
+    _empresa integer NOT NULL
+);
+
+
+ALTER TABLE arquivo OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 17599)
+-- Name: arquivo_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE arquivo_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE arquivo_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 17270)
+-- Name: arquivo_tipo; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE arquivo_tipo (
+    id integer NOT NULL,
+    codigo character varying(100),
+    descricao character varying(100) NOT NULL,
+    diretorio character varying(100) NOT NULL,
+    layout text,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _empresa integer NOT NULL
+);
+
+
+ALTER TABLE arquivo_tipo OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 17601)
+-- Name: arquivo_tipo_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE arquivo_tipo_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE arquivo_tipo_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 17279)
+-- Name: autenticacao_log; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE autenticacao_log (
+    id integer NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    login character varying(100) NOT NULL,
+    senha character varying(100) NOT NULL,
+    terminal character varying(100)
+);
+
+
+ALTER TABLE autenticacao_log OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1259 OID 17603)
+-- Name: autenticacao_log_id_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE autenticacao_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE autenticacao_log_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 17284)
+-- Name: caixa; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE caixa (
+    id integer NOT NULL,
+    aberto character varying(10) DEFAULT 'FALSE'::character varying NOT NULL,
+    data_abertura timestamp without time zone NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    data_fechamento timestamp without time zone NOT NULL,
+    entraga character varying(10) DEFAULT 'TRUE'::character varying NOT NULL,
+    observacao character varying(250),
+    _empresa integer NOT NULL
+);
+
+
+ALTER TABLE caixa OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 17605)
+-- Name: caixa_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE caixa_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE caixa_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 17291)
+-- Name: cidade; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE cidade (
+    id integer NOT NULL,
+    codigo character varying(10),
+    nome character varying(150) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _estado character varying(2) NOT NULL
+);
+
+
+ALTER TABLE cidade OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 17607)
+-- Name: cidade_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE cidade_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cidade_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 17297)
+-- Name: empresa; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE empresa (
+    id integer NOT NULL,
+    cnpj character varying(14) NOT NULL,
+    data_cadastro timestamp without time zone,
+    email character varying(100),
+    nome_fantasia character varying(150) NOT NULL,
+    razao_social character varying(150) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    telefone character varying(11),
+    telefone2 character varying(11),
+    _endereco integer
+);
+
+
+ALTER TABLE empresa OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 17609)
+-- Name: empresa_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE empresa_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE empresa_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 17303)
+-- Name: endereco; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE endereco (
+    id integer NOT NULL,
+    bairro character varying(100),
+    bloco character varying(50),
+    cep character varying(8),
+    complemento character varying(100),
+    logradouro character varying(150),
+    numero character varying(10),
+    tipo_logradouro character varying(150),
+    _cidade integer NOT NULL
+);
+
+
+ALTER TABLE endereco OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 17611)
+-- Name: endereco_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE endereco_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE endereco_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 17311)
+-- Name: estado; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE estado (
+    uf character varying(2) NOT NULL,
+    nome character varying(150) NOT NULL
+);
+
+
+ALTER TABLE estado OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 17316)
+-- Name: forma_pagamento; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE forma_pagamento (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    icone character varying(100)
+);
+
+
+ALTER TABLE forma_pagamento OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 17321)
+-- Name: ingrediente; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE ingrediente (
+    id integer NOT NULL,
+    adicional character varying(10) DEFAULT 'FALSE'::character varying,
+    descricao character varying(100) NOT NULL,
+    nome character varying(100) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    valor_adicional numeric(17,2),
+    _empresa integer NOT NULL,
+    sequencia integer NOT NULL
+);
+
+
+ALTER TABLE ingrediente OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 17613)
+-- Name: ingrediente_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE ingrediente_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE ingrediente_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 17328)
+-- Name: nivel; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE nivel (
+    id integer NOT NULL,
+    alias character varying(100),
+    chat character varying(10) DEFAULT 'FALSE'::character varying,
+    descricao character varying(100) NOT NULL,
+    editarview character varying(10) DEFAULT 'FALSE'::character varying,
+    icone character varying(100),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _nivel_tipo integer,
+    editar_view character varying(10) DEFAULT 'FALSE'::character varying
+);
+
+
+ALTER TABLE nivel OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 17336)
+-- Name: nivel_tipo; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE nivel_tipo (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL
+);
+
+
+ALTER TABLE nivel_tipo OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 17615)
+-- Name: nivel_tipo_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE nivel_tipo_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE nivel_tipo_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 17342)
+-- Name: pedido; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE pedido (
+    id integer NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    pagamento_tipo character varying(10) DEFAULT 'DINHEIRO'::character varying NOT NULL,
+    status_atendimento character varying(10) DEFAULT 'PENDENTE'::character varying NOT NULL,
+    tipo_entrega character varying(10) DEFAULT 'DINHEIRO'::character varying NOT NULL,
+    valor_cobrado numeric(17,2) NOT NULL,
+    valor_desconto numeric(17,2) NOT NULL,
+    valor_total numeric(17,2) NOT NULL,
+    _caixa integer NOT NULL,
+    _cliente integer NOT NULL
+);
+
+
+ALTER TABLE pedido OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1259 OID 17617)
+-- Name: pedido_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE pedido_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE pedido_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 17350)
+-- Name: pedido_produto; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE pedido_produto (
+    _pedido integer NOT NULL,
+    _produto integer NOT NULL,
+    observacao character varying(250),
+    preco_final numeric(19,2),
+    referencia integer
+);
+
+
+ALTER TABLE pedido_produto OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 17355)
+-- Name: pedido_produto_sabor; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE pedido_produto_sabor (
+    _pedido integer NOT NULL,
+    _produto integer NOT NULL,
+    referencia integer,
+    _saobor integer NOT NULL
+);
+
+
+ALTER TABLE pedido_produto_sabor OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1259 OID 17650)
+-- Name: produto; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE produto (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    permite_sabores character varying(10) DEFAULT 'FALSE'::character varying NOT NULL,
+    preco numeric(17,2),
+    sequencia integer NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _empresa integer NOT NULL,
+    _produto_tipo integer,
+    tamanho character varying(10) DEFAULT 'FALSE'::character varying NOT NULL
+);
+
+
+ALTER TABLE produto OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1259 OID 17619)
+-- Name: produto_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE produto_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE produto_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 17367)
+-- Name: produto_tipo; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE produto_tipo (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    origem_preco character varying(10) DEFAULT 'PRODUTO'::character varying NOT NULL,
+    preco numeric(17,2),
+    sequencia integer,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    soma_preco_sabor character varying(10) DEFAULT 'FALSE'::character varying,
+    _empresa integer
+);
+
+
+ALTER TABLE produto_tipo OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1259 OID 17621)
+-- Name: produto_tipo_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE produto_tipo_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE produto_tipo_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 17375)
+-- Name: promocao; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE promocao (
+    id integer NOT NULL,
+    data_fim timestamp without time zone NOT NULL,
+    data_inicio timestamp without time zone NOT NULL,
+    descricao character varying(250) NOT NULL,
+    observacao character varying(250) NOT NULL,
+    quantidade integer NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _usuario integer NOT NULL
+);
+
+
+ALTER TABLE promocao OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 17623)
+-- Name: promocao_id_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE promocao_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE promocao_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 17384)
+-- Name: sabor; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE sabor (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    index integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    preco numeric(17,2),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _empresa integer NOT NULL,
+    _produto integer NOT NULL
+);
+
+
+ALTER TABLE sabor OWNER TO postgres;
+
+--
+-- TOC entry 236 (class 1259 OID 17625)
+-- Name: sabor_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE sabor_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE sabor_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 17390)
+-- Name: sabor_ingrediente; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE sabor_ingrediente (
+    _ingrediente integer NOT NULL,
+    _sabor integer NOT NULL,
+    observacao character varying(250),
+    quantidade integer
+);
+
+
+ALTER TABLE sabor_ingrediente OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 17395)
+-- Name: situacao; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE situacao (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    icone character varying(100)
+);
+
+
+ALTER TABLE situacao OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 17400)
+-- Name: status; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE status (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    icone character varying(100)
+);
+
+
+ALTER TABLE status OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1259 OID 17657)
+-- Name: tamanho; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE tamanho (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    limite_sabores integer NOT NULL,
+    preco numeric(17,2),
+    tamanho character varying(100) NOT NULL,
+    _produto integer,
+    _tamanho_tipo integer,
+    sequencia integer NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _empresa integer NOT NULL
+);
+
+
+ALTER TABLE tamanho OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 17627)
+-- Name: tamanho_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE tamanho_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tamanho_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 17410)
+-- Name: tamanho_tipo; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE tamanho_tipo (
+    id integer NOT NULL,
+    descricao character varying(100) NOT NULL,
+    quantidade integer
+);
+
+
+ALTER TABLE tamanho_tipo OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1259 OID 17629)
+-- Name: tamanho_tipo_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE tamanho_tipo_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tamanho_tipo_id_multi_seq OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 17415)
+-- Name: usuario; Type: TABLE; Schema: gestao; Owner: postgres
+--
+
+CREATE TABLE usuario (
+    id integer NOT NULL,
+    cpf character varying(11) NOT NULL,
+    data_cadastro timestamp without time zone,
+    data_nascimento date,
+    data_ultima_interacao timestamp without time zone,
+    email character varying(100) NOT NULL,
+    login character varying(50) NOT NULL,
+    nome character varying(150) NOT NULL,
+    senha character varying(150) NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _empresa integer,
+    _nivel integer NOT NULL
+);
+
+
+ALTER TABLE usuario OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1259 OID 17631)
+-- Name: usuario_id_multi_seq; Type: SEQUENCE; Schema: gestao; Owner: postgres
+--
+
+CREATE SEQUENCE usuario_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuario_id_multi_seq OWNER TO postgres;
+
+SET search_path = permissao, pg_catalog;
+
+--
+-- TOC entry 188 (class 1259 OID 16944)
+-- Name: menu; Type: TABLE; Schema: permissao; Owner: postgres
+--
+
+CREATE TABLE menu (
+    id integer NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    nome character varying(250) NOT NULL,
+    sequencia integer NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    visivel character varying(10) DEFAULT 'TRUE'::character varying NOT NULL
+);
+
+
+ALTER TABLE menu OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 17231)
+-- Name: menu_id_seq; Type: SEQUENCE; Schema: permissao; Owner: postgres
+--
+
+CREATE SEQUENCE menu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE menu_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16951)
+-- Name: pagina; Type: TABLE; Schema: permissao; Owner: postgres
+--
+
+CREATE TABLE pagina (
+    id integer NOT NULL,
+    bean character varying(250) NOT NULL,
+    data_cadastro timestamp without time zone NOT NULL,
+    nome character varying(250) NOT NULL,
+    pagina_tipo character varying(10) DEFAULT 'LISTAGEM'::character varying NOT NULL,
+    rotulo character varying(250) NOT NULL,
+    sequencia integer NOT NULL,
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying NOT NULL,
+    _menu integer NOT NULL
+);
+
+
+ALTER TABLE pagina OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 17233)
+-- Name: pagina_id_seq; Type: SEQUENCE; Schema: permissao; Owner: postgres
+--
+
+CREATE SEQUENCE pagina_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE pagina_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 190 (class 1259 OID 16961)
+-- Name: pagina_nivel; Type: TABLE; Schema: permissao; Owner: postgres
+--
+
+CREATE TABLE pagina_nivel (
+    _nivel integer NOT NULL,
+    _pagina integer NOT NULL
+);
+
+
+ALTER TABLE pagina_nivel OWNER TO postgres;
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 191 (class 1259 OID 16966)
+-- Name: configuracao_sistema; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE configuracao_sistema (
+    descricao character varying(100) NOT NULL,
+    valor character varying(250) NOT NULL
+);
+
+
+ALTER TABLE configuracao_sistema OWNER TO postgres;
+
+SET search_path = revisao, pg_catalog;
+
+--
+-- TOC entry 192 (class 1259 OID 16971)
+-- Name: rev_empresa; Type: TABLE; Schema: revisao; Owner: postgres
+--
+
+CREATE TABLE rev_empresa (
+    id integer NOT NULL,
+    _revisao bigint NOT NULL,
+    tipo_alteracao smallint,
+    cnpj character varying(14),
+    data_cadastro timestamp without time zone,
+    email character varying(100),
+    nome_fantasia character varying(150),
+    razao_social character varying(150),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying,
+    telefone character varying(11),
+    telefone2 character varying(11)
+);
+
+
+ALTER TABLE rev_empresa OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 16977)
+-- Name: rev_ingrediente; Type: TABLE; Schema: revisao; Owner: postgres
+--
+
+CREATE TABLE rev_ingrediente (
+    id integer NOT NULL,
+    _revisao bigint NOT NULL,
+    tipo_alteracao smallint,
+    adicional character varying(10) DEFAULT 'FALSE'::character varying,
+    descricao character varying(100),
+    nome character varying(100),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying,
+    valor numeric(17,2),
+    _empresa integer,
+    valor_adicional numeric(17,2),
+    sequencia integer
+);
+
+
+ALTER TABLE rev_ingrediente OWNER TO postgres;
+
+--
+-- TOC entry 194 (class 1259 OID 16984)
+-- Name: rev_produto; Type: TABLE; Schema: revisao; Owner: postgres
+--
+
+CREATE TABLE rev_produto (
+    id integer NOT NULL,
+    _revisao bigint NOT NULL,
+    tipo_alteracao smallint,
+    descricao character varying(100),
+    index integer,
+    nome character varying(100),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying,
+    valor numeric(17,2),
+    _empresa integer,
+    _produto_pai integer,
+    _produto_tipo integer
+);
+
+
+ALTER TABLE rev_produto OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 16990)
+-- Name: rev_usuario; Type: TABLE; Schema: revisao; Owner: postgres
+--
+
+CREATE TABLE rev_usuario (
+    id integer NOT NULL,
+    _revisao bigint NOT NULL,
+    tipo_alteracao smallint,
+    cpf character varying(11),
+    data_nascimento date,
+    email character varying(100),
+    login character varying(50),
+    nome character varying(150),
+    rg character varying(20),
+    senha character varying(150),
+    situacao character varying(10) DEFAULT 'ATIVO'::character varying,
+    _empresa integer,
+    _nivel integer
+);
+
+
+ALTER TABLE rev_usuario OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16999)
+-- Name: revisao; Type: TABLE; Schema: revisao; Owner: postgres
+--
+
+CREATE TABLE revisao (
+    id bigint NOT NULL,
+    data_revisao timestamp without time zone NOT NULL,
+    _usuario integer
+);
+
+
+ALTER TABLE revisao OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 17235)
+-- Name: revisao_id_multi_seq; Type: SEQUENCE; Schema: revisao; Owner: postgres
+--
+
+CREATE SEQUENCE revisao_id_multi_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE revisao_id_multi_seq OWNER TO postgres;
+
+SET search_path = gestao, pg_catalog;
+
+--
+-- TOC entry 2744 (class 0 OID 17261)
+-- Dependencies: 200
+-- Data for Name: arquivo; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY arquivo (id, caminho_arquivo, data_cadastro, nome_arquivo, situacao, _arquivo_tipo, _empresa) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2745 (class 0 OID 17270)
+-- Dependencies: 201
+-- Data for Name: arquivo_tipo; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY arquivo_tipo (id, codigo, descricao, diretorio, layout, situacao, _empresa) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2746 (class 0 OID 17279)
+-- Dependencies: 202
+-- Data for Name: autenticacao_log; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY autenticacao_log (id, data_cadastro, login, senha, terminal) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2747 (class 0 OID 17284)
+-- Dependencies: 203
+-- Data for Name: caixa; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY caixa (id, aberto, data_abertura, data_cadastro, data_fechamento, entraga, observacao, _empresa) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2748 (class 0 OID 17291)
+-- Dependencies: 204
+-- Data for Name: cidade; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY cidade (id, codigo, nome, situacao, _estado) FROM stdin;
+1	01	CORNELIO PROCOPIO	ATIVO	PR
+2	02	LONDRINA	ATIVO	PR
+3	03	SAO PAULO	ATIVO	SP
+\.
+
+
+--
+-- TOC entry 2749 (class 0 OID 17297)
+-- Dependencies: 205
+-- Data for Name: empresa; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY empresa (id, cnpj, data_cadastro, email, nome_fantasia, razao_social, situacao, telefone, telefone2, _endereco) FROM stdin;
+1	09760088908	2017-10-14 15:57:27.870337	WILLIAMF.NOVAES@GMAIL.COM	POPEDI	WILLIAM	ATIVO	996606749	\N	\N
+\.
+
+
+--
+-- TOC entry 2750 (class 0 OID 17303)
+-- Dependencies: 206
+-- Data for Name: endereco; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY endereco (id, bairro, bloco, cep, complemento, logradouro, numero, tipo_logradouro, _cidade) FROM stdin;
+1	CENTRO	A	86020330	AP 603	RUA SERGIPE	1600	RUA	2
+2	JARDIM SEMINARIO	\N	86300000	\N	RANULFO VILELA	116	RUA	1
+\.
+
+
+--
+-- TOC entry 2751 (class 0 OID 17311)
+-- Dependencies: 207
+-- Data for Name: estado; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY estado (uf, nome) FROM stdin;
+PR	PARANÁ
+SP	SÃO PAULO
+\.
+
+
+--
+-- TOC entry 2752 (class 0 OID 17316)
+-- Dependencies: 208
+-- Data for Name: forma_pagamento; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY forma_pagamento (id, descricao, icone) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2753 (class 0 OID 17321)
+-- Dependencies: 209
+-- Data for Name: ingrediente; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY ingrediente (id, adicional, descricao, nome, situacao, valor_adicional, _empresa, sequencia) FROM stdin;
+4	FALSE	pao de hamburguer	pao de hamburguer 	ATIVO	0.00	1	1
+5	TRUE	salsicha	salsicha	ATIVO	3.00	1	5
+6	TRUE	hamburguer	Hamburguer	ATIVO	1.50	1	2
+\.
+
+
+--
+-- TOC entry 2754 (class 0 OID 17328)
+-- Dependencies: 210
+-- Data for Name: nivel; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY nivel (id, alias, chat, descricao, editarview, icone, situacao, _nivel_tipo, editar_view) FROM stdin;
+1	\N	FALSE	SUPERUSER	FALSE	\N	ATIVO	1	FALSE
+2	\N	FALSE	ADMINISTRADOR	TRUE	\N	ATIVO	3	FALSE
+3	\N	FALSE	CLIENTE	FALSE	\N	ATIVO	2	FALSE
+4	\N	FALSE	COZINHA	FALSE	\N	ATIVO	3	FALSE
+\.
+
+
+--
+-- TOC entry 2755 (class 0 OID 17336)
+-- Dependencies: 211
+-- Data for Name: nivel_tipo; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY nivel_tipo (id, descricao, situacao) FROM stdin;
+1	ADMINISTRADOR	ATIVO
+2	CLIENTE	ATIVO
+3	FUNCIONARIO	ATIVO
+\.
+
+
+--
+-- TOC entry 2756 (class 0 OID 17342)
+-- Dependencies: 212
+-- Data for Name: pedido; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY pedido (id, data_cadastro, pagamento_tipo, status_atendimento, tipo_entrega, valor_cobrado, valor_desconto, valor_total, _caixa, _cliente) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2757 (class 0 OID 17350)
+-- Dependencies: 213
+-- Data for Name: pedido_produto; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY pedido_produto (_pedido, _produto, observacao, preco_final, referencia) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2758 (class 0 OID 17355)
+-- Dependencies: 214
+-- Data for Name: pedido_produto_sabor; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY pedido_produto_sabor (_pedido, _produto, referencia, _saobor) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2784 (class 0 OID 17650)
+-- Dependencies: 240
+-- Data for Name: produto; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY produto (id, nome, permite_sabores, preco, sequencia, situacao, _empresa, _produto_tipo, tamanho) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2759 (class 0 OID 17367)
+-- Dependencies: 215
+-- Data for Name: produto_tipo; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY produto_tipo (id, descricao, origem_preco, preco, sequencia, situacao, soma_preco_sabor, _empresa) FROM stdin;
+1	LANCHES	SABOR	0.00	1	ATIVO	FALSE	1
+\.
+
+
+--
+-- TOC entry 2760 (class 0 OID 17375)
+-- Dependencies: 216
+-- Data for Name: promocao; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY promocao (id, data_fim, data_inicio, descricao, observacao, quantidade, situacao, _usuario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2761 (class 0 OID 17384)
+-- Dependencies: 217
+-- Data for Name: sabor; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY sabor (id, descricao, index, nome, preco, situacao, _empresa, _produto) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2762 (class 0 OID 17390)
+-- Dependencies: 218
+-- Data for Name: sabor_ingrediente; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY sabor_ingrediente (_ingrediente, _sabor, observacao, quantidade) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2763 (class 0 OID 17395)
+-- Dependencies: 219
+-- Data for Name: situacao; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY situacao (id, descricao, icone) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2764 (class 0 OID 17400)
+-- Dependencies: 220
+-- Data for Name: status; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY status (id, descricao, icone) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2785 (class 0 OID 17657)
+-- Dependencies: 241
+-- Data for Name: tamanho; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY tamanho (id, descricao, limite_sabores, preco, tamanho, _produto, _tamanho_tipo, sequencia, situacao, _empresa) FROM stdin;
+2	Medio	2	35.00	M	\N	\N	2	ATIVO	1
+1	Pequeno	2	30.00	P	\N	\N	1	ATIVO	1
+\.
+
+
+--
+-- TOC entry 2765 (class 0 OID 17410)
+-- Dependencies: 221
+-- Data for Name: tamanho_tipo; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY tamanho_tipo (id, descricao, quantidade) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2766 (class 0 OID 17415)
+-- Dependencies: 222
+-- Data for Name: usuario; Type: TABLE DATA; Schema: gestao; Owner: postgres
+--
+
+COPY usuario (id, cpf, data_cadastro, data_nascimento, data_ultima_interacao, email, login, nome, senha, situacao, _empresa, _nivel) FROM stdin;
+2	09760088908	2017-10-14 16:22:17.999561	1993-11-17	\N	WILLIAMF.NOVAES@GMAIL.COM	WILLADM	WILLIAM	f653ffecc419dbf21a0000085139339c621a07e0	ATIVO	1	1
+3	12312312312	2017-10-26 22:05:46.101	\N	\N	CLIENTE1@GMAIL.COM	CLIENTE1@GMAIL.COM	CLIENTE1	3b6b0987a27ac7abefbe586afaebcbeb35c42240	ATIVO	1	3
+\.
+
+
+SET search_path = permissao, pg_catalog;
+
+--
+-- TOC entry 2732 (class 0 OID 16944)
+-- Dependencies: 188
+-- Data for Name: menu; Type: TABLE DATA; Schema: permissao; Owner: postgres
+--
+
+COPY menu (id, data_cadastro, nome, sequencia, situacao, visivel) FROM stdin;
+1	2017-09-20 21:24:02.062892	ADMINISTRACAO	1	ATIVO	TRUE
+2	2017-09-20 21:24:24.184004	RELATORIOS	2	ATIVO	FALSE
+3	2017-09-20 21:24:49.166758	GESTAO	3	ATIVO	TRUE
+\.
+
+
+--
+-- TOC entry 2733 (class 0 OID 16951)
+-- Dependencies: 189
+-- Data for Name: pagina; Type: TABLE DATA; Schema: permissao; Owner: postgres
+--
+
+COPY pagina (id, bean, data_cadastro, nome, pagina_tipo, rotulo, sequencia, situacao, _menu) FROM stdin;
+1	produtoTipoCadastroBean	2017-09-20 22:34:48.27	produtoTipo	CADASTRO	Produto Tipo	2	ATIVO	3
+2	produtoTipoListagemBean	2017-09-20 22:35:54.067	produtosTipo	LISTAGEM	Produto(s) Tipo(s)	1	ATIVO	3
+3	produtoListagemBean	2017-09-20 22:42:43.255	produtos	LISTAGEM	Produto(s)	3	ATIVO	3
+4	produtoCadastroBean	2017-09-20 22:43:05.393	produto	CADASTRO	Produto	4	ATIVO	3
+5	usuarioListagemBean	2017-09-20 23:58:42.148	usuarios	LISTAGEM	Usuario(s)	5	ATIVO	3
+6	usuarioCadastroBean	2017-09-20 23:59:10.042	usuario	CADASTRO	Usuario	6	ATIVO	3
+7	ingredienteListagemBean	2017-10-28 18:17:46.733	ingredientes	LISTAGEM	Ingredientes	10	ATIVO	3
+8	ingredienteCadastroBean	2017-10-28 18:18:20.518	ingrediente	CADASTRO	Ingrediente	11	ATIVO	3
+9	tamanhoListagemBean	2017-10-28 18:25:35.383	tamanhos	LISTAGEM	Tamanhos	12	ATIVO	3
+10	tamanhoCadastroBean	2017-10-28 18:26:39.63	tamanho	LISTAGEM	Tamanho	13	ATIVO	3
+\.
+
+
+--
+-- TOC entry 2734 (class 0 OID 16961)
+-- Dependencies: 190
+-- Data for Name: pagina_nivel; Type: TABLE DATA; Schema: permissao; Owner: postgres
+--
+
+COPY pagina_nivel (_nivel, _pagina) FROM stdin;
+2	1
+1	1
+1	2
+2	2
+2	3
+1	3
+2	4
+1	4
+2	5
+1	5
+2	6
+1	6
+2	7
+1	7
+2	8
+1	8
+2	9
+1	9
+2	10
+1	10
+\.
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 2735 (class 0 OID 16966)
+-- Dependencies: 191
+-- Data for Name: configuracao_sistema; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY configuracao_sistema (descricao, valor) FROM stdin;
+SENHA_CORINGA	d995eff56bd68919a5f25bc84bca9625c391382e
+\.
+
+
+SET search_path = revisao, pg_catalog;
+
+--
+-- TOC entry 2736 (class 0 OID 16971)
+-- Dependencies: 192
+-- Data for Name: rev_empresa; Type: TABLE DATA; Schema: revisao; Owner: postgres
+--
+
+COPY rev_empresa (id, _revisao, tipo_alteracao, cnpj, data_cadastro, email, nome_fantasia, razao_social, situacao, telefone, telefone2) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2737 (class 0 OID 16977)
+-- Dependencies: 193
+-- Data for Name: rev_ingrediente; Type: TABLE DATA; Schema: revisao; Owner: postgres
+--
+
+COPY rev_ingrediente (id, _revisao, tipo_alteracao, adicional, descricao, nome, situacao, valor, _empresa, valor_adicional, sequencia) FROM stdin;
+4	8	0	FALSE	pao de hamburguer	pao de hamburguer 	ATIVO	\N	1	0.00	1
+5	9	0	FALSE	salsicha	sasicha	ATIVO	\N	1	0.00	5
+5	10	1	TRUE	salsicha	sasicha	ATIVO	\N	1	0.00	5
+5	11	1	TRUE	salsicha	sasicha	ATIVO	\N	1	2.00	5
+5	12	1	TRUE	salsicha	sasicha	ATIVO	\N	1	3.00	5
+5	13	1	TRUE	salsicha	salsicha	ATIVO	\N	1	3.00	5
+6	14	0	TRUE	hamburguer	Hamburguer	ATIVO	\N	1	1.50	2
+\.
+
+
+--
+-- TOC entry 2738 (class 0 OID 16984)
+-- Dependencies: 194
+-- Data for Name: rev_produto; Type: TABLE DATA; Schema: revisao; Owner: postgres
+--
+
+COPY rev_produto (id, _revisao, tipo_alteracao, descricao, index, nome, situacao, valor, _empresa, _produto_pai, _produto_tipo) FROM stdin;
+1	1	0	pizza de calabrasa	1	Calabresa	ATIVO	\N	1	\N	1
+2	2	0	pizza de peperoni	2	Peperoni	ATIVO	\N	1	\N	1
+3	3	0	lanche com picanha	1	X-Picanha	ATIVO	\N	1	\N	2
+4	4	0	lanche com tudo	2	X-Todinho	ATIVO	\N	1	\N	2
+\.
+
+
+--
+-- TOC entry 2739 (class 0 OID 16990)
+-- Dependencies: 195
+-- Data for Name: rev_usuario; Type: TABLE DATA; Schema: revisao; Owner: postgres
+--
+
+COPY rev_usuario (id, _revisao, tipo_alteracao, cpf, data_nascimento, email, login, nome, rg, senha, situacao, _empresa, _nivel) FROM stdin;
+5	5	0	09760088908	\N	WILLIAMF.NOVAES@GMAIL.COM	CLIENTE1	WILLIAM NOVAES	\N	1234	ATIVO	\N	3
+6	6	0	12345678912	\N	JOAO@GMAIL.COM	CLIENTE2	JOAO	\N	7110eda4d09e062aa5e4a390b0a572ac0d2c0220	ATIVO	\N	3
+3	7	0	12312312312	\N	CLIENTE1@GMAIL.COM	CLIENTE1@GMAIL.COM	CLIENTE1	\N	7c4a8d09ca3762af61e59520943dc26494f8941b	ATIVO	\N	3
+\.
+
+
+--
+-- TOC entry 2740 (class 0 OID 16999)
+-- Dependencies: 196
+-- Data for Name: revisao; Type: TABLE DATA; Schema: revisao; Owner: postgres
+--
+
+COPY revisao (id, data_revisao, _usuario) FROM stdin;
+1	2017-09-20 23:48:19.631	1
+2	2017-09-20 23:49:21.497	1
+3	2017-09-20 23:54:04.262	1
+4	2017-09-20 23:54:20.342	1
+5	2017-09-30 23:11:07.959	\N
+6	2017-09-30 23:22:48.934	\N
+7	2017-10-26 22:05:46.176	\N
+8	2017-10-30 20:01:09.53	2
+9	2017-10-30 20:03:34.92	2
+10	2017-10-30 20:05:16.828	2
+11	2017-10-30 20:06:46.114	2
+12	2017-10-30 20:09:55.69	2
+13	2017-10-30 20:10:08.334	2
+14	2017-10-30 20:40:59.494	2
+\.
+
+
+SET search_path = gestao, pg_catalog;
+
+--
+-- TOC entry 2794 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: arquivo_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('arquivo_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2795 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: arquivo_tipo_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('arquivo_tipo_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2796 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: autenticacao_log_id_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('autenticacao_log_id_seq', 1, false);
+
+
+--
+-- TOC entry 2797 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: caixa_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('caixa_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2798 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: cidade_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cidade_id_multi_seq', 3, true);
+
+
+--
+-- TOC entry 2799 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: empresa_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('empresa_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2800 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: endereco_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('endereco_id_multi_seq', 2, true);
+
+
+--
+-- TOC entry 2801 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: ingrediente_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ingrediente_id_multi_seq', 6, true);
+
+
+--
+-- TOC entry 2802 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: nivel_tipo_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('nivel_tipo_id_multi_seq', 3, true);
+
+
+--
+-- TOC entry 2803 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: pedido_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pedido_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2804 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: produto_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('produto_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2805 (class 0 OID 0)
+-- Dependencies: 234
+-- Name: produto_tipo_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('produto_tipo_id_multi_seq', 1, true);
+
+
+--
+-- TOC entry 2806 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: promocao_id_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('promocao_id_seq', 1, false);
+
+
+--
+-- TOC entry 2807 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: sabor_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sabor_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2808 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: tamanho_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tamanho_id_multi_seq', 2, true);
+
+
+--
+-- TOC entry 2809 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: tamanho_tipo_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tamanho_tipo_id_multi_seq', 1, false);
+
+
+--
+-- TOC entry 2810 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: usuario_id_multi_seq; Type: SEQUENCE SET; Schema: gestao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuario_id_multi_seq', 3, true);
+
+
+SET search_path = permissao, pg_catalog;
+
+--
+-- TOC entry 2811 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: menu_id_seq; Type: SEQUENCE SET; Schema: permissao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('menu_id_seq', 1, false);
+
+
+--
+-- TOC entry 2812 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: pagina_id_seq; Type: SEQUENCE SET; Schema: permissao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pagina_id_seq', 10, true);
+
+
+SET search_path = revisao, pg_catalog;
+
+--
+-- TOC entry 2813 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: revisao_id_multi_seq; Type: SEQUENCE SET; Schema: revisao; Owner: postgres
+--
+
+SELECT pg_catalog.setval('revisao_id_multi_seq', 14, true);
+
+
+SET search_path = gestao, pg_catalog;
+
+--
+-- TOC entry 2502 (class 2606 OID 17269)
+-- Name: arquivo arquivo_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo
+    ADD CONSTRAINT arquivo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2506 (class 2606 OID 17278)
+-- Name: arquivo_tipo arquivo_tipo_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo_tipo
+    ADD CONSTRAINT arquivo_tipo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2510 (class 2606 OID 17283)
+-- Name: autenticacao_log autenticacao_log_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY autenticacao_log
+    ADD CONSTRAINT autenticacao_log_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2512 (class 2606 OID 17290)
+-- Name: caixa caixa_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY caixa
+    ADD CONSTRAINT caixa_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2514 (class 2606 OID 17296)
+-- Name: cidade cidade_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY cidade
+    ADD CONSTRAINT cidade_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2516 (class 2606 OID 17302)
+-- Name: empresa empresa_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY empresa
+    ADD CONSTRAINT empresa_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2518 (class 2606 OID 17310)
+-- Name: endereco endereco_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY endereco
+    ADD CONSTRAINT endereco_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2520 (class 2606 OID 17315)
+-- Name: estado estado_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY estado
+    ADD CONSTRAINT estado_pkey PRIMARY KEY (uf);
+
+
+--
+-- TOC entry 2522 (class 2606 OID 17320)
+-- Name: forma_pagamento forma_pagamento_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY forma_pagamento
+    ADD CONSTRAINT forma_pagamento_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2526 (class 2606 OID 17327)
+-- Name: ingrediente ingrediente_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY ingrediente
+    ADD CONSTRAINT ingrediente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2530 (class 2606 OID 17335)
+-- Name: nivel nivel_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel
+    ADD CONSTRAINT nivel_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2534 (class 2606 OID 17341)
+-- Name: nivel_tipo nivel_tipo_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel_tipo
+    ADD CONSTRAINT nivel_tipo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2538 (class 2606 OID 17349)
+-- Name: pedido pedido_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedido_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2540 (class 2606 OID 17354)
+-- Name: pedido_produto pedido_produto_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto
+    ADD CONSTRAINT pedido_produto_pkey PRIMARY KEY (_pedido, _produto);
+
+
+--
+-- TOC entry 2542 (class 2606 OID 17359)
+-- Name: pedido_produto_sabor pedido_produto_sabor_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto_sabor
+    ADD CONSTRAINT pedido_produto_sabor_pkey PRIMARY KEY (_pedido, _produto);
+
+
+--
+-- TOC entry 2568 (class 2606 OID 17656)
+-- Name: produto produto_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto
+    ADD CONSTRAINT produto_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2544 (class 2606 OID 17374)
+-- Name: produto_tipo produto_tipo_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto_tipo
+    ADD CONSTRAINT produto_tipo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2548 (class 2606 OID 17383)
+-- Name: promocao promocao_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY promocao
+    ADD CONSTRAINT promocao_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2552 (class 2606 OID 17394)
+-- Name: sabor_ingrediente sabor_ingrediente_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor_ingrediente
+    ADD CONSTRAINT sabor_ingrediente_pkey PRIMARY KEY (_ingrediente, _sabor);
+
+
+--
+-- TOC entry 2550 (class 2606 OID 17389)
+-- Name: sabor sabor_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor
+    ADD CONSTRAINT sabor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2554 (class 2606 OID 17399)
+-- Name: situacao situacao_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY situacao
+    ADD CONSTRAINT situacao_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2558 (class 2606 OID 17404)
+-- Name: status status_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY status
+    ADD CONSTRAINT status_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2572 (class 2606 OID 17661)
+-- Name: tamanho tamanho_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT tamanho_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2562 (class 2606 OID 17414)
+-- Name: tamanho_tipo tamanho_tipo_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho_tipo
+    ADD CONSTRAINT tamanho_tipo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2570 (class 2606 OID 17663)
+-- Name: produto uk_12yppt8d9idc530194hvwhq81; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto
+    ADD CONSTRAINT uk_12yppt8d9idc530194hvwhq81 UNIQUE (_produto_tipo, _empresa);
+
+
+--
+-- TOC entry 2574 (class 2606 OID 17669)
+-- Name: tamanho uk_19wpj1jmehfvheifhp4o7dmf9; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT uk_19wpj1jmehfvheifhp4o7dmf9 UNIQUE (tamanho);
+
+
+--
+-- TOC entry 2528 (class 2606 OID 17428)
+-- Name: ingrediente uk_1dd39sfj8gryjdyo4owscmwmd; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY ingrediente
+    ADD CONSTRAINT uk_1dd39sfj8gryjdyo4owscmwmd UNIQUE (nome);
+
+
+--
+-- TOC entry 2560 (class 2606 OID 17440)
+-- Name: status uk_2j6iv9mya5mmboowu1ixslxi9; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY status
+    ADD CONSTRAINT uk_2j6iv9mya5mmboowu1ixslxi9 UNIQUE (descricao);
+
+
+--
+-- TOC entry 2504 (class 2606 OID 17422)
+-- Name: arquivo uk_7hlcwn2bcltp9ooufv797anmp; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo
+    ADD CONSTRAINT uk_7hlcwn2bcltp9ooufv797anmp UNIQUE (caminho_arquivo);
+
+
+--
+-- TOC entry 2532 (class 2606 OID 17430)
+-- Name: nivel uk_8joe3tjv85n5nc525qu1tutbl; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel
+    ADD CONSTRAINT uk_8joe3tjv85n5nc525qu1tutbl UNIQUE (descricao);
+
+
+--
+-- TOC entry 2546 (class 2606 OID 17436)
+-- Name: produto_tipo uk_8x088vajm44txlfyincwwgg64; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto_tipo
+    ADD CONSTRAINT uk_8x088vajm44txlfyincwwgg64 UNIQUE (descricao);
+
+
+--
+-- TOC entry 2564 (class 2606 OID 17448)
+-- Name: tamanho_tipo uk_dny6tsr01wmq594yr4e8hgfei; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho_tipo
+    ADD CONSTRAINT uk_dny6tsr01wmq594yr4e8hgfei UNIQUE (descricao);
+
+
+--
+-- TOC entry 2556 (class 2606 OID 17438)
+-- Name: situacao uk_e3cvr8ilgw098ydrxtq4v146; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY situacao
+    ADD CONSTRAINT uk_e3cvr8ilgw098ydrxtq4v146 UNIQUE (descricao);
+
+
+--
+-- TOC entry 2508 (class 2606 OID 17424)
+-- Name: arquivo_tipo uk_eln68k2q6gall9ug3beigr3he; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo_tipo
+    ADD CONSTRAINT uk_eln68k2q6gall9ug3beigr3he UNIQUE (descricao);
+
+
+--
+-- TOC entry 2576 (class 2606 OID 17667)
+-- Name: tamanho uk_jhdyv59nm5m43f2nw6wcbg9bq; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT uk_jhdyv59nm5m43f2nw6wcbg9bq UNIQUE (descricao);
+
+
+--
+-- TOC entry 2578 (class 2606 OID 17665)
+-- Name: tamanho uk_k90ksgw62noqmbyqugkb94tus; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT uk_k90ksgw62noqmbyqugkb94tus UNIQUE (descricao, _produto);
+
+
+--
+-- TOC entry 2524 (class 2606 OID 17426)
+-- Name: forma_pagamento uk_nuwy6jcgaurd2w22yepw4kh3w; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY forma_pagamento
+    ADD CONSTRAINT uk_nuwy6jcgaurd2w22yepw4kh3w UNIQUE (descricao);
+
+
+--
+-- TOC entry 2536 (class 2606 OID 17432)
+-- Name: nivel_tipo uk_pqbyq7ssn5xcpvg0rtks9s5vm; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel_tipo
+    ADD CONSTRAINT uk_pqbyq7ssn5xcpvg0rtks9s5vm UNIQUE (descricao);
+
+
+--
+-- TOC entry 2566 (class 2606 OID 17420)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+SET search_path = permissao, pg_catalog;
+
+--
+-- TOC entry 2482 (class 2606 OID 16950)
+-- Name: menu menu_pkey; Type: CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY menu
+    ADD CONSTRAINT menu_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2488 (class 2606 OID 16965)
+-- Name: pagina_nivel pagina_nivel_pkey; Type: CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina_nivel
+    ADD CONSTRAINT pagina_nivel_pkey PRIMARY KEY (_nivel, _pagina);
+
+
+--
+-- TOC entry 2484 (class 2606 OID 16960)
+-- Name: pagina pagina_pkey; Type: CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina
+    ADD CONSTRAINT pagina_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2486 (class 2606 OID 17033)
+-- Name: pagina uk_aqyuhrak0jtn3oso2wwl74avl; Type: CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina
+    ADD CONSTRAINT uk_aqyuhrak0jtn3oso2wwl74avl UNIQUE (nome);
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 2490 (class 2606 OID 16970)
+-- Name: configuracao_sistema configuracao_sistema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY configuracao_sistema
+    ADD CONSTRAINT configuracao_sistema_pkey PRIMARY KEY (descricao);
+
+
+SET search_path = revisao, pg_catalog;
+
+--
+-- TOC entry 2492 (class 2606 OID 16976)
+-- Name: rev_empresa rev_empresa_pkey; Type: CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_empresa
+    ADD CONSTRAINT rev_empresa_pkey PRIMARY KEY (id, _revisao);
+
+
+--
+-- TOC entry 2494 (class 2606 OID 16983)
+-- Name: rev_ingrediente rev_ingrediente_pkey; Type: CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_ingrediente
+    ADD CONSTRAINT rev_ingrediente_pkey PRIMARY KEY (id, _revisao);
+
+
+--
+-- TOC entry 2496 (class 2606 OID 16989)
+-- Name: rev_produto rev_produto_pkey; Type: CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_produto
+    ADD CONSTRAINT rev_produto_pkey PRIMARY KEY (id, _revisao);
+
+
+--
+-- TOC entry 2498 (class 2606 OID 16998)
+-- Name: rev_usuario rev_usuario_pkey; Type: CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_usuario
+    ADD CONSTRAINT rev_usuario_pkey PRIMARY KEY (id, _revisao);
+
+
+--
+-- TOC entry 2500 (class 2606 OID 17003)
+-- Name: revisao revisao_pkey; Type: CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY revisao
+    ADD CONSTRAINT revisao_pkey PRIMARY KEY (id);
+
+
+SET search_path = gestao, pg_catalog;
+
+--
+-- TOC entry 2586 (class 2606 OID 17449)
+-- Name: arquivo fk_arquivo_tipo; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo
+    ADD CONSTRAINT fk_arquivo_tipo FOREIGN KEY (_arquivo_tipo) REFERENCES arquivo_tipo(id);
+
+
+--
+-- TOC entry 2595 (class 2606 OID 17494)
+-- Name: pedido fk_caixa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT fk_caixa FOREIGN KEY (_caixa) REFERENCES caixa(id);
+
+
+--
+-- TOC entry 2592 (class 2606 OID 17479)
+-- Name: endereco fk_cidade; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY endereco
+    ADD CONSTRAINT fk_cidade FOREIGN KEY (_cidade) REFERENCES cidade(id);
+
+
+--
+-- TOC entry 2596 (class 2606 OID 17499)
+-- Name: pedido fk_cliente; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT fk_cliente FOREIGN KEY (_cliente) REFERENCES usuario(id);
+
+
+--
+-- TOC entry 2587 (class 2606 OID 17454)
+-- Name: arquivo fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2588 (class 2606 OID 17459)
+-- Name: arquivo_tipo fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY arquivo_tipo
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2589 (class 2606 OID 17464)
+-- Name: caixa fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY caixa
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2593 (class 2606 OID 17484)
+-- Name: ingrediente fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY ingrediente
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2602 (class 2606 OID 17539)
+-- Name: produto_tipo fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto_tipo
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2604 (class 2606 OID 17549)
+-- Name: sabor fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2608 (class 2606 OID 17579)
+-- Name: usuario fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2610 (class 2606 OID 17680)
+-- Name: produto fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2614 (class 2606 OID 17746)
+-- Name: tamanho fk_empresa; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT fk_empresa FOREIGN KEY (_empresa) REFERENCES empresa(id);
+
+
+--
+-- TOC entry 2591 (class 2606 OID 17474)
+-- Name: empresa fk_endereco; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY empresa
+    ADD CONSTRAINT fk_endereco FOREIGN KEY (_endereco) REFERENCES endereco(id);
+
+
+--
+-- TOC entry 2590 (class 2606 OID 17469)
+-- Name: cidade fk_estado; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY cidade
+    ADD CONSTRAINT fk_estado FOREIGN KEY (_estado) REFERENCES estado(uf);
+
+
+--
+-- TOC entry 2609 (class 2606 OID 17584)
+-- Name: usuario fk_nivel; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk_nivel FOREIGN KEY (_nivel) REFERENCES nivel(id);
+
+
+--
+-- TOC entry 2594 (class 2606 OID 17489)
+-- Name: nivel fk_nivel_tipo; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel
+    ADD CONSTRAINT fk_nivel_tipo FOREIGN KEY (_nivel_tipo) REFERENCES nivel_tipo(id);
+
+
+--
+-- TOC entry 2597 (class 2606 OID 17504)
+-- Name: pedido_produto fk_pedido; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto
+    ADD CONSTRAINT fk_pedido FOREIGN KEY (_pedido) REFERENCES pedido(id);
+
+
+--
+-- TOC entry 2599 (class 2606 OID 17514)
+-- Name: pedido_produto_sabor fk_pedido; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto_sabor
+    ADD CONSTRAINT fk_pedido FOREIGN KEY (_pedido) REFERENCES pedido(id);
+
+
+--
+-- TOC entry 2606 (class 2606 OID 17559)
+-- Name: sabor_ingrediente fk_pedido; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor_ingrediente
+    ADD CONSTRAINT fk_pedido FOREIGN KEY (_ingrediente) REFERENCES ingrediente(id);
+
+
+--
+-- TOC entry 2598 (class 2606 OID 17670)
+-- Name: pedido_produto fk_produto; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto
+    ADD CONSTRAINT fk_produto FOREIGN KEY (_produto) REFERENCES produto(id);
+
+
+--
+-- TOC entry 2601 (class 2606 OID 17675)
+-- Name: pedido_produto_sabor fk_produto; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto_sabor
+    ADD CONSTRAINT fk_produto FOREIGN KEY (_produto) REFERENCES produto(id);
+
+
+--
+-- TOC entry 2605 (class 2606 OID 17690)
+-- Name: sabor fk_produto; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor
+    ADD CONSTRAINT fk_produto FOREIGN KEY (_produto) REFERENCES produto(id);
+
+
+--
+-- TOC entry 2612 (class 2606 OID 17695)
+-- Name: tamanho fk_produto; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT fk_produto FOREIGN KEY (_produto) REFERENCES produto(id);
+
+
+--
+-- TOC entry 2611 (class 2606 OID 17685)
+-- Name: produto fk_produto_tipo; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY produto
+    ADD CONSTRAINT fk_produto_tipo FOREIGN KEY (_produto_tipo) REFERENCES produto_tipo(id);
+
+
+--
+-- TOC entry 2600 (class 2606 OID 17524)
+-- Name: pedido_produto_sabor fk_sabor; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido_produto_sabor
+    ADD CONSTRAINT fk_sabor FOREIGN KEY (_saobor) REFERENCES sabor(id);
+
+
+--
+-- TOC entry 2607 (class 2606 OID 17564)
+-- Name: sabor_ingrediente fk_sabor; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY sabor_ingrediente
+    ADD CONSTRAINT fk_sabor FOREIGN KEY (_sabor) REFERENCES sabor(id);
+
+
+--
+-- TOC entry 2613 (class 2606 OID 17700)
+-- Name: tamanho fk_tamanho_tipo; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY tamanho
+    ADD CONSTRAINT fk_tamanho_tipo FOREIGN KEY (_tamanho_tipo) REFERENCES tamanho_tipo(id);
+
+
+--
+-- TOC entry 2603 (class 2606 OID 17544)
+-- Name: promocao fk_usuario; Type: FK CONSTRAINT; Schema: gestao; Owner: postgres
+--
+
+ALTER TABLE ONLY promocao
+    ADD CONSTRAINT fk_usuario FOREIGN KEY (_usuario) REFERENCES usuario(id);
+
+
+SET search_path = permissao, pg_catalog;
+
+--
+-- TOC entry 2579 (class 2606 OID 17159)
+-- Name: pagina fk_menu; Type: FK CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina
+    ADD CONSTRAINT fk_menu FOREIGN KEY (_menu) REFERENCES menu(id);
+
+
+--
+-- TOC entry 2581 (class 2606 OID 17640)
+-- Name: pagina_nivel fk_nivel; Type: FK CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina_nivel
+    ADD CONSTRAINT fk_nivel FOREIGN KEY (_nivel) REFERENCES gestao.nivel(id);
+
+
+--
+-- TOC entry 2580 (class 2606 OID 17169)
+-- Name: pagina_nivel fk_pagina; Type: FK CONSTRAINT; Schema: permissao; Owner: postgres
+--
+
+ALTER TABLE ONLY pagina_nivel
+    ADD CONSTRAINT fk_pagina FOREIGN KEY (_pagina) REFERENCES pagina(id);
+
+
+SET search_path = revisao, pg_catalog;
+
+--
+-- TOC entry 2582 (class 2606 OID 17174)
+-- Name: rev_empresa fk_17m99994j59x7orkgo117w0e8; Type: FK CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_empresa
+    ADD CONSTRAINT fk_17m99994j59x7orkgo117w0e8 FOREIGN KEY (_revisao) REFERENCES revisao(id);
+
+
+--
+-- TOC entry 2583 (class 2606 OID 17179)
+-- Name: rev_ingrediente fk_1fe9csgpgjgdna2u6u7wpj3il; Type: FK CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_ingrediente
+    ADD CONSTRAINT fk_1fe9csgpgjgdna2u6u7wpj3il FOREIGN KEY (_revisao) REFERENCES revisao(id);
+
+
+--
+-- TOC entry 2584 (class 2606 OID 17184)
+-- Name: rev_produto fk_6gfimiw2sgxm7imff81dsm4w2; Type: FK CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_produto
+    ADD CONSTRAINT fk_6gfimiw2sgxm7imff81dsm4w2 FOREIGN KEY (_revisao) REFERENCES revisao(id);
+
+
+--
+-- TOC entry 2585 (class 2606 OID 17189)
+-- Name: rev_usuario fk_trkqj22uw2gaqeexf8rbygwyq; Type: FK CONSTRAINT; Schema: revisao; Owner: postgres
+--
+
+ALTER TABLE ONLY rev_usuario
+    ADD CONSTRAINT fk_trkqj22uw2gaqeexf8rbygwyq FOREIGN KEY (_revisao) REFERENCES revisao(id);
+
+
+--
+-- TOC entry 2792 (class 0 OID 0)
+-- Dependencies: 3
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM williamfermino;
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2017-10-31 10:59:37 -02
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect postgres
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
+
+-- Started on 2017-10-31 10:59:37 -02
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2383 (class 1262 OID 12669)
+-- Dependencies: 2382
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: williamfermino
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- TOC entry 1 (class 3079 OID 12655)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2385 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+-- Completed on 2017-10-31 10:59:37 -02
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect template1
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
+
+-- Started on 2017-10-31 10:59:37 -02
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2383 (class 1262 OID 1)
+-- Dependencies: 2382
+-- Name: template1; Type: COMMENT; Schema: -; Owner: williamfermino
+--
+
+COMMENT ON DATABASE template1 IS 'default template for new databases';
+
+
+--
+-- TOC entry 1 (class 3079 OID 12655)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2385 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+-- Completed on 2017-10-31 10:59:37 -02
+
+--
+-- PostgreSQL database dump complete
+--
+
+\connect williamfermino
+
+SET default_transaction_read_only = off;
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 10.0
+
+-- Started on 2017-10-31 10:59:37 -02
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12655)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2384 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+-- Completed on 2017-10-31 10:59:37 -02
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- Completed on 2017-10-31 10:59:37 -02
+
+--
+-- PostgreSQL database cluster dump complete
+--
+

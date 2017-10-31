@@ -56,7 +56,7 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 	private String email;
 
 	@Column(name = "login", length = SistemaConstantes.CINQUENTA, nullable = false)
-	private String login = email;
+	private String login;
 
 	@Column(name = "senha", length = SistemaConstantes.CENTO_CINQUENTA, nullable = false)
 	private String senha;

@@ -66,7 +66,7 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	private EBoolean adicional = EBoolean.FALSE;
 	
 	@Column(name = "valor_adicional", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal valorAdicional;
+	private BigDecimal valorAdicional = new BigDecimal(0);
 	
 	@NotNull
 	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)

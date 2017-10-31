@@ -17,7 +17,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 
+import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
@@ -26,7 +28,7 @@ import br.com.will.gestao.util.Util;
 @Entity
 @Table(name = "tamanho", schema = "gestao", uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "descricao", "_produto" }) })
-public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
+public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +59,7 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
 	private Produto produto;
 	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
-	private BigDecimal preco;
+	private BigDecimal preco = new BigDecimal(0);
 	
 	@NotNull
 	@Column(name = "limite_sabores", nullable = false)
@@ -67,6 +69,11 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
+	
+	@NotNull
+	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Empresa empresa;
 	
 	public Tamanho(Integer id) {
 		this.id = id;
@@ -158,6 +165,14 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
 		this.situacao = Util.alteraSituacao(this.situacao);
 	}
 	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
 	@Override
 	public String toString() {
 		return "Tamanho [id=" + id + "]";
@@ -191,6 +206,30 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel {
 			return false;
 		}
 		return true;
+	}
+	
+	@Override
+	@XmlTransient
+	public String getSqlSelect() {
+		return "SELECT distinct(t) FROM Tamanho t ";
+	}
+
+	@Override
+	@XmlTransient
+	public String getSqlCount() {
+		return "SELECT COUNT(DISTINCT t) FROM Tamanho t ";
+	}
+
+	@Override
+	@XmlTransient
+	public String getObjetoRetorno() {
+		return " t ";
+	}
+
+	@Override
+	@XmlTransient
+	public String getJoin() {
+		return " JOIN FETCH t.empresa em ";
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package br.com.will.gestao.bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +12,7 @@ import javax.inject.Named;
 
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.EOrigemPreco;
 import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
@@ -32,8 +34,13 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	private ProdutoTipo produtoTipo;
 	private List<Empresa> empresas;
 	private Integer empresaSelecionada;
-	private EOrigemPreco[] origensPrecos; 
+	private EOrigemPreco[] origensPrecos = EOrigemPreco.values(); 
 	private EOrigemPreco origemPrecoSelecionado;
+	
+	private EBoolean[] somaPrecosSabores = EBoolean.values();
+	
+	private EBoolean somaPrecoSabor;
+	private String preco = "0";
 	
 	@PostConstruct
 	public void inicializar() {
@@ -53,10 +60,10 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 				if (this.produtoTipo == null) {
 					this.produtoTipo = new ProdutoTipo();
 				} else {
-					
+					this.somaPrecoSabor = this.produtoTipo.getSomaPrecoSabor();
+					this.origemPrecoSelecionado = this.produtoTipo.getOrigemPreco();
+					this.preco = this.produtoTipo.getPreco().toString();
 				} 
-				origensPrecos = EOrigemPreco.values();
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,22 +73,21 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
+			this.produtoTipo.setEmpresa(getLoginBean().getEmpresa());
+			this.produtoTipo.setOrigemPreco(this.origemPrecoSelecionado);
+			this.produtoTipo.setSomaPrecoSabor(this.somaPrecoSabor);
+			if (this.preco != null && !this.preco.isEmpty()) {
+				this.produtoTipo.setPreco(new BigDecimal(this.preco));
+			}
+			
 			if (this.produtoTipo.getId() != null) {
 				produtoTipoServico.alterar(this.produtoTipo);
+				adicionarInfo("Produto Tipo" + this.produtoTipo.getDescricao() + " alterado com sucesso");
 			} else {
-				if (getLoginBean().getEmpresa() != null) {
-					this.produtoTipo.setEmpresa(getLoginBean().getEmpresa());
-				} else {
-//					if (empresaSelecionada == null || empresaSelecionada <= 0) {
-//						adicionarError("Campo Empresa obrigatório!");
-//						return null;
-//					}
-					Empresa empresa = empresaServico.obterPorId(1);
-					this.produtoTipo.setEmpresa(empresa);
-				}
 				produtoTipoServico.salvar(this.produtoTipo);
+				adicionarInfo("Produto Tipo cadastrado com sucesso");
 			}
-			return "produtosTipo?faces-redirect=true";
+			return "produtosTipo";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
@@ -119,5 +125,25 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	
 	public void setOrigemPrecoSelecionado(EOrigemPreco origemPrecoSelecionado) {
 		this.origemPrecoSelecionado = origemPrecoSelecionado;
+	}
+	
+	public String getPreco() {
+		return preco;
+	}
+	
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+	
+	public EBoolean[] getSomaPrecosSabores() {
+		return somaPrecosSabores;
+	}
+	
+	public EBoolean getSomaPrecoSabor() {
+		return somaPrecoSabor;
+	}
+	
+	public void setSomaPrecoSabor(EBoolean somaPrecoSabor) {
+		this.somaPrecoSabor = somaPrecoSabor;
 	}
 }

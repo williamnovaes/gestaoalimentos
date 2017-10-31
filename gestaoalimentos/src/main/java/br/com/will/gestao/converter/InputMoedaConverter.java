@@ -12,7 +12,7 @@ import javax.faces.convert.FacesConverter;
 
 import br.com.will.gestao.util.SistemaConstantes;
 
-@FacesConverter(value = "br.com.will.gestao.InputMoedaConverter", 
+@FacesConverter(value = "br.com.will.gestao.converter.InputMoedaConverter", 
 				forClass = BigDecimal.class)
 public class InputMoedaConverter implements Converter {
 
