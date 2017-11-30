@@ -13,16 +13,12 @@
 		<composite:attribute name="botoes" required="false" default="true" />
 		<composite:attribute name="botaoFechar" required="false" default="true" />
 		<composite:attribute name="styleBotao"  required="false" default="btn btn-default btn-success" />
-		
 
 		<composite:attribute name="fecharModal"
 			method-signature="java.lang.String  action()" required="false" />
-		
  			
 		<composite:attribute name="salvar"
 			method-signature="java.lang.String  action()" required="false" />
-			
-
 	</composite:interface>
 	
 	<div class="modal fade" id="#{cc.attrs.id}" tabindex="-1" role="dialog" 
@@ -46,7 +42,7 @@
 				</div>
 
 				<div class="modal-footer">
-					<h:commandLink value="Salvar" styleClass="#{cc.attrs.styleBotao}"
+					<h:commandLink value="Entrar" styleClass="#{cc.attrs.styleBotao}"
 								   rendered="#{cc.attrs.salvar ne null and cc.attrs.botoes}"
 								   action="#{cc.attrs.salvar}">
 <!-- 						<f:ajax render="#{cc.attrs.id}:controleModalPG render" -->

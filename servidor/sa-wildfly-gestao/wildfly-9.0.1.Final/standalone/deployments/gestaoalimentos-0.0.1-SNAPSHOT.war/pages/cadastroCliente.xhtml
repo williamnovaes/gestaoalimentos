@@ -13,113 +13,95 @@
 	<ui:define name="content">
 		<h:form id="usuarioForm" prependId="false">
 
-			<div class="row wrap-btn-form-topo">
-				<div class="col-sm-8 esq">
-					<div class="btn-group btn-group-sm">
-						<h:commandButton id="voltarBtn"
-							action="usuarios?faces-redirect=true" immediate="true"
-							value="Voltar"
-							styleClass="btn btn-default btn-icon icon-arrow-undo">
-						</h:commandButton>
-					</div>
-				</div>
-
-				<div class="col-sm-8 centro">
-					<div class="btn-group btn-group-sm"></div>
-				</div>
-
-				<div class="col-sm-8 dir">
-					<div class="btn-group btn-group-sm"></div>
-				</div>
-			</div>
-			
-		<div style="width: 30%; ">
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-8">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nome}" />
 						<h:inputText value="#{usuarioCadastroBean.usuario.nome}"
-							required="true" styleClass="form-control form-white" 
+							required="true" styleClass="form-control"
 							maxlength="40">
 						</h:inputText>
 					</div>
 				</div>
 
-				<div class="col-sm-12">
+				<div class="col-sm-8">
 					<div class="form-group">
-						<h:outputLabel value="#{msg.txt_email}" />
-						<h:inputText id="emailIT" styleClass="form-control form-white"
+						<label>
+							<h:outputText value="#{msg.txt_email}" />
+							<span class="text-muted">Seu email será seu login</span>
+						</label>
+						<h:inputText id="emailIT" styleClass="form-control"
 							pt:placeholder="email@dominio.com.br"
 							value="#{usuarioCadastroBean.usuario.email}" required="true"
 							maxlength="40">
 						</h:inputText>
-						<span class="ex block opaco-5">Seu email será seu login</span>
 					</div>
 				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-12">
+				
+				<div class="col-sm-8">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_maiusc_cpf}" />
 						<h:inputText value="#{usuarioCadastroBean.usuario.cpf}"
-							required="true" styleClass="form-control cpf form-white" maxlength="16">
+							required="true" styleClass="form-control cpf"
+							maxlength="16">
 							<f:converter
 								converterId="br.com.will.gestao.converter.InputCpfCnpjConverter" />
 						</h:inputText>
 					</div>
 				</div>
 			</div>
-		
-			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null
-									and !loginBean.cliente}">
+
+			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="form-group">
 							<h:outputLabel value="#{msg.txt_login}" />
 							<h:inputText value="#{usuarioCadastroBean.usuario.login}"
-								styleClass="form-control form-white" required="true" maxlength="30">
+								styleClass="form-control" required="true"
+								maxlength="30">
 							</h:inputText>
 						</div>
 					</div>
 				</div>
 			</h:panelGroup>
-			
+
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-8">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_senha}" />
 						<h:inputSecret value="#{usuarioCadastroBean.usuario.senha}"
-							styleClass="form-control form-white" required="true" maxlength="10">
+							styleClass="form-control" required="true"
+							maxlength="10">
 							<f:ajax execute="@this" render="salvarBtn message" event="blur"
-								listener="#{usuarioCadastroBean.validarSenha}"/>
+								listener="#{usuarioCadastroBean.validarSenha}" />
 						</h:inputSecret>
 					</div>
 				</div>
-				
-				<div class="col-sm-12">
+
+				<div class="col-sm-8">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_senha}" />
 						<h:inputSecret value="#{usuarioCadastroBean.senhaConfirmacao}"
-							styleClass="form-control form-white" required="true" maxlength="10">
-							<f:ajax execute="@this" render="salvarBtn message" event="blur"/>
+							styleClass="form-control" required="true"
+							maxlength="10">
+							<f:ajax execute="@this" render="salvarBtn message" event="blur" />
 						</h:inputSecret>
 					</div>
 				</div>
 			</div>
-		</div>
-			
+
 			<div id="botoesDiv" class="row wrap-btn-form">
-				<div class="col-sm-8 esq">
+				<div class="col-sm-8">
 					<h:commandButton id="salvarBtn"
 						disabled="#{!usuarioCadastroBean.senhasIguais}"
 						action="#{usuarioCadastroBean.salvar}" value="Cadastre-se"
 						styleClass="btn btn-default btn-success btn-lg">
-					</h:commandButton></div>
-
-				<div class="col-sm-8 centro"></div>
-
-				<div class="col-sm-8 dir"></div>
+					</h:commandButton>
+				</div>
+				
+				<div class="col-sm-8"></div>
+				
+				<div class="col-sm-8"></div>
 			</div>
 
 		</h:form>

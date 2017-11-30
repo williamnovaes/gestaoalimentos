@@ -16,7 +16,8 @@
 
 	<div class="espaco"></div>
 
-	<div style="top: 140px;" class="container">
+	<div class="container">
+	
 		<h:messages id="message" layout="list" 
 			styleClass="mensagens-sistema"
 			infoClass="mensagem info" 
@@ -24,24 +25,24 @@
 			errorClass="mensagem erro" 
 			fatalClass="mensagem erro strong" />
 
-<!-- 		<div class="row"> -->
-			<!-- 			<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}"> -->
-			<!-- 				<div class="col-md-8"> -->
-			<!-- 					<ui:include src="navVertical.xhtml" /> -->
-			<!-- 				</div> -->
-			<!-- 			</h:panelGroup> -->
-
 			<ui:include src="topo.xhtml" />
-			<div class="col-md-18">
-				<ui:insert name="content" />
-			</div>
-<!-- 		</div> -->
-	</div>
-	<!--/ .container -->
-
+			
+			<ui:insert name="content" />
+			
+	</div><!--/ .container -->
+	
 	<div class="espaco"></div>
-		<div style="height: 2000px;"></div>
-	<!-- 	<ui:include src="footer.xhtml" /> -->
-	<!-- <ui:include src="loader.xhtml" /> -->
+	
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="text-muted">2017 &#169; Gestão Alimentos</span>
+				</div>
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

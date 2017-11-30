@@ -1,0 +1,2190 @@
+2017-10-31 00:07:06,953 INFO  [br.com.will.gestao.bean.BaseBean] (default task-30) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:07:06,964 INFO  [br.com.will.gestao.bean.BaseBean] (default task-30) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:07:06,988 SEVERE [javax.enterprise.resource.webcontainer.jsf.application] (default task-30) Error Rendering View[/pages/produtosTipo.xhtml]: javax.el.PropertyNotFoundException: /pages/produtosTipo.xhtml @82,61 value="#{item.somaPrecoSabor.label}": The class 'java.lang.Boolean' does not have the property 'label'.
+	at com.sun.faces.facelets.el.TagValueExpression.getValue(TagValueExpression.java:111)
+	at javax.faces.component.ComponentStateHelper.eval(ComponentStateHelper.java:194)
+	at javax.faces.component.ComponentStateHelper.eval(ComponentStateHelper.java:182)
+	at javax.faces.component.UIOutput.getValue(UIOutput.java:174)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getValue(HtmlBasicInputRenderer.java:205)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.getCurrentValue(HtmlBasicRenderer.java:355)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeEnd(HtmlBasicRenderer.java:164)
+	at javax.faces.component.UIComponentBase.encodeEnd(UIComponentBase.java:919)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:312)
+	at com.sun.faces.renderkit.html_basic.TableRenderer.renderRow(TableRenderer.java:385)
+	at com.sun.faces.renderkit.html_basic.TableRenderer.encodeChildren(TableRenderer.java:161)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.renderkit.html_basic.CompositeRenderer.encodeChildren(CompositeRenderer.java:78)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.context.PartialViewContextImpl$PhaseAwareVisitCallback.visit(PartialViewContextImpl.java:582)
+	at com.sun.faces.component.visit.PartialVisitContext.invokeVisitCallback(PartialVisitContext.java:183)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1689)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1700)
+	at javax.faces.component.UIForm.visitTree(UIForm.java:362)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1700)
+	at com.sun.faces.context.PartialViewContextImpl.processComponents(PartialViewContextImpl.java:403)
+	at com.sun.faces.context.PartialViewContextImpl.processPartial(PartialViewContextImpl.java:322)
+	at javax.faces.component.UIViewRoot.encodeChildren(UIViewRoot.java:1004)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.renderView(FaceletViewHandlingStrategy.java:430)
+	at com.sun.faces.application.view.MultiViewHandler.renderView(MultiViewHandler.java:133)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:120)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:655)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.el.PropertyNotFoundException: The class 'java.lang.Boolean' does not have the property 'label'.
+	at javax.el.BeanELResolver.getBeanProperty(BeanELResolver.java:731)
+	at javax.el.BeanELResolver.getValue(BeanELResolver.java:351)
+	at com.sun.faces.el.DemuxCompositeELResolver._getValue(DemuxCompositeELResolver.java:176)
+	at com.sun.faces.el.DemuxCompositeELResolver.getValue(DemuxCompositeELResolver.java:203)
+	at com.sun.el.parser.AstValue.getValue(AstValue.java:140)
+	at com.sun.el.parser.AstValue.getValue(AstValue.java:204)
+	at com.sun.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:226)
+	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+	at com.sun.faces.facelets.el.TagValueExpression.getValue(TagValueExpression.java:109)
+	... 72 more
+
+2017-10-31 00:07:06,992 SEVERE [javax.enterprise.resource.webcontainer.jsf.context] (default task-30) javax.el.PropertyNotFoundException: /pages/produtosTipo.xhtml @82,61 value="#{item.somaPrecoSabor.label}": The class 'java.lang.Boolean' does not have the property 'label'.
+	at com.sun.faces.facelets.el.TagValueExpression.getValue(TagValueExpression.java:111)
+	at javax.faces.component.ComponentStateHelper.eval(ComponentStateHelper.java:194)
+	at javax.faces.component.ComponentStateHelper.eval(ComponentStateHelper.java:182)
+	at javax.faces.component.UIOutput.getValue(UIOutput.java:174)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getValue(HtmlBasicInputRenderer.java:205)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.getCurrentValue(HtmlBasicRenderer.java:355)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeEnd(HtmlBasicRenderer.java:164)
+	at javax.faces.component.UIComponentBase.encodeEnd(UIComponentBase.java:919)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:312)
+	at com.sun.faces.renderkit.html_basic.TableRenderer.renderRow(TableRenderer.java:385)
+	at com.sun.faces.renderkit.html_basic.TableRenderer.encodeChildren(TableRenderer.java:161)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.renderkit.html_basic.CompositeRenderer.encodeChildren(CompositeRenderer.java:78)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:304)
+	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.context.PartialViewContextImpl$PhaseAwareVisitCallback.visit(PartialViewContextImpl.java:582)
+	at com.sun.faces.component.visit.PartialVisitContext.invokeVisitCallback(PartialVisitContext.java:183)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1689)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1700)
+	at javax.faces.component.UIForm.visitTree(UIForm.java:362)
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1700)
+	at com.sun.faces.context.PartialViewContextImpl.processComponents(PartialViewContextImpl.java:403)
+	at com.sun.faces.context.PartialViewContextImpl.processPartial(PartialViewContextImpl.java:322)
+	at javax.faces.component.UIViewRoot.encodeChildren(UIViewRoot.java:1004)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.renderView(FaceletViewHandlingStrategy.java:430)
+	at com.sun.faces.application.view.MultiViewHandler.renderView(MultiViewHandler.java:133)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:120)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:655)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.el.PropertyNotFoundException: The class 'java.lang.Boolean' does not have the property 'label'.
+	at javax.el.BeanELResolver.getBeanProperty(BeanELResolver.java:731)
+	at javax.el.BeanELResolver.getValue(BeanELResolver.java:351)
+	at com.sun.faces.el.DemuxCompositeELResolver._getValue(DemuxCompositeELResolver.java:176)
+	at com.sun.faces.el.DemuxCompositeELResolver.getValue(DemuxCompositeELResolver.java:203)
+	at com.sun.el.parser.AstValue.getValue(AstValue.java:140)
+	at com.sun.el.parser.AstValue.getValue(AstValue.java:204)
+	at com.sun.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:226)
+	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+	at com.sun.faces.facelets.el.TagValueExpression.getValue(TagValueExpression.java:109)
+	... 72 more
+
+2017-10-31 00:09:08,618 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2017-10-31 00:09:18,920 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2017-10-31 00:09:19,028 INFO  [org.jboss.as] (MSC service thread 1-7) WFLYSRV0049: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) starting
+2017-10-31 00:09:19,030 DEBUG [org.jboss.as.config] (MSC service thread 1-7) Configured system properties:
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/jboss-modules.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/williamfermino/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/c2/1lwbrnt108zbjd8242z3pmww0000gn/T/
+	java.library.path = /Users/williamfermino/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_131-b11
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_131
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.131-b11
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.bind.address = localhost
+	jboss.bind.address.management = localhost
+	jboss.home.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final
+	jboss.host.name = williams-macbook-air
+	jboss.modules.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = williams-macbook-air
+	jboss.qualified.host.name = williams-macbook-air.local
+	jboss.server.base.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	jboss.server.config.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration
+	jboss.server.data.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data
+	jboss.server.deploy.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/content
+	jboss.server.log.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log
+	jboss.server.name = williams-macbook-air
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties
+	module.path = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	org.jboss.boot.log.file = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log
+	org.jboss.logmanager.nocolor = true
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.12.6
+	path.separator = :
+	program.name = JBossTools: WildFly Gestao
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = org.jboss.modules.Main -mp /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules -jaxpmodule javax.xml.jaxp-provider -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone-full.xml -Djboss.server.base.dir=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	sun.rmi.dgc.client.gcInterval = 3600000
+	sun.rmi.dgc.server.gcInterval = 3600000
+	user.country = US
+	user.country.format = BR
+	user.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/bin
+	user.home = /Users/williamfermino
+	user.language = en
+	user.name = williamfermino
+	user.timezone = America/Sao_Paulo
+2017-10-31 00:09:19,032 DEBUG [org.jboss.as.config] (MSC service thread 1-7) VM Arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:54190 -Dprogram.name=JBossTools: WildFly Gestao -Xms64m -Xmx512m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log -Dlogging.configuration=file:/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties -Djboss.home.dir=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Dfile.encoding=UTF-8 
+2017-10-31 00:09:20,741 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 8) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=gestaoalimentosLocalPool' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-10-31 00:09:20,767 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 15) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-10-31 00:09:20,872 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) WFLYDS0004: Found gestaoalimentos-0.0.1-SNAPSHOT.war in deployment directory. To trigger deployment create a file called gestaoalimentos-0.0.1-SNAPSHOT.war.dodeploy
+2017-10-31 00:09:20,911 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2017-10-31 00:09:20,953 INFO  [org.xnio] (MSC service thread 1-5) XNIO version 3.3.1.Final
+2017-10-31 00:09:20,966 INFO  [org.xnio.nio] (MSC service thread 1-5) XNIO NIO Implementation Version 3.3.1.Final
+2017-10-31 00:09:21,026 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 41) WFLYCLINF0001: Activating Infinispan subsystem.
+2017-10-31 00:09:21,037 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 59) WFLYSEC0002: Activating Security Subsystem
+2017-10-31 00:09:21,038 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 60) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2017-10-31 00:09:21,090 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 52) WFLYNAM0001: Activating Naming Subsystem
+2017-10-31 00:09:21,106 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 62) WFLYWS0002: Activating WebServices Extension
+2017-10-31 00:09:21,154 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 42) WFLYIIOP0001: Activating IIOP Subsystem
+2017-10-31 00:09:21,166 INFO  [org.jboss.as.security] (MSC service thread 1-3) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2017-10-31 00:09:21,177 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 48) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2017-10-31 00:09:21,376 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 61) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-10-31 00:09:21,402 INFO  [org.jboss.as.naming] (MSC service thread 1-4) WFLYNAM0003: Starting Naming Service
+2017-10-31 00:09:21,436 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-10-31 00:09:21,507 INFO  [org.jboss.as.connector] (MSC service thread 1-4) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.4.Final)
+2017-10-31 00:09:21,560 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-7) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2017-10-31 00:09:21,561 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 36) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.1)
+2017-10-31 00:09:21,583 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0018: Started Driver service with driver-name = postgres
+2017-10-31 00:09:21,738 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 4.0.9.Final
+2017-10-31 00:09:21,943 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0012: Started server default-server.
+2017-10-31 00:09:22,293 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0006: Undertow HTTP listener default listening on /0.0.0.0:8080
+2017-10-31 00:09:22,586 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) WFLYDS0013: Started FileSystemDeploymentService for directory /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/deployments
+2017-10-31 00:09:22,591 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name: "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-10-31 00:09:22,607 WARN  [org.jboss.as.messaging] (MSC service thread 1-6) WFLYMSG0001: AIO wasn't located on this platform, it will fall back to using pure Java NIO.
+2017-10-31 00:09:22,792 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingjournal,bindingsDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingbindings,largeMessagesDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messaginglargemessages,pagingDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingpaging)
+2017-10-31 00:09:22,795 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221006: Waiting to obtain live lock
+2017-10-31 00:09:22,838 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221013: Using NIO Journal
+2017-10-31 00:09:22,906 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support CORE
+2017-10-31 00:09:22,941 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support AMQP
+2017-10-31 00:09:22,947 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support STOMP
+2017-10-31 00:09:23,055 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221034: Waiting to obtain live lock
+2017-10-31 00:09:23,055 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221035: Live Server Obtained live lock
+2017-10-31 00:09:23,260 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0006: Undertow HTTPS listener https listening on /0.0.0.0:8443
+2017-10-31 00:09:23,441 INFO  [org.jboss.ws.common.management] (MSC service thread 1-4) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2017-10-31 00:09:23,485 INFO  [org.jboss.messaging] (MSC service thread 1-6) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor-throughput acceptor
+2017-10-31 00:09:23,485 INFO  [org.jboss.messaging] (MSC service thread 1-3) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor acceptor
+2017-10-31 00:09:23,623 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221007: Server is now live
+2017-10-31 00:09:23,624 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221001: HornetQ Server version 2.4.7.Final (2.4.7.Final, 124) [966ea164-3bed-11e7-959a-1b6bdd243eb4] 
+2017-10-31 00:09:23,629 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221003: trying to deploy queue jms.queue.DLQ
+2017-10-31 00:09:23,674 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 68) WFLYMSG0002: Bound messaging object to jndi name java:/ConnectionFactory
+2017-10-31 00:09:23,676 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 69) HQ221003: trying to deploy queue jms.queue.ExpiryQueue
+2017-10-31 00:09:27,417 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) WFLYJPA0002: Read persistence.xml for gestaoAlimentosPU
+2017-10-31 00:09:32,037 INFO  [org.wildfly.iiop.openjdk] (MSC service thread 1-8) WFLYIIOP0009: CORBA ORB Service started
+2017-10-31 00:09:36,853 INFO  [org.hornetq.jms.server] (ServerService Thread Pool -- 67) HQ121005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "Williams-MacBook-Air.local". If this new address is incorrect please manually configure the connector to use the proper one.
+2017-10-31 00:09:36,854 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 67) WFLYMSG0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+2017-10-31 00:09:36,855 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 66) HQ221003: trying to deploy queue jms.queue.emailQueue
+2017-10-31 00:09:42,006 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:/gestaoalimentosLocalDS]
+2017-10-31 00:09:42,013 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 66) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-10-31 00:09:42,029 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 66) HHH000204: Processing PersistenceUnitInfo [
+	name: gestaoAlimentosPU
+	...]
+2017-10-31 00:09:42,030 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-5) WFLYJCA0007: Registered connection factory java:/JmsXA
+2017-10-31 00:09:42,105 INFO  [org.hornetq.ra] (MSC service thread 1-5) HornetQ resource adaptor started
+2017-10-31 00:09:42,106 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-5) IJ020002: Deployed: file://RaActivatorhornetq-ra
+2017-10-31 00:09:42,114 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-4) WFLYJCA0002: Bound JCA ConnectionFactory [java:/JmsXA]
+2017-10-31 00:09:42,114 INFO  [org.jboss.as.messaging] (MSC service thread 1-1) WFLYMSG0002: Bound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+2017-10-31 00:09:42,163 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 66) HHH000412: Hibernate Core {4.3.10.Final}
+2017-10-31 00:09:42,167 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 66) HHH000206: hibernate.properties not found
+2017-10-31 00:09:42,171 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 66) HHH000021: Bytecode provider name : javassist
+2017-10-31 00:09:42,804 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) WFLYWELD0003: Processing weld deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 00:09:42,968 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-4) HV000001: Hibernate Validator 5.1.3.Final
+2017-10-31 00:09:43,139 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named CidadeServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:module/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:module/CidadeServico
+
+2017-10-31 00:09:43,140 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EnderecoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:module/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:module/EnderecoServico
+
+2017-10-31 00:09:43,141 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:module/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:module/PedidoProdutoServico
+
+2017-10-31 00:09:43,142 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named AutenticacaoLogServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:module/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:module/AutenticacaoLogServico
+
+2017-10-31 00:09:43,144 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:module/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:module/PedidoServico
+
+2017-10-31 00:09:43,144 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ArquivoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:module/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:module/ArquivoServico
+
+2017-10-31 00:09:43,145 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named MenuServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:module/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:module/MenuServico
+
+2017-10-31 00:09:43,145 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:module/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:module/ProdutoServico
+
+2017-10-31 00:09:43,146 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutorLogger in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:module/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:module/ProdutorLogger
+
+2017-10-31 00:09:43,147 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named TamanhoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:module/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:module/TamanhoServico
+
+2017-10-31 00:09:43,147 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PaginaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:module/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:module/PaginaServico
+
+2017-10-31 00:09:43,148 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named SaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:module/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:module/SaborServico
+
+2017-10-31 00:09:43,148 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ArquivoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:module/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:module/ArquivoTipoServico
+
+2017-10-31 00:09:43,149 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoProdutoSaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico
+
+2017-10-31 00:09:43,149 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoIngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico
+
+2017-10-31 00:09:43,150 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named CaixaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:module/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:module/CaixaServico
+
+2017-10-31 00:09:43,151 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named IngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:module/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:module/IngredienteServico
+
+2017-10-31 00:09:43,151 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named UsuarioServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:module/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:module/UsuarioServico
+
+2017-10-31 00:09:43,151 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EmpresaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:module/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:module/EmpresaServico
+
+2017-10-31 00:09:43,152 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EstadoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:module/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:module/EstadoServico
+
+2017-10-31 00:09:43,153 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ConfiguracaoSistemaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico
+
+2017-10-31 00:09:43,153 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PromocaoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:module/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:module/PromocaoServico
+
+2017-10-31 00:09:43,154 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:module/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:module/ProdutoTipoServico
+
+2017-10-31 00:09:43,155 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named NivelServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:module/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:module/NivelServico
+
+2017-10-31 00:09:44,026 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0006: Starting Services for CDI deployment: gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 00:09:44,058 INFO  [org.jboss.weld.Version] (MSC service thread 1-6) WELD-000900: 2.2.14 (Final)
+2017-10-31 00:09:44,085 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0018: Host default-host starting
+2017-10-31 00:09:44,146 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0009: Starting weld service for deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 00:09:44,351 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 66) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-10-31 00:09:44,453 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 66) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2017-10-31 00:09:44,784 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 66) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-10-31 00:09:44,795 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 66) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-10-31 00:09:45,057 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 66) HHH000397: Using ASTQueryTranslatorFactory
+2017-10-31 00:09:45,912 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#referencia
+2017-10-31 00:09:45,912 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#precoFinal
+2017-10-31 00:09:45,914 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#origemPreco
+2017-10-31 00:09:45,915 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#produtos
+2017-10-31 00:09:45,915 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#sequencia
+2017-10-31 00:09:45,915 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#somaPrecoSabor
+2017-10-31 00:09:45,916 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#preco
+2017-10-31 00:09:45,917 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanhos
+2017-10-31 00:09:45,917 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#permiteSabores
+2017-10-31 00:09:45,918 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#preco
+2017-10-31 00:09:45,918 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanho
+2017-10-31 00:09:45,918 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sequencia
+2017-10-31 00:09:45,919 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sabores
+2017-10-31 00:09:45,922 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#cliente
+2017-10-31 00:09:45,922 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorTotal
+2017-10-31 00:09:45,923 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorCobrado
+2017-10-31 00:09:45,923 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorDesconto
+2017-10-31 00:09:45,928 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Empresa_#situacao
+2017-10-31 00:09:45,930 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Nivel_#editarView
+2017-10-31 00:09:45,931 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#produto
+2017-10-31 00:09:45,931 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#preco
+2017-10-31 00:09:45,931 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#situacao
+2017-10-31 00:09:45,932 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#empresa
+2017-10-31 00:09:45,932 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#limiteSabores
+2017-10-31 00:09:45,939 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#dataCadastro
+2017-10-31 00:09:45,942 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#sequencia
+2017-10-31 00:09:45,943 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 66) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#empresa
+2017-10-31 00:09:48,342 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 76) Initializing Mojarra 2.2.11-jbossorg-1 20150505-1501 for context ''
+2017-10-31 00:09:50,034 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 76) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 00:09:50,035 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 76) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 00:09:50,035 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 76) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 00:09:51,615 INFO  [org.jboss.resteasy.spi.ResteasyDeployment] (ServerService Thread Pool -- 76) Deploying javax.ws.rs.core.Application: class br.com.will.gestao.rest.ApplicationPath$Proxy$_$$_WeldClientProxy
+2017-10-31 00:09:51,630 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0021: Registered web context: /
+2017-10-31 00:09:51,686 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 37) WFLYSRV0010: Deployed "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name : "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-10-31 00:09:51,843 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:10101/management
+2017-10-31 00:09:51,843 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:10101
+2017-10-31 00:09:51,844 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) started in 43576ms - Started 758 of 923 services (238 services are lazy, passive or on-demand)
+2017-10-31 00:13:03,180 SEVERE [javax.enterprise.resource.webcontainer.jsf.application] (default task-1) JSF1007: Duplicate component ID j_idt14 found in view.
+2017-10-31 00:13:03,188 SEVERE [javax.enterprise.resource.webcontainer.jsf.application] (default task-1) +id: j_id1
+ type: javax.faces.component.UIViewRoot@6ca75442
+  +id: javax_faces_location_HEAD
+   type: com.sun.faces.component.ComponentResourceContainer@21794e54
+    +id: j_id3
+     type: javax.faces.component.UIOutput@6adad4ba
+  +id: j_idt66
+   type: 
+			<div class="col-md-18">
+				
+  +id: j_idt1
+   type: <html xmlns="http://www.w3.org/1999/xhtml">
+
+
+  +id: j_idt2
+   type: javax.faces.component.UIOutput@637805d3
+    +id: j_idt3
+     type: 
+
+	<title>
+    +id: j_idt4
+     type: javax.faces.component.html.HtmlOutputText@3978563
+    +id: j_idt5
+     type: </title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<meta name="theme-color" content="#ffffff"/>
+	
+	<link type="image/x-icon" rel="shortcut icon" href="../resources/images/favicon.ico"/>
+	
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap2.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/icons.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/multiple-select.min.css"/>
+	
+	
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/owl.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/animate.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/css/gestao.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/fonts/font-awesome-4.1.0/css/font-awesome.min.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="../resources/fonts/eleganticons/et-icons.css"/>
+	
+	<script type="text/javascript" src="../resources/js/jquery-1.12.4.min.js"/>
+	
+	<script type="text/javascript" src="../resources/js/bootstrap2.min.js"/>
+	<script type="text/javascript" src="../resources/js/jquery.jclock.js"/>
+	<script type="text/javascript" src="../resources/js/jquery.treegrid.js"/>
+	<script type="text/javascript" src="../resources/js/jquery.treegrid.bootstrap3.js"/>
+	<script type="text/javascript" src="../resources/js/jquery.mask.min.js"/>
+	<script type="text/javascript" src="../resources/js/multiple-select.min.js"/>
+	<script type="text/javascript" src="../resources/js/sistema.js"/>
+	<script type="text/javascript" src="../resources/js/owl.carousel.min.js"/>
+	<script type="text/javascript" src="../resources/js/wow.min.js"/>
+	<script type="text/javascript" src="../resources/js/typewriter.js"/>
+	
+	<script type="text/javascript" src="../resources/js/main2.js"/>
+	
+	
+	
+
+  +id: j_idt6
+   type: 
+
+<body>
+	
+  +id: headerForm
+   type: javax.faces.component.html.HtmlForm@68f770ab
+    +id: j_idt32
+     type: 
+						
+						
+					</ul>
+				</div>
+				
+			</div>
+			
+		</nav>
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+    +id: j_idt7
+     type: 
+		<nav class="navbar">
+			<div class="container">
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"/> <span class="icon-bar"/> <span class="icon-bar"/>
+					</button>
+					<a class="navbar-brand" href="home.ppd"><img src="../resources/images/pizza-logo.png" data-active-url="../resources/images/pizza-logo.png" alt="A"/></a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right main-nav">
+						<li><a href="home.ppd">Home</a></li>
+						
+
+						
+    +id: j_idt8
+     type: javax.faces.component.html.HtmlPanelGroup@54b4160b
+      +id: j_idt9
+       type: 
+							<li class="dropdown"><a id="menuClienteVertical" class="dropdown-toggle" data-toggle="dropdown" href="#">Conta</a>
+								<div class="dropdown-menu" aria-labelledby="menuVertical">
+									<ul style="list-style-type: none;">
+										
+      +id: j_idt10
+       type: 
+									</ul>
+								</div></li>
+
+							<li class="dropdown" style="background-color: #bbb; color: black;"><a id="cart" class="dropdown-toggle" data-toggle="dropdown" href="#"> Carrinho
+								
+      +id: j_idt11
+       type: javax.faces.component.html.HtmlOutputText@7741c7d3
+      +id: j_idt12
+       type: </a>
+								<div class="dropdown-menu" aria-labelledby="cartDD">
+								</div>
+							</li>
+
+						
+    +id: j_idt13
+     type: javax.faces.component.html.HtmlPanelGroup@48c2e8c5
+      +id: j_idt14  <===============
+       type: 
+							<li class="dropdown"><a id="menuVertical" class="dropdown-toggle" data-toggle="dropdown" href="#">Menu</a>
+								<div class="dropdown-menu" aria-labelledby="menuVertical">
+									<ul style="list-style: none;">
+										
+      +id: j_idt14  <===============
+       type: 
+							<li class="dropdown"><a id="menuVertical" class="dropdown-toggle" data-toggle="dropdown" href="#">Menu</a>
+								<div class="dropdown-menu" aria-labelledby="menuVertical">
+									<ul style="list-style: none;">
+										
+      +id: j_idt15
+       type: javax.faces.component.html.HtmlPanelGroup@1be3bb5e
+        +id: j_idt16
+         type: 
+											<li class="dropdown-header">PERMISSÕES</li>
+											<li>
+												<ul class="dropdown-menu-2">
+													<li>
+        +id: j_idt17
+         type: javax.faces.component.html.HtmlCommandLink@6f93f267
+        +id: j_idt18
+         type: </li>
+												</ul>
+											</li>
+										
+      +id: j_idt19
+       type: 
+									</ul>
+								</div></li>
+						
+    +id: j_idt20
+     type: javax.faces.component.html.HtmlPanelGroup@1695df19
+      +id: j_idt21
+       type: 
+							<li><a href="cadastroCliente.ppd">Cadastre-se</a></li>
+						
+    +id: j_idt22
+     type: javax.faces.component.html.HtmlPanelGroup@494e99ce
+      +id: j_idt23
+       type: 
+							<li>
+      +id: j_idt26
+       type: </li>
+						
+      +id: j_idt23
+       type: 
+							<li>
+      +id: j_idt24
+       type: javax.faces.component.html.HtmlCommandLink@4f71e2f2
+        +id: j_idt25
+         type: 
+									<i> Login</i>
+									
+      +id: j_idt26
+       type: </li>
+						
+    +id: j_idt27
+     type: javax.faces.component.html.HtmlPanelGroup@3f8121b1
+      +id: j_idt28
+       type: 
+							<li>
+      +id: j_idt29
+       type: javax.faces.component.html.HtmlCommandLink@7544c4f
+        +id: j_idt30
+         type: 
+									<i> Logout</i>
+								
+      +id: j_idt31
+       type: </li>
+						
+    +id: j_idt32
+     type: 
+						
+						
+					</ul>
+				</div>
+				
+			</div>
+			
+		</nav>
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+    +id: loginModal
+     type: javax.faces.component.UINamingContainer@3ae92582
+      +id: j_id11
+       type: javax.faces.component.UIPanel@7a4f365f
+        +id: j_idt47
+         type: 
+	
+	<div class="modal fade" id="#{cc.attrs.id}" tabindex="-1" role="dialog" aria-labelledby="modal" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				
+        +id: j_idt48
+         type: javax.faces.component.html.HtmlCommandLink@4c750c0e
+          +id: j_idt49
+           type: 
+					<i class="icon_close_alt2"/>
+					
+        +id: j_idt50
+         type: 
+
+				<div class="modal-header">
+					<h3 class="modal-title">
+        +id: j_idt51
+         type: javax.faces.component.html.HtmlOutputText@69e607fb
+        +id: j_idt52
+         type: </h3>
+				</div>
+
+				<div class="modal-body">
+					
+        +id: login
+         type: javax.faces.component.html.HtmlInputText@1a50ea70
+        +id: passwd
+         type: javax.faces.component.html.HtmlInputSecret@192ecaab
+        +id: j_idt53
+         type: 
+				</div>
+
+				<div class="modal-footer">
+					
+        +id: j_idt54
+         type: javax.faces.component.html.HtmlCommandLink@7ddfa0fc
+        +id: j_idt55
+         type: javax.faces.component.html.HtmlCommandLink@24dfb963
+        +id: j_idt56
+         type: 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+        +id: controleModalPG
+         type: javax.faces.component.html.HtmlPanelGroup@39c1d4e2
+          +id: j_idt57
+           type: javax.faces.component.html.HtmlPanelGroup@56d53ae3
+            +id: j_idt58
+             type: 
+			<script type="text/javascript">
+ 				$(document).ready(function() { 
+  					$('#loginModal').modal('show'); 
+  				}); 
+ 			</script>
+		
+          +id: j_idt59
+           type: javax.faces.component.html.HtmlPanelGroup@560da885
+            +id: j_idt60
+             type: 
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#loginModal').modal('hide'); 
+				}); 
+			</script>
+		
+  +id: j_idt61
+   type: 
+
+	<div class="espaco"/>
+
+	<div style="top: 140px;" class="container">
+		
+  +id: message
+   type: javax.faces.component.html.HtmlMessages@fc01786
+  +id: j_idt62
+   type: javax.faces.component.html.HtmlPanelGroup@3891a458
+    +id: j_idt63
+     type: 
+		<h1 class="page-header margin-top-50">
+			
+    +id: j_idt63
+     type: 
+		<h1 class="page-header margin-top-50">
+			
+    +id: j_idt64
+     type: javax.faces.component.html.HtmlOutputText@476c938b
+    +id: j_idt65
+     type: 
+		</h1>
+	
+  +id: j_idt66
+   type: 
+			<div class="col-md-18">
+				
+  +id: produtoTipoForm
+   type: javax.faces.component.html.HtmlForm@7c1e5263
+    +id: j_idt72
+     type: 
+					</div>
+				</div>
+			</div>
+			<div>
+				
+    +id: j_idt67
+     type: 
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-6 esq">
+					<div class="btn-group btn-group-sm">
+						
+    +id: j_idt68
+     type: javax.faces.component.html.HtmlCommandLink@73ed0641
+    +id: j_idt69
+     type: javax.faces.component.html.HtmlCommandLink@466bcf00
+    +id: j_idt70
+     type: 
+					</div>
+				</div>
+
+				<div class="col-sm-6 centro"/>
+
+				<div class="col-sm-6 dir">
+					<div class="btn-group btn-group-sm">
+						
+    +id: j_idt71
+     type: javax.faces.component.html.HtmlCommandLink@65b8ec8d
+    +id: j_idt72
+     type: 
+					</div>
+				</div>
+			</div>
+			<div>
+				
+    +id: produtosTiposPG
+     type: javax.faces.component.html.HtmlPanelGroup@6bbb3713
+      +id: produtoTipoDT
+       type: javax.faces.component.UINamingContainer@184b2559
+        +id: j_id9
+         type: javax.faces.component.UIPanel@70ffeb2b
+          +id: produtoTipoDTPaginacaoPG
+           type: javax.faces.component.html.HtmlPanelGroup@687429fb
+            +id: j_idt108
+             type: javax.faces.component.html.HtmlOutputText@4a8a7cfc
+            +id: j_idt109
+             type: javax.faces.component.html.HtmlPanelGroup@783bd911
+              +id: j_idt110
+               type: 
+				<div class="wrap-btn-grid #{(!cc.attrs.componenteBtn) ? 'hide' : ''}">
+					<div class="cont-dir">
+						
+              +id: j_idt111
+               type: javax.faces.component.html.HtmlCommandLink@7792d38e
+                +id: j_idt112
+                 type: 
+							<i/>
+							<span>
+                +id: j_idt113
+                 type: javax.faces.component.html.HtmlOutputText@3e600776
+                +id: j_idt114
+                 type: </span>
+						
+              +id: j_idt115
+               type: javax.faces.component.html.HtmlCommandLink@2714f1da
+                +id: j_idt116
+                 type: 
+							<i/>
+							<span>
+                +id: j_idt117
+                 type: javax.faces.component.html.HtmlOutputText@1c15778
+                +id: j_idt118
+                 type: </span>
+						
+              +id: j_idt119
+               type: 
+					</div>
+				</div>
+			
+            +id: j_idt120
+             type: javax.faces.component.html.HtmlPanelGroup@60aefa6d
+              +id: j_idt121
+               type: 
+				<div class="scroll-horizontal">
+					
+              +id: produtoTipoDTDT
+               type: javax.faces.component.html.HtmlDataTable@5ecb1ab9
+                +id: j_idt73
+                 type: javax.faces.component.UIColumn@5ed1aa9b
+                  +id: j_id4
+                   type: javax.faces.component.UIPanel@55a05cae
+                    +id: j_idt74
+                     type: 
+								<div class="align-center">
+									
+                    +id: j_idt75
+                     type: javax.faces.component.html.HtmlOutputText@42caa9e5
+                    +id: j_idt76
+                     type: 
+								</div>
+							
+                  +id: j_idt77
+                   type: javax.faces.component.html.HtmlOutputText@44d27dd7
+                +id: j_idt78
+                 type: javax.faces.component.UIColumn@170492a4
+                  +id: j_idt79
+                   type: javax.faces.component.html.HtmlOutputText@4096e9c6
+                  +id: j_idt80
+                   type: javax.faces.component.html.HtmlOutputText@5784e5b0
+                +id: j_idt81
+                 type: javax.faces.component.UIColumn@ef0652
+                  +id: j_idt82
+                   type: javax.faces.component.html.HtmlOutputText@33cd3559
+                  +id: j_idt83
+                   type: javax.faces.component.html.HtmlOutputText@44e2323f
+                +id: j_idt84
+                 type: javax.faces.component.UIColumn@34bbe676
+                  +id: j_idt85
+                   type: javax.faces.component.html.HtmlOutputText@4c9eab25
+                  +id: j_idt86
+                   type: javax.faces.component.html.HtmlOutputText@16a32812
+                +id: j_idt87
+                 type: javax.faces.component.UIColumn@43058333
+                  +id: j_idt88
+                   type: javax.faces.component.html.HtmlOutputText@28665573
+                  +id: j_idt89
+                   type: javax.faces.component.html.HtmlOutputText@119804d9
+                +id: j_idt90
+                 type: javax.faces.component.UIColumn@1ef44d40
+                  +id: j_id5
+                   type: javax.faces.component.UIPanel@718749b6
+                    +id: j_idt91
+                     type: 
+								<div class="align-center">
+									
+                    +id: j_idt92
+                     type: javax.faces.component.html.HtmlOutputText@6bd04738
+                    +id: j_idt93
+                     type: 
+								</div>
+							
+                  +id: j_idt94
+                   type: javax.faces.component.UINamingContainer@3a3f2857
+                    +id: j_id2
+                     type: javax.faces.component.UIPanel@61dec1d
+                      +id: j_idt95
+                       type: javax.faces.component.html.HtmlPanelGroup@4d9cdf91
+                        +id: j_idt96
+                         type: javax.faces.component.html.HtmlCommandButton@241cb89d
+                        +id: j_idt97
+                         type: javax.faces.component.html.HtmlCommandButton@672251d9
+                +id: j_idt98
+                 type: javax.faces.component.UIColumn@eb62424
+                  +id: j_id6
+                   type: javax.faces.component.UIPanel@257d0234
+                    +id: j_idt99
+                     type: 
+								<div class="align-center">
+									
+                    +id: j_idt100
+                     type: javax.faces.component.html.HtmlOutputText@64648e56
+                    +id: j_idt101
+                     type: 
+								</div>
+							
+                  +id: j_idt102
+                   type: javax.faces.component.html.HtmlPanelGroup@11bda79a
+                    +id: j_idt103
+                     type: javax.faces.component.html.HtmlCommandLink@2e15268d
+                      +id: j_idt104
+                       type: 
+									<img src="../resources/images/ico/16x16/layers.png" title="Níveis" alt="Níveis"/>
+									
+                    +id: j_idt105
+                     type: javax.faces.component.html.HtmlCommandLink@63b4fdd9
+                      +id: j_idt106
+                       type: 
+									<img src="../resources/images/ico/16x16/pencil.png" title="#{msg.txt_editar}"/>
+									
+                      +id: j_idt107
+                       type: javax.faces.component.UIParameter@2362d9c7
+              +id: j_idt122
+               type: 
+				</div>
+
+				
+              +id: j_idt123
+               type: javax.faces.component.UINamingContainer@5f9f3b46
+                +id: j_id8
+                 type: javax.faces.component.UIPanel@58b94f76
+                  +id: j_idt124
+                   type: 
+
+		<div class="row wrap-paginacao">
+			<div class="col-sm-8 total-registros">
+				
+                  +id: j_idt125
+                   type: javax.faces.component.html.HtmlOutputText@1c273b8d
+                  +id: j_idt126
+                   type: 
+				<strong> 
+                  +id: j_idt127
+                   type: javax.faces.component.html.HtmlOutputText@293e752f
+                  +id: j_idt128
+                   type: 
+				</strong>
+			</div>
+
+			
+                  +id: j_idt129
+                   type: javax.faces.component.html.HtmlPanelGroup@f5d2e45
+                    +id: j_idt130
+                     type: 
+				<div class="col-sm-16 paginacao">
+					<span class="links-paginacao">
+						
+                    +id: j_idt131
+                     type: javax.faces.component.html.HtmlPanelGroup@1d8d0227
+                      +id: j_idt132
+                       type: 
+							<span class="inactive">
+                      +id: j_idt133
+                       type: javax.faces.component.html.HtmlOutputText@3853b948
+                      +id: j_idt134
+                       type: </span>
+						
+                    +id: j_idt135
+                     type: javax.faces.component.html.HtmlCommandLink@629e3460
+                    +id: j_idt136
+                     type: com.sun.faces.facelets.component.UIRepeat@4d70170
+                      +id: j_idt137
+                       type: javax.faces.component.html.HtmlOutputText@71beb7f7
+                      +id: j_idt138
+                       type: javax.faces.component.html.HtmlCommandLink@5402d971
+                      +id: j_idt139
+                       type: javax.faces.component.html.HtmlOutputText@472cdaa5
+                    +id: j_idt140
+                     type: javax.faces.component.html.HtmlPanelGroup@7bcc8fb1
+                      +id: j_idt141
+                       type: 
+							<span class="inactive">
+                      +id: j_idt142
+                       type: javax.faces.component.html.HtmlOutputText@7f498e30
+                      +id: j_idt143
+                       type: </span>
+						
+                    +id: j_idt144
+                     type: javax.faces.component.html.HtmlCommandLink@3dc209f9
+                    +id: j_idt145
+                     type: 
+					</span> : 
+					
+					<span class="total-paginas">
+						
+                    +id: j_idt146
+                     type: javax.faces.component.html.HtmlOutputText@1c1a1516
+                    +id: j_idt147
+                     type: 
+						<strong>
+                    +id: j_idt148
+                     type: javax.faces.component.html.HtmlOutputText@3b4b023
+                    +id: j_idt149
+                     type: </strong>
+						
+                    +id: j_idt150
+                     type: javax.faces.component.html.HtmlOutputText@303f966b
+                    +id: j_idt151
+                     type: javax.faces.component.html.HtmlOutputText@1d1fdc54
+                    +id: j_idt152
+                     type: 
+						<strong>
+                    +id: j_idt153
+                     type: javax.faces.component.html.HtmlOutputText@51e1d844
+                    +id: j_idt154
+                     type: </strong>
+						
+                    +id: j_idt155
+                     type: javax.faces.component.html.HtmlOutputText@77f25ff3
+                    +id: j_idt156
+                     type: javax.faces.component.html.HtmlOutputText@3bb203a8
+                    +id: j_idt157
+                     type: 
+					</span>
+				</div>
+			
+                  +id: j_idt158
+                   type: 
+		</div>
+
+	
+    +id: j_idt159
+     type: 
+			</div>
+
+			
+    +id: nivelPG
+     type: javax.faces.component.html.HtmlPanelGroup@582c85f6
+  +id: j_idt160
+   type: 
+			</div>
+
+	</div>
+	
+
+	<div class="espaco"/>
+		<div style="height: 2000px;"/>
+	
+	
+</body>
+</html>
+
+2017-10-31 00:13:03,206 SEVERE [javax.enterprise.resource.webcontainer.jsf.application] (default task-1) Error Rendering View[/pages/produtosTipo.xhtml]: java.lang.IllegalStateException: A ID de componente j_idt14 já foi encontrada na visualização.
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1026)
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1010)
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1010)
+	at com.sun.faces.application.view.FaceletPartialStateManagementStrategy.saveView(FaceletPartialStateManagementStrategy.java:460)
+	at com.sun.faces.application.StateManagerImpl.saveView(StateManagerImpl.java:89)
+	at javax.faces.application.StateManager.getViewState(StateManager.java:593)
+	at com.sun.faces.context.PartialViewContextImpl.renderState(PartialViewContextImpl.java:483)
+	at com.sun.faces.context.PartialViewContextImpl.processPartial(PartialViewContextImpl.java:325)
+	at javax.faces.component.UIViewRoot.encodeChildren(UIViewRoot.java:1004)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.renderView(FaceletViewHandlingStrategy.java:430)
+	at com.sun.faces.application.view.MultiViewHandler.renderView(MultiViewHandler.java:133)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:120)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:655)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+
+2017-10-31 00:13:03,214 SEVERE [javax.enterprise.resource.webcontainer.jsf.context] (default task-1) java.lang.IllegalStateException: A ID de componente j_idt14 já foi encontrada na visualização.
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1026)
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1010)
+	at com.sun.faces.util.Util.checkIdUniqueness(Util.java:1010)
+	at com.sun.faces.application.view.FaceletPartialStateManagementStrategy.saveView(FaceletPartialStateManagementStrategy.java:460)
+	at com.sun.faces.application.StateManagerImpl.saveView(StateManagerImpl.java:89)
+	at javax.faces.application.StateManager.getViewState(StateManager.java:593)
+	at com.sun.faces.context.PartialViewContextImpl.renderState(PartialViewContextImpl.java:483)
+	at com.sun.faces.context.PartialViewContextImpl.processPartial(PartialViewContextImpl.java:325)
+	at javax.faces.component.UIViewRoot.encodeChildren(UIViewRoot.java:1004)
+	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+	at com.sun.faces.application.view.FaceletViewHandlingStrategy.renderView(FaceletViewHandlingStrategy.java:430)
+	at com.sun.faces.application.view.MultiViewHandler.renderView(MultiViewHandler.java:133)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:120)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:655)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+
+2017-10-31 00:13:16,156 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-2) SQL Error: 0, SQLState: 42703
+2017-10-31 00:13:16,158 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-2) ERROR: column produtotip2_.soma_preco_sabor does not exist
+  Hint: Perhaps you meant to reference the column "produtotip2_.somaprecosabor".
+  Position: 1024
+2017-10-31 00:13:16,168 ERROR [stderr] (default task-2) br.com.will.gestao.servico.exception.BaseServicoException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2017-10-31 00:13:16,169 ERROR [stderr] (default task-2) 	at br.com.will.gestao.servico.ProdutoServico.obterTodosParaMenu(ProdutoServico.java:62)
+2017-10-31 00:13:16,169 ERROR [stderr] (default task-2) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-10-31 00:13:16,169 ERROR [stderr] (default task-2) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-10-31 00:13:16,169 ERROR [stderr] (default task-2) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-10-31 00:13:16,170 ERROR [stderr] (default task-2) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-10-31 00:13:16,170 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-10-31 00:13:16,170 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,170 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-10-31 00:13:16,171 ERROR [stderr] (default task-2) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-10-31 00:13:16,171 ERROR [stderr] (default task-2) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-10-31 00:13:16,171 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-10-31 00:13:16,171 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,172 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-10-31 00:13:16,172 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,172 ERROR [stderr] (default task-2) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-10-31 00:13:16,172 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,172 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-10-31 00:13:16,173 ERROR [stderr] (default task-2) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-10-31 00:13:16,173 ERROR [stderr] (default task-2) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-10-31 00:13:16,173 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,174 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-10-31 00:13:16,174 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,174 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-10-31 00:13:16,174 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,175 ERROR [stderr] (default task-2) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 00:13:16,175 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-10-31 00:13:16,175 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,175 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-10-31 00:13:16,176 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,176 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-10-31 00:13:16,177 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-10-31 00:13:16,177 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-10-31 00:13:16,178 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,179 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-10-31 00:13:16,179 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,179 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-10-31 00:13:16,180 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,180 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-10-31 00:13:16,181 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,181 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-10-31 00:13:16,181 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,181 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-10-31 00:13:16,182 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,182 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-10-31 00:13:16,182 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,183 ERROR [stderr] (default task-2) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-10-31 00:13:16,183 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,183 ERROR [stderr] (default task-2) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-10-31 00:13:16,183 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,183 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-10-31 00:13:16,184 ERROR [stderr] (default task-2) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-10-31 00:13:16,184 ERROR [stderr] (default task-2) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-10-31 00:13:16,184 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,184 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-10-31 00:13:16,185 ERROR [stderr] (default task-2) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-10-31 00:13:16,185 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,185 ERROR [stderr] (default task-2) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 00:13:16,185 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-10-31 00:13:16,185 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-10-31 00:13:16,186 ERROR [stderr] (default task-2) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 00:13:16,186 ERROR [stderr] (default task-2) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 00:13:16,186 ERROR [stderr] (default task-2) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-10-31 00:13:16,186 ERROR [stderr] (default task-2) 	at br.com.will.gestao.servico.ProdutoServico$$$view8.obterTodosParaMenu(Unknown Source)
+2017-10-31 00:13:16,186 ERROR [stderr] (default task-2) 	at br.com.will.gestao.bean.HomeBean.inicializar(HomeBean.java:76)
+2017-10-31 00:13:16,187 ERROR [stderr] (default task-2) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-10-31 00:13:16,187 ERROR [stderr] (default task-2) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-10-31 00:13:16,187 ERROR [stderr] (default task-2) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-10-31 00:13:16,187 ERROR [stderr] (default task-2) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-10-31 00:13:16,187 ERROR [stderr] (default task-2) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.invokeMethods(DefaultLifecycleCallbackInvoker.java:98)
+2017-10-31 00:13:16,188 ERROR [stderr] (default task-2) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.postConstruct(DefaultLifecycleCallbackInvoker.java:81)
+2017-10-31 00:13:16,188 ERROR [stderr] (default task-2) 	at org.jboss.weld.injection.producer.BasicInjectionTarget.postConstruct(BasicInjectionTarget.java:126)
+2017-10-31 00:13:16,188 ERROR [stderr] (default task-2) 	at org.jboss.weld.bean.ManagedBean.create(ManagedBean.java:162)
+2017-10-31 00:13:16,188 ERROR [stderr] (default task-2) 	at org.jboss.weld.util.bean.IsolatedForwardingBean.create(IsolatedForwardingBean.java:45)
+2017-10-31 00:13:16,188 ERROR [stderr] (default task-2) 	at com.sun.faces.application.view.ViewScopeContextManager.createBean(ViewScopeContextManager.java:144)
+2017-10-31 00:13:16,189 ERROR [stderr] (default task-2) 	at com.sun.faces.application.view.ViewScopeContext.get(ViewScopeContext.java:137)
+2017-10-31 00:13:16,189 ERROR [stderr] (default task-2) 	at org.jboss.weld.context.PassivatingContextWrapper$AbstractPassivatingContextWrapper.get(PassivatingContextWrapper.java:76)
+2017-10-31 00:13:16,189 ERROR [stderr] (default task-2) 	at org.jboss.weld.bean.ContextualInstanceStrategy$DefaultContextualInstanceStrategy.get(ContextualInstanceStrategy.java:101)
+2017-10-31 00:13:16,189 ERROR [stderr] (default task-2) 	at org.jboss.weld.bean.ContextualInstance.get(ContextualInstance.java:50)
+2017-10-31 00:13:16,189 ERROR [stderr] (default task-2) 	at org.jboss.weld.manager.BeanManagerImpl.getReference(BeanManagerImpl.java:761)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at org.jboss.weld.el.AbstractWeldELResolver.lookup(AbstractWeldELResolver.java:107)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at org.jboss.weld.el.AbstractWeldELResolver.getValue(AbstractWeldELResolver.java:90)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at org.jboss.as.jsf.injection.weld.ForwardingELResolver.getValue(ForwardingELResolver.java:46)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at javax.el.CompositeELResolver.getValue(CompositeELResolver.java:188)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at com.sun.faces.el.DemuxCompositeELResolver._getValue(DemuxCompositeELResolver.java:176)
+2017-10-31 00:13:16,190 ERROR [stderr] (default task-2) 	at com.sun.faces.el.DemuxCompositeELResolver.getValue(DemuxCompositeELResolver.java:203)
+2017-10-31 00:13:16,193 ERROR [stderr] (default task-2) 	at com.sun.el.parser.AstIdentifier.getValue(AstIdentifier.java:116)
+2017-10-31 00:13:16,193 ERROR [stderr] (default task-2) 	at com.sun.el.parser.AstValue.getBase(AstValue.java:151)
+2017-10-31 00:13:16,194 ERROR [stderr] (default task-2) 	at com.sun.el.parser.AstValue.getValue(AstValue.java:200)
+2017-10-31 00:13:16,194 ERROR [stderr] (default task-2) 	at com.sun.el.parser.AstEqual.getValue(AstEqual.java:58)
+2017-10-31 00:13:16,194 ERROR [stderr] (default task-2) 	at com.sun.el.parser.AstOr.getValue(AstOr.java:58)
+2017-10-31 00:13:16,194 ERROR [stderr] (default task-2) 	at com.sun.el.ValueExpressionImpl.getValue(ValueExpressionImpl.java:226)
+2017-10-31 00:13:16,194 ERROR [stderr] (default task-2) 	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+2017-10-31 00:13:16,195 ERROR [stderr] (default task-2) 	at org.jboss.weld.el.WeldValueExpression.getValue(WeldValueExpression.java:50)
+2017-10-31 00:13:16,195 ERROR [stderr] (default task-2) 	at com.sun.faces.facelets.el.TagValueExpression.getValue(TagValueExpression.java:109)
+2017-10-31 00:13:16,195 ERROR [stderr] (default task-2) 	at javax.faces.component.ComponentStateHelper.eval(ComponentStateHelper.java:194)
+2017-10-31 00:13:16,195 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponentBase.isRendered(UIComponentBase.java:457)
+2017-10-31 00:13:16,195 ERROR [stderr] (default task-2) 	at com.sun.faces.renderkit.html_basic.HtmlBasicRenderer.encodeRecursive(HtmlBasicRenderer.java:297)
+2017-10-31 00:13:16,196 ERROR [stderr] (default task-2) 	at com.sun.faces.renderkit.html_basic.GroupRenderer.encodeChildren(GroupRenderer.java:114)
+2017-10-31 00:13:16,196 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+2017-10-31 00:13:16,196 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+2017-10-31 00:13:16,196 ERROR [stderr] (default task-2) 	at javax.faces.render.Renderer.encodeChildren(Renderer.java:176)
+2017-10-31 00:13:16,196 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponentBase.encodeChildren(UIComponentBase.java:889)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1856)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at javax.faces.component.UIComponent.encodeAll(UIComponent.java:1859)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at com.sun.faces.application.view.FaceletViewHandlingStrategy.renderView(FaceletViewHandlingStrategy.java:456)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at com.sun.faces.application.view.MultiViewHandler.renderView(MultiViewHandler.java:133)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+2017-10-31 00:13:16,197 ERROR [stderr] (default task-2) 	at javax.faces.application.ViewHandlerWrapper.renderView(ViewHandlerWrapper.java:337)
+2017-10-31 00:13:16,198 ERROR [stderr] (default task-2) 	at com.sun.faces.lifecycle.RenderResponsePhase.execute(RenderResponsePhase.java:120)
+2017-10-31 00:13:16,198 ERROR [stderr] (default task-2) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-10-31 00:13:16,198 ERROR [stderr] (default task-2) 	at com.sun.faces.lifecycle.LifecycleImpl.render(LifecycleImpl.java:219)
+2017-10-31 00:13:16,198 ERROR [stderr] (default task-2) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:655)
+2017-10-31 00:13:16,199 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-10-31 00:13:16,199 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-10-31 00:13:16,199 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-10-31 00:13:16,199 ERROR [stderr] (default task-2) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-10-31 00:13:16,200 ERROR [stderr] (default task-2) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 00:13:16,200 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-10-31 00:13:16,200 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-10-31 00:13:16,200 ERROR [stderr] (default task-2) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-10-31 00:13:16,201 ERROR [stderr] (default task-2) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-10-31 00:13:16,202 ERROR [stderr] (default task-2) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 00:13:16,202 ERROR [stderr] (default task-2) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-10-31 00:13:16,202 ERROR [stderr] (default task-2) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 00:13:16,202 ERROR [stderr] (default task-2) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 00:13:16,202 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-10-31 00:13:16,203 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-10-31 00:13:16,203 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-10-31 00:13:16,203 ERROR [stderr] (default task-2) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-10-31 00:13:16,204 ERROR [stderr] (default task-2) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-10-31 00:13:16,204 ERROR [stderr] (default task-2) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-10-31 00:13:16,204 ERROR [stderr] (default task-2) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+2017-10-31 00:13:16,204 ERROR [stderr] (default task-2) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+2017-10-31 00:13:16,205 ERROR [stderr] (default task-2) 	at java.lang.Thread.run(Thread.java:748)
+2017-10-31 00:14:37,731 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-7) ######################## HOSTNAME - GESTAO ######################## 
+2017-10-31 00:14:37,731 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-7) # HOSTNAME - WILLIAMS-MACBOOK-AIR.LOCAL - HOSTNAME #
+2017-10-31 00:14:37,731 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-7) ######################## HOSTNAME - GESTAO ######################## 
+2017-10-31 00:14:37,867 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-7) Nao Existe Caixa cadastrado no periodo
+2017-10-31 00:14:37,873 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-7) WILLADM
+2017-10-31 00:14:37,873 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-7) f653ffecc419dbf21a0000085139339c621a07e0
+2017-10-31 00:14:52,178 INFO  [br.com.will.gestao.bean.BaseBean] (default task-10) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:14:52,217 INFO  [br.com.will.gestao.bean.BaseBean] (default task-10) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:16:48,984 INFO  [br.com.will.gestao.bean.BaseBean] (default task-39) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:16:49,029 INFO  [br.com.will.gestao.bean.BaseBean] (default task-39) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:20:04,116 INFO  [br.com.will.gestao.bean.BaseBean] (default task-68) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 00:20:04,129 INFO  [br.com.will.gestao.bean.BaseBean] (default task-68) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-10-31 09:00:34,480 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2017-10-31 09:00:45,633 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2017-10-31 09:00:45,881 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) starting
+2017-10-31 09:00:45,886 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/jboss-modules.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/williamfermino/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/c2/1lwbrnt108zbjd8242z3pmww0000gn/T/
+	java.library.path = /Users/williamfermino/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_131-b11
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_131
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.131-b11
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.bind.address = localhost
+	jboss.bind.address.management = localhost
+	jboss.home.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final
+	jboss.host.name = williams-macbook-air
+	jboss.modules.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = williams-macbook-air
+	jboss.qualified.host.name = williams-macbook-air.local
+	jboss.server.base.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	jboss.server.config.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration
+	jboss.server.data.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data
+	jboss.server.deploy.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/content
+	jboss.server.log.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log
+	jboss.server.name = williams-macbook-air
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties
+	module.path = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	org.jboss.boot.log.file = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log
+	org.jboss.logmanager.nocolor = true
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.12.6
+	path.separator = :
+	program.name = JBossTools: WildFly Gestao
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = org.jboss.modules.Main -mp /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/modules -jaxpmodule javax.xml.jaxp-provider -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone-full.xml -Djboss.server.base.dir=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	sun.rmi.dgc.client.gcInterval = 3600000
+	sun.rmi.dgc.server.gcInterval = 3600000
+	user.country = US
+	user.country.format = BR
+	user.dir = /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/bin
+	user.home = /Users/williamfermino
+	user.language = en
+	user.name = williamfermino
+	user.timezone = America/Sao_Paulo
+2017-10-31 09:00:45,888 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49771 -Dprogram.name=JBossTools: WildFly Gestao -Xms64m -Xmx512m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log -Dlogging.configuration=file:/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties -Djboss.home.dir=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Dfile.encoding=UTF-8 
+2017-10-31 09:00:50,030 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 16) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=gestaoalimentosLocalPool' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-10-31 09:00:50,034 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 8) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-10-31 09:00:50,151 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) WFLYDS0004: Found gestaoalimentos-0.0.1-SNAPSHOT.war in deployment directory. To trigger deployment create a file called gestaoalimentos-0.0.1-SNAPSHOT.war.dodeploy
+2017-10-31 09:00:50,203 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2017-10-31 09:00:50,280 INFO  [org.xnio] (MSC service thread 1-3) XNIO version 3.3.1.Final
+2017-10-31 09:00:50,314 INFO  [org.xnio.nio] (MSC service thread 1-3) XNIO NIO Implementation Version 3.3.1.Final
+2017-10-31 09:00:50,407 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 41) WFLYCLINF0001: Activating Infinispan subsystem.
+2017-10-31 09:00:50,481 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 42) WFLYIIOP0001: Activating IIOP Subsystem
+2017-10-31 09:00:50,477 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 59) WFLYSEC0002: Activating Security Subsystem
+2017-10-31 09:00:50,481 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 60) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2017-10-31 09:00:50,512 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 52) WFLYNAM0001: Activating Naming Subsystem
+2017-10-31 09:00:50,512 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 62) WFLYWS0002: Activating WebServices Extension
+2017-10-31 09:00:50,516 INFO  [org.jboss.as.security] (MSC service thread 1-2) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2017-10-31 09:00:50,519 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 48) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2017-10-31 09:00:50,766 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-10-31 09:00:50,773 INFO  [org.jboss.as.connector] (MSC service thread 1-4) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.4.Final)
+2017-10-31 09:00:50,775 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 61) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-10-31 09:00:50,872 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-8) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2017-10-31 09:00:50,872 INFO  [org.jboss.as.naming] (MSC service thread 1-7) WFLYNAM0003: Starting Naming Service
+2017-10-31 09:00:51,000 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 36) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.1)
+2017-10-31 09:00:51,029 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = postgres
+2017-10-31 09:00:51,052 INFO  [org.jboss.remoting] (MSC service thread 1-3) JBoss Remoting version 4.0.9.Final
+2017-10-31 09:00:51,506 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0012: Started server default-server.
+2017-10-31 09:00:51,967 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTP listener default listening on /0.0.0.0:8080
+2017-10-31 09:00:52,788 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-3) WFLYDS0013: Started FileSystemDeploymentService for directory /opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/deployments
+2017-10-31 09:00:52,804 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0027: Starting deployment of "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name: "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-10-31 09:00:54,003 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0006: Undertow HTTPS listener https listening on /0.0.0.0:8443
+2017-10-31 09:00:54,220 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2017-10-31 09:01:01,550 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) WFLYJPA0002: Read persistence.xml for gestaoAlimentosPU
+2017-10-31 09:01:02,071 INFO  [org.wildfly.iiop.openjdk] (MSC service thread 1-2) WFLYIIOP0009: CORBA ORB Service started
+2017-10-31 09:01:06,749 WARN  [org.jboss.as.messaging] (MSC service thread 1-8) WFLYMSG0001: AIO wasn't located on this platform, it will fall back to using pure Java NIO.
+2017-10-31 09:01:06,922 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) WFLYJCA0001: Bound data source [java:/gestaoalimentosLocalDS]
+2017-10-31 09:01:06,934 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 64) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-10-31 09:01:06,960 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingjournal,bindingsDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingbindings,largeMessagesDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messaginglargemessages,pagingDirectory=/opt/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingpaging)
+2017-10-31 09:01:06,970 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221006: Waiting to obtain live lock
+2017-10-31 09:01:06,974 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 64) HHH000204: Processing PersistenceUnitInfo [
+	name: gestaoAlimentosPU
+	...]
+2017-10-31 09:01:07,078 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221013: Using NIO Journal
+2017-10-31 09:01:07,252 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221043: Adding protocol support CORE
+2017-10-31 09:01:07,277 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221043: Adding protocol support AMQP
+2017-10-31 09:01:07,285 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 64) HHH000412: Hibernate Core {4.3.10.Final}
+2017-10-31 09:01:07,290 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221043: Adding protocol support STOMP
+2017-10-31 09:01:07,322 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 64) HHH000206: hibernate.properties not found
+2017-10-31 09:01:07,329 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 64) HHH000021: Bytecode provider name : javassist
+2017-10-31 09:01:07,596 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221034: Waiting to obtain live lock
+2017-10-31 09:01:07,599 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221035: Live Server Obtained live lock
+2017-10-31 09:01:08,202 INFO  [org.jboss.messaging] (MSC service thread 1-3) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor acceptor
+2017-10-31 09:01:08,202 INFO  [org.jboss.messaging] (MSC service thread 1-4) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor-throughput acceptor
+2017-10-31 09:01:08,657 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221007: Server is now live
+2017-10-31 09:01:08,658 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 65) HQ221001: HornetQ Server version 2.4.7.Final (2.4.7.Final, 124) [966ea164-3bed-11e7-959a-1b6bdd243eb4] 
+2017-10-31 09:01:08,668 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221003: trying to deploy queue jms.queue.emailQueue
+2017-10-31 09:01:08,802 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0003: Processing weld deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 09:01:08,864 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-6) WFLYJCA0007: Registered connection factory java:/JmsXA
+2017-10-31 09:01:09,032 INFO  [org.hornetq.ra] (MSC service thread 1-6) HornetQ resource adaptor started
+2017-10-31 09:01:09,033 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-6) IJ020002: Deployed: file://RaActivatorhornetq-ra
+2017-10-31 09:01:09,038 INFO  [org.jboss.as.messaging] (MSC service thread 1-1) WFLYMSG0002: Bound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+2017-10-31 09:01:09,038 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-4) WFLYJCA0002: Bound JCA ConnectionFactory [java:/JmsXA]
+2017-10-31 09:01:09,124 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-8) HV000001: Hibernate Validator 5.1.3.Final
+2017-10-31 09:01:09,425 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named CidadeServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:module/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:module/CidadeServico
+
+2017-10-31 09:01:09,426 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named EnderecoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:module/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:module/EnderecoServico
+
+2017-10-31 09:01:09,427 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PedidoProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:module/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:module/PedidoProdutoServico
+
+2017-10-31 09:01:09,427 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named AutenticacaoLogServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:module/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:module/AutenticacaoLogServico
+
+2017-10-31 09:01:09,429 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PedidoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:module/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:module/PedidoServico
+
+2017-10-31 09:01:09,431 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ArquivoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:module/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:module/ArquivoServico
+
+2017-10-31 09:01:09,436 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named MenuServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:module/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:module/MenuServico
+
+2017-10-31 09:01:09,437 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:module/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:module/ProdutoServico
+
+2017-10-31 09:01:09,438 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ProdutorLogger in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:module/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:module/ProdutorLogger
+
+2017-10-31 09:01:09,438 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named TamanhoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:module/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:module/TamanhoServico
+
+2017-10-31 09:01:09,439 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PaginaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:module/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:module/PaginaServico
+
+2017-10-31 09:01:09,439 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named SaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:module/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:module/SaborServico
+
+2017-10-31 09:01:09,439 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ArquivoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:module/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:module/ArquivoTipoServico
+
+2017-10-31 09:01:09,440 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PedidoProdutoSaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico
+
+2017-10-31 09:01:09,440 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ProdutoIngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico
+
+2017-10-31 09:01:09,440 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named CaixaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:module/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:module/CaixaServico
+
+2017-10-31 09:01:09,441 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named IngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:module/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:module/IngredienteServico
+
+2017-10-31 09:01:09,446 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named UsuarioServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:module/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:module/UsuarioServico
+
+2017-10-31 09:01:09,446 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named EmpresaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:module/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:module/EmpresaServico
+
+2017-10-31 09:01:09,448 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named EstadoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:module/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:module/EstadoServico
+
+2017-10-31 09:01:09,448 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ConfiguracaoSistemaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico
+
+2017-10-31 09:01:09,449 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named PromocaoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:module/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:module/PromocaoServico
+
+2017-10-31 09:01:09,449 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named ProdutoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:module/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:module/ProdutoTipoServico
+
+2017-10-31 09:01:09,449 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-8) JNDI bindings for session bean named NivelServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:module/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:module/NivelServico
+
+2017-10-31 09:01:10,599 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) WFLYWELD0006: Starting Services for CDI deployment: gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 09:01:10,758 INFO  [org.jboss.weld.Version] (MSC service thread 1-5) WELD-000900: 2.2.14 (Final)
+2017-10-31 09:01:10,826 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0018: Host default-host starting
+2017-10-31 09:01:10,889 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) WFLYWELD0009: Starting weld service for deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-10-31 09:01:11,338 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 71) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-10-31 09:01:11,587 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 71) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2017-10-31 09:01:12,245 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 71) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-10-31 09:01:12,272 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 71) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-10-31 09:01:12,714 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 71) HHH000397: Using ASTQueryTranslatorFactory
+2017-10-31 09:01:14,186 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#referencia
+2017-10-31 09:01:14,186 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#precoFinal
+2017-10-31 09:01:14,190 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#produtos
+2017-10-31 09:01:14,190 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#preco
+2017-10-31 09:01:14,191 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#origemPreco
+2017-10-31 09:01:14,191 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#somaPrecoSabor
+2017-10-31 09:01:14,191 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#sequencia
+2017-10-31 09:01:14,193 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanhos
+2017-10-31 09:01:14,194 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sequencia
+2017-10-31 09:01:14,194 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanho
+2017-10-31 09:01:14,195 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#preco
+2017-10-31 09:01:14,195 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sabores
+2017-10-31 09:01:14,195 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#permiteSabores
+2017-10-31 09:01:14,202 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorTotal
+2017-10-31 09:01:14,203 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorDesconto
+2017-10-31 09:01:14,203 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#cliente
+2017-10-31 09:01:14,203 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorCobrado
+2017-10-31 09:01:14,211 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Empresa_#situacao
+2017-10-31 09:01:14,213 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Nivel_#editarView
+2017-10-31 09:01:14,215 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#preco
+2017-10-31 09:01:14,215 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#situacao
+2017-10-31 09:01:14,215 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#limiteSabores
+2017-10-31 09:01:14,216 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#produto
+2017-10-31 09:01:14,216 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#empresa
+2017-10-31 09:01:14,227 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#usuario
+2017-10-31 09:01:14,227 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#dataCadastro
+2017-10-31 09:01:14,228 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#situacao
+2017-10-31 09:01:14,234 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#empresa
+2017-10-31 09:01:14,235 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 71) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#sequencia
+2017-10-31 09:01:17,633 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 80) Initializing Mojarra 2.2.11-jbossorg-1 20150505-1501 for context ''
+2017-10-31 09:01:18,712 INFO  [org.hornetq.jms.server] (ServerService Thread Pool -- 65) HQ121005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "Williams-MacBook-Air.local". If this new address is incorrect please manually configure the connector to use the proper one.
+2017-10-31 09:01:19,222 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 65) WFLYMSG0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+2017-10-31 09:01:19,224 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 68) WFLYMSG0002: Bound messaging object to jndi name java:/ConnectionFactory
+2017-10-31 09:01:19,225 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 69) HQ221003: trying to deploy queue jms.queue.DLQ
+2017-10-31 09:01:19,226 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 67) HQ221003: trying to deploy queue jms.queue.ExpiryQueue
+2017-10-31 09:01:20,255 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 80) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 09:01:20,255 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 80) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 09:01:20,256 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 80) @FacesConverter is using both value and forClass, only value will be applied.
+2017-10-31 09:01:22,934 INFO  [org.jboss.resteasy.spi.ResteasyDeployment] (ServerService Thread Pool -- 80) Deploying javax.ws.rs.core.Application: class br.com.will.gestao.rest.ApplicationPath$Proxy$_$$_WeldClientProxy
+2017-10-31 09:01:22,958 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 80) WFLYUT0021: Registered web context: /
+2017-10-31 09:01:23,016 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 37) WFLYSRV0010: Deployed "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name : "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-10-31 09:01:23,457 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:10101/management
+2017-10-31 09:01:23,457 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:10101
+2017-10-31 09:01:23,460 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) started in 50295ms - Started 758 of 923 services (238 services are lazy, passive or on-demand)
+2017-10-31 09:02:20,454 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-18) ######################## HOSTNAME - GESTAO ######################## 
+2017-10-31 09:02:20,455 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-18) # HOSTNAME - WILLIAMS-MACBOOK-AIR.LOCAL - HOSTNAME #
+2017-10-31 09:02:20,455 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-18) ######################## HOSTNAME - GESTAO ######################## 
+2017-10-31 09:02:20,538 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-18) SQL Error: 0, SQLState: 42703
+2017-10-31 09:02:20,539 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-18) ERROR: column caixa0_.situacao does not exist
+  Position: 281
+2017-10-31 09:02:20,545 ERROR [stderr] (default task-18) br.com.will.gestao.servico.exception.BaseServicoException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2017-10-31 09:02:20,546 ERROR [stderr] (default task-18) 	at br.com.will.gestao.servico.CaixaServico.obterPorData(CaixaServico.java:31)
+2017-10-31 09:02:20,546 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-10-31 09:02:20,547 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-10-31 09:02:20,547 ERROR [stderr] (default task-18) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-10-31 09:02:20,548 ERROR [stderr] (default task-18) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-10-31 09:02:20,548 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-10-31 09:02:20,549 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,550 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-10-31 09:02:20,550 ERROR [stderr] (default task-18) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-10-31 09:02:20,550 ERROR [stderr] (default task-18) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-10-31 09:02:20,551 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-10-31 09:02:20,551 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,551 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-10-31 09:02:20,552 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,552 ERROR [stderr] (default task-18) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-10-31 09:02:20,552 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,552 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-10-31 09:02:20,552 ERROR [stderr] (default task-18) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-10-31 09:02:20,553 ERROR [stderr] (default task-18) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-10-31 09:02:20,553 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,553 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-10-31 09:02:20,553 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,554 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-10-31 09:02:20,554 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,554 ERROR [stderr] (default task-18) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 09:02:20,554 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-10-31 09:02:20,554 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,555 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-10-31 09:02:20,555 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,555 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-10-31 09:02:20,555 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-10-31 09:02:20,556 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-10-31 09:02:20,557 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,571 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-10-31 09:02:20,572 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,572 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-10-31 09:02:20,574 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,577 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-10-31 09:02:20,577 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,578 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-10-31 09:02:20,578 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,578 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-10-31 09:02:20,579 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,579 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-10-31 09:02:20,580 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,580 ERROR [stderr] (default task-18) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-10-31 09:02:20,584 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,585 ERROR [stderr] (default task-18) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-10-31 09:02:20,585 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,586 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-10-31 09:02:20,586 ERROR [stderr] (default task-18) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-10-31 09:02:20,587 ERROR [stderr] (default task-18) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-10-31 09:02:20,588 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,588 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-10-31 09:02:20,589 ERROR [stderr] (default task-18) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-10-31 09:02:20,605 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,608 ERROR [stderr] (default task-18) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 09:02:20,613 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-10-31 09:02:20,613 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-10-31 09:02:20,614 ERROR [stderr] (default task-18) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-10-31 09:02:20,615 ERROR [stderr] (default task-18) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-10-31 09:02:20,620 ERROR [stderr] (default task-18) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-10-31 09:02:20,622 ERROR [stderr] (default task-18) 	at br.com.will.gestao.servico.CaixaServico$$$view16.obterPorData(Unknown Source)
+2017-10-31 09:02:20,622 ERROR [stderr] (default task-18) 	at br.com.will.gestao.componente.ConfiguracaoApplication.carregarConfiguracaoSistema(ConfiguracaoApplication.java:64)
+2017-10-31 09:02:20,623 ERROR [stderr] (default task-18) 	at br.com.will.gestao.componente.ConfiguracaoApplication.inicializar(ConfiguracaoApplication.java:43)
+2017-10-31 09:02:20,623 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-10-31 09:02:20,624 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-10-31 09:02:20,625 ERROR [stderr] (default task-18) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-10-31 09:02:20,626 ERROR [stderr] (default task-18) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-10-31 09:02:20,628 ERROR [stderr] (default task-18) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.invokeMethods(DefaultLifecycleCallbackInvoker.java:98)
+2017-10-31 09:02:20,628 ERROR [stderr] (default task-18) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.postConstruct(DefaultLifecycleCallbackInvoker.java:81)
+2017-10-31 09:02:20,629 ERROR [stderr] (default task-18) 	at org.jboss.weld.injection.producer.BasicInjectionTarget.postConstruct(BasicInjectionTarget.java:126)
+2017-10-31 09:02:20,630 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.ManagedBean.create(ManagedBean.java:162)
+2017-10-31 09:02:20,630 ERROR [stderr] (default task-18) 	at org.jboss.weld.context.AbstractContext.get(AbstractContext.java:96)
+2017-10-31 09:02:20,630 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.ContextualInstanceStrategy$DefaultContextualInstanceStrategy.get(ContextualInstanceStrategy.java:101)
+2017-10-31 09:02:20,631 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.ContextualInstanceStrategy$ApplicationScopedContextualInstanceStrategy.get(ContextualInstanceStrategy.java:141)
+2017-10-31 09:02:20,631 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.ContextualInstance.get(ContextualInstance.java:50)
+2017-10-31 09:02:20,634 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.proxy.ContextBeanInstance.getInstance(ContextBeanInstance.java:99)
+2017-10-31 09:02:20,636 ERROR [stderr] (default task-18) 	at org.jboss.weld.bean.proxy.ProxyMethodHandler.getInstance(ProxyMethodHandler.java:125)
+2017-10-31 09:02:20,639 ERROR [stderr] (default task-18) 	at br.com.will.gestao.componente.ConfiguracaoApplication$Proxy$_$$_WeldClientProxy.obterConfiguracaoSistema(Unknown Source)
+2017-10-31 09:02:20,641 ERROR [stderr] (default task-18) 	at br.com.will.gestao.bean.LoginBean.fazerLogin(LoginBean.java:65)
+2017-10-31 09:02:20,642 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-10-31 09:02:20,642 ERROR [stderr] (default task-18) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-10-31 09:02:20,642 ERROR [stderr] (default task-18) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-10-31 09:02:20,643 ERROR [stderr] (default task-18) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-10-31 09:02:20,643 ERROR [stderr] (default task-18) 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308)
+2017-10-31 09:02:20,643 ERROR [stderr] (default task-18) 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537)
+2017-10-31 09:02:20,643 ERROR [stderr] (default task-18) 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)
+2017-10-31 09:02:20,644 ERROR [stderr] (default task-18) 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286)
+2017-10-31 09:02:20,645 ERROR [stderr] (default task-18) 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)
+2017-10-31 09:02:20,646 ERROR [stderr] (default task-18) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-10-31 09:02:20,646 ERROR [stderr] (default task-18) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-10-31 09:02:20,646 ERROR [stderr] (default task-18) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-10-31 09:02:20,647 ERROR [stderr] (default task-18) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-10-31 09:02:20,647 ERROR [stderr] (default task-18) 	at com.sun.faces.facelets.el.ContextualCompositeMethodExpression.invoke(ContextualCompositeMethodExpression.java:194)
+2017-10-31 09:02:20,652 ERROR [stderr] (default task-18) 	at com.sun.faces.facelets.tag.TagAttributeImpl$AttributeLookupMethodExpression.invoke(TagAttributeImpl.java:477)
+2017-10-31 09:02:20,652 ERROR [stderr] (default task-18) 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)
+2017-10-31 09:02:20,652 ERROR [stderr] (default task-18) 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)
+2017-10-31 09:02:20,653 ERROR [stderr] (default task-18) 	at javax.faces.component.UICommand.broadcast(UICommand.java:315)
+2017-10-31 09:02:20,653 ERROR [stderr] (default task-18) 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)
+2017-10-31 09:02:20,653 ERROR [stderr] (default task-18) 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)
+2017-10-31 09:02:20,653 ERROR [stderr] (default task-18) 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)
+2017-10-31 09:02:20,654 ERROR [stderr] (default task-18) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-10-31 09:02:20,654 ERROR [stderr] (default task-18) 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+2017-10-31 09:02:20,654 ERROR [stderr] (default task-18) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:654)
+2017-10-31 09:02:20,654 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-10-31 09:02:20,654 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-10-31 09:02:20,655 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-10-31 09:02:20,655 ERROR [stderr] (default task-18) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-10-31 09:02:20,656 ERROR [stderr] (default task-18) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 09:02:20,656 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-10-31 09:02:20,656 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-10-31 09:02:20,657 ERROR [stderr] (default task-18) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 09:02:20,657 ERROR [stderr] (default task-18) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-10-31 09:02:20,658 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-10-31 09:02:20,658 ERROR [stderr] (default task-18) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-10-31 09:02:20,658 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-10-31 09:02:20,658 ERROR [stderr] (default task-18) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-10-31 09:02:20,659 ERROR [stderr] (default task-18) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-10-31 09:02:20,660 ERROR [stderr] (default task-18) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 09:02:20,660 ERROR [stderr] (default task-18) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-10-31 09:02:20,660 ERROR [stderr] (default task-18) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 09:02:20,661 ERROR [stderr] (default task-18) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-10-31 09:02:20,661 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-10-31 09:02:20,661 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-10-31 09:02:20,662 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-10-31 09:02:20,662 ERROR [stderr] (default task-18) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-10-31 09:02:20,663 ERROR [stderr] (default task-18) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-10-31 09:02:20,664 ERROR [stderr] (default task-18) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-10-31 09:02:20,664 ERROR [stderr] (default task-18) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+2017-10-31 09:02:20,664 ERROR [stderr] (default task-18) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+2017-10-31 09:02:20,665 ERROR [stderr] (default task-18) 	at java.lang.Thread.run(Thread.java:748)
+2017-10-31 09:02:20,670 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-18) WILLADM
+2017-10-31 09:02:20,671 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-18) f653ffecc419dbf21a0000085139339c621a07e0

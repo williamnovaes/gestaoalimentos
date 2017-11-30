@@ -9,66 +9,62 @@
 
 <ui:composition>
 	<h:form id="headerForm" prependId="false">
-		<nav class="navbar">
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home.ppd"><img
-						src="../resources/images/pizza-logo.png"
-						data-active-url="../resources/images/pizza-logo.png" alt="A" /></a>
+					<a class="navbar-brand" href="home.ppd">
+						Gestão Alimentos
+					</a>
 				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
+				
 				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right main-nav">
 						<li><a href="home.ppd">Home</a></li>
-						<!-- 						<li><a href="#">Conta</a></li> -->
 
-						<h:panelGroup
-							rendered="#{loginBean.usuarioLogado ne null and loginBean.cliente}">
-							<li class="dropdown"><a id="menuClienteVertical"
-								class="dropdown-toggle" data-toggle="dropdown" href="#">Conta</a>
+						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and loginBean.cliente}">
+							<li class="dropdown">
+								<a id="menuClienteVertical" class="dropdown-toggle" data-toggle="dropdown" href="#">Conta</a>
 								<div class="dropdown-menu" aria-labelledby="menuVertical">
-									<ul style="list-style-type: none;">
+									<ul>
 										<c:forEach var="menu" items="#{loginBean.menus}">
 											<h:panelGroup rendered="#{menu.visivel}">
-												<li class="dropdown-header"><h:outputText
-														value="#{menu.nome}" /></li>
+												<li class="dropdown-header">
+													<h:outputText value="#{menu.nome}" />
+												</li>
 												<li>
 													<ul class="dropdown-menu">
 														<c:forEach var="pg"
 															items="#{loginBean.getPaginasPorMenu(menu)}">
-															<ppd:itemDynamicMenu pagina="#{pg.nome}"
-																	label="#{pg.rotulo}" />
+															<ppd:itemDynamicMenu pagina="#{pg.nome}" label="#{pg.rotulo}" />
 														</c:forEach>
 													</ul>
 												</li>
 											</h:panelGroup>
 										</c:forEach>
 									</ul>
-								</div></li>
-
-							<li class="dropdown" style="background-color: #bbb; color: black;"><a id="cart"
-								class="dropdown-toggle"
-								data-toggle="dropdown" href="#"> Carrinho
-								<h:outputText styleClass="glyphicon glyphicon-shopping-cart" /></a>
-								<div class="dropdown-menu" aria-labelledby="cartDD">
 								</div>
 							</li>
 
+							<li class="dropdown">
+								<a id="cart" href="#">
+									<h:outputText styleClass="glyphicon glyphicon-shopping-cart" />
+									Carrinho
+								</a>
+							</li>
 						</h:panelGroup>
 
-						<h:panelGroup
-							rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
-							<li class="dropdown"><a id="menuVertical"
-								class="dropdown-toggle" data-toggle="dropdown" href="#">Menu</a>
+						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
+							<li class="dropdown">
+								<a id="menuVertical" class="dropdown-toggle" data-toggle="dropdown" href="#">Menu</a>
 								<div class="dropdown-menu" aria-labelledby="menuVertical">
-									<ul style="list-style: none;">
+									<ul>
 										<c:forEach var="menu" items="#{loginBean.menus}">
 											<h:panelGroup rendered="#{menu.visivel}">
 												<li class="dropdown-header"><h:outputText
@@ -86,39 +82,43 @@
 										</c:forEach>
 
 										<h:panelGroup rendered="#{loginBean.superUser}">
-											<li class="dropdown-header">PERMISSÕES</li>
+											<li class="dropdown-header">Permissões</li>
 											<li>
 												<ul class="dropdown-menu-2">
-													<li><h:commandLink
-															action="paginas?faces-redirect=true" value="Páginas" /></li>
+													<li>
+														<h:commandLink action="paginas?faces-redirect=true" value="Páginas" />
+													</li>
 												</ul>
 											</li>
 										</h:panelGroup>
 									</ul>
-								</div></li>
+								</div>
+							</li>
 						</h:panelGroup>
 
 
 						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
 							<li><a href="cadastroCliente.ppd">Cadastre-se</a></li>
 						</h:panelGroup>
+						
 						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
-							<li><h:commandLink title="Login"
-									styleClass="glyphicon glyphicon-log-in btn btn-blue">
-									<i> Login</i>
-									<f:ajax render="loginModalPG loginModal" execute="@this"
-										event="click" listener="#{loginBean.abrirModalLogin()}" />
-								</h:commandLink></li>
+							<li>
+								<h:commandLink>
+									Login
+									<f:ajax render="loginModalPG loginModal" 
+										execute="@this" 
+										event="click" 
+										listener="#{loginBean.abrirModalLogin()}" />
+								</h:commandLink>
+							</li>
 						</h:panelGroup>
 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null}">
-							<li><h:commandLink action="#{loginBean.fazerLogout()}"
-									styleClass="glyphicon glyphicon-log-out btn btn-blue"
-									onclick="return confirm('Tem certeza que deseja realizar o logoff?')">
-									<i> Logout</i>
-								</h:commandLink></li>
+							<li>
+								<h:commandLink action="#{loginBean.fazerLogout()}" onclick="return confirm('Tem certeza que deseja realizar o logoff?');">
+									Logout
+								</h:commandLink>
+							</li>
 						</h:panelGroup>
-						<!-- 						<li><a href="#" data-toggle="modal" data-target="#modal1" -->
-						<!-- 							class="btn btn-blue">Sign Up</a></li> -->
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -126,102 +126,24 @@
 			<!-- /.container-fluid -->
 		</nav>
 
-
-		<!-- 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation"> -->
-		<!-- 		<nav class="navbar"> -->
-		<!-- 			<div class="container"> -->
-		<!-- 				<div class="navbar-header"> -->
-		<!-- 					<button type="button" class="navbar-toggle collapsed" -->
-		<!-- 						data-toggle="collapse" data-target="#navbar" aria-expanded="false" -->
-		<!-- 						aria-controls="navbar"> -->
-		<!-- 						<span class="sr-only">Toggle navigation</span> <span -->
-		<!-- 							class="icon-bar"></span> <span class="icon-bar"></span> <span -->
-		<!-- 							class="icon-bar"></span> -->
-		<!-- 					</button> -->
-		<!-- 					<a class="navbar-brand logo-sistema" href="home.ppd">  -->
-		<!-- 						<span>Gestao</span> -->
-		<!-- 					</a> -->
-		<!-- 				</div> -->
-		<!-- 				<div id="navbar" class="navbar-collapse collapse"> -->
-		<!-- <ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-								Grupo de Links Topo #1
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Link 1.1</a></li>
-								<li><a href="#">Link 1.2</a></li>
-							</ul>
-						</li>
-						
-						<li>
-							<a href="#">Link #3</a>
-						</li>
-					</ul> -->
-
-		<!-- 					<ul class="nav navbar-nav navbar-right"> -->
-		<!-- 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null}"> -->
-		<!-- 							<li class="dropdown"><a href="#" -->
-		<!-- 								class="dropdown-toggle btn-notificacoes" data-toggle="dropdown" -->
-		<!-- 								role="button" aria-expanded="false"> <strong -->
-		<!-- 									class="ico-notificacoes"> <span -->
-		<!-- 										class="glyphicon glyphicon-bell"></span> <span -->
-		<!-- 										class="info-quant-notificacoes">99</span> -->
-		<!-- 								</strong> <strong class="texto-notificacoes"> Notificações <span -->
-		<!-- 										class="badge">99</span> -->
-		<!-- 								</strong> -->
-		<!-- 							</a> -->
-		<!-- 								<ul class="dropdown-menu wrap-lista-notificacoes" role="menu"> -->
-		<!-- 									<li class="dropdown-header">Mensagens</li> -->
-		<!-- 									<li class="lista-notificacoes"><a href="#"> Lorem -->
-		<!-- 											ipsum dolor sit amet <span>Consectetur adipiscing elit</span> -->
-		<!-- 									</a></li> -->
-		<!-- 									<li class="divider"></li> -->
-		<!-- 									<li class="wrap-btn-ver-todas"><a href="#" -->
-		<!-- 										class="btn-ver-todas">Ver todas</a></li> -->
-		<!-- 								</ul></li> -->
-		<!-- 						</h:panelGroup> -->
-		<!-- 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null}"> -->
-		<!-- 							<li> -->
-		<!-- 								<p class="navbar-text">#{loginBean.usuarioLogado.login} -->
-		<!-- 									(#{loginBean.usuarioLogado.id})</p> -->
-		<!-- 							</li> -->
-		<!-- 						</h:panelGroup> -->
-		<!-- 						<li> -->
-		<!-- 							<h:panelGroup -->
-		<!-- 								rendered="#{loginBean.usuarioLogado eq null}"> -->
-		<!-- 								<h:commandLink styleClass="glyphicon glyphicon-log-in"> -->
-		<!-- 									<i></i> -->
-		<!-- 									<f:ajax render="loginModalPG" event="click" -->
-		<!-- 										listener="#{loginBean.abrirModalLogin()}" /> -->
-		<!-- 								</h:commandLink> -->
-		<!-- 							</h:panelGroup> <h:panelGroup rendered="#{loginBean.usuarioLogado ne null}"> -->
-		<!-- 								<h:commandLink action="#{loginBean.fazerLogout}" -->
-		<!-- 									styleClass="glyphicon glyphicon-log-out"> -->
-		<!-- 									<i></i> -->
-		<!-- 								</h:commandLink> -->
-		<!-- 							</h:panelGroup> -->
-		<!-- 						</li> -->
-		<!-- 					</ul> -->
-		<!-- 				</div> -->
-		<!-- 			</div> -->
-		<!-- 		</nav> -->
-
 		<ppd:loginModal id="loginModal"
 			exibirModal="#{loginBean.exibirModalLogin}" titulo="Login"
 			render="loginModalPG headerForm" botoes="true" botaoFechar="false"
 			styleBotao="btn btn-submit" salvar="#{loginBean.fazerLogin()}"
 			fecharModal="#{loginBean.fecharModalLogin()}">
-
-			<h:inputText id="login" class="form-control form-white"
-				pt:placeholder="Login" value="#{credencial.username}"
-				pt:autofocus="true">
-			</h:inputText>
-
-			<h:inputSecret id="passwd" class="form-control form-white"
-				pt:placeholder="Password" value="#{credencial.password}">
-			</h:inputSecret>
+	
+			<div class="form-group">
+				<h:inputText id="login" class="form-control form-white"
+					pt:placeholder="Login" value="#{credencial.username}"
+					pt:autofocus="true">
+				</h:inputText>
+			</div>
+			
+			<div class="form-group m-b-0">
+				<h:inputSecret id="passwd" class="form-control form-white"
+					pt:placeholder="Password" value="#{credencial.password}">
+				</h:inputSecret>
+			</div>
 		</ppd:loginModal>
 	</h:form>
 </ui:composition>

@@ -157,17 +157,17 @@
         <subsystem xmlns="urn:jboss:domain:datasources:3.0">
             <datasources>
                 <datasource jndi-name="java:/gestaoalimentosLocalDS" pool-name="gestaoalimentosLocalPool" enabled="true">
-                    <connection-url>jdbc:postgresql://localhost:5432/gestaoalimentos</connection-url>
+                    <connection-url>jdbc:postgresql://localhost:5432/gestao</connection-url>
                     <driver>postgres</driver>
                     <pool>
                         <min-pool-size>2</min-pool-size>
                         <max-pool-size>5</max-pool-size>
                         <prefill>false</prefill>
                     </pool>
-<!--                     <security> -->
-<!--                         <user-name>postgres</user-name> -->
-<!--                         <password>postgres</password> -->
-<!--                     </security> -->
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>postgres</password>
+                    </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
                         <validate-on-match>true</validate-on-match>
@@ -527,4 +527,5 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
+
 </server>

@@ -1,0 +1,339 @@
+2017-11-16 13:50:39,557 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 41) WFLYCLINF0001: Activating Infinispan subsystem.
+2017-11-16 13:50:39,585 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 42) WFLYIIOP0001: Activating IIOP Subsystem
+2017-11-16 13:50:39,586 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 48) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2017-11-16 13:50:39,625 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 52) WFLYNAM0001: Activating Naming Subsystem
+2017-11-16 13:50:39,834 INFO  [org.jboss.remoting] (MSC service thread 1-4) JBoss Remoting version 4.0.9.Final
+2017-11-16 13:50:39,818 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-8) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2017-11-16 13:50:39,828 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 36) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.1)
+2017-11-16 13:50:39,817 INFO  [org.jboss.as.naming] (MSC service thread 1-1) WFLYNAM0003: Starting Naming Service
+2017-11-16 13:50:39,853 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 60) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2017-11-16 13:50:39,853 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 59) WFLYSEC0002: Activating Security Subsystem
+2017-11-16 13:50:39,866 INFO  [org.jboss.as.security] (MSC service thread 1-7) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2017-11-16 13:50:39,875 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 62) WFLYWS0002: Activating WebServices Extension
+2017-11-16 13:50:39,880 INFO  [org.jboss.as.connector] (MSC service thread 1-1) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.4.Final)
+2017-11-16 13:50:39,952 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-16 13:50:39,898 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0018: Started Driver service with driver-name = postgres
+2017-11-16 13:50:39,954 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 61) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-16 13:50:40,415 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0012: Started server default-server.
+2017-11-16 14:45:12,624 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 41) WFLYCLINF0001: Activating Infinispan subsystem.
+2017-11-16 14:45:12,622 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 59) WFLYSEC0002: Activating Security Subsystem
+2017-11-16 14:45:12,644 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 52) WFLYNAM0001: Activating Naming Subsystem
+2017-11-16 14:45:12,622 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 60) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2017-11-16 14:45:12,631 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 62) WFLYWS0002: Activating WebServices Extension
+2017-11-16 14:45:12,682 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 42) WFLYIIOP0001: Activating IIOP Subsystem
+2017-11-16 14:45:12,697 INFO  [org.jboss.as.security] (MSC service thread 1-7) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2017-11-16 14:45:12,754 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-16 14:45:12,754 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 61) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-16 14:45:12,713 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 48) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2017-11-16 14:45:13,052 INFO  [org.jboss.as.naming] (MSC service thread 1-2) WFLYNAM0003: Starting Naming Service
+2017-11-16 14:45:13,052 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-5) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2017-11-16 14:45:13,174 INFO  [org.jboss.remoting] (MSC service thread 1-3) JBoss Remoting version 4.0.9.Final
+2017-11-16 14:45:13,130 INFO  [org.jboss.as.connector] (MSC service thread 1-2) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.4.Final)
+2017-11-16 14:45:13,159 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 36) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.1)
+2017-11-16 14:45:13,260 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0018: Started Driver service with driver-name = postgres
+2017-11-16 14:45:13,650 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0012: Started server default-server.
+2017-11-16 14:45:14,089 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0006: Undertow HTTP listener default listening on /0.0.0.0:8080
+2017-11-16 14:45:14,474 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) WFLYDS0013: Started FileSystemDeploymentService for directory /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/deployments
+2017-11-16 14:45:14,483 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name: "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-11-16 14:45:15,544 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0006: Undertow HTTPS listener https listening on /0.0.0.0:8443
+2017-11-16 14:45:15,945 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2017-11-16 14:45:20,956 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) WFLYJPA0002: Read persistence.xml for gestaoAlimentosPU
+2017-11-16 14:45:24,005 INFO  [org.wildfly.iiop.openjdk] (MSC service thread 1-8) WFLYIIOP0009: CORBA ORB Service started
+2017-11-16 14:45:28,856 WARN  [org.jboss.as.messaging] (MSC service thread 1-7) WFLYMSG0001: AIO wasn't located on this platform, it will fall back to using pure Java NIO.
+2017-11-16 14:45:28,957 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) WFLYJCA0001: Bound data source [java:/gestaoalimentosLocalDS]
+2017-11-16 14:45:28,961 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 65) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-16 14:45:28,980 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 65) HHH000204: Processing PersistenceUnitInfo [
+	name: gestaoAlimentosPU
+	...]
+2017-11-16 14:45:29,025 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingjournal,bindingsDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingbindings,largeMessagesDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messaginglargemessages,pagingDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingpaging)
+2017-11-16 14:45:29,033 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221006: Waiting to obtain live lock
+2017-11-16 14:45:29,097 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221013: Using NIO Journal
+2017-11-16 14:45:29,181 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 65) HHH000412: Hibernate Core {4.3.10.Final}
+2017-11-16 14:45:29,186 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 65) HHH000206: hibernate.properties not found
+2017-11-16 14:45:29,191 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 65) HHH000021: Bytecode provider name : javassist
+2017-11-16 14:45:29,211 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support CORE
+2017-11-16 14:45:29,243 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support AMQP
+2017-11-16 14:45:29,252 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support STOMP
+2017-11-16 14:45:29,347 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221034: Waiting to obtain live lock
+2017-11-16 14:45:29,347 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221035: Live Server Obtained live lock
+2017-11-16 14:45:29,693 INFO  [org.jboss.messaging] (MSC service thread 1-7) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor acceptor
+2017-11-16 14:45:29,693 INFO  [org.jboss.messaging] (MSC service thread 1-6) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor-throughput acceptor
+2017-11-16 14:45:29,940 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221007: Server is now live
+2017-11-16 14:45:29,941 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221001: HornetQ Server version 2.4.7.Final (2.4.7.Final, 124) [966ea164-3bed-11e7-959a-1b6bdd243eb4] 
+2017-11-16 14:45:29,949 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221003: trying to deploy queue jms.queue.ExpiryQueue
+2017-11-16 14:45:30,007 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 70) WFLYMSG0002: Bound messaging object to jndi name java:/ConnectionFactory
+2017-11-16 14:45:30,106 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-8) WFLYJCA0007: Registered connection factory java:/JmsXA
+2017-11-16 14:45:30,194 INFO  [org.hornetq.ra] (MSC service thread 1-8) HornetQ resource adaptor started
+2017-11-16 14:45:30,195 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-8) IJ020002: Deployed: file://RaActivatorhornetq-ra
+2017-11-16 14:45:30,199 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-5) WFLYJCA0002: Bound JCA ConnectionFactory [java:/JmsXA]
+2017-11-16 14:45:30,199 INFO  [org.jboss.as.messaging] (MSC service thread 1-7) WFLYMSG0002: Bound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+2017-11-16 14:45:30,404 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) WFLYWELD0003: Processing weld deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-16 14:45:30,538 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-1) HV000001: Hibernate Validator 5.1.3.Final
+2017-11-16 14:45:30,735 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named CidadeServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:module/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:module/CidadeServico
+
+2017-11-16 14:45:30,738 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named EnderecoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:module/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:module/EnderecoServico
+
+2017-11-16 14:45:30,738 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PedidoProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:module/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:module/PedidoProdutoServico
+
+2017-11-16 14:45:30,739 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PedidoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:module/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:module/PedidoServico
+
+2017-11-16 14:45:30,739 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named AutenticacaoLogServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:module/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:module/AutenticacaoLogServico
+
+2017-11-16 14:45:30,740 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named MenuServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:module/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:module/MenuServico
+
+2017-11-16 14:45:30,740 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:module/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:module/ProdutoServico
+
+2017-11-16 14:45:30,740 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ArquivoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:module/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:module/ArquivoServico
+
+2017-11-16 14:45:30,741 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ProdutorLogger in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:module/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:module/ProdutorLogger
+
+2017-11-16 14:45:30,745 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named TamanhoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:module/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:module/TamanhoServico
+
+2017-11-16 14:45:30,746 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PaginaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:module/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:module/PaginaServico
+
+2017-11-16 14:45:30,746 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named SaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:module/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:module/SaborServico
+
+2017-11-16 14:45:30,747 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ProdutoIngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico
+
+2017-11-16 14:45:30,747 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PedidoProdutoSaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico
+
+2017-11-16 14:45:30,748 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ArquivoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:module/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:module/ArquivoTipoServico
+
+2017-11-16 14:45:30,749 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named CaixaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:module/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:module/CaixaServico
+
+2017-11-16 14:45:30,750 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named UsuarioServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:module/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:module/UsuarioServico
+
+2017-11-16 14:45:30,750 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named IngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:module/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:module/IngredienteServico
+
+2017-11-16 14:45:30,750 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named EmpresaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:module/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:module/EmpresaServico
+
+2017-11-16 14:45:30,751 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named EstadoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:module/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:module/EstadoServico
+
+2017-11-16 14:45:30,751 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ConfiguracaoSistemaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico
+
+2017-11-16 14:45:30,752 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named PromocaoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:module/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:module/PromocaoServico
+
+2017-11-16 14:45:30,752 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named ProdutoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:module/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:module/ProdutoTipoServico
+
+2017-11-16 14:45:30,753 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-1) JNDI bindings for session bean named NivelServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:module/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:module/NivelServico
+
+2017-11-16 14:45:31,773 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0006: Starting Services for CDI deployment: gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-16 14:45:31,829 INFO  [org.jboss.weld.Version] (MSC service thread 1-6) WELD-000900: 2.2.14 (Final)
+2017-11-16 14:45:31,872 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0018: Host default-host starting
+2017-11-16 14:45:31,913 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) WFLYWELD0009: Starting weld service for deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-16 14:45:32,349 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 70) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-16 14:45:32,517 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 70) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2017-11-16 14:45:34,221 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 70) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-11-16 14:45:34,251 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 70) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-16 14:45:35,045 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 70) HHH000397: Using ASTQueryTranslatorFactory
+2017-11-16 14:45:36,980 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#precoFinal
+2017-11-16 14:45:36,980 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#referencia
+2017-11-16 14:45:36,983 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#sequencia
+2017-11-16 14:45:36,983 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#origemPreco
+2017-11-16 14:45:36,983 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#somaPrecoSabor
+2017-11-16 14:45:36,984 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#preco
+2017-11-16 14:45:36,984 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#produtos
+2017-11-16 14:45:36,985 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sabores
+2017-11-16 14:45:36,986 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanho
+2017-11-16 14:45:36,986 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sequencia
+2017-11-16 14:45:36,986 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#permiteSabores
+2017-11-16 14:45:36,987 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#preco
+2017-11-16 14:45:36,987 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanhos
+2017-11-16 14:45:36,990 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#cliente
+2017-11-16 14:45:36,991 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorDesconto
+2017-11-16 14:45:36,991 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorTotal
+2017-11-16 14:45:36,991 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorCobrado
+2017-11-16 14:45:36,997 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Empresa_#situacao
+2017-11-16 14:45:36,998 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Nivel_#editarView
+2017-11-16 14:45:37,000 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#produto
+2017-11-16 14:45:37,000 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#empresa
+2017-11-16 14:45:37,000 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#situacao
+2017-11-16 14:45:37,001 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#limiteSabores
+2017-11-16 14:45:37,001 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#preco
+2017-11-16 14:45:37,009 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#situacao
+2017-11-16 14:45:37,009 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#dataCadastro
+2017-11-16 14:45:37,010 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#usuario
+2017-11-16 14:45:37,015 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#sequencia
+2017-11-16 14:45:37,015 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 70) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#empresa
+2017-11-16 14:45:39,549 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 72) Initializing Mojarra 2.2.11-jbossorg-1 20150505-1501 for context ''
+2017-11-16 14:45:40,062 INFO  [org.hornetq.jms.server] (ServerService Thread Pool -- 68) HQ121005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "Mauricios-MacBook-Pro.local". If this new address is incorrect please manually configure the connector to use the proper one.
+2017-11-16 14:45:40,063 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 68) WFLYMSG0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+2017-11-16 14:45:40,070 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 67) HQ221003: trying to deploy queue jms.queue.DLQ
+2017-11-16 14:45:40,073 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 69) HQ221003: trying to deploy queue jms.queue.emailQueue
+2017-11-16 14:45:42,331 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 72) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-16 14:45:42,332 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 72) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-16 14:45:42,333 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 72) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-16 14:45:44,587 INFO  [org.jboss.resteasy.spi.ResteasyDeployment] (ServerService Thread Pool -- 72) Deploying javax.ws.rs.core.Application: class br.com.will.gestao.rest.ApplicationPath$Proxy$_$$_WeldClientProxy
+2017-11-16 14:45:44,602 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 72) WFLYUT0021: Registered web context: /
+2017-11-16 14:45:44,697 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 37) WFLYSRV0010: Deployed "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name : "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-11-16 14:45:45,028 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:10101/management
+2017-11-16 14:45:45,029 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:10101
+2017-11-16 14:45:45,029 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) started in 46964ms - Started 758 of 923 services (238 services are lazy, passive or on-demand)

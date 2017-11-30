@@ -157,7 +157,7 @@
         <subsystem xmlns="urn:jboss:domain:datasources:3.0">
             <datasources>
                 <datasource jndi-name="java:/gestaoalimentosLocalDS" pool-name="gestaoalimentosLocalPool" enabled="true">
-                    <connection-url>jdbc:postgresql://localhost:5432/gestaoalimentos</connection-url>
+                    <connection-url>jdbc:postgresql://localhost:5432/gestao</connection-url>
                     <driver>postgres</driver>
                     <pool>
                         <min-pool-size>2</min-pool-size>
