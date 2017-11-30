@@ -942,3 +942,25 @@ Caused by: javax.faces.view.facelets.FaceletException: Error Parsing /template/t
 2017-11-29 22:51:08,974 ERROR [stderr] (default task-84) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 2017-11-29 22:51:08,987 ERROR [stderr] (default task-84) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 2017-11-29 22:51:09,000 ERROR [stderr] (default task-84) 	at java.lang.Thread.run(Thread.java:748)
+2017-11-29 22:52:37,843 INFO  [org.jboss.as.server] (management-handler-thread - 12) WFLYSRV0211: Suspending server
+2017-11-29 22:52:37,875 INFO  [org.jboss.as.server] (Thread-2) WFLYSRV0220: Server shutdown has been requested.
+2017-11-29 22:52:37,912 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 125) WFLYUT0022: Unregistered web context: /
+2017-11-29 22:52:38,023 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0019: Host default-host stopping
+2017-11-29 22:52:38,057 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 125) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-29 22:52:38,071 INFO  [org.jboss.as.messaging] (MSC service thread 1-8) WFLYMSG0006: Unbound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+2017-11-29 22:52:38,073 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-3) WFLYJCA0011: Unbound JCA ConnectionFactory [java:/JmsXA]
+2017-11-29 22:52:38,208 INFO  [org.hornetq.ra] (ServerService Thread Pool -- 131) HQ151003: HornetQ resource adaptor stopped
+2017-11-29 22:52:38,237 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 125) WFLYCLINF0002: Started local-query cache from hibernate container
+2017-11-29 22:52:38,320 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0010: Stopping weld service for deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-29 22:52:38,336 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 131) HQ221002: HornetQ Server version 2.4.7.Final (2.4.7.Final, 124) [966ea164-3bed-11e7-959a-1b6bdd243eb4] stopped
+2017-11-29 22:52:38,369 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 125) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-29 22:52:38,409 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) WFLYJCA0010: Unbound data source [java:/gestaoalimentosLocalDS]
+2017-11-29 22:52:38,452 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0008: Undertow HTTPS listener https suspending
+2017-11-29 22:52:38,453 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0008: Undertow HTTP listener default suspending
+2017-11-29 22:52:38,465 INFO  [org.jboss.as.clustering.infinispan] (MSC service thread 1-1) WFLYCLINF0003: Stopped local-query cache from hibernate container
+2017-11-29 22:52:38,503 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0019: Stopped Driver service with driver-name = postgres
+2017-11-29 22:52:38,555 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0007: Undertow HTTP listener default stopped, was bound to /0.0.0.0:8080
+2017-11-29 22:52:38,574 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to /0.0.0.0:8443
+2017-11-29 22:52:38,605 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment gestaoalimentos-0.0.1-SNAPSHOT.war (runtime-name: gestaoalimentos-0.0.1-SNAPSHOT.war) in 706ms
+2017-11-29 22:52:38,651 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0004: Undertow 1.2.9.Final stopping
+2017-11-29 22:52:38,810 INFO  [org.jboss.as] (MSC service thread 1-5) WFLYSRV0050: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) stopped in 901ms
