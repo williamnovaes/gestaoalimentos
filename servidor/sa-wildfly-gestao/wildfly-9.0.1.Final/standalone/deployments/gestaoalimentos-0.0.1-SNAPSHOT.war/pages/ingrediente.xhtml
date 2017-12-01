@@ -1,0 +1,119 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:ppd="http://java.sun.com/jsf/composite/components"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="ingredienteTipo" value="#{msg.txt_ingrediente}" />
+
+	<ui:define name="content">
+		<h:form id="ingredienteForm" prependId="false">
+
+			<div class="row wrap-btn-form-topo">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandButton id="voltarBtn"
+							action="ingredientes?faces-redirect=true" immediate="true"
+							value="Voltar"
+							styleClass="btn btn-default btn-icon icon-arrow-undo">
+						</h:commandButton>
+					</div>
+				</div>
+
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm"></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_sequencia}" />
+						<h:inputText
+							value="#{ingredienteCadastroBean.ingrediente.sequencia}"
+							required="true" styleClass="form-control form-white numeros"
+							maxlength="2">
+						</h:inputText>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_nome}" />
+						<h:inputText value="#{ingredienteCadastroBean.ingrediente.nome}"
+							required="true"
+							styleClass="form-control form-white txt-transform-none"
+							maxlength="20">
+							<f:converter
+								converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_descricao}" />
+						<h:inputText
+							value="#{ingredienteCadastroBean.ingrediente.descricao}"
+							required="true"
+							styleClass="form-control form-white txt-transform-none"
+							maxlength="70">
+							<f:converter
+								converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_considerar_adicional}" />
+						<h:selectOneMenu id="considerarSOM"
+							styleClass="form-control form-white"
+							value="#{ingredienteCadastroBean.adicionalSelecionado}">
+							<f:selectItems var="bool"
+								value="#{ingredienteCadastroBean.ebooleans}" itemValue="#{bool}"
+								itemLabel="#{bool.label}" required="true" />
+							<f:ajax execute="@this" render="considerarSOM valorAdicionalIT" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_valor_adicional}" />
+						<h:inputText id="valorAdicionalIT"
+							styleClass="form-control form-white moeda"
+							value="#{ingredienteCadastroBean.valorAdicional}"
+							disabled="#{ingredienteCadastroBean.adicionalSelecionado eq 'FALSE'}">
+							<f:converter
+								converterId="br.com.will.gestao.converter.InputMoedaConverter" />
+						</h:inputText>
+					</div>
+				</div>
+			</div>
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-6 esq">
+					<h:commandButton id="salvarBtn" value="Salvar"
+						action="#{ingredienteCadastroBean.salvar}"
+						styleClass="btn btn-success btn-lg">
+					</h:commandButton>
+				</div>
+
+				<div class="col-sm-6 centro" />
+
+				<div class="col-sm-6 dir" />
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,231 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pagina" value="#{msg.txt_usuarios}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="usuariosForm" prependId="false">
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-4 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							value="Voltar">
+						</h:commandLink>
+					</div>
+				</div>
+
+				<div class="col-sm-2 centro"></div>
+
+				<div class="col-sm-4 dir">
+					<div class="btn-group btn-group-sm">
+						<ppd:novoBotao id="usuarioNovoNB" pagina="usuario" />
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h:panelGroup id="usuariosPG">
+					<ppd:dataTable id="usuarioDT" bean="#{usuarioListagemBean}"
+						columnClass="align-center,,,,,align-center,align-center"
+						componenteBtn="false">
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_maiusc_id}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_nome}" />
+							</f:facet>
+							<ppd:abreviado value="#{item.nome}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_login}" />
+							</f:facet>
+							<h:outputText value="#{item.login}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_email}" />
+							</f:facet>
+							<h:outputText value="#{item.email}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_nivel}" />
+							</f:facet>
+							<h:outputText value="#{item.nivel.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_situacao}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.ultimaSituacao.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+							<h:panelGroup>
+								<h:commandLink>
+									<img
+										src="../resources/images/ico/16x16/client_account_template.png"
+										title="#{msg.txt_clientes}" alt="#{msg.txt_clientes}" />
+									<f:ajax execute="@this" render="clientePG"
+										listener="#{usuarioListagemBean.obterClientesPorUsuario(item)}" />
+								</h:commandLink>
+
+								<h:commandLink>
+									<img src="../resources/images/ico/16x16/pencil.png"
+										title="#{msg.txt_editar}" alt="#{msg.txt_editar}" />
+									<!-- <f:param name="id" value="#{item.id}" /> -->
+								</h:commandLink>
+							</h:panelGroup>
+						</h:column>
+					</ppd:dataTable>
+				</h:panelGroup>
+			</div>
+
+			<h:panelGroup id="clientePG" rendered="false">
+				<ppd:modal id="clienteModal"
+					titulo="Clientes - Usuário #{usuarioListagemBean.usuario.nome}"
+					exibirModal="#{usuarioListagemBean.exibirModalClientes}"
+					salvar="#{usuarioListagemBean.salvarClientesAssociados()}"
+					fecharModal="#{usuarioListagemBean.fecharModal}">
+
+					<h:panelGroup id="conteudoPG">
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active"><a
+								href="#clientesAssociadosDIV" data-toggle="tab">Associados</a></li>
+							<li role="presentation"><a href="#clientesDisponiveisDIV"
+								data-toggle="tab">Disponíveis</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div id="clientesAssociadosDIV" class="tab-pane fade in active">
+								<h:panelGroup
+									rendered="#{empty usuarioListagemBean.clientesAssociados}">
+									Não há Clientes Associados!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{not empty usuarioListagemBean.clientesAssociados}">
+									<div class="scroll">
+										<h:dataTable id="clientesAssociadosDT"
+											value="#{usuarioListagemBean.clientesAssociados}" var="item"
+											columnClasses="align-center,,align-center" styleClass="table">
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_maiusc_id}" />
+													</div>
+												</f:facet>
+												<h:outputText value="#{item.id}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_nome}" />
+												</f:facet>
+												<h:outputText value="#{item.nome}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_remover}" />
+													</div>
+												</f:facet>
+												<h:panelGroup>
+													<h:commandLink>
+														<img src="../resources/images/ico/16x16/cross.png"
+															title="#{msg.txt_remover}" />
+														<f:ajax execute="@this" render="clienteModal:conteudoPG"
+															listener="#{usuarioListagemBean.removerCliente(item)}" />
+													</h:commandLink>
+												</h:panelGroup>
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+
+							<div id="clientesDisponiveisDIV" class="tab-pane fade">
+								<h:panelGroup
+									rendered="#{empty usuarioListagemBean.clientesDisponiveis}">
+									Não há Clientes Disponíveis!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{not empty usuarioListagemBean.clientesDisponiveis}">
+									<div class="scroll">
+										<h:dataTable id="clientesDisponiveisDT"
+											value="#{usuarioListagemBean.clientesDisponiveis}" var="item"
+											columnClasses="align-center,,align-center" styleClass="table">
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_maiusc_id}" />
+													</div>
+												</f:facet>
+												<h:outputText value="#{item.id}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_nome}" />
+												</f:facet>
+												<h:outputText value="#{item.nome}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_adicionar}" />
+													</div>
+												</f:facet>
+												<h:panelGroup>
+													<h:commandLink>
+														<img src="../resources/images/ico/16x16/plus.png"
+															title="#{msg.txt_tipo_ingresso}" />
+														<f:ajax execute="@this" render="clienteModal:conteudoPG"
+															listener="#{usuarioListagemBean.adicionarCliente(item)}" />
+													</h:commandLink>
+												</h:panelGroup>
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+						</div>
+					</h:panelGroup>
+				</ppd:modal>
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

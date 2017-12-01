@@ -1,0 +1,290 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="#{msg.txt_guiches}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="guichesForm" prependId="false">
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							value="Voltar">
+						</h:commandLink>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm">
+						<nx:novoBotao id="guicheNovoNB" pagina="guiche" />
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h:panelGroup id="guichesPG">
+					<nx:dataTable id="guicheDT" bean="#{guicheListagemBean}"
+						columnClass="align-center,,,,align-center,align-center,align-center,align-center,align-center"
+						componenteBtn="false">
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_maiusc_id}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_descricao}" />
+							</f:facet>
+							<nx:abreviado value="#{item.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Bilheteria" />
+							</f:facet>
+							<nx:abreviado value="#{item.bilheteria.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_usuario}" />
+							</f:facet>
+							<h:outputText value="#{item.usuario.login}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Imp. Após Confir." />
+								</div>
+							</f:facet>
+							<h:commandLink onclick="return confirm('Deseja Alterar?')"
+								actionListener="#{guicheListagemBean.alterarImprimirAntesConfirmacaoPedido(item)}">
+								<img
+									src="../resources/images/ico/16x16/#{item.imprimirAntesConfirmacaoPedido.icone}"
+									title="#{item.imprimirAntesConfirmacaoPedido.label}" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Cortesia" />
+								</div>
+							</f:facet>
+							<h:commandLink onclick="return confirm('Deseja Alterar?')"
+								actionListener="#{guicheListagemBean.alterarImprimirCortesia(item)}">
+								<img
+									src="../resources/images/ico/16x16/#{item.imprimirCortesia.icone}"
+									title="#{item.imprimirCortesia.label}" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Offline" />
+								</div>
+							</f:facet>
+							<h:commandLink onclick="return confirm('Deseja Alterar?')"
+								actionListener="#{guicheListagemBean.alterarOffline(item)}">
+								<img src="../resources/images/ico/16x16/#{item.offline.icone}"
+									title="#{item.offline.label}" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_situacao}" />
+								</div>
+							</f:facet>
+							<nx:situacao item="#{item}" render="guichesPG"
+								bean="#{guicheListagemBean}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+
+							<h:commandLink>
+								<img src="../resources/images/ico/16x16/user.png"
+									title="#{msg.txt_usuario}" alt="#{msg.txt_usuario}" />
+								<f:ajax execute="@this" render="usuarioPG"
+									listener="#{guicheListagemBean.obterUsuarios(item)}" />
+							</h:commandLink>
+
+							<h:commandLink>
+								<img src="../resources/images/ico/16x16/document_back.png"
+									title="Extrato" alt="Extrato" />
+								<f:ajax execute="@this" render="extratoPG"
+									listener="#{guicheListagemBean.abrirExtrato(item)}" />
+							</h:commandLink>
+							
+							<h:commandLink action="guiche" disabled="true">
+								<img src="../resources/images/ico/16x16/pencil.png"
+									title="#{msg.txt_editar}" alt="#{msg.txt_editar}" />
+								<f:param name="id" value="#{id}" />
+							</h:commandLink>
+
+						</h:column>
+					</nx:dataTable>
+				</h:panelGroup>
+			</div>
+			
+			<h:panelGroup id="extratoPG">
+				<nx:modal id="extratoModal"
+					titulo="Extrato - #{guicheListagemBean.guiche.descricao}"
+					exibirModal="#{guicheListagemBean.exibirModalExtrato}"
+					fecharModal="#{guicheListagemBean.fecharModal()}">
+					<h:panelGroup
+						rendered="#{guicheListagemBean.exibirModalExtrato}">
+
+						<div class="form-group">
+							<h:outputLabel value="#{msg.txt_evento}" />
+							<h:selectOneMenu id="eventoSOM" styleClass="form-control"
+								required="true"
+								value="#{guicheListagemBean.idEventoSelecionado}">
+								<f:selectItem itemLabel="#{msg.txt_selecione}" />
+								<f:selectItems var="evento"
+									value="#{guicheListagemBean.eventosAssociados}"
+									itemValue="#{evento.id}" itemLabel="#{evento.descricao}"
+									required="true" />
+								<f:ajax execute="@this" render="extratoPG" event="change"
+									listener="#{guicheListagemBean.selecionarEventoPontoVenda()}" />
+							</h:selectOneMenu>
+						</div>
+
+						<h:panelGroup id="extratoPG">
+							<h4>
+								<h:outputText value="Extrato" />
+							</h4>
+
+							<div class="margin-bottom-40">
+								<nx:extratoTable bean="#{guicheListagemBean}" />
+							</div>
+
+							<h4>
+								<h:outputText value="Histórico" />
+							</h4>
+
+							<div class="margin-bottom-40">
+								<h:panelGroup
+									rendered="#{empty guicheListagemBean.extratoRetirada.retiradas}">
+								Não há retiradas!
+							</h:panelGroup>
+
+								<h:dataTable var="retirada" styleClass="table"
+									value="#{guicheListagemBean.extratoRetirada.retiradas}"
+									rendered="#{not empty guicheListagemBean.extratoRetirada.retiradas}"
+									columnClasses=",align-center,align-center">
+
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Usuário" />
+										</f:facet>
+										<nx:abreviado value="#{retirada.usuario.nome}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="Data da Retirada" />
+											</div>
+										</f:facet>
+
+										<nx:outputCalendar value="#{retirada.dataCadastro.time}" />
+									</h:column>
+
+									<h:column>
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="Valor" />
+											</div>
+										</f:facet>
+
+										<h:outputText value="#{retirada.valor}"
+											converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+
+										<f:facet name="footer">
+											<div class="align-center">
+												<strong> <h:outputText
+														value="#{guicheListagemBean.extratoRetirada.saldoRetirada}"
+														converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+												</strong>
+											</div>
+										</f:facet>
+									</h:column>
+								</h:dataTable>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-12 col-sm-offset-12 wrap-extrato-pdv">
+									<p>
+										<span><h:outputText value="Total" /></span> <strong>
+											<h:outputText
+												value="#{guicheListagemBean.extratoRetirada.total + guicheListagemBean.extratoRetirada.totalTaxaAdministrativa}"
+												converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+										</strong>
+									</p>
+
+									<p>
+										<span><h:outputText value="Disponível" /></span> <strong>
+											<h:outputText
+												value="#{guicheListagemBean.extratoRetirada.saldoDisponivel + 0}"
+												converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+										</strong>
+									</p>
+								</div>
+							</div>
+						</h:panelGroup>
+
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+
+			<h:panelGroup id="usuarioPG">
+				<nx:modal id="usuarioModal"
+					titulo="Usuários: #{guicheListagemBean.guiche.id} - #{guicheListagemBean.guiche.descricao}"
+					exibirModal="#{guicheListagemBean.exibirModalUsuario}"
+					salvar="#{guicheListagemBean.salvarGuicheUsuario()}"
+					render="guichesPG" fecharModal="#{guicheListagemBean.fecharModal}">
+
+					<h:panelGroup id="conteudoPG">
+						<div class="form-group">
+							<h:outputLabel value="#{msg.txt_usuario}" />
+							<h:selectOneMenu id="usuarioSOM" styleClass="form-control"
+								value="#{guicheListagemBean.idUsuarioSelecionado}">
+								<f:selectItem itemLabel="#{msg.txt_selecione}" />
+								<f:selectItems var="usuario"
+									value="#{guicheListagemBean.usuarios}"
+									itemValue="#{usuario.id}"
+									itemLabel="#{usuario.nome} - #{usuario.login}" />
+								<f:ajax execute="@this" event="change" />
+							</h:selectOneMenu>
+						</div>
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

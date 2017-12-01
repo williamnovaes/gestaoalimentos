@@ -1,0 +1,333 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="#{msg.txt_ingressos}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="ingressosForm" prependId="false">
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:selectOneMenu id="eventoSOM" styleClass="form-control"
+							value="#{ingressoListagemBean.idEventoSelecionado}">
+							<f:selectItem itemLabel="Eventos" noSelectionOption="true" />
+							<f:selectItems var="evento"
+								value="#{ingressoListagemBean.eventos}" itemValue="#{evento.id}"
+								itemLabel="#{evento.descricao}" required="true" />
+							<f:ajax execute="@this" render="ingressoPG" event="change"
+								listener="#{ingressoListagemBean.buscarPorEvento()}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="input-group">
+					<h:inputText id="filtroIT"
+						value="#{ingressoListagemBean.filtroPermissaoUsuarioIngresso.filtravel.entradaFiltro}"
+						styleClass="form-control" pt:placeholder="PALAVRA-CHAVE" />
+					<span class="input-group-btn"> <h:commandLink
+							styleClass="btn btn-default btn-icon icon-zoom" value="Buscar">
+							<f:ajax execute="filtroIT" render="ingressoPG"
+								listener="#{ingressoListagemBean.buscarRegistros()}" />
+						</h:commandLink>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:selectOneMenu id="ingressoSituacaoSOM"
+							styleClass="form-control"
+							value="#{ingressoListagemBean.idIngressoSituacaoSelecionado}">
+							<f:selectItem itemLabel="Ingressos Situação"
+								noSelectionOption="true" />
+							<f:selectItems var="item"
+								value="#{ingressoListagemBean.ingressosSituacao}"
+								itemValue="#{item.id}" itemLabel="#{item.descricao}"
+								required="true" />
+							<f:ajax execute="@this" render="ingressoPG" event="change"
+								listener="#{ingressoListagemBean.buscarPorIngressoSituacao()}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:selectOneMenu id="guicheSOM" styleClass="form-control"
+							value="#{ingressoListagemBean.idGuicheSelecionado}">
+							<f:selectItem itemLabel="Guichês" />
+							<f:selectItems var="guiche"
+								value="#{ingressoListagemBean.guiches}" itemValue="#{guiche.id}"
+								itemLabel="#{guiche.descricao}" required="true" />
+							<f:ajax execute="@this" render="ingressoPG" event="change"
+								listener="#{ingressoListagemBean.buscarPorGuiche()}" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</div>
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-8 esq">
+					<div class="btn-group">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default btn-sm btn-icon icon-arrow-undo"
+							value="Voltar">
+						</h:commandLink>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group">
+						<h:commandLink immediate="true"
+							action="ingressoSincronizacao?faces-redirect=true"
+							styleClass="btn btn-default btn-sm btn-icon icon-plus"
+							value="Sincronizar Manualmente">
+						</h:commandLink>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h:panelGroup id="ingressoPG">
+					<nx:dataTable id="ingressosDT" bean="#{ingressoListagemBean}"
+						columnClass="align-center,align-center,,,align-center,align-center,align-center,align-center,align-center,align-center"
+						componenteBtn="false">
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_maiusc_id}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.id}" title="#{item.pedido.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_codigo} de Barras" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.codigo}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_guiche}" />
+							</f:facet>
+							<nx:abreviado value="#{item.guicheLote.guiche.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_tipo_ingresso}" />
+							</f:facet>
+							<h:outputText
+								value="#{item.guicheLote.lote.ingressoTipo.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_valor}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.guicheLote.lote.valor}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Taxa" />
+								</div>
+							</f:facet>
+							<h:outputText
+								value="#{item.guicheLote.lote.valorTaxaAdministrativa}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Total" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.guicheLote.lote.total}"
+								converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_pedido}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.pedido.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_situacao}" />
+								</div>
+							</f:facet>
+							<img
+								src="../resources/images/ico/16x16/#{item.ingressoSituacao.icone}"
+								title="#{item.ingressoSituacao.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+
+							<h:commandLink>
+								<img src="../resources/images/ico/16x16/document_inspector.png"
+									title="Detalhes" />
+								<f:ajax execute="@this" render="detalhesPG"
+									listener="#{ingressoListagemBean.abrirModalDetalhes(item)}" />
+							</h:commandLink>
+
+							<h:commandLink>
+								<img src="../resources/images/ico/16x16/cross.png"
+									title="Cancelar" />
+								<f:ajax execute="@this" render="cancelamentoPG"
+									listener="#{ingressoListagemBean.abrirModalCancelamento(item)}" />
+							</h:commandLink>
+
+						</h:column>
+					</nx:dataTable>
+				</h:panelGroup>
+			</div>
+
+			<h:panelGroup id="detalhesPG">
+				<nx:modal id="detalheModal"
+					titulo="Detalhes: #{ingressoListagemBean.ingresso.id} - #{ingressoListagemBean.ingresso.codigo}"
+					exibirModal="#{ingressoListagemBean.exibirModalDetalhes}"
+					fecharModal="#{ingressoListagemBean.fecharModal()}">
+
+					<h:panelGroup id="detalheIngressoPG">
+						<h:dataTable id="detalheDT"
+							value="#{ingressoListagemBean.ingresso}"
+							columnClasses="align-center,align-center,align-center,align-center"
+							styleClass="table" var="item">
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="#{msg.txt_maiusc_id}" />
+									</div>
+								</f:facet>
+								<h:outputText value="#{item.id}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Guichê" />
+									</div>
+								</f:facet>
+								<nx:abreviado value="#{item.guicheLote.guiche.descricao}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Lote" />
+									</div>
+								</f:facet>
+								<h:outputText value="#{item.guicheLote.lote.numero}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="#{msg.txt_valor}" />
+									</div>
+								</f:facet>
+								<h:outputText value="#{item.guicheLote.lote.valor}"
+									converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Taxa" />
+									</div>
+								</f:facet>
+								<h:outputText value="#{item.guicheLote.lote.valorTaxaAdministrativa}"
+									converter="br.com.nx.tickets.converter.OutputMoedaConverter" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Cod. Promoção" />
+									</div>
+								</f:facet>
+								<h:outputText value="#{item.codigoPromocao}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Data de Validação" />
+									</div>
+								</f:facet>
+								<nx:outputCalendar value="#{item.dataValidacao.time}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<div class="align-center">
+										<h:outputText value="Portaria" />
+									</div>
+								</f:facet>
+								<nx:outputCalendar value="#{item.portariaValidacao.descricao}" />
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+
+			<h:panelGroup id="cancelamentoPG">
+				<nx:modal id="cancelamentoModal"
+					titulo="Cancelamento: #{ingressoListagemBean.ingresso.id} - #{ingressoListagemBean.ingresso.codigo}"
+					exibirModal="#{ingressoListagemBean.exibirModalCancelamento}"
+					render="ingressoPG"
+					fecharModal="#{ingressoListagemBean.fecharModal()}"
+					salvar="#{ingressoListagemBean.cancelarIngresso()}">
+
+					<h:panelGroup id="observacaoPG">
+						<div class="form-group">
+							<f:facet name="header">
+								<h:outputLabel value="#{msg.txt_observacao}" />
+							</f:facet>
+							<h:inputText value="#{ingressoListagemBean.ingresso.observacao}"
+								required="true" pt:placeholder="Observacao"
+								styleClass="form-control" maxlength="50">
+								<f:ajax execute="@this" render="cancelamentoModal:observacaoPG"
+									event="blur" />
+							</h:inputText>
+						</div>
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

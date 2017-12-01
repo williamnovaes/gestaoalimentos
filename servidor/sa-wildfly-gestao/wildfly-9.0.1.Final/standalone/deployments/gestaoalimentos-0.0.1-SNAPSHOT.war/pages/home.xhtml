@@ -1,0 +1,361 @@
+﻿<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ppd="http://java.sun.com/jsf/composite/components"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+
+	<ui:param name="pagina" value="Cardápio" />
+	<ui:param name="nomeUsuario" value="#{loginBean.usuarioLogado.nome}" />
+
+	<ui:define name="content">
+
+		<h:form id="homeForm" prependId="false">
+
+			<div class="form">
+				<h:outputLabel value="Produtos" styleClass="sr-only" />
+			</div>
+
+			<h:panelGroup>
+				<h:outputText value="Nenhum Registro"
+					styleClass="nenhum-registro"
+					rendered="#{homeBean.produtos eq null 
+								or empty homeBean.produtos}" />
+								
+				<h:panelGroup id="produtosTipoPG"
+					rendered="#{not empty homeBean.produtos}">
+					<ul class="nav nav-tabs">
+						<ui:repeat var="produto" value="#{homeBean.produtos}">
+							<li>
+								<h4>#{produto.nome}</h4> <ui:repeat var="sabor"
+									value="#{produto.sabores}">
+									<ul class="">
+										<!-- 									listar tamanhos disponiveis -->
+										<li>
+											<div>
+												<h1>#{sabor.index}</h1>
+											</div>
+											<div>#{sabor.nome}</div>
+											<div>
+												<h:commandLink
+													styleClass="glyphicon glyphicon-plus-sign btn">
+													<f:ajax event="click"
+														listener="#{homeBean.adiconarSabor(sabor)}" />
+												</h:commandLink>
+											</div>
+										</li>
+									</ul>
+								</ui:repeat>
+							</li>
+						</ui:repeat>
+					</ul>
+				</h:panelGroup>
+			</h:panelGroup>
+
+			<!-- 			<h:panelGroup rendered="false"> -->
+			<!-- 				<h:panelGroup id="produtosTipoPG" -->
+			<!-- 					rendered="#{not empty homeBean.produtosTipo}"> -->
+
+			<!-- 					<ul class="nav nav-tabs"> -->
+			<!-- 						<ui:repeat var="tipo" value="#{homeBean.produtosTipo}"> -->
+			<!-- 							<li role="presentation" -->
+			<!-- 								class="#{homeBean.isAbaAtiva(tipo.id) ? 'active' : ''}"><h:commandLink -->
+			<!-- 									value="#{tipo.descricao}" data-toggle="tab"> -->
+			<!-- 									<f:ajax listener="#{homeBean.carregarProdutosPorTipo(tipo.id)}" -->
+			<!-- 										render="produtosTipoPG" /> -->
+			<!-- 								</h:commandLink> 								<a href="#{'#'.concat(item.descricao).concat('DIV')}" -->
+			<!-- 																	data-toggle="tab" onclick="#{homeBean.carregarProdutosPorTipo(item.id)}"> -->
+			<!-- 																	#{tipo.descricao} </a></li> -->
+			<!-- 						</ui:repeat> -->
+			<!-- 					</ul> -->
+
+			<!-- 					<div class="tab-content"> -->
+			<!-- 						<ui:repeat var="prod" value="#{homeBean.produtos}"> -->
+
+			<!-- 						</ui:repeat>						 -->
+			<!-- 					</div> -->
+
+			<!-- 				</h:panelGroup> -->
+			<!-- 			</h:panelGroup> -->
+
+			<!-- 			<div id="float-banner" class="float-banner" data-spy="affix" data-offset-top="197"> -->
+			<!-- 				teste baner flutuante -->
+			<!-- 			</div> -->
+
+
+
+			<!-- 			<h:panelGroup rendered="#{empty homeBean.extratos}"> -->
+			<!-- 				<h:outputText value="Não há pedidos até o momento!" /> -->
+			<!-- 			</h:panelGroup> -->
+
+			<!-- 			<h:panelGroup rendered="#{not empty homeBean.extratos}"> -->
+
+			<!-- 				<div class="scroll-horizontal"> -->
+			<!-- 					<h:dataTable id="extratoDT" value="#{homeBean.extratos}" -->
+			<!-- 						columnClasses=",align-center,align-center,align-center,align-center,align-center,align-center" -->
+			<!-- 						styleClass="table" var="item"> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="Guichê" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{item.nome}" /> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="Qtd" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{item.quantidade}" /> -->
+
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<strong> <h:outputText -->
+			<!-- 											value="#{homeBean.extratoEventoTotal.quantidade}" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="Valor" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+
+			<!-- 							<h:outputText value="#{item.valorTotal}" -->
+			<!-- 								converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<strong> <h:outputText -->
+			<!-- 											value="#{homeBean.extratoEventoTotal.valorTotal}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="Taxa" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+
+			<!-- 							<h:outputText value="#{item.valorTotalTaxaAdministrativa}" -->
+			<!-- 								converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<strong> <h:outputText -->
+			<!-- 											value="#{homeBean.extratoEventoTotal.valorTotalTaxaAdministrativa}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="Total" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+
+			<!-- 							<h:outputText value="#{item.total}" -->
+			<!-- 								converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<strong> <h:outputText -->
+			<!-- 											value="#{homeBean.extratoEventoTotal.total}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="Disponível" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+
+			<!-- 							<h:outputText value="#{item.totalRetirada}" -->
+			<!-- 								converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<strong> <h:outputText -->
+			<!-- 											value="#{homeBean.extratoEventoTotal.totalRetirada}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:outputText value="#{msg.txt_opcoes}" /> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:commandLink> -->
+			<!-- 								<img src="../resources/images/ico/16x16/basket.png" -->
+			<!-- 									title="Ver detalhes" /> -->
+			<!-- 								<f:ajax execute="@this" render="extratoPG" -->
+			<!-- 									listener="#{homeBean.detalharGuiche(item.id)}" /> -->
+			<!-- 							</h:commandLink> -->
+			<!-- 							<f:facet name="footer"> -->
+			<!-- 								<div class="align-center"> -->
+			<!-- 									<h:commandLink> -->
+			<!-- 										<img src="../resources/images/ico/16x16/basket.png" -->
+			<!-- 											title="Ver detalhes" /> -->
+			<!-- 										<f:ajax execute="@this" render="extratoPG" -->
+			<!-- 											listener="#{homeBean.detalharGuiche(0)}" /> -->
+			<!-- 									</h:commandLink> -->
+			<!-- 								</div> -->
+			<!-- 							</f:facet> -->
+			<!-- 						</h:column> -->
+
+			<!-- 					</h:dataTable> -->
+			<!-- 				</div> -->
+			<!-- 			</h:panelGroup> -->
+
+			<div class="row wrap-btn-form">
+				<div class="col-sm-24">
+					<!-- 					<h:commandLink styleClass="btn btn-success btn-block" -->
+					<!-- 						action="#{homeBean.buscarExtrato}"> -->
+					<!-- 						Atualizar -->
+					<!-- 					</h:commandLink> -->
+				</div>
+			</div>
+
+			<!-- 			<h:panelGroup id="extratoPG"> -->
+			<!-- 				<ppd:modal id="extratoModal" -->
+			<!-- 					titulo="Extrato - #{homeBean.guiche.descricao}" -->
+			<!-- 					exibirModal="#{homeBean.exibirExtratoModal}" -->
+			<!-- 					fecharModal="#{homeBean.fecharModal()}" -->
+			<!-- 					render="extratoPG"> -->
+
+			<!-- 					<div class="scroll"> -->
+			<!-- 						<ppd:extratoTable bean="#{homeBean}" -->
+			<!-- 							total="#{homeBean.extratoGuiche}" /> -->
+			<!-- 					</div> -->
+
+			<!-- 					<h:panelGroup id="historicoPG" rendered="#{homeBean.guiche ne null}"> -->
+
+			<!-- 						<h4> -->
+			<!-- 							<h:outputText value="Histórico de Retiradas" /> -->
+			<!-- 						</h4> -->
+
+			<!-- 						<div class="margin-bottom-40"> -->
+			<!-- 							<h:panelGroup -->
+			<!-- 								rendered="#{empty homeBean.extratoRetirada.retiradas}"> -->
+			<!-- 								Não há retiradas! -->
+			<!-- 							</h:panelGroup> -->
+
+			<!-- 							<h:dataTable var="retirada" styleClass="table" -->
+			<!-- 								value="#{homeBean.extratoRetirada.retiradas}" -->
+			<!-- 								rendered="#{not empty homeBean.extratoRetirada.retiradas}" -->
+			<!-- 								columnClasses=",align-center,align-center"> -->
+
+			<!-- 								<h:column> -->
+			<!-- 									<f:facet name="header"> -->
+			<!-- 										<h:outputText value="Usuário" /> -->
+			<!-- 									</f:facet> -->
+			<!-- 									<ppd:abreviado value="#{retirada.usuario.nome}" /> -->
+			<!-- 								</h:column> -->
+
+			<!-- 								<h:column> -->
+			<!-- 									<f:facet name="header"> -->
+			<!-- 										<div class="align-center"> -->
+			<!-- 											<h:outputText value="Data da Retirada" /> -->
+			<!-- 										</div> -->
+			<!-- 									</f:facet> -->
+
+			<!-- 									<ppd:outputCalendar value="#{retirada.dataCadastro.time}" /> -->
+			<!-- 								</h:column> -->
+
+			<!-- 								<h:column> -->
+			<!-- 									<f:facet name="header"> -->
+			<!-- 										<div class="align-center"> -->
+			<!-- 											<h:outputText value="Valor" /> -->
+			<!-- 										</div> -->
+			<!-- 									</f:facet> -->
+
+			<!-- 									<h:outputText value="#{retirada.valor}" -->
+			<!-- 										converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+
+			<!-- 									<f:facet name="footer"> -->
+			<!-- 										<div class="align-center"> -->
+			<!-- 											<strong> <h:outputText -->
+			<!-- 													value="#{homeBean.extratoRetirada.saldoRetirada}" -->
+			<!-- 													converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 											</strong> -->
+			<!-- 										</div> -->
+			<!-- 									</f:facet> -->
+			<!-- 								</h:column> -->
+			<!-- 							</h:dataTable> -->
+			<!-- 						</div> -->
+
+			<!-- 						<div class="row"> -->
+			<!-- 							<div class="col-sm-12 col-sm-offset-12 wrap-extrato-pdv"> -->
+			<!-- 								<p> -->
+			<!-- 									<span><h:outputText value="Total" /></span> <strong> -->
+			<!-- 										<h:outputText -->
+			<!-- 											value="#{homeBean.extratoRetirada.total + homeBean.extratoRetirada.totalTaxaAdministrativa}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</p> -->
+
+			<!-- 								<p> -->
+			<!-- 									<span><h:outputText value="Disponível" /></span> <strong> -->
+			<!-- 										<h:outputText -->
+			<!-- 											value="#{homeBean.extratoRetirada.saldoDisponivel + 0}" -->
+			<!-- 											converter="br.com.nx.tickets.converter.OutputMoedaConverter" /> -->
+			<!-- 									</strong> -->
+			<!-- 								</p> -->
+			<!-- 							</div> -->
+			<!-- 						</div> -->
+
+			<!-- 						<div class="row"> -->
+			<!-- 							<div class="col-sm-12 col-sm-offset-12"> -->
+			<!-- 								<div class="input-group"> -->
+			<!-- 									<span class="input-group-addon">R$</span> -->
+
+			<!-- 									<h:inputText id="valorRetiradaIT" -->
+			<!-- 										value="#{homeBean.valorRetirada}" -->
+			<!-- 										styleClass="form-control text-right moeda" -->
+			<!-- 										pt:placeholder="0,00"> -->
+			<!-- 										<f:converter -->
+			<!-- 											converterId="br.com.nx.tickets.converter.InputMoedaConverter" /> -->
+			<!-- 									</h:inputText> -->
+
+			<!-- 									<div class="input-group-btn"> -->
+			<!-- 										<h:commandButton value="Efetuar Retirada" -->
+			<!-- 											onclick="return confirm('Deseja realmente efetuar a retirada?')" -->
+			<!-- 											styleClass="btn btn-default btn-success"> -->
+			<!-- 											<f:ajax execute="valorRetiradaIT" event="click" -->
+			<!-- 												render="historicoPG valorRetiradaIT retiradaMessages" -->
+			<!-- 												listener="#{homeBean.salvarRetirada()}"></f:ajax> -->
+			<!-- 										</h:commandButton> -->
+			<!-- 									</div> -->
+			<!-- 								</div> -->
+			<!-- 							</div> -->
+			<!-- 						</div> -->
+			<!-- 						<h:messages id="retiradaMessages" -->
+			<!-- 						layout="table" /> -->
+			<!-- 					</h:panelGroup> -->
+
+			<!-- 				</ppd:modal> -->
+			<!-- 			</h:panelGroup> -->
+		</h:form>
+	</ui:define>
+</ui:composition>

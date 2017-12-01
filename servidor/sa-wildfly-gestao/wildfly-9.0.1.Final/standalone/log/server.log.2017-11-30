@@ -1,0 +1,935 @@
+2017-11-30 23:04:58,606 INFO  [org.jboss.modules] (main) JBoss Modules version 1.4.3.Final
+2017-11-30 23:04:59,095 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.6.Final
+2017-11-30 23:04:59,251 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) starting
+2017-11-30 23:04:59,255 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+	awt.toolkit = sun.lwawt.macosx.LWCToolkit
+	file.encoding = UTF-8
+	file.encoding.pkg = sun.io
+	file.separator = /
+	ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	gopherProxySet = false
+	http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	java.awt.graphicsenv = sun.awt.CGraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.lwawt.macosx.CPrinterJob
+	java.class.path = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/jboss-modules.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/endorsed
+	java.ext.dirs = /Users/mauricio/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+	java.home = /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre
+	java.io.tmpdir = /var/folders/yv/q8hlgm2968j3kpszhlh_4cm40000gn/T/
+	java.library.path = /Users/mauricio/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_152-b16
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_152
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.152-b16
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	javax.xml.datatype.DatatypeFactory = __redirected.__DatatypeFactory
+	javax.xml.parsers.DocumentBuilderFactory = __redirected.__DocumentBuilderFactory
+	javax.xml.parsers.SAXParserFactory = __redirected.__SAXParserFactory
+	javax.xml.stream.XMLEventFactory = __redirected.__XMLEventFactory
+	javax.xml.stream.XMLInputFactory = __redirected.__XMLInputFactory
+	javax.xml.stream.XMLOutputFactory = __redirected.__XMLOutputFactory
+	javax.xml.transform.TransformerFactory = __redirected.__TransformerFactory
+	javax.xml.validation.SchemaFactory:http://www.w3.org/2001/XMLSchema = __redirected.__SchemaFactory
+	javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom = __redirected.__XPathFactory
+	jboss.bind.address = localhost
+	jboss.bind.address.management = localhost
+	jboss.home.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final
+	jboss.host.name = mauricios-mbp
+	jboss.modules.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = mauricios-mbp
+	jboss.qualified.host.name = mauricios-mbp
+	jboss.server.base.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	jboss.server.config.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration
+	jboss.server.data.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data
+	jboss.server.deploy.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/content
+	jboss.server.log.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log
+	jboss.server.name = mauricios-mbp
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/tmp
+	line.separator = 
+
+	logging.configuration = file:/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties
+	module.path = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/modules
+	org.jboss.boot.log.file = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log
+	org.jboss.logmanager.nocolor = true
+	org.jboss.resolver.warning = true
+	org.xml.sax.driver = __redirected.__XMLReaderFactory
+	os.arch = x86_64
+	os.name = Mac OS X
+	os.version = 10.13.1
+	path.separator = :
+	program.name = JBossTools: WildFly  9.x
+	socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+	sun.arch.data.model = 64
+	sun.boot.class.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/classes
+	sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home/jre/lib
+	sun.cpu.endian = little
+	sun.cpu.isalist = 
+	sun.io.unicode.encoding = UnicodeBig
+	sun.java.command = org.jboss.modules.Main -mp /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/modules -jaxpmodule javax.xml.jaxp-provider -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone-full.xml -Djboss.server.base.dir=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = UTF-8
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = unknown
+	sun.rmi.dgc.client.gcInterval = 3600000
+	sun.rmi.dgc.server.gcInterval = 3600000
+	user.country = BR
+	user.dir = /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/bin
+	user.home = /Users/mauricio
+	user.language = en
+	user.name = mauricio
+	user.timezone = America/Sao_Paulo
+2017-11-30 23:04:59,258 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49699 -Dprogram.name=JBossTools: WildFly  9.x -Xms64m -Xmx512m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Dorg.jboss.boot.log.file=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/log/boot.log -Dlogging.configuration=file:/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/configuration/logging.properties -Djboss.home.dir=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Dfile.encoding=UTF-8 
+2017-11-30 23:05:01,797 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 21) WFLYCTL0028: Attribute 'job-repository-type' in the resource at address '/subsystem=batch' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-11-30 23:05:01,813 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 4) WFLYCTL0028: Attribute 'enabled' in the resource at address '/subsystem=datasources/data-source=gestaoalimentosLocalPool' is deprecated, and may be removed in future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2017-11-30 23:05:02,033 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) WFLYDS0004: Found gestaoalimentos-0.0.1-SNAPSHOT.war in deployment directory. To trigger deployment create a file called gestaoalimentos-0.0.1-SNAPSHOT.war.dodeploy
+2017-11-30 23:05:02,070 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2017-11-30 23:05:02,118 INFO  [org.xnio] (MSC service thread 1-8) XNIO version 3.3.1.Final
+2017-11-30 23:05:02,139 INFO  [org.xnio.nio] (MSC service thread 1-8) XNIO NIO Implementation Version 3.3.1.Final
+2017-11-30 23:05:02,236 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 42) WFLYIIOP0001: Activating IIOP Subsystem
+2017-11-30 23:05:02,237 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 41) WFLYCLINF0001: Activating Infinispan subsystem.
+2017-11-30 23:05:02,284 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 60) WFLYTX0013: Node identifier property is set to the default value. Please make sure it is unique.
+2017-11-30 23:05:02,286 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 59) WFLYSEC0002: Activating Security Subsystem
+2017-11-30 23:05:02,323 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 62) WFLYWS0002: Activating WebServices Extension
+2017-11-30 23:05:02,333 INFO  [org.jboss.as.connector] (MSC service thread 1-7) WFLYJCA0009: Starting JCA Subsystem (IronJacamar 1.2.4.Final)
+2017-11-30 23:05:02,336 INFO  [org.jboss.as.security] (MSC service thread 1-3) WFLYSEC0001: Current PicketBox version=4.9.2.Final
+2017-11-30 23:05:02,335 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 52) WFLYNAM0001: Activating Naming Subsystem
+2017-11-30 23:05:02,345 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 48) WFLYJSF0007: Activated the following JSF Implementations: [main]
+2017-11-30 23:05:02,600 INFO  [org.jboss.as.naming] (MSC service thread 1-7) WFLYNAM0003: Starting Naming Service
+2017-11-30 23:05:02,616 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-30 23:05:02,616 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 61) WFLYUT0003: Undertow 1.2.9.Final starting
+2017-11-30 23:05:02,623 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-7) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2017-11-30 23:05:02,643 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 36) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.1)
+2017-11-30 23:05:02,764 INFO  [org.jboss.remoting] (MSC service thread 1-2) JBoss Remoting version 4.0.9.Final
+2017-11-30 23:05:02,784 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = postgres
+2017-11-30 23:05:03,436 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0012: Started server default-server.
+2017-11-30 23:05:04,093 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) WFLYJCA0001: Bound data source [java:/gestaoalimentosLocalDS]
+2017-11-30 23:05:04,126 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0006: Undertow HTTP listener default listening on /0.0.0.0:8080
+2017-11-30 23:05:04,464 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-3) WFLYDS0013: Started FileSystemDeploymentService for directory /Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/deployments
+2017-11-30 23:05:04,468 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name: "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-11-30 23:05:04,522 WARN  [org.jboss.as.messaging] (MSC service thread 1-4) WFLYMSG0001: AIO wasn't located on this platform, it will fall back to using pure Java NIO.
+2017-11-30 23:05:04,652 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingjournal,bindingsDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingbindings,largeMessagesDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messaginglargemessages,pagingDirectory=/Users/mauricio/workspace/GestaoAlimentos/servidor/sa-wildfly-gestao/wildfly-9.0.1.Final/standalone/data/messagingpaging)
+2017-11-30 23:05:04,656 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221006: Waiting to obtain live lock
+2017-11-30 23:05:04,795 INFO  [org.wildfly.iiop.openjdk] (MSC service thread 1-5) WFLYIIOP0009: CORBA ORB Service started
+2017-11-30 23:05:04,831 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221013: Using NIO Journal
+2017-11-30 23:05:04,969 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support CORE
+2017-11-30 23:05:05,060 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support AMQP
+2017-11-30 23:05:05,090 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221043: Adding protocol support STOMP
+2017-11-30 23:05:05,267 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221034: Waiting to obtain live lock
+2017-11-30 23:05:05,268 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221035: Live Server Obtained live lock
+2017-11-30 23:05:05,810 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0006: Undertow HTTPS listener https listening on /0.0.0.0:8443
+2017-11-30 23:05:06,474 INFO  [org.jboss.ws.common.management] (MSC service thread 1-6) JBWS022052: Starting JBoss Web Services - Stack CXF Server 5.0.0.Final
+2017-11-30 23:05:06,515 INFO  [org.jboss.messaging] (MSC service thread 1-8) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor-throughput acceptor
+2017-11-30 23:05:06,515 INFO  [org.jboss.messaging] (MSC service thread 1-6) WFLYMSG0016: Registered HTTP upgrade for hornetq-remoting protocol handled by http-acceptor acceptor
+2017-11-30 23:05:06,825 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221007: Server is now live
+2017-11-30 23:05:06,826 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221001: HornetQ Server version 2.4.7.Final (2.4.7.Final, 124) [966ea164-3bed-11e7-959a-1b6bdd243eb4] 
+2017-11-30 23:05:06,834 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 64) HQ221003: trying to deploy queue jms.queue.DLQ
+2017-11-30 23:05:06,865 INFO  [org.hornetq.jms.server] (ServerService Thread Pool -- 68) HQ121005: Invalid "host" value "0.0.0.0" detected for "http-connector" connector. Switching to "Mauricios-MBP". If this new address is incorrect please manually configure the connector to use the proper one.
+2017-11-30 23:05:06,901 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 68) WFLYMSG0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+2017-11-30 23:05:06,903 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 67) HQ221003: trying to deploy queue jms.queue.ExpiryQueue
+2017-11-30 23:05:06,907 INFO  [org.hornetq.core.server] (ServerService Thread Pool -- 66) HQ221003: trying to deploy queue jms.queue.emailQueue
+2017-11-30 23:05:06,913 INFO  [org.jboss.as.messaging] (ServerService Thread Pool -- 65) WFLYMSG0002: Bound messaging object to jndi name java:/ConnectionFactory
+2017-11-30 23:05:07,017 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-2) WFLYJCA0007: Registered connection factory java:/JmsXA
+2017-11-30 23:05:07,133 INFO  [org.hornetq.ra] (MSC service thread 1-2) HornetQ resource adaptor started
+2017-11-30 23:05:07,135 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-2) IJ020002: Deployed: file://RaActivatorhornetq-ra
+2017-11-30 23:05:07,141 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-4) WFLYJCA0002: Bound JCA ConnectionFactory [java:/JmsXA]
+2017-11-30 23:05:07,141 INFO  [org.jboss.as.messaging] (MSC service thread 1-8) WFLYMSG0002: Bound messaging object to jndi name java:jboss/DefaultJMSConnectionFactory
+2017-11-30 23:05:11,449 INFO  [org.jboss.as.jpa] (MSC service thread 1-6) WFLYJPA0002: Read persistence.xml for gestaoAlimentosPU
+2017-11-30 23:05:12,769 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 67) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-30 23:05:12,792 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 67) HHH000204: Processing PersistenceUnitInfo [
+	name: gestaoAlimentosPU
+	...]
+2017-11-30 23:05:12,969 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 67) HHH000412: Hibernate Core {4.3.10.Final}
+2017-11-30 23:05:12,976 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 67) HHH000206: hibernate.properties not found
+2017-11-30 23:05:12,980 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 67) HHH000021: Bytecode provider name : javassist
+2017-11-30 23:05:13,614 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) WFLYWELD0003: Processing weld deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-30 23:05:13,766 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-4) HV000001: Hibernate Validator 5.1.3.Final
+2017-11-30 23:05:13,975 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named CidadeServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:module/CidadeServico!br.com.will.gestao.servico.CidadeServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CidadeServico
+	java:module/CidadeServico
+
+2017-11-30 23:05:13,977 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EnderecoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:module/EnderecoServico!br.com.will.gestao.servico.EnderecoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EnderecoServico
+	java:module/EnderecoServico
+
+2017-11-30 23:05:13,977 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:module/PedidoProdutoServico!br.com.will.gestao.servico.PedidoProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoServico
+	java:module/PedidoProdutoServico
+
+2017-11-30 23:05:13,978 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:module/PedidoServico!br.com.will.gestao.servico.PedidoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoServico
+	java:module/PedidoServico
+
+2017-11-30 23:05:13,978 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named AutenticacaoLogServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:module/AutenticacaoLogServico!br.com.will.gestao.servico.AutenticacaoLogServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/AutenticacaoLogServico
+	java:module/AutenticacaoLogServico
+
+2017-11-30 23:05:13,978 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named MenuServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:module/MenuServico!br.com.will.gestao.servico.MenuServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/MenuServico
+	java:module/MenuServico
+
+2017-11-30 23:05:13,979 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:module/ProdutoServico!br.com.will.gestao.servico.ProdutoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoServico
+	java:module/ProdutoServico
+
+2017-11-30 23:05:13,979 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ArquivoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:module/ArquivoServico!br.com.will.gestao.servico.ArquivoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoServico
+	java:module/ArquivoServico
+
+2017-11-30 23:05:13,979 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutorLogger in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:module/ProdutorLogger!br.com.will.gestao.componente.ProdutorLogger
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutorLogger
+	java:module/ProdutorLogger
+
+2017-11-30 23:05:13,981 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named TamanhoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:module/TamanhoServico!br.com.will.gestao.servico.TamanhoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/TamanhoServico
+	java:module/TamanhoServico
+
+2017-11-30 23:05:13,981 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PaginaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:module/PaginaServico!br.com.will.gestao.servico.PaginaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PaginaServico
+	java:module/PaginaServico
+
+2017-11-30 23:05:13,982 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named SaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:module/SaborServico!br.com.will.gestao.servico.SaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/SaborServico
+	java:module/SaborServico
+
+2017-11-30 23:05:13,982 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoIngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico!br.com.will.gestao.servico.ProdutoIngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoIngredienteServico
+	java:module/ProdutoIngredienteServico
+
+2017-11-30 23:05:13,983 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PedidoProdutoSaborServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico!br.com.will.gestao.servico.PedidoProdutoSaborServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PedidoProdutoSaborServico
+	java:module/PedidoProdutoSaborServico
+
+2017-11-30 23:05:13,983 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ArquivoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:module/ArquivoTipoServico!br.com.will.gestao.servico.ArquivoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ArquivoTipoServico
+	java:module/ArquivoTipoServico
+
+2017-11-30 23:05:13,985 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named CaixaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:module/CaixaServico!br.com.will.gestao.servico.CaixaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/CaixaServico
+	java:module/CaixaServico
+
+2017-11-30 23:05:13,986 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named UsuarioServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:module/UsuarioServico!br.com.will.gestao.servico.UsuarioServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/UsuarioServico
+	java:module/UsuarioServico
+
+2017-11-30 23:05:13,989 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named IngredienteServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:module/IngredienteServico!br.com.will.gestao.servico.IngredienteServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/IngredienteServico
+	java:module/IngredienteServico
+
+2017-11-30 23:05:13,989 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EmpresaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:module/EmpresaServico!br.com.will.gestao.servico.EmpresaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EmpresaServico
+	java:module/EmpresaServico
+
+2017-11-30 23:05:13,990 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named EstadoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:module/EstadoServico!br.com.will.gestao.servico.EstadoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/EstadoServico
+	java:module/EstadoServico
+
+2017-11-30 23:05:13,990 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ConfiguracaoSistemaServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico!br.com.will.gestao.servico.ConfiguracaoSistemaServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ConfiguracaoSistemaServico
+	java:module/ConfiguracaoSistemaServico
+
+2017-11-30 23:05:13,990 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named PromocaoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:module/PromocaoServico!br.com.will.gestao.servico.PromocaoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/PromocaoServico
+	java:module/PromocaoServico
+
+2017-11-30 23:05:13,991 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named ProdutoTipoServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:module/ProdutoTipoServico!br.com.will.gestao.servico.ProdutoTipoServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/ProdutoTipoServico
+	java:module/ProdutoTipoServico
+
+2017-11-30 23:05:13,991 INFO  [org.jboss.as.ejb3.deployment.processors.EjbJndiBindingsDeploymentUnitProcessor] (MSC service thread 1-4) JNDI bindings for session bean named NivelServico in deployment unit deployment "gestaoalimentos-0.0.1-SNAPSHOT.war" are as follows:
+
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:module/NivelServico!br.com.will.gestao.servico.NivelServico
+	java:global/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:app/gestaoalimentos-0.0.1-SNAPSHOT/NivelServico
+	java:module/NivelServico
+
+2017-11-30 23:05:15,193 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0006: Starting Services for CDI deployment: gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-30 23:05:15,253 INFO  [org.jboss.weld.Version] (MSC service thread 1-6) WELD-000900: 2.2.14 (Final)
+2017-11-30 23:05:15,294 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0018: Host default-host starting
+2017-11-30 23:05:15,360 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0009: Starting weld service for deployment gestaoalimentos-0.0.1-SNAPSHOT.war
+2017-11-30 23:05:15,660 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 67) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'gestaoalimentos-0.0.1-SNAPSHOT.war#gestaoAlimentosPU'
+2017-11-30 23:05:15,827 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 67) HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2017-11-30 23:05:16,713 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 67) HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-11-30 23:05:16,739 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 67) HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-30 23:05:17,196 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 67) HHH000397: Using ASTQueryTranslatorFactory
+2017-11-30 23:05:18,407 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#precoFinal
+2017-11-30 23:05:18,407 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.PedidoProduto_#referencia
+2017-11-30 23:05:18,410 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#origemPreco
+2017-11-30 23:05:18,410 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#preco
+2017-11-30 23:05:18,410 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#produtos
+2017-11-30 23:05:18,410 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#somaPrecoSabor
+2017-11-30 23:05:18,411 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.ProdutoTipo_#sequencia
+2017-11-30 23:05:18,412 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#permiteSabores
+2017-11-30 23:05:18,413 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanho
+2017-11-30 23:05:18,413 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sabores
+2017-11-30 23:05:18,414 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#preco
+2017-11-30 23:05:18,414 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#sequencia
+2017-11-30 23:05:18,414 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Produto_#tamanhos
+2017-11-30 23:05:18,418 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorDesconto
+2017-11-30 23:05:18,418 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorTotal
+2017-11-30 23:05:18,419 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#valorCobrado
+2017-11-30 23:05:18,419 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Pedido_#cliente
+2017-11-30 23:05:18,424 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Empresa_#situacao
+2017-11-30 23:05:18,426 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Nivel_#editarView
+2017-11-30 23:05:18,427 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#situacao
+2017-11-30 23:05:18,428 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#preco
+2017-11-30 23:05:18,428 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#limiteSabores
+2017-11-30 23:05:18,428 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#empresa
+2017-11-30 23:05:18,429 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Tamanho_#produto
+2017-11-30 23:05:18,437 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#usuario
+2017-11-30 23:05:18,438 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#dataCadastro
+2017-11-30 23:05:18,438 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Caixa_#situacao
+2017-11-30 23:05:18,444 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#empresa
+2017-11-30 23:05:18,445 ERROR [org.hibernate.jpa.internal.metamodel.MetadataContext] (ServerService Thread Pool -- 67) HHH015011: Unable to locate static metamodel field : br.com.will.gestao.entidade.Ingrediente_#sequencia
+2017-11-30 23:05:21,079 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (ServerService Thread Pool -- 81) Initializing Mojarra 2.2.11-jbossorg-1 20150505-1501 for context ''
+2017-11-30 23:05:24,774 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 81) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-30 23:05:24,775 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 81) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-30 23:05:24,775 WARNING [javax.enterprise.resource.webcontainer.jsf.application] (ServerService Thread Pool -- 81) @FacesConverter is using both value and forClass, only value will be applied.
+2017-11-30 23:05:29,676 INFO  [org.jboss.resteasy.spi.ResteasyDeployment] (ServerService Thread Pool -- 81) Deploying javax.ws.rs.core.Application: class br.com.will.gestao.rest.ApplicationPath$Proxy$_$$_WeldClientProxy
+2017-11-30 23:05:29,696 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 81) WFLYUT0021: Registered web context: /
+2017-11-30 23:05:29,802 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 37) WFLYSRV0010: Deployed "gestaoalimentos-0.0.1-SNAPSHOT.war" (runtime-name : "gestaoalimentos-0.0.1-SNAPSHOT.war")
+2017-11-30 23:05:30,580 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:10101/management
+2017-11-30 23:05:30,581 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:10101
+2017-11-30 23:05:30,581 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 9.0.1.Final (WildFly Core 1.0.1.Final) started in 32945ms - Started 758 of 923 services (238 services are lazy, passive or on-demand)
+2017-11-30 23:07:39,756 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-17) ######################## HOSTNAME - GESTAO ######################## 
+2017-11-30 23:07:39,757 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-17) # HOSTNAME - MAURICIOS-MBP - HOSTNAME #
+2017-11-30 23:07:39,757 INFO  [br.com.will.gestao.componente.ConfiguracaoApplication] (default task-17) ######################## HOSTNAME - GESTAO ######################## 
+2017-11-30 23:07:39,933 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-17) SQL Error: 0, SQLState: 42703
+2017-11-30 23:07:39,934 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-17) ERROR: column caixa0_.situacao does not exist
+  Position: 281
+2017-11-30 23:07:39,946 ERROR [stderr] (default task-17) br.com.will.gestao.servico.exception.BaseServicoException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+2017-11-30 23:07:39,947 ERROR [stderr] (default task-17) 	at br.com.will.gestao.servico.CaixaServico.obterPorData(CaixaServico.java:31)
+2017-11-30 23:07:39,947 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:07:39,947 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:07:39,948 ERROR [stderr] (default task-17) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:07:39,948 ERROR [stderr] (default task-17) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:07:39,948 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-11-30 23:07:39,949 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,949 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:07:39,950 ERROR [stderr] (default task-17) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-11-30 23:07:39,950 ERROR [stderr] (default task-17) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-11-30 23:07:39,951 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-11-30 23:07:39,951 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,951 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-11-30 23:07:39,952 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,953 ERROR [stderr] (default task-17) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-11-30 23:07:39,954 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,954 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:07:39,955 ERROR [stderr] (default task-17) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-11-30 23:07:39,955 ERROR [stderr] (default task-17) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-11-30 23:07:39,956 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,956 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-11-30 23:07:39,956 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,957 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-11-30 23:07:39,959 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,961 ERROR [stderr] (default task-17) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:07:39,962 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-11-30 23:07:39,962 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,963 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-11-30 23:07:39,964 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,965 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-11-30 23:07:39,966 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-11-30 23:07:39,966 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-11-30 23:07:39,967 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,967 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-11-30 23:07:39,967 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,968 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-11-30 23:07:39,968 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,968 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-11-30 23:07:39,969 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,969 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-11-30 23:07:39,969 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,969 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-11-30 23:07:39,976 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,977 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-11-30 23:07:39,977 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,978 ERROR [stderr] (default task-17) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-11-30 23:07:39,978 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,979 ERROR [stderr] (default task-17) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-11-30 23:07:39,983 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,984 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:07:39,984 ERROR [stderr] (default task-17) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-11-30 23:07:39,984 ERROR [stderr] (default task-17) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-11-30 23:07:39,985 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,985 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:07:39,985 ERROR [stderr] (default task-17) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-11-30 23:07:39,986 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,986 ERROR [stderr] (default task-17) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:07:39,986 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-11-30 23:07:39,986 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-11-30 23:07:39,987 ERROR [stderr] (default task-17) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:07:39,987 ERROR [stderr] (default task-17) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:07:39,988 ERROR [stderr] (default task-17) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-11-30 23:07:39,988 ERROR [stderr] (default task-17) 	at br.com.will.gestao.servico.CaixaServico$$$view16.obterPorData(Unknown Source)
+2017-11-30 23:07:39,989 ERROR [stderr] (default task-17) 	at br.com.will.gestao.componente.ConfiguracaoApplication.carregarConfiguracaoSistema(ConfiguracaoApplication.java:64)
+2017-11-30 23:07:39,990 ERROR [stderr] (default task-17) 	at br.com.will.gestao.componente.ConfiguracaoApplication.inicializar(ConfiguracaoApplication.java:43)
+2017-11-30 23:07:39,996 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:07:39,997 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:07:39,997 ERROR [stderr] (default task-17) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:07:39,998 ERROR [stderr] (default task-17) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:07:39,998 ERROR [stderr] (default task-17) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.invokeMethods(DefaultLifecycleCallbackInvoker.java:98)
+2017-11-30 23:07:39,998 ERROR [stderr] (default task-17) 	at org.jboss.weld.injection.producer.DefaultLifecycleCallbackInvoker.postConstruct(DefaultLifecycleCallbackInvoker.java:81)
+2017-11-30 23:07:39,999 ERROR [stderr] (default task-17) 	at org.jboss.weld.injection.producer.BasicInjectionTarget.postConstruct(BasicInjectionTarget.java:126)
+2017-11-30 23:07:39,999 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.ManagedBean.create(ManagedBean.java:162)
+2017-11-30 23:07:39,999 ERROR [stderr] (default task-17) 	at org.jboss.weld.context.AbstractContext.get(AbstractContext.java:96)
+2017-11-30 23:07:40,000 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.ContextualInstanceStrategy$DefaultContextualInstanceStrategy.get(ContextualInstanceStrategy.java:101)
+2017-11-30 23:07:40,000 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.ContextualInstanceStrategy$ApplicationScopedContextualInstanceStrategy.get(ContextualInstanceStrategy.java:141)
+2017-11-30 23:07:40,002 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.ContextualInstance.get(ContextualInstance.java:50)
+2017-11-30 23:07:40,002 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.proxy.ContextBeanInstance.getInstance(ContextBeanInstance.java:99)
+2017-11-30 23:07:40,002 ERROR [stderr] (default task-17) 	at org.jboss.weld.bean.proxy.ProxyMethodHandler.getInstance(ProxyMethodHandler.java:125)
+2017-11-30 23:07:40,003 ERROR [stderr] (default task-17) 	at br.com.will.gestao.componente.ConfiguracaoApplication$Proxy$_$$_WeldClientProxy.obterConfiguracaoSistema(Unknown Source)
+2017-11-30 23:07:40,003 ERROR [stderr] (default task-17) 	at br.com.will.gestao.bean.LoginBean.fazerLogin(LoginBean.java:65)
+2017-11-30 23:07:40,004 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:07:40,005 ERROR [stderr] (default task-17) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:07:40,005 ERROR [stderr] (default task-17) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:07:40,006 ERROR [stderr] (default task-17) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:07:40,006 ERROR [stderr] (default task-17) 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308)
+2017-11-30 23:07:40,006 ERROR [stderr] (default task-17) 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537)
+2017-11-30 23:07:40,007 ERROR [stderr] (default task-17) 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)
+2017-11-30 23:07:40,008 ERROR [stderr] (default task-17) 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286)
+2017-11-30 23:07:40,008 ERROR [stderr] (default task-17) 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)
+2017-11-30 23:07:40,009 ERROR [stderr] (default task-17) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:07:40,010 ERROR [stderr] (default task-17) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:07:40,011 ERROR [stderr] (default task-17) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:07:40,012 ERROR [stderr] (default task-17) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:07:40,013 ERROR [stderr] (default task-17) 	at com.sun.faces.facelets.el.ContextualCompositeMethodExpression.invoke(ContextualCompositeMethodExpression.java:194)
+2017-11-30 23:07:40,013 ERROR [stderr] (default task-17) 	at com.sun.faces.facelets.tag.TagAttributeImpl$AttributeLookupMethodExpression.invoke(TagAttributeImpl.java:477)
+2017-11-30 23:07:40,013 ERROR [stderr] (default task-17) 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)
+2017-11-30 23:07:40,013 ERROR [stderr] (default task-17) 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)
+2017-11-30 23:07:40,014 ERROR [stderr] (default task-17) 	at javax.faces.component.UICommand.broadcast(UICommand.java:315)
+2017-11-30 23:07:40,014 ERROR [stderr] (default task-17) 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)
+2017-11-30 23:07:40,014 ERROR [stderr] (default task-17) 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)
+2017-11-30 23:07:40,015 ERROR [stderr] (default task-17) 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)
+2017-11-30 23:07:40,015 ERROR [stderr] (default task-17) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-11-30 23:07:40,015 ERROR [stderr] (default task-17) 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+2017-11-30 23:07:40,015 ERROR [stderr] (default task-17) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:654)
+2017-11-30 23:07:40,015 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-11-30 23:07:40,016 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-11-30 23:07:40,016 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-11-30 23:07:40,016 ERROR [stderr] (default task-17) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-11-30 23:07:40,016 ERROR [stderr] (default task-17) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:07:40,017 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-11-30 23:07:40,017 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-11-30 23:07:40,017 ERROR [stderr] (default task-17) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:07:40,018 ERROR [stderr] (default task-17) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-11-30 23:07:40,018 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-11-30 23:07:40,018 ERROR [stderr] (default task-17) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-11-30 23:07:40,018 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-11-30 23:07:40,018 ERROR [stderr] (default task-17) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-11-30 23:07:40,019 ERROR [stderr] (default task-17) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-11-30 23:07:40,019 ERROR [stderr] (default task-17) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:07:40,019 ERROR [stderr] (default task-17) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-11-30 23:07:40,019 ERROR [stderr] (default task-17) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:07:40,020 ERROR [stderr] (default task-17) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:07:40,020 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-11-30 23:07:40,020 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-11-30 23:07:40,020 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-11-30 23:07:40,021 ERROR [stderr] (default task-17) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-11-30 23:07:40,021 ERROR [stderr] (default task-17) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-11-30 23:07:40,021 ERROR [stderr] (default task-17) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-11-30 23:07:40,022 ERROR [stderr] (default task-17) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2017-11-30 23:07:40,022 ERROR [stderr] (default task-17) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2017-11-30 23:07:40,022 ERROR [stderr] (default task-17) 	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 23:07:40,026 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-17) CLIENTE1@GMAIL.COM
+2017-11-30 23:07:40,027 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-17) 3b6b0987a27ac7abefbe586afaebcbeb35c42240
+2017-11-30 23:22:01,334 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-104) WILLADM
+2017-11-30 23:22:01,335 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-104) 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+2017-11-30 23:22:01,342 ERROR [stderr] (default task-104) br.com.will.gestao.servico.exception.BaseServicoException: Usuário e/ou senha inválido(s)
+2017-11-30 23:22:01,343 ERROR [stderr] (default task-104) 	at br.com.will.gestao.servico.UsuarioServico.logar(UsuarioServico.java:33)
+2017-11-30 23:22:01,343 ERROR [stderr] (default task-104) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:22:01,344 ERROR [stderr] (default task-104) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:22:01,344 ERROR [stderr] (default task-104) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:22:01,344 ERROR [stderr] (default task-104) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:22:01,345 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-11-30 23:22:01,345 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,345 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:22:01,346 ERROR [stderr] (default task-104) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-11-30 23:22:01,346 ERROR [stderr] (default task-104) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-11-30 23:22:01,346 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-11-30 23:22:01,347 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,347 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-11-30 23:22:01,347 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,348 ERROR [stderr] (default task-104) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-11-30 23:22:01,348 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,348 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:22:01,348 ERROR [stderr] (default task-104) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-11-30 23:22:01,349 ERROR [stderr] (default task-104) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-11-30 23:22:01,349 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,349 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-11-30 23:22:01,350 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,350 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-11-30 23:22:01,350 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,350 ERROR [stderr] (default task-104) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:01,351 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-11-30 23:22:01,351 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,351 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-11-30 23:22:01,351 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,352 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-11-30 23:22:01,352 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-11-30 23:22:01,352 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-11-30 23:22:01,352 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,353 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-11-30 23:22:01,353 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,353 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-11-30 23:22:01,354 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,354 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-11-30 23:22:01,354 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,355 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-11-30 23:22:01,355 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,355 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-11-30 23:22:01,355 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,356 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-11-30 23:22:01,356 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,356 ERROR [stderr] (default task-104) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-11-30 23:22:01,357 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,357 ERROR [stderr] (default task-104) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-11-30 23:22:01,357 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,357 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:22:01,358 ERROR [stderr] (default task-104) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-11-30 23:22:01,358 ERROR [stderr] (default task-104) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-11-30 23:22:01,358 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,359 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:22:01,359 ERROR [stderr] (default task-104) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-11-30 23:22:01,363 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,364 ERROR [stderr] (default task-104) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:01,364 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-11-30 23:22:01,364 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-11-30 23:22:01,365 ERROR [stderr] (default task-104) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:01,365 ERROR [stderr] (default task-104) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:01,365 ERROR [stderr] (default task-104) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-11-30 23:22:01,365 ERROR [stderr] (default task-104) 	at br.com.will.gestao.servico.UsuarioServico$$$view17.logar(Unknown Source)
+2017-11-30 23:22:01,366 ERROR [stderr] (default task-104) 	at br.com.will.gestao.bean.LoginBean.fazerLogin(LoginBean.java:64)
+2017-11-30 23:22:01,366 ERROR [stderr] (default task-104) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:22:01,366 ERROR [stderr] (default task-104) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:22:01,367 ERROR [stderr] (default task-104) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:22:01,367 ERROR [stderr] (default task-104) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:22:01,367 ERROR [stderr] (default task-104) 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308)
+2017-11-30 23:22:01,367 ERROR [stderr] (default task-104) 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537)
+2017-11-30 23:22:01,368 ERROR [stderr] (default task-104) 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)
+2017-11-30 23:22:01,368 ERROR [stderr] (default task-104) 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286)
+2017-11-30 23:22:01,368 ERROR [stderr] (default task-104) 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)
+2017-11-30 23:22:01,368 ERROR [stderr] (default task-104) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:22:01,369 ERROR [stderr] (default task-104) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:22:01,369 ERROR [stderr] (default task-104) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:22:01,369 ERROR [stderr] (default task-104) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:22:01,370 ERROR [stderr] (default task-104) 	at com.sun.faces.facelets.el.ContextualCompositeMethodExpression.invoke(ContextualCompositeMethodExpression.java:194)
+2017-11-30 23:22:01,370 ERROR [stderr] (default task-104) 	at com.sun.faces.facelets.tag.TagAttributeImpl$AttributeLookupMethodExpression.invoke(TagAttributeImpl.java:477)
+2017-11-30 23:22:01,370 ERROR [stderr] (default task-104) 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)
+2017-11-30 23:22:01,371 ERROR [stderr] (default task-104) 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)
+2017-11-30 23:22:01,372 ERROR [stderr] (default task-104) 	at javax.faces.component.UICommand.broadcast(UICommand.java:315)
+2017-11-30 23:22:01,372 ERROR [stderr] (default task-104) 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)
+2017-11-30 23:22:01,373 ERROR [stderr] (default task-104) 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)
+2017-11-30 23:22:01,373 ERROR [stderr] (default task-104) 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)
+2017-11-30 23:22:01,373 ERROR [stderr] (default task-104) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-11-30 23:22:01,374 ERROR [stderr] (default task-104) 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+2017-11-30 23:22:01,374 ERROR [stderr] (default task-104) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:654)
+2017-11-30 23:22:01,374 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-11-30 23:22:01,374 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-11-30 23:22:01,375 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-11-30 23:22:01,375 ERROR [stderr] (default task-104) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-11-30 23:22:01,375 ERROR [stderr] (default task-104) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:01,376 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-11-30 23:22:01,376 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-11-30 23:22:01,376 ERROR [stderr] (default task-104) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:01,377 ERROR [stderr] (default task-104) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-11-30 23:22:01,377 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-11-30 23:22:01,378 ERROR [stderr] (default task-104) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-11-30 23:22:01,378 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-11-30 23:22:01,378 ERROR [stderr] (default task-104) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-11-30 23:22:01,380 ERROR [stderr] (default task-104) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-11-30 23:22:01,380 ERROR [stderr] (default task-104) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:01,381 ERROR [stderr] (default task-104) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-11-30 23:22:01,382 ERROR [stderr] (default task-104) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:01,383 ERROR [stderr] (default task-104) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:01,383 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-11-30 23:22:01,383 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-11-30 23:22:01,384 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-11-30 23:22:01,384 ERROR [stderr] (default task-104) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-11-30 23:22:01,384 ERROR [stderr] (default task-104) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-11-30 23:22:01,385 ERROR [stderr] (default task-104) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-11-30 23:22:01,385 ERROR [stderr] (default task-104) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2017-11-30 23:22:01,385 ERROR [stderr] (default task-104) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2017-11-30 23:22:01,385 ERROR [stderr] (default task-104) 	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 23:22:14,482 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-106) WILLADM@GMAIL.COM
+2017-11-30 23:22:14,482 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-106) 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+2017-11-30 23:22:14,491 ERROR [stderr] (default task-106) br.com.will.gestao.servico.exception.BaseServicoException: Usuário e/ou senha inválido(s)
+2017-11-30 23:22:14,492 ERROR [stderr] (default task-106) 	at br.com.will.gestao.servico.UsuarioServico.logar(UsuarioServico.java:33)
+2017-11-30 23:22:14,492 ERROR [stderr] (default task-106) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:22:14,492 ERROR [stderr] (default task-106) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:22:14,492 ERROR [stderr] (default task-106) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:22:14,493 ERROR [stderr] (default task-106) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:22:14,493 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-11-30 23:22:14,497 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,498 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:22:14,498 ERROR [stderr] (default task-106) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-11-30 23:22:14,498 ERROR [stderr] (default task-106) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-11-30 23:22:14,499 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-11-30 23:22:14,499 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,499 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-11-30 23:22:14,499 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,499 ERROR [stderr] (default task-106) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-11-30 23:22:14,500 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,500 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:22:14,500 ERROR [stderr] (default task-106) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-11-30 23:22:14,500 ERROR [stderr] (default task-106) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-11-30 23:22:14,501 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,501 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-11-30 23:22:14,501 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,502 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-11-30 23:22:14,502 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,503 ERROR [stderr] (default task-106) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:14,503 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-11-30 23:22:14,508 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,509 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-11-30 23:22:14,519 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,520 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-11-30 23:22:14,520 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-11-30 23:22:14,520 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-11-30 23:22:14,520 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,521 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-11-30 23:22:14,521 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,521 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-11-30 23:22:14,521 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,522 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-11-30 23:22:14,522 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,522 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-11-30 23:22:14,522 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,523 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-11-30 23:22:14,523 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,523 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-11-30 23:22:14,523 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,523 ERROR [stderr] (default task-106) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-11-30 23:22:14,524 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,524 ERROR [stderr] (default task-106) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-11-30 23:22:14,524 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,525 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:22:14,525 ERROR [stderr] (default task-106) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-11-30 23:22:14,525 ERROR [stderr] (default task-106) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-11-30 23:22:14,525 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,525 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:22:14,532 ERROR [stderr] (default task-106) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-11-30 23:22:14,533 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,534 ERROR [stderr] (default task-106) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:14,534 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-11-30 23:22:14,535 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-11-30 23:22:14,535 ERROR [stderr] (default task-106) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:22:14,536 ERROR [stderr] (default task-106) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:22:14,536 ERROR [stderr] (default task-106) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-11-30 23:22:14,537 ERROR [stderr] (default task-106) 	at br.com.will.gestao.servico.UsuarioServico$$$view17.logar(Unknown Source)
+2017-11-30 23:22:14,537 ERROR [stderr] (default task-106) 	at br.com.will.gestao.bean.LoginBean.fazerLogin(LoginBean.java:64)
+2017-11-30 23:22:14,538 ERROR [stderr] (default task-106) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:22:14,555 ERROR [stderr] (default task-106) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:22:14,555 ERROR [stderr] (default task-106) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:22:14,555 ERROR [stderr] (default task-106) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:22:14,556 ERROR [stderr] (default task-106) 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308)
+2017-11-30 23:22:14,556 ERROR [stderr] (default task-106) 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537)
+2017-11-30 23:22:14,557 ERROR [stderr] (default task-106) 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)
+2017-11-30 23:22:14,557 ERROR [stderr] (default task-106) 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286)
+2017-11-30 23:22:14,557 ERROR [stderr] (default task-106) 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)
+2017-11-30 23:22:14,558 ERROR [stderr] (default task-106) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:22:14,558 ERROR [stderr] (default task-106) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:22:14,558 ERROR [stderr] (default task-106) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:22:14,558 ERROR [stderr] (default task-106) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:22:14,558 ERROR [stderr] (default task-106) 	at com.sun.faces.facelets.el.ContextualCompositeMethodExpression.invoke(ContextualCompositeMethodExpression.java:194)
+2017-11-30 23:22:14,559 ERROR [stderr] (default task-106) 	at com.sun.faces.facelets.tag.TagAttributeImpl$AttributeLookupMethodExpression.invoke(TagAttributeImpl.java:477)
+2017-11-30 23:22:14,559 ERROR [stderr] (default task-106) 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)
+2017-11-30 23:22:14,559 ERROR [stderr] (default task-106) 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)
+2017-11-30 23:22:14,559 ERROR [stderr] (default task-106) 	at javax.faces.component.UICommand.broadcast(UICommand.java:315)
+2017-11-30 23:22:14,559 ERROR [stderr] (default task-106) 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)
+2017-11-30 23:22:14,560 ERROR [stderr] (default task-106) 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)
+2017-11-30 23:22:14,560 ERROR [stderr] (default task-106) 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)
+2017-11-30 23:22:14,560 ERROR [stderr] (default task-106) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-11-30 23:22:14,560 ERROR [stderr] (default task-106) 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+2017-11-30 23:22:14,560 ERROR [stderr] (default task-106) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:654)
+2017-11-30 23:22:14,561 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-11-30 23:22:14,561 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-11-30 23:22:14,561 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-11-30 23:22:14,561 ERROR [stderr] (default task-106) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-11-30 23:22:14,561 ERROR [stderr] (default task-106) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:14,562 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-11-30 23:22:14,562 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-11-30 23:22:14,562 ERROR [stderr] (default task-106) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:14,562 ERROR [stderr] (default task-106) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-11-30 23:22:14,562 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-11-30 23:22:14,563 ERROR [stderr] (default task-106) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-11-30 23:22:14,563 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-11-30 23:22:14,563 ERROR [stderr] (default task-106) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-11-30 23:22:14,563 ERROR [stderr] (default task-106) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-11-30 23:22:14,564 ERROR [stderr] (default task-106) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:14,564 ERROR [stderr] (default task-106) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-11-30 23:22:14,564 ERROR [stderr] (default task-106) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:14,564 ERROR [stderr] (default task-106) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:22:14,564 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-11-30 23:22:14,565 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-11-30 23:22:14,565 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-11-30 23:22:14,579 ERROR [stderr] (default task-106) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-11-30 23:22:14,580 ERROR [stderr] (default task-106) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-11-30 23:22:14,580 ERROR [stderr] (default task-106) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-11-30 23:22:14,580 ERROR [stderr] (default task-106) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2017-11-30 23:22:14,580 ERROR [stderr] (default task-106) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2017-11-30 23:22:14,581 ERROR [stderr] (default task-106) 	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 23:24:16,200 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-108) WILLADM
+2017-11-30 23:24:16,201 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-108) 40bd001563085fc35165329ea1ff5c5ecbdbbeef
+2017-11-30 23:24:16,209 ERROR [stderr] (default task-108) br.com.will.gestao.servico.exception.BaseServicoException: Usuário e/ou senha inválido(s)
+2017-11-30 23:24:16,210 ERROR [stderr] (default task-108) 	at br.com.will.gestao.servico.UsuarioServico.logar(UsuarioServico.java:33)
+2017-11-30 23:24:16,210 ERROR [stderr] (default task-108) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:24:16,211 ERROR [stderr] (default task-108) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:24:16,211 ERROR [stderr] (default task-108) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:24:16,211 ERROR [stderr] (default task-108) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:24:16,211 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.ManagedReferenceMethodInterceptor.processInvocation(ManagedReferenceMethodInterceptor.java:52)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.doMethodInterception(Jsr299BindingsInterceptor.java:82)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.as.weld.ejb.Jsr299BindingsInterceptor.processInvocation(Jsr299BindingsInterceptor.java:93)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.interceptors.UserInterceptorFactory$1.processInvocation(UserInterceptorFactory.java:63)
+2017-11-30 23:24:16,212 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.invocationmetrics.ExecutionTimeInterceptor.processInvocation(ExecutionTimeInterceptor.java:43)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.as.jpa.interceptor.SBInvocationInterceptor.processInvocation(SBInvocationInterceptor.java:47)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext$Invocation.proceed(InterceptorContext.java:437)
+2017-11-30 23:24:16,213 ERROR [stderr] (default task-108) 	at org.jboss.weld.ejb.AbstractEJBRequestScopeActivationInterceptor.aroundInvoke(AbstractEJBRequestScopeActivationInterceptor.java:64)
+2017-11-30 23:24:16,214 ERROR [stderr] (default task-108) 	at org.jboss.as.weld.ejb.EjbRequestScopeActivationInterceptor.processInvocation(EjbRequestScopeActivationInterceptor.java:83)
+2017-11-30 23:24:16,214 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,214 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.concurrent.ConcurrentContextInterceptor.processInvocation(ConcurrentContextInterceptor.java:45)
+2017-11-30 23:24:16,214 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InitialInterceptor.processInvocation(InitialInterceptor.java:21)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.interceptors.ComponentDispatcherInterceptor.processInvocation(ComponentDispatcherInterceptor.java:52)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,215 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.pool.PooledInstanceInterceptor.processInvocation(PooledInstanceInterceptor.java:51)
+2017-11-30 23:24:16,216 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,216 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.invokeInOurTx(CMTTxInterceptor.java:275)
+2017-11-30 23:24:16,216 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.required(CMTTxInterceptor.java:327)
+2017-11-30 23:24:16,223 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.tx.CMTTxInterceptor.processInvocation(CMTTxInterceptor.java:239)
+2017-11-30 23:24:16,223 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,224 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.interceptors.CurrentInvocationContextInterceptor.processInvocation(CurrentInvocationContextInterceptor.java:41)
+2017-11-30 23:24:16,224 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,224 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.invocationmetrics.WaitTimeInterceptor.processInvocation(WaitTimeInterceptor.java:43)
+2017-11-30 23:24:16,224 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.security.SecurityContextInterceptor.processInvocation(SecurityContextInterceptor.java:100)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.interceptors.ShutDownInterceptorFactory$1.processInvocation(ShutDownInterceptorFactory.java:64)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.interceptors.LoggingInterceptor.processInvocation(LoggingInterceptor.java:66)
+2017-11-30 23:24:16,225 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,226 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.NamespaceContextInterceptor.processInvocation(NamespaceContextInterceptor.java:50)
+2017-11-30 23:24:16,226 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,226 ERROR [stderr] (default task-108) 	at org.jboss.as.ejb3.component.interceptors.AdditionalSetupInterceptor.processInvocation(AdditionalSetupInterceptor.java:54)
+2017-11-30 23:24:16,226 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,226 ERROR [stderr] (default task-108) 	at org.jboss.invocation.ContextClassLoaderInterceptor.processInvocation(ContextClassLoaderInterceptor.java:64)
+2017-11-30 23:24:16,227 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,227 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:24:16,227 ERROR [stderr] (default task-108) 	at org.wildfly.security.manager.WildFlySecurityManager.doChecked(WildFlySecurityManager.java:634)
+2017-11-30 23:24:16,227 ERROR [stderr] (default task-108) 	at org.jboss.invocation.AccessCheckingInterceptor.processInvocation(AccessCheckingInterceptor.java:61)
+2017-11-30 23:24:16,227 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.run(InterceptorContext.java:356)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.invocation.PrivilegedWithCombinerInterceptor.processInvocation(PrivilegedWithCombinerInterceptor.java:80)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.ViewService$View.invoke(ViewService.java:195)
+2017-11-30 23:24:16,228 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.ViewDescription$1.processInvocation(ViewDescription.java:185)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at org.jboss.invocation.InterceptorContext.proceed(InterceptorContext.java:340)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at org.jboss.invocation.ChainedInterceptor.processInvocation(ChainedInterceptor.java:61)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at org.jboss.as.ee.component.ProxyInvocationHandler.invoke(ProxyInvocationHandler.java:73)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at br.com.will.gestao.servico.UsuarioServico$$$view17.logar(Unknown Source)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at br.com.will.gestao.bean.LoginBean.fazerLogin(LoginBean.java:64)
+2017-11-30 23:24:16,229 ERROR [stderr] (default task-108) 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at java.lang.reflect.Method.invoke(Method.java:498)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256)
+2017-11-30 23:24:16,230 ERROR [stderr] (default task-108) 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50)
+2017-11-30 23:24:16,231 ERROR [stderr] (default task-108) 	at com.sun.faces.facelets.el.ContextualCompositeMethodExpression.invoke(ContextualCompositeMethodExpression.java:194)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at com.sun.faces.facelets.tag.TagAttributeImpl$AttributeLookupMethodExpression.invoke(TagAttributeImpl.java:477)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at javax.faces.component.UICommand.broadcast(UICommand.java:315)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81)
+2017-11-30 23:24:16,232 ERROR [stderr] (default task-108) 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:654)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:86)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+2017-11-30 23:24:16,233 ERROR [stderr] (default task-108) 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+2017-11-30 23:24:16,234 ERROR [stderr] (default task-108) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:24:16,234 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131)
+2017-11-30 23:24:16,234 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+2017-11-30 23:24:16,235 ERROR [stderr] (default task-108) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:24:16,236 ERROR [stderr] (default task-108) 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+2017-11-30 23:24:16,237 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+2017-11-30 23:24:16,239 ERROR [stderr] (default task-108) 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58)
+2017-11-30 23:24:16,240 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:72)
+2017-11-30 23:24:16,241 ERROR [stderr] (default task-108) 	at io.undertow.security.handlers.NotificationReceiverHandler.handleRequest(NotificationReceiverHandler.java:50)
+2017-11-30 23:24:16,243 ERROR [stderr] (default task-108) 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76)
+2017-11-30 23:24:16,245 ERROR [stderr] (default task-108) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:24:16,246 ERROR [stderr] (default task-108) 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+2017-11-30 23:24:16,246 ERROR [stderr] (default task-108) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:24:16,246 ERROR [stderr] (default task-108) 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+2017-11-30 23:24:16,246 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:282)
+2017-11-30 23:24:16,246 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:261)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:80)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:172)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:199)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:774)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+2017-11-30 23:24:16,247 ERROR [stderr] (default task-108) 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+2017-11-30 23:24:16,248 ERROR [stderr] (default task-108) 	at java.lang.Thread.run(Thread.java:748)
+2017-11-30 23:25:09,032 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-110) CLIENTE1@GMAIL.COM
+2017-11-30 23:25:09,033 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-110) 3b6b0987a27ac7abefbe586afaebcbeb35c42240
+2017-11-30 23:31:45,636 INFO  [br.com.will.gestao.bean.BaseBean] (default task-4) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-11-30 23:31:45,720 INFO  [br.com.will.gestao.bean.BaseBean] (default task-4) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-11-30 23:32:01,479 INFO  [br.com.will.gestao.bean.BaseBean] (default task-10) Criando Página Cadastro Bean
+2017-11-30 23:34:55,055 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-26) CLIENTE1@GMAIL.COM
+2017-11-30 23:34:55,056 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-26) 3b6b0987a27ac7abefbe586afaebcbeb35c42240
+2017-11-30 23:35:23,781 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-46) CLIENTE1@GMAIL.COM
+2017-11-30 23:35:23,781 INFO  [br.com.will.gestao.dao.BaseDAO] (default task-46) 3b6b0987a27ac7abefbe586afaebcbeb35c42240
+2017-11-30 23:48:28,352 INFO  [br.com.will.gestao.bean.BaseBean] (default task-82) Criando Página Cadastro Bean
+2017-11-30 23:52:52,536 INFO  [br.com.will.gestao.bean.BaseBean] (default task-83) Produto Tipo cadastrado com sucesso
+2017-11-30 23:53:00,648 INFO  [br.com.will.gestao.bean.BaseBean] (default task-84) INICIO BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean
+2017-11-30 23:53:00,657 INFO  [br.com.will.gestao.bean.BaseBean] (default task-84) FIM BUSCANDO COM PAGINACAO: ProdutoTipoListagemBean

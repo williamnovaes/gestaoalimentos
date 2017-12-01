@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+
+		<composite:attribute name="id" />
+		<composite:attribute name="value" required="true" />
+		<composite:attribute name="title" required="false" />
+		<composite:attribute name="cssClass" required="false" />
+
+	</composite:interface>
+
+	<composite:implementation>
+
+		<h:outputText value="#{cc.attrs.value}"
+			title="#{cc.attrs.value} #{(not empty cc.attrs.title) ? '- '.concat(cc.attrs.title) : ''}"
+			converter="br.com.will.gestao.converter.AbreviadorConverter"
+			styleClass="#{cc.attrs.cssClass}" />
+	</composite:implementation>
+</ui:composition>

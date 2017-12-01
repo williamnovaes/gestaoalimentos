@@ -1,0 +1,168 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:nx="http://java.sun.com/jsf/composite/components"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:param name="pagina" value="Sócio Torcedor" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="sociosTorcedoresForm" prependId="false">
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							value="Voltar">
+						</h:commandLink>
+					</div>
+				</div>
+
+				<!-- 				<div class="col-sm-8 centro"></div> -->
+
+				<div class="col-sm-8 centro">
+					<div class="input-group input-group-sm">
+						<h:inputText id="filtroIT"
+							value="#{socioTorcedorListagemBean.filtroPermissaoUsuarioSocioTorcedor.filtravel.entradaFiltro}"
+							styleClass="form-control" pt:placeholder="PALAVRA-CHAVE" />
+
+						<span class="input-group-btn"> <h:commandLink
+								styleClass="btn btn-default btn-icon icon-zoom" value="Buscar">
+								<f:ajax execute="filtroIT" render="sociosTorcedoresPG"
+									listener="#{socioTorcedorListagemBean.buscarRegistros()}" />
+							</h:commandLink>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm">
+						<nx:novoBotao id="socioTorcedorNovoNB" pagina="socioTorcedor" />
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h:panelGroup id="sociosTorcedoresPG">
+					<nx:dataTable id="socioTorcedorDT"
+						bean="#{socioTorcedorListagemBean}"
+						columnClass="align-center,align-center,align-center,align-center,,align-center,align-center,align-center"
+						componenteBtn="false">
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_maiusc_id}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_codigo}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.codigo}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Carteirinha" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.carteirinha}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="CPF" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.cpf}">
+							</h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_nome}" />
+							</f:facet>
+							<h:outputText value="#{item.nome}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="Plano" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.plano}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_situacao}" />
+								</div>
+							</f:facet>
+							<h:outputText value="#{item.situacao}">
+							</h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<div class="align-center">
+									<h:outputText value="#{msg.txt_opcoes}" />
+								</div>
+							</f:facet>
+							<h:panelGroup>
+								<h:commandLink>
+									<img src="../resources/images/ico/16x16/participation_rate.png"
+										title="Participações" alt="Participações" />
+									<f:ajax execute="@this" render="participacaoPG"
+										listener="#{socioTorcedorListagemBean.obterEventosPorSocio(item)}" />
+								</h:commandLink>
+							</h:panelGroup>
+						</h:column>
+					</nx:dataTable>
+				</h:panelGroup>
+			</div>
+
+			<h:panelGroup id="participacaoPG">
+				<nx:modal id="participacoesModal" titulo="Participações"
+					exibirModal="#{socioTorcedorListagemBean.exibirModalParticipacoes}"
+					fecharModal="#{socioTorcedorListagemBean.fecharModal()}">
+
+					<h:panelGroup id="participacoesPG">
+						<h:dataTable id="participacaoDT"
+							value="#{socioTorcedorListagemBean.eventosSocioTorcedor}"
+							columnClasses="" styleClass="table" var="item">
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg.txt_evento}" />
+								</f:facet>
+								<h:outputText value="#{item.evento.descricao}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Data" />
+								</f:facet>
+								<nx:outputCalendar value="#{item.dataCadastro.time}" />
+							</h:column>
+						</h:dataTable>
+					</h:panelGroup>
+				</nx:modal>
+			</h:panelGroup>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

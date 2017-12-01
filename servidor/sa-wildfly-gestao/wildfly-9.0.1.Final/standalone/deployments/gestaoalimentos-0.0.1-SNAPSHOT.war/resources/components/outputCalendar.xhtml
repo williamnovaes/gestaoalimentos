@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+
+		<composite:attribute name="id" />
+		<composite:attribute name="value" required="true" />
+		<composite:attribute name="title"/>
+		<composite:attribute name="pattern"
+			default="dd/MM/yyyy ' às ' HH:mm" />
+		<composite:attribute name="locale" default="pt-BR" />
+		<composite:attribute name="timezone" />
+		<composite:attribute name="exibirData" default="true" />
+		<composite:attribute name="style" />
+		<composite:attribute name="styleClass" />
+
+	</composite:interface>
+
+	<composite:implementation>
+		<h:panelGroup rendered="#{cc.attrs.exibirData}">
+			<h:outputText value="#{cc.attrs.value}"
+						  styleClass="#{cc.attrs.styleClass}"
+						  style="#{cc.attrs.style}"
+						  title="#{cc.attrs.title}">
+				<f:convertDateTime pattern="#{cc.attrs.pattern}"
+								   locale="#{cc.attrs.locale}" 
+								   timezone="#{cc.attrs.timezone}" />
+			</h:outputText>
+
+		</h:panelGroup>
+		
+		<h:panelGroup rendered="#{!cc.attrs.exibirData}">
+			<h:outputText value="----------" />
+		</h:panelGroup>
+	</composite:implementation>
+</ui:composition>
