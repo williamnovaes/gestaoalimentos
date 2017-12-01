@@ -75,6 +75,32 @@ select[size] {
 	margin-bottom: 0;
 }
 
+#message {
+	position: fixed;
+	top: 90px;
+	right: 40px;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style-type: none;
+	z-index: 9999;
+}
+
+#message li {
+	padding: 5px 15px;
+	color: #fff;
+}
+
+#message li.info {
+	background-color: #3c763d;
+}
+
+#message li.atencao {
+	background-color: #fc0;
+}
+
+#message li.info {
+	background-color: #d43;
+}
 
 
 
