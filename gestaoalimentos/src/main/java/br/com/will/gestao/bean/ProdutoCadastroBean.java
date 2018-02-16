@@ -1,19 +1,19 @@
 package br.com.will.gestao.bean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Tamanho;
+import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
@@ -43,6 +43,12 @@ public class ProdutoCadastroBean extends BaseBean {
 	private List<Tamanho> tamanhosAssociados;
 	
 	private List<String> idsTamanhosAssociar;
+	private EBoolean[] permiteSabores = EBoolean.values();
+	private EBoolean permiteSabor = EBoolean.FALSE;
+	private EBoolean[] tamanhos = EBoolean.values();
+	private EBoolean tamanho = EBoolean.FALSE;
+	
+	private String preco = "0";
 	
 	@PostConstruct
 	public void inicializar() {
@@ -64,6 +70,8 @@ public class ProdutoCadastroBean extends BaseBean {
 					this.tamanhosAssociados = new ArrayList<>();
 				} else {
 					this.tamanhosAssociados = this.produto.getTamanhos();
+					this.permiteSabor = this.produto.getPermiteSaboresEBool();
+					this.preco = this.produto.getPreco().toString();
 				}
 				
 				produtosTipos = produtoTipoServico.obterTodosAtivosPorEmpresa(getLoginBean().getEmpresa());
@@ -84,6 +92,8 @@ public class ProdutoCadastroBean extends BaseBean {
 			
 			produtoTipo = produtoTipoServico.obterCompletoPorId(produtoTipoSelecionado);
 			this.produto.setProdutoTipo(produtoTipo);
+			this.produto.setPermiteSaboresEBool(permiteSabor);
+			this.produto.setPreco(new BigDecimal(preco));
 			
 			if (this.produto.getId() != null) {
 				produtoServico.alterar(this.produto);
@@ -92,7 +102,7 @@ public class ProdutoCadastroBean extends BaseBean {
 				this.produto = produtoServico.salvar(this.produto);
 			}
 			
-			salvarTamanhosAssociados(this.produto);
+//			salvarTamanhosAssociados(this.produto);
 			
 			return "produtos?faces-redirect=true";
 		} catch (Exception e) {
@@ -104,7 +114,7 @@ public class ProdutoCadastroBean extends BaseBean {
 	
 	public void associarTamanhos() {
 		try {
-			if(idsTamanhosAssociar != null && !idsTamanhosAssociar.isEmpty()) {
+			if (idsTamanhosAssociar != null && !idsTamanhosAssociar.isEmpty()) {
 				tamanhosAssociados = tamanhoServico.obterPorIds(Util.converterIds(this.idsTamanhosAssociar));
 				tamanhosDisponiveis.removeAll(tamanhosAssociados);
 			}
@@ -114,10 +124,10 @@ public class ProdutoCadastroBean extends BaseBean {
 		}
 	}
 	
-	public void removerTamanhoAssociado(Tamanho tamanho) {
+	public void removerTamanhoAssociado(Tamanho t) {
 		try {
-			tamanhosAssociados.remove(tamanho);
-			tamanhosDisponiveis.add(tamanho);
+			tamanhosAssociados.remove(t);
+			tamanhosDisponiveis.add(t);
 			Collections.sort(tamanhosDisponiveis);
 		} catch (Exception e) {
 			getLog().info(e.getMessage());
@@ -125,10 +135,10 @@ public class ProdutoCadastroBean extends BaseBean {
 		}
 	}
 	
-	public void salvarTamanhosAssociados(Produto produto) {
+	public void salvarTamanhosAssociados(Produto p) {
 		try {
 			for (Tamanho t : tamanhosAssociados) {
-				t.setProduto(produto);
+				t.setProduto(p);
 				tamanhoServico.alterar(t);
 			}
 			for (Tamanho t : tamanhosDisponiveis) {
@@ -177,5 +187,37 @@ public class ProdutoCadastroBean extends BaseBean {
 	
 	public void setIdsTamanhosAssociar(List<String> idsTamanhosAssociar) {
 		this.idsTamanhosAssociar = idsTamanhosAssociar;
+	}
+	
+	public EBoolean[] getPermiteSabores() {
+		return permiteSabores;
+	}
+	
+	public EBoolean getPermiteSabor() {
+		return permiteSabor;
+	}
+	
+	public void setPermiteSabor(EBoolean permiteSabor) {
+		this.permiteSabor = permiteSabor;
+	}
+	
+	public String getPreco() {
+		return preco;
+	}
+	
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+	
+	public EBoolean getTamanho() {
+		return tamanho;
+	}
+	
+	public void setTamanho(EBoolean tamanho) {
+		this.tamanho = tamanho;
+	}
+	
+	public EBoolean[] getTamanhos() {
+		return tamanhos;
 	}
 }

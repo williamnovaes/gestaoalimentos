@@ -2,14 +2,12 @@ package br.com.will.gestao.bean;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.util.EBoolean;
@@ -87,7 +85,7 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 				produtoTipoServico.salvar(this.produtoTipo);
 				adicionarInfo("Produto Tipo cadastrado com sucesso");
 			}
-			return "produtosTipo";
+			return "produtosTipo?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());

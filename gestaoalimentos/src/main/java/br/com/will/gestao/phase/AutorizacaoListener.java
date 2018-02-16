@@ -21,6 +21,7 @@ public class AutorizacaoListener implements PhaseListener {
 			if (currentPage != null && !currentPage.startsWith("/home")) {
 				LoginBean loginBean = facesContext.getApplication().evaluateExpressionGet(facesContext, "#{loginBean}",
 						LoginBean.class);
+				loginBean.fecharModalLogin();
 //				if (!currentPage.contains("login") && !currentPage.contains("menu") && !currentPage.contains("error")) {
 //					if (loginBean == null || !loginBean.isLogado()) {
 //						facesContext.addMessage(null,
@@ -62,7 +63,7 @@ public class AutorizacaoListener implements PhaseListener {
 					// }
 
 //				} else if (loginBean != null && loginBean.isLogado()) {
-					redirecionar(facesContext, "/pages/menu?faces-redirect=true");
+					redirecionar(facesContext, "index?faces-redirect=true");
 //				}
 			}
 		} catch (Exception e) {

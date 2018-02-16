@@ -16,12 +16,12 @@
 				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
 						</h:commandLink>
 						
 						<h:commandLink
-							styleClass="btn btn-default btn-icon icon-magnifier"
+							styleClass="btn btn-default"
 							value="Buscar">
 							<f:ajax render="produtosPG" 
 								listener="#{produtoListagemBean.buscarRegistros()}" />
@@ -35,7 +35,7 @@
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
 							action="produto?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-plus" value="Novo">
+							styleClass="btn btn-success" value="Novo">
 						</h:commandLink>
 					</div>
 				</div>

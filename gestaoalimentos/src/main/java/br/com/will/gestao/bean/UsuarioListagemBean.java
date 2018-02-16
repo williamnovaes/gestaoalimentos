@@ -4,7 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.util.SistemaConstantes;
@@ -24,7 +23,6 @@ public class UsuarioListagemBean extends BaseListagemBean implements Modable {
 	@PostConstruct
 	public void inicializar() {
 		configurarPaginador(getFiltroPermissaoUsuario(), usuarioServico, SistemaConstantes.DEZ);
-		buscarRegistros();
 	}
 
 	public void buscarRegistros() {

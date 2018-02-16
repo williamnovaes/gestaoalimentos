@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.com.will.gestao.componente.Paginavel;
+import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.EFormaPagamento;
 import br.com.will.gestao.entidade.util.EStatus;
 import br.com.will.gestao.entidade.util.ETipoEntrega;
@@ -31,8 +32,6 @@ import br.com.will.gestao.util.SistemaConstantes;
 @Entity
 @Table(name = "pedido", schema = "gestao")
 public class Pedido implements Paginavel {
-
-//	private static final long serialVersionUID = 1L;
 
 	@Id
 	@SequenceGenerator(name = "pedidoSeq", sequenceName = "pedido_id_multi_seq", allocationSize = 1, schema = "gestao")
@@ -81,6 +80,13 @@ public class Pedido implements Paginavel {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status_atendimento", columnDefinition = SistemaConstantes.E_STATUS_DEFAULT_PENDENTE)
 	private EStatus statusAtendimento;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "cpf_nota_fiscal", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	private EBoolean cpfNotaFiscal;
+	
+	@Column(name = "cpf_cnpj", length = SistemaConstantes.QUINZE)
+	private String cpfCnpj;
 	
 
 	public Pedido(Integer id) {
@@ -173,6 +179,22 @@ public class Pedido implements Paginavel {
 	
 	public void setCliente(Usuario cliente) {
 		this.cliente= cliente;
+	}
+	
+	public EBoolean getCpfNotaFiscal() {
+		return cpfNotaFiscal;
+	}
+	
+	public void setCpfNotaFiscal(EBoolean cpfNotaFiscal) {
+		this.cpfNotaFiscal = cpfNotaFiscal;
+	}
+	
+	public String getCpfCnpj() {
+		return cpfCnpj;
+	}
+	
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 	
 	@Override

@@ -1,13 +1,13 @@
 package br.com.will.gestao.dao;
 
 import java.util.List;
-
 import javax.persistence.NoResultException;
-
 import br.com.will.gestao.componente.Credencial;
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
+import br.com.will.gestao.dao.filtro.ESortedBy;
+import br.com.will.gestao.dao.filtro.SQLFilter;
 import br.com.will.gestao.entidade.Nivel;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.util.ESituacao;
@@ -139,22 +139,31 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 
 	@Override
 	public Paginador<Paginavel> consultarPorFiltro(Paginador<Paginavel> paginador, Filtravel filtravel) {
-		// try {
-		// return new SQLFilter.SQLFilterBuilder(Usuario.class, getEm(),
-		// filtravel).setupPaginador(paginador)
-		// .filterSimpleBy("usu.nome").orderBy("usu.nome").sortedBy(ESortedBy.ASC).build().dadosPaginados();
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// throw new BaseDAOException(e.getMessage());
-		// }
-		return null;
+		try {
+			return new SQLFilter.SQLFilterBuilder(Usuario.class, getEm(), filtravel)
+								.setupPaginador(paginador)
+								.filterSimpleBy("u.nome")
+								.orderBy("u.nome")
+								.sortedBy(ESortedBy.ASC)
+								.build()
+								.dadosPaginados();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new BaseDAOException(e.getMessage());
+		}
 	}
 
 	public List<Usuario> conultarPorNivel(Nivel nivel) {
 		try {
-			return getEm().createQuery(" SELECT usu FROM Usuario usu " + " JOIN FETCH usu.nivel nv "
-					+ " WHERE nv =:_nivel " + " ORDER BY usu.id ", Usuario.class).setParameter("_nivel", nivel)
-					.getResultList();
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT u FROM Usuario u ");
+			sql.append(" JOIN FETCH u.nivel n ");
+			sql.append(" WHERE n =:_nivel ");
+			sql.append(" ORDER BY u.id");
+			
+			return getEm().createQuery(sql.toString(), Usuario.class)
+						  .setParameter("_nivel", nivel)
+						  .getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

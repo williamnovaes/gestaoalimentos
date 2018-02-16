@@ -102,7 +102,10 @@ select[size] {
 	background-color: #d43;
 }
 
-
-
-
-
+.close-link {
+	font-size: 22px;
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	color: black;
+}

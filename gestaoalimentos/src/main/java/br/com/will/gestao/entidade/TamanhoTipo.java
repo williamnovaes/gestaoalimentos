@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import br.com.will.gestao.entidade.util.Descritivel;
 import br.com.will.gestao.util.SistemaConstantes;
 
@@ -16,8 +15,6 @@ import br.com.will.gestao.util.SistemaConstantes;
 @Table(name = "tamanho_tipo", schema = "gestao")
 public class TamanhoTipo implements Descritivel {
 
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@SequenceGenerator(name = "tamanhoTipoSeq", sequenceName = "tamanho_tipo_id_multi_seq", allocationSize = 1, schema = "gestao")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tamanhoTipoSeq")

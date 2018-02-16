@@ -69,7 +69,7 @@ public class ProdutoPedidoDTO {
 		StringBuilder str = new StringBuilder();
 		for (Sabor sabor : sabores) {
 			str.append(sabor.getDescricao());
-			if (sabores.indexOf(sabor) != (sabores.size() -1)) {
+			if (sabores.indexOf(sabor) != (sabores.size() - 1)) {
 				str.append(" / ");
 			}
 		}

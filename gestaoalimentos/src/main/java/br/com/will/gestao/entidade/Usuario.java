@@ -1,7 +1,6 @@
 package br.com.will.gestao.entidade;
 
 import java.util.Calendar;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,12 +19,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.Email;
-
+import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.ETipoNivel;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -35,7 +33,7 @@ import br.com.will.gestao.util.Util;
 @Entity
 @Table(name = "usuario", schema = "gestao")
 @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-public class Usuario implements Exportavel, SituacaoAlteravel {
+public class Usuario implements Exportavel, SituacaoAlteravel, Paginavel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -265,35 +263,46 @@ public class Usuario implements Exportavel, SituacaoAlteravel {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Usuario other = (Usuario) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
-			return false;
-		if (situacao != other.situacao)
-			return false;
+		}
 		return true;
+	}
+
+	@Override
+	public String getSqlSelect() {
+		return "SELECT distinct(u) FROM Usuario u ";
+	}
+
+	@Override
+	public String getSqlCount() {
+		return "SELECT count(distinct u) FROM Usuario u ";
+	}
+
+	@Override
+	public String getObjetoRetorno() {
+		return " u ";
+	}
+
+	@Override
+	public String getJoin() {
+		StringBuilder str = new StringBuilder();
+		str.append(" JOIN FETCH u.nivel n ");
+		str.append(" JOIN FETCH u.empresa e ");
+		return str.toString();
 	}
 }

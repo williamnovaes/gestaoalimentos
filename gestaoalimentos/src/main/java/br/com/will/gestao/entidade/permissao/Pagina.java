@@ -41,15 +41,15 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	@NotNull
 	@Column(name = "nome", nullable = false, length = SistemaConstantes.DUZENTOS_CINQUENTA, unique = true)
 	private String nome;
-	
+
 	@NotNull
 	@Column(name = "rotulo", nullable = false, length = SistemaConstantes.DUZENTOS_CINQUENTA)
 	private String rotulo;
-	
+
 	@NotNull
 	@Column(name = "bean", nullable = false, length = SistemaConstantes.DUZENTOS_CINQUENTA)
 	private String bean;
-	
+
 	@NotNull
 	@Column(name = "sequencia", nullable = false)
 	private Integer sequencia;
@@ -57,15 +57,15 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	@NotNull
 	@Column(name = "data_cadastro", nullable = false)
 	private Calendar dataCadastro;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	@Column(name = "pagina_tipo",columnDefinition = SistemaConstantes.E_PAGINA_TIPO_DEFAULT_LISTAGEM)
+	@Column(name = "pagina_tipo", columnDefinition = SistemaConstantes.E_PAGINA_TIPO_DEFAULT_LISTAGEM)
 	private EPaginaTipo paginaTipo;
-	
+
 	@OneToMany(mappedBy = "pagina")
 	private List<PaginaNivel> paginaNivel;
-	
+
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_menu", foreignKey = @ForeignKey(name = "fk_menu"), nullable = false)
@@ -79,11 +79,11 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	public Pagina() {
 
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -118,47 +118,47 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	public void setSituacao(ESituacao situacao) {
 		this.situacao = situacao;
 	}
-	
+
 	public Menu getMenu() {
 		return menu;
 	}
-	
+
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
-	
+
 	public String getBean() {
 		return bean;
 	}
-	
+
 	public void setBean(String bean) {
 		this.bean = bean;
 	}
-	
+
 	public String getRotulo() {
 		return rotulo;
 	}
-	
+
 	public void setRotulo(String rotulo) {
 		this.rotulo = rotulo;
 	}
-	
+
 	public Integer getSequencia() {
 		return sequencia;
 	}
-	
+
 	public void setSequencia(Integer sequencia) {
 		this.sequencia = sequencia;
 	}
-	
+
 	public EPaginaTipo getPaginaTipo() {
 		return paginaTipo;
 	}
-	
+
 	public void setPaginaTipo(EPaginaTipo paginaTipo) {
 		this.paginaTipo = paginaTipo;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Pagina [id=" + id + "]";
@@ -211,8 +211,6 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 
 	@Override
 	public String getJoin() {
-		return "LEFT JOIN FETCH pg.paginaNivel pn "
-			 + "LEFT JOIN FETCH pn.nivel nv "
-			 + "JOIN FETCH pg.menu mn ";
+		return "LEFT JOIN FETCH pg.paginaNivel pn " + "LEFT JOIN FETCH pn.nivel nv " + "JOIN FETCH pg.menu mn ";
 	}
 }

@@ -1,10 +1,8 @@
 package br.com.will.gestao.dao;
 
 import java.util.List;
-
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
@@ -92,7 +90,7 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			return getEm().createQuery(sql.toString(), Produto.class)
 						  .setParameter("_id", id)
 						  .getSingleResult();
-		} catch (NoResultException nre){
+		} catch (NoResultException nre) {
 			return null;
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
@@ -109,7 +107,7 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			sql.append(" JOIN FETCH p.tamanhos ts ");
 //			sql.append(" JOIN FETCH p.sabores sb ");
 			if (ordem != null && !ordem.isEmpty()) {
-				sql.append(" ORDER BY P." + ordem + " ASC");
+				sql.append(" ORDER BY p." + ordem + " ASC");
 			}
 			
 			Query q = getEm().createQuery(sql.toString(), Produto.class);

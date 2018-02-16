@@ -14,7 +14,7 @@ public final class Upload {
 	}
 
 	public String write(Part part) throws IOException {
-		String fileName = extractFileName(part).replace(" ","_");
+		String fileName = extractFileName(part).replace(" ", "_");
 		String filePath = "/opt/gestaoalimentos/arquivos";
 
 		File fileSaveDir = new File(filePath);
@@ -26,7 +26,7 @@ public final class Upload {
 		String endereco = filePath + File.separator + fileName;
 		return endereco;
 	}
-	
+
 	public String write(Part part, String filePath) throws IOException {
 		String fileName = extractFileName(part);
 

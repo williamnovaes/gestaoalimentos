@@ -45,6 +45,7 @@
 											</c:forEach>
 										</h:panelGroup>
 									</c:forEach>
+									<li><a href="cart.ppd">Cart</a></li>
 								</ul>
 							</li>
 
@@ -88,8 +89,8 @@
 						
 						<h:panelGroup rendered="#{loginBean.usuarioLogado eq null}">
 							<li>
-								<h:commandLink>
-									Login
+								<h:commandLink title="#{msg.txt_login}">
+									<span class="glyphicon glyphicon-log-in"></span>
 									<f:ajax render="loginModalPG loginModal" 
 										execute="@this" 
 										event="click" 
@@ -100,7 +101,9 @@
 						
 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null}">
 							<li>
-								<h:commandLink action="#{loginBean.fazerLogout()}" onclick="return confirm('Tem certeza que deseja realizar o logoff?');">
+								<h:commandLink action="#{loginBean.fazerLogout()}"
+									onclick="return confirm('Tem certeza que deseja realizar o logoff?');"
+									title="#{msg.txt_logout}">
 									<span class="glyphicon glyphicon-log-out"></span>
 								</h:commandLink>
 							</li>

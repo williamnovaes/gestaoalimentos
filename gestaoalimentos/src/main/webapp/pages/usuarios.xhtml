@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/template.xhtml"
-	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_usuarios}" />
 	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
@@ -13,27 +13,37 @@
 		<h:form id="usuariosForm" prependId="false">
 
 			<div class="row wrap-btn-grid">
-				<div class="col-sm-4 esq">
+				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
+						</h:commandLink>
+						
+						<h:commandLink
+							styleClass="btn btn-default"
+							value="Buscar">
+							<f:ajax render="usuariosPG"
+								listener="#{usuarioListagemBean.buscarRegistros()}" />
 						</h:commandLink>
 					</div>
 				</div>
 
-				<div class="col-sm-2 centro"></div>
+				<div class="col-sm-8 centro"></div>
 
-				<div class="col-sm-4 dir">
+				<div class="col-sm-8 dir">
 					<div class="btn-group btn-group-sm">
-						<ppd:novoBotao id="usuarioNovoNB" pagina="usuario" />
+						<h:commandLink immediate="true"
+							action="usuario?faces-redirect=true"
+							styleClass="btn btn-success" value="Novo">
+						</h:commandLink>
 					</div>
 				</div>
 			</div>
 
 			<div>
 				<h:panelGroup id="usuariosPG">
-					<ppd:dataTable id="usuarioDT" bean="#{usuarioListagemBean}"
+					<gs:dataTable id="usuarioDT" bean="#{usuarioListagemBean}"
 						columnClass="align-center,,,,,align-center,align-center"
 						componenteBtn="false">
 						<h:column>
@@ -49,7 +59,7 @@
 							<f:facet name="header">
 								<h:outputText value="#{msg.txt_nome}" />
 							</f:facet>
-							<ppd:abreviado value="#{item.nome}" />
+							<gs:abreviado value="#{item.nome}" />
 						</h:column>
 
 						<h:column>
@@ -72,14 +82,15 @@
 							</f:facet>
 							<h:outputText value="#{item.nivel.descricao}" />
 						</h:column>
-
+						
 						<h:column>
 							<f:facet name="header">
 								<div class="align-center">
 									<h:outputText value="#{msg.txt_situacao}" />
 								</div>
 							</f:facet>
-							<h:outputText value="#{item.ultimaSituacao.descricao}" />
+							<gs:situacao item="#{item}" render="usuariosPG"
+								bean="#{usuarioListagemBean}" />
 						</h:column>
 
 						<h:column>
@@ -104,12 +115,12 @@
 								</h:commandLink>
 							</h:panelGroup>
 						</h:column>
-					</ppd:dataTable>
+					</gs:dataTable>
 				</h:panelGroup>
 			</div>
 
 			<h:panelGroup id="clientePG" rendered="false">
-				<ppd:modal id="clienteModal"
+				<gs:modal id="clienteModal"
 					titulo="Clientes - Usuário #{usuarioListagemBean.usuario.nome}"
 					exibirModal="#{usuarioListagemBean.exibirModalClientes}"
 					salvar="#{usuarioListagemBean.salvarClientesAssociados()}"
@@ -223,7 +234,7 @@
 							</div>
 						</div>
 					</h:panelGroup>
-				</ppd:modal>
+				</gs:modal>
 			</h:panelGroup>
 
 		</h:form>

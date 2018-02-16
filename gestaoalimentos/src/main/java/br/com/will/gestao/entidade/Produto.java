@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,7 +22,6 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
-
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.ESituacao;
@@ -163,8 +161,8 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		return permiteSabores;
 	}
 	
-	public void setPermiteSaboresEBool(EBoolean permiteSabores) {
-		this.permiteSabores = permiteSabores;
+	public void setPermiteSaboresEBool(EBoolean ps) {
+		this.permiteSabores = ps;
 	}
 	
 	@Override
@@ -256,13 +254,15 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + "]";
+		StringBuilder str = new StringBuilder();
+		str.append(" Produto [id=").append(id).append(", nome=").append(nome).append("] ");
+		return str.toString();
 	}
 
 	@Override
 	@XmlTransient
 	public String getSqlSelect() {
-		return "SELECT distinct(p) FROM Produto p ";
+		return " SELECT distinct(p) FROM Produto p ";
 	}
 
 	@Override

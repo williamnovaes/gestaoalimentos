@@ -8,18 +8,19 @@
 	template="#{pageContext.request.contextPath}/template/template.xhtml"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-	<ui:param name="produtoTipo" value="#{msg.txt_produto}" />
+	<ui:param name="pagina" value="#{msg.txt_produto}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_cadastro}" />
 
 	<ui:define name="content">
 		<h:form id="produtoForm" prependId="false">
 
-			<div class="row wrap-btn-form-topo">
+			<div class="row wrap-btn-form">
 				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandButton id="voltarBtn"
 							action="produtos?faces-redirect=true" immediate="true"
 							value="Voltar"
-							styleClass="btn btn-default btn-icon icon-arrow-undo">
+							styleClass="btn btn-default">
 						</h:commandButton>
 					</div>
 				</div>
@@ -34,18 +35,17 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-8">
 					<div class="form-group">
-						<h:outputLabel value="#{msg.txt_indice}" />
+						<h:outputLabel value="#{msg.txt_sequencia}" />
 						<h:inputText value="#{produtoCadastroBean.produto.sequencia}"
-							required="true" styleClass="form-control numeros" maxlength="3" size="3">
+							required="true" styleClass="form-control form-white numeros" 
+							maxlength="3" size="3">
 						</h:inputText>
 					</div>
 				</div>
-				</div>
 
-			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-16">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nome}" />
 						<h:inputText value="#{produtoCadastroBean.produto.nome}"
@@ -54,41 +54,82 @@
 						</h:inputText>
 					</div>
 				</div>
-			</div>
-			
-			<div class="col-sm-8">
-				<div class="form-group">
-					<h:outputLabel value="#{msg.txt_tipo}" />
-					<h:selectOneMenu id="tipoSOM" styleClass="form-control"
-						value="#{produtoCadastroBean.produtoTipoSelecionado}">
-						<f:selectItem itemLabel="#{msg.txt_selecione}" />
-						<f:selectItems var="tipo"
-							value="#{produtoCadastroBean.produtosTipos}"
-							itemValue="#{tipo.id}" itemLabel="#{tipo.descricao}"
-							required="true" />
-					</h:selectOneMenu>
+				
+				<div class="clearfix"></div>
+
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_tipo}" />
+						<h:selectOneMenu id="tipoSOM" styleClass="form-control"
+							value="#{produtoCadastroBean.produtoTipoSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="tipo"
+								value="#{produtoCadastroBean.produtosTipos}"
+								itemValue="#{tipo.id}" itemLabel="#{tipo.descricao}"
+								required="true" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_permite_sabores}" />
+						<h:selectOneMenu id="permiteSaborSOM"
+							styleClass="form-control form-white"
+							value="#{produtoCadastroBean.permiteSabor}">
+							<f:selectItems var="bool"
+								value="#{produtoCadastroBean.permiteSabores}"
+								itemValue="#{bool}" required="true" itemLabel="#{bool.label}" />
+							<f:ajax execute="@this" render="permiteSaborSOM" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				
+				<div class="col-sm-8">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_tamahos}" />
+						<h:selectOneMenu id="permiteTamanhoSOM"
+							styleClass="form-control form-white"
+							value="#{produtoCadastroBean.tamanho}">
+							<f:selectItems var="bool"
+								value="#{produtoCadastroBean.tamanhos}"
+								itemValue="#{bool}" required="true" itemLabel="#{bool.label}" />
+							<f:ajax execute="@this" render="permiteTamanhoSOM" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				
+				<div class="clearfix"></div>
+				
+				<div class="col-sm-24">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_preco}" />
+						<div class="input-group">
+  							<span class="input-group-addon">R$</span>
+							<h:inputText id="precoIT"
+								styleClass="form-control moeda text-right"
+								value="#{produtoCadastroBean.preco}">
+								<f:converter
+									converterId="br.com.will.gestao.converter.InputMoedaConverter" />
+							</h:inputText>
+						</div>
+					</div>
 				</div>
 			</div>
 			
-			<div class="col-sm-8">
-				<div class="form-group">
-					<h:outputLabel value="#{msg.txt_permite_sabores}" />
-					<h:selectBooleanCheckbox id="permiteSaboresSOM" styleClass="form-control"
-						value="#{produtoCadastroBean.produto.permiteSabores}" />
-				</div>
-			</div>
+			
 
 			<div class="row wrap-btn-form">
-				<div class="col-sm-8 esq"></div>
-
-				<div class="col-sm-8 centro"></div>
-
-				<div class="col-sm-8 dir">
+				<div class="col-sm-8 esq">
 					<h:commandButton id="salvarBtn"
 						action="#{produtoCadastroBean.salvar}" value="Salvar"
 						styleClass="btn btn-success btn-lg">
 					</h:commandButton>
 				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir"></div>
 			</div>
 
 		</h:form>

@@ -159,7 +159,7 @@ public final class SendEmail implements Serializable {
 			corpoEmail.append("Em caso de duvidas entre em contato com o Help Desk pelo telefone <strong>");
 			corpoEmail.append(ESistema.MULTISALES.getTelefone() + "</strong>. ");
 			corpoEmail.append("</p>");
-			corpoEmail.append("</div>");//
+			corpoEmail.append("</div>");
 
 			// enviando o texto
 			MimeBodyPart mbp1 = new MimeBodyPart();
