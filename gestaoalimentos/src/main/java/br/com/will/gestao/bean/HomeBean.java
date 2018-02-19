@@ -3,12 +3,10 @@ package br.com.will.gestao.bean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import br.com.will.gestao.dto.ProdutoPedidoDTO;
 import br.com.will.gestao.entidade.Caixa;
 import br.com.will.gestao.entidade.Empresa;
@@ -61,7 +59,7 @@ public class HomeBean extends BaseBean {
 
 	private Integer tamanhoSelecionado;
 	private Integer limiteSabor;
-	private String Observacao;
+	private String observacao;
 	private Produto produtoSelecionado;
 	private Integer quantidadeSelecionada;
 	
@@ -244,11 +242,11 @@ public class HomeBean extends BaseBean {
 	}
 	
 	public String getObservacao() {
-		return Observacao;
+		return observacao;
 	}
 	
 	public void setObservacao(String observacao) {
-		Observacao = observacao;
+		this.observacao = observacao;
 	}
 	
 	public List<Integer> getQuantidade() {

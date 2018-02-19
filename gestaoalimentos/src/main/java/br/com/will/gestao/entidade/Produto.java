@@ -281,7 +281,7 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@XmlTransient
 	public String getJoin() {
 		return " JOIN FETCH p.produtoTipo pt "
-			 + " LEFT JOIN FETCH p.empresa em ";
+			 + " JOIN FETCH p.empresa em ";
 	}
 	
 	public static final Comparator<Produto> COMPARAR_POR_NOME = new Comparator<Produto>() {

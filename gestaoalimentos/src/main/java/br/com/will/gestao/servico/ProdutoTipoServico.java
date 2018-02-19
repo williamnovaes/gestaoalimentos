@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
 import br.com.will.gestao.dao.ProdutoTipoDAO;
 import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;

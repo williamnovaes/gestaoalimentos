@@ -104,8 +104,8 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			sql.append(" SELECT p FROM Produto p ");
 			sql.append(" JOIN FETCH p.empresa em ");
 			sql.append(" JOIN FETCH p.produtoTipo pt ");
-			sql.append(" JOIN FETCH p.tamanhos ts ");
-//			sql.append(" JOIN FETCH p.sabores sb ");
+			sql.append(" LEFT JOIN FETCH p.tamanhos ts ");
+//			sql.append(" LEFT JOIN FETCH p.sabores sb ");
 			if (ordem != null && !ordem.isEmpty()) {
 				sql.append(" ORDER BY p." + ordem + " ASC");
 			}

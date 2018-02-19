@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/template.xhtml"
-	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_tamanhos}" />
 	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
@@ -13,15 +13,15 @@
 		<h:form id="tamanhoForm" prependId="false">
 
 			<div class="row wrap-btn-grid">
-				<div class="col-sm-6 esq">
+				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
 						</h:commandLink>
 
 						<h:commandLink
-							styleClass="btn btn-default btn-icon icon-magnifier"
+							styleClass="btn btn-default"
 							value="Buscar">
 							<f:ajax render="tamanhosPG"
 								listener="#{tamanhoListagemBean.buscarRegistros()}" />
@@ -29,28 +29,26 @@
 					</div>
 				</div>
 
-				<div class="col-sm-6 centro"></div>
+				<div class="col-sm-8 centro"></div>
 
-				<div class="col-sm-6 dir">
+				<div class="col-sm-8 dir">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
 							action="tamanho?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-plus" value="Novo">
+							styleClass="btn btn-success" value="Novo">
 						</h:commandLink>
 					</div>
 				</div>
 			</div>
 			<div>
 				<h:panelGroup id="tamanhosPG">
-					<ppd:dataTable id="tamanhoDT" bean="#{tamanhoListagemBean}"
-						columnClass="align-center,,align-center,align-center,align-center,align-center,align-center,align-center"
+					<gs:dataTable id="tamanhoDT" bean="#{tamanhoListagemBean}"
+						columnClass="text-center,,text-center,text-center,text-center,text-center,text-center,text-center"
 						componenteBtn="false">
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_maiusc_id}" />
-								</div>
+								<h:outputText value="#{msg.txt_maiusc_id}" />
 							</f:facet>
 							<h:outputText value="#{item.id}" />
 						</h:column>
@@ -62,38 +60,30 @@
 							<h:outputText value="#{item.descricao}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_tamanho}" />
-								</div>
+								<h:outputText value="#{msg.txt_tamanho}" />
 							</f:facet>
 							<h:outputText value="#{item.tamanho}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-							<div class="align-center">
 								<h:outputText value="#{msg.txt_sequencia}" />
-								</div>
 							</f:facet>
 							<h:outputText value="#{item.sequencia}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-							<div class="align-center">
 								<h:outputText value="#{msg.txt_limite_sabores}" />
-								</div>
 							</f:facet>
 							<h:outputText value="#{item.limiteSabores}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-							<div class="align-center">
 								<h:outputText value="#{msg.txt_preco}" />
-								</div>
 							</f:facet>
 							<h:outputText value="#{item.preco}">
 								<f:converter
@@ -101,21 +91,17 @@
 							</h:outputText>
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_situacao}" />
-								</div>
+								<h:outputText value="#{msg.txt_situacao}" />
 							</f:facet>
-							<ppd:situacao item="#{item}" render="tamanhosPG"
+							<gs:situacao item="#{item}" render="tamanhosPG"
 								bean="#{tamanhoListagemBean}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_opcoes}" />
-								</div>
+								<h:outputText value="#{msg.txt_opcoes}" />
 							</f:facet>
 							<h:panelGroup>
 								<h:commandLink action="tamanho">
@@ -125,7 +111,7 @@
 								</h:commandLink>
 							</h:panelGroup>
 						</h:column>
-					</ppd:dataTable>
+					</gs:dataTable>
 				</h:panelGroup>
 			</div>
 		</h:form>

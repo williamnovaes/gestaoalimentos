@@ -1,12 +1,10 @@
 package br.com.will.gestao.servico;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
 import br.com.will.gestao.dao.ProdutoDAO;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;

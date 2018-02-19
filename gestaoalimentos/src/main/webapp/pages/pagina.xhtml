@@ -9,17 +9,17 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 	<ui:param name="pagina" value="#{msg.txt_pagina}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_cadastro}" />
 
 	<ui:define name="content">
 		<h:form id="paginaForm" prependId="false">
 
-			<div class="row wrap-btn-form-topo">
+			<div class="row wrap-btn-form">
 				<div class="col-sm-6 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandButton id="voltarBtn"
 							action="paginas?faces-redirect=true" immediate="true"
-							value="Voltar"
-							styleClass="btn btn-default btn-icon icon-arrow-undo">
+							value="Voltar" styleClass="btn btn-default">
 						</h:commandButton>
 					</div>
 				</div>
@@ -38,7 +38,8 @@
 					<div class="form-group">
 						<h:outputLabel value="Pos." />
 						<h:inputText value="#{paginaCadastroBean.pagina.sequencia}"
-							required="true" styleClass="form-control form-white numeros" maxlength="2">
+							required="true" styleClass="form-control form-white numeros"
+							maxlength="2">
 						</h:inputText>
 					</div>
 				</div>
@@ -47,7 +48,8 @@
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nome}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.nome}"
-							required="true" styleClass="form-control form-white txt-transform-none"
+							required="true"
+							styleClass="form-control form-white txt-transform-none"
 							maxlength="70">
 							<f:converter
 								converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
@@ -59,7 +61,8 @@
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_rotulo}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.rotulo}"
-							required="true" styleClass="form-control form-white txt-transform-none"
+							required="true"
+							styleClass="form-control form-white txt-transform-none"
 							maxlength="70">
 							<f:converter
 								converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
@@ -71,20 +74,22 @@
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_bean}" />
 						<h:inputText value="#{paginaCadastroBean.pagina.bean}"
-							required="true" styleClass="form-control form-white txt-transform-none"
+							required="true"
+							styleClass="form-control form-white txt-transform-none"
 							maxlength="100">
 							<f:converter
 								converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
 					</div>
 				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-sm-24">
+				<div class="clearfix"></div>
+
+				<div class="col-sm-12">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_pagina_tipo}" />
-						<h:selectOneMenu id="paginaTipoSOM" styleClass="form-control form-white"
+						<h:selectOneMenu id="paginaTipoSOM"
+							styleClass="form-control form-white"
 							value="#{paginaCadastroBean.pagina.paginaTipo}">
 							<f:selectItem itemLabel="#{msg.txt_selecione}" />
 							<f:selectItems var="tipo"
@@ -93,27 +98,26 @@
 						</h:selectOneMenu>
 					</div>
 				</div>
-			</div>
 
-			<div class="row">
-				<h:panelGroup id="menuPG">
-					<div class="col-sm-8">
-						<div class="form-group">
-							<h:outputLabel value="#{msg.txt_menu}" />
-							<h:selectOneMenu id="menuSOM" styleClass="form-control form-white"
-								value="#{paginaCadastroBean.idMenuSelecionado}">
-								<f:selectItem itemLabel="#{msg.txt_selecione}" />
-								<f:selectItems var="menu" value="#{paginaCadastroBean.menus}"
-									itemValue="#{menu.id}" itemLabel="#{menu.nome}" required="true" />
-							</h:selectOneMenu>
-						</div>
+				<div class="col-sm-12">
+					<div class="form-group">
+						<h:outputLabel value="#{msg.txt_menu}" />
+						<h:selectOneMenu id="menuSOM" styleClass="form-control form-white"
+							value="#{paginaCadastroBean.idMenuSelecionado}">
+							<f:selectItem itemLabel="#{msg.txt_selecione}" />
+							<f:selectItems var="menu" value="#{paginaCadastroBean.menus}"
+								itemValue="#{menu.id}" itemLabel="#{menu.nome}" required="true" />
+						</h:selectOneMenu>
 					</div>
-				</h:panelGroup>
+				</div>
 
-				<div class="col-sm-16">
+				<div class="clearfix"></div>
+
+				<div class="col-sm-24">
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nivel}" />
-						<h:selectOneMenu id="nivelSOM" styleClass="form-control form-white"
+						<h:selectOneMenu id="nivelSOM"
+							styleClass="form-control form-white"
 							value="#{paginaCadastroBean.idNivelSelecionado}">
 							<f:selectItem itemLabel="#{msg.txt_selecione}" />
 							<f:selectItems var="nivel"
@@ -123,20 +127,22 @@
 						</h:selectOneMenu>
 					</div>
 				</div>
-			</div>
 
-			<div class="row margin-bottom-40">
-				<div class="col-sm-24">
-					<h:commandLink id="adicionarNivelCL" value="Adicionar"
-						styleClass="btn btn-info btn-block">
-						<f:ajax execute="nivelSOM" render="niveisPG nivelSOM"
-							listener="#{paginaCadastroBean.adicionarNivel()}" />
-					</h:commandLink>
+				<div class="clearfix"></div>
+
+				<div class="margin-bottom-40">
+					<div class="col-sm-24">
+						<h:commandLink id="adicionarNivelCL" value="Adicionar"
+							styleClass="btn btn-info btn-block">
+							<f:ajax execute="nivelSOM" render="niveisPG nivelSOM"
+								listener="#{paginaCadastroBean.adicionarNivel()}" />
+						</h:commandLink>
+					</div>
 				</div>
-			</div>
 
-			<h:panelGroup id="niveisPG">
-				<div class="row">
+				<div class="clearfix"></div>
+
+				<h:panelGroup id="niveisPG">
 					<div class="col-sm-24">
 						<h:panelGroup
 							rendered="#{empty paginaCadastroBean.niveisAssociados}">
@@ -175,20 +181,22 @@
 							</h:dataTable>
 						</h:panelGroup>
 					</div>
-				</div>
-			</h:panelGroup>
+				</h:panelGroup>
+			</div>
+			
+			<div class="clearfix"></div>
 
 			<div class="row wrap-btn-form">
-				<div class="col-sm-8 esq"></div>
-
-				<div class="col-sm-8 centro"></div>
-
-				<div class="col-sm-8 dir">
+				<div class="col-sm-8 esq">
 					<h:commandButton id="salvarBtn"
 						action="#{paginaCadastroBean.salvar}" value="Salvar"
 						styleClass="btn btn-success btn-lg">
 					</h:commandButton>
 				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir"></div>
 			</div>
 
 		</h:form>

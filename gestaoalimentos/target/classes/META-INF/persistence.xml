@@ -22,15 +22,11 @@
 			<!-- <property name="hibernate.cache.use_second_level_cache" value="true"/> -->
 
 			<!-- Auditoria -->
-			<property name="org.hibernate.envers.audit_table_prefix"
-				value="rev_" />
-			<property name="org.hibernate.envers.audit_table_suffix"
-				value="" />
+			<property name="org.hibernate.envers.audit_table_prefix" value="rev_" />
+			<property name="org.hibernate.envers.audit_table_suffix" value="" />
 			<property name="org.hibernate.envers.default_schema" value="revisao" />
-			<property name="org.hibernate.envers.revision_field_name"
-				value="_revisao" />
-			<property name="org.hibernate.envers.revision_type_field_name"
-				value="tipo_alteracao" />
+			<property name="org.hibernate.envers.revision_field_name" value="_revisao" />
+			<property name="org.hibernate.envers.revision_type_field_name" value="tipo_alteracao" />
 
 			<!-- 0 - ADD -->
 			<!-- 1 - MOD -->

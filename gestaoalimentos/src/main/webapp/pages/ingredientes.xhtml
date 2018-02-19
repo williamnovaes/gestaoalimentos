@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/template.xhtml"
-	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_ingredientes}" />
 	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
@@ -13,14 +13,14 @@
 		<h:form id="ingredienteForm" prependId="false">
 
 			<div class="row wrap-btn-grid">
-				<div class="col-sm-6 esq">
+				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
 						</h:commandLink>
 						<h:commandLink
-							styleClass="btn btn-default btn-icon icon-magnifier"
+							styleClass="btn btn-default"
 							value="Buscar">
 							<f:ajax render="ingredientesPG"
 								listener="#{ingredienteListagemBean.buscarRegistros()}" />
@@ -28,28 +28,26 @@
 					</div>
 				</div>
 
-				<div class="col-sm-6 centro"></div>
+				<div class="col-sm-8 centro"></div>
 
-				<div class="col-sm-6 dir">
+				<div class="col-sm-8 dir">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
 							action="ingrediente?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-plus" value="Novo">
+							styleClass="btn btn-success" value="Novo">
 						</h:commandLink>
 					</div>
 				</div>
 			</div>
 			<div>
 				<h:panelGroup id="ingredientesPG">
-					<ppd:dataTable id="ingredienteDT" bean="#{ingredienteListagemBean}"
-						columnClass="align-center,,,align-center,align-center,align-center,align-center,align-center"
+					<gs:dataTable id="ingredienteDT" bean="#{ingredienteListagemBean}"
+						columnClass="text-center,,,text-center,text-center,text-center,text-center,text-center"
 						componenteBtn="false">
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_maiusc_id}" />
-								</div>
+								<h:outputText value="#{msg.txt_maiusc_id}" />
 							</f:facet>
 							<h:outputText value="#{item.id}" />
 						</h:column>
@@ -68,27 +66,23 @@
 							<h:outputText value="#{item.descricao}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
 								<h:outputText value="#{msg.txt_sequencia}" />
 							</f:facet>
 							<h:outputText value="#{item.sequencia}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_permite_adicional}" />
-								</div>
+								<h:outputText value="#{msg.txt_adicional}" />
 							</f:facet>
 							<h:outputText value="#{item.adicional.label}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_valor_adicional}" />
-								</div>
+								<h:outputText value="#{msg.txt_preco_adicional}" />
 							</f:facet>
 							<h:outputText value="#{item.valorAdicional}">
 								<f:converter
@@ -96,35 +90,27 @@
 							</h:outputText>
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_situacao}" />
-								</div>
+								<h:outputText value="#{msg.txt_situacao}" />
 							</f:facet>
 							<div class="align-center">
-								<ppd:situacao item="#{item}" render="ingredientesPG"
+								<gs:situacao item="#{item}" render="ingredientesPG"
 									bean="#{ingredienteListagemBean}" />
 							</div>
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_opcoes}" />
-								</div>
+								<h:outputText value="#{msg.txt_opcoes}" />
 							</f:facet>
-							<h:panelGroup>
-								<div class="align-center">
-									<h:commandLink action="ingrediente">
-										<img src="../resources/images/ico/16x16/pencil.png"
-											title="#{msg.txt_editar}" />
-										<f:param name="id" value="#{item.id}" />
-									</h:commandLink>
-								</div>
-							</h:panelGroup>
+							<h:commandLink action="ingrediente">
+								<img src="../resources/images/ico/16x16/pencil.png"
+									title="#{msg.txt_editar}" />
+								<f:param name="id" value="#{item.id}" />
+							</h:commandLink>
 						</h:column>
-					</ppd:dataTable>
+					</gs:dataTable>
 				</h:panelGroup>
 			</div>
 

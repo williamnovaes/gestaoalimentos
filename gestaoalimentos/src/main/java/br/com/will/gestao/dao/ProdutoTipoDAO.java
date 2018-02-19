@@ -1,9 +1,7 @@
 package br.com.will.gestao.dao;
 
 import java.util.List;
-
 import javax.persistence.NoResultException;
-
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
@@ -24,7 +22,14 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 
 	@Override
 	public List<? extends SituacaoAlteravel> consultarPorSituacao(ESituacao situacao) {
-		return null;
+		StringBuilder sql = new StringBuilder();
+		sql.append(" SELECT pt FROM ProdutoTipo pt ");
+		sql.append(" JOIN FETCH pt.empresa em ");
+		sql.append(" WHERE pt.situacao =:_situacao ");
+		sql.append(" ORDER BY pt.descricao ");
+		return getEm().createQuery(sql.toString(), ProdutoTipo.class)
+					  .setParameter("_situacao", situacao)
+					  .getResultList();
 	}
 
 	@Override
@@ -70,7 +75,6 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT pt FROM ProdutoTipo pt ");
 			sql.append(" JOIN FETCH pt.empresa e ");
-			sql.append(" LEFT JOIN FETCH pt.tamanhos t ");
 			sql.append(" WHERE pt.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)

@@ -44,13 +44,11 @@
 			<div>
 				<h:panelGroup id="usuariosPG">
 					<gs:dataTable id="usuarioDT" bean="#{usuarioListagemBean}"
-						columnClass="align-center,,,,,align-center,align-center"
+						columnClass="text-center,,,,text-center,text-center"
 						componenteBtn="false">
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
 									<h:outputText value="#{msg.txt_maiusc_id}" />
-								</div>
 							</f:facet>
 							<h:outputText value="#{item.id}" />
 						</h:column>
@@ -60,13 +58,6 @@
 								<h:outputText value="#{msg.txt_nome}" />
 							</f:facet>
 							<gs:abreviado value="#{item.nome}" />
-						</h:column>
-
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{msg.txt_login}" />
-							</f:facet>
-							<h:outputText value="#{item.login}" />
 						</h:column>
 
 						<h:column>
@@ -82,8 +73,8 @@
 							</f:facet>
 							<h:outputText value="#{item.nivel.descricao}" />
 						</h:column>
-						
-						<h:column>
+					 	
+						<h:column headerClass="text-center">
 							<f:facet name="header">
 								<div class="align-center">
 									<h:outputText value="#{msg.txt_situacao}" />
@@ -93,21 +84,11 @@
 								bean="#{usuarioListagemBean}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_opcoes}" />
-								</div>
+								<h:outputText value="#{msg.txt_opcoes}" />
 							</f:facet>
 							<h:panelGroup>
-								<h:commandLink>
-									<img
-										src="../resources/images/ico/16x16/client_account_template.png"
-										title="#{msg.txt_clientes}" alt="#{msg.txt_clientes}" />
-									<f:ajax execute="@this" render="clientePG"
-										listener="#{usuarioListagemBean.obterClientesPorUsuario(item)}" />
-								</h:commandLink>
-
 								<h:commandLink>
 									<img src="../resources/images/ico/16x16/pencil.png"
 										title="#{msg.txt_editar}" alt="#{msg.txt_editar}" />

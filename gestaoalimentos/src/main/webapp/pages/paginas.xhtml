@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/template/template.xhtml"
-	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_paginas}" />
 	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
@@ -13,45 +13,49 @@
 		<h:form id="paginasForm" prependId="false">
 
 			<div class="row wrap-btn-grid">
-				<div class="col-sm-6 esq">
+				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
+						</h:commandLink>
+						
+						<h:commandLink
+							styleClass="btn btn-default"
+							value="Buscar">
+							<f:ajax render="paginasPG"
+								listener="#{paginaListagemBean.buscarRegistros()}" />
 						</h:commandLink>
 					</div>
 				</div>
+				
+				<div class="col-sm-8 centro"></div>
 
-				<!-- 				<div class="col-sm-8 centro"></div> -->
-
-				<div class="col-sm-6 dir">
+				<div class="col-sm-8 dir">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
 							action="pagina?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-plus" value="Novo">
+							styleClass="btn btn-success" value="Novo">
 						</h:commandLink>
 					</div>
 				</div>
 			</div>
 
 			<h:panelGroup id="paginasPG">
-				<ppd:dataTable id="paginaDT" bean="#{paginaListagemBean}"
-					columnClass="align-center,align-center,,,,,align-center,align-center"
+				<gs:dataTable id="paginaDT" bean="#{paginaListagemBean}"
+					columnClass="text-center,text-center,,,,,text-center,text-center"
 					componenteBtn="false">
-					<h:column>
+					
+					<h:column headerClass="text-center">
 						<f:facet name="header">
-							<div class="align-center">
-								<h:outputText value="#{msg.txt_maiusc_id}" />
-							</div>
+							<h:outputText value="#{msg.txt_maiusc_id}" />
 						</f:facet>
 						<h:outputText value="#{item.id}" />
 					</h:column>
 
-					<h:column>
+					<h:column headerClass="text-center">
 						<f:facet name="header">
-							<div class="align-center">
-								<h:outputText value="Seq" />
-							</div>
+							<h:outputText value="Seq" />
 						</f:facet>
 						<h:outputText value="#{item.sequencia}" />
 					</h:column>
@@ -84,21 +88,17 @@
 						<h:outputText value="#{item.menu.nome}" />
 					</h:column>
 
-					<h:column>
+					<h:column headerClass="text-center">
 						<f:facet name="header">
-							<div class="align-center">
-								<h:outputText value="#{msg.txt_situacao}" />
-							</div>
+							<h:outputText value="#{msg.txt_situacao}" />
 						</f:facet>
-						<ppd:situacao item="#{item}" render="paginasPG"
+						<gs:situacao item="#{item}" render="paginasPG"
 							bean="#{paginaListagemBean}" />
 					</h:column>
 
-					<h:column>
+					<h:column headerClass="text-center">
 						<f:facet name="header">
-							<div class="align-center">
-								<h:outputText value="#{msg.txt_opcoes}" />
-							</div>
+							<h:outputText value="#{msg.txt_opcoes}" />
 						</f:facet>
 						<h:panelGroup>
 							<h:commandLink>
@@ -122,11 +122,11 @@
 							</h:commandLink>
 						</h:panelGroup>
 					</h:column>
-				</ppd:dataTable>
+				</gs:dataTable>
 			</h:panelGroup>
 
 			<h:panelGroup id="nivelPG">
-				<ppd:modal id="nivelModal"
+				<gs:modal id="nivelModal"
 					titulo="Página - #{paginaListagemBean.pagina.rotulo}"
 					exibirModal="#{paginaListagemBean.exibirModalNiveis}"
 					salvar="#{paginaListagemBean.salvarNiveisAssociados()}"
@@ -239,11 +239,11 @@
 							</div>
 						</div>
 					</h:panelGroup>
-				</ppd:modal>
+				</gs:modal>
 			</h:panelGroup>
 
 			<h:panelGroup id="posicaoPG">
-				<ppd:modal id="posicaoModal" titulo="Alterar Posição da Página"
+				<gs:modal id="posicaoModal" titulo="Alterar Posição da Página"
 					exibirModal="#{paginaListagemBean.exibirModalPosicao}"
 					salvar="#{paginaListagemBean.salvarPosicaoPagina()}"
 					render="paginasPG"
@@ -277,7 +277,7 @@
 											<h:outputText value="#{msg.txt_situacao}" />
 										</div>
 									</f:facet>
-									<ppd:situacao item="#{item}" />
+									<gs:situacao item="#{item}" />
 								</h:column>
 
 								<h:column>
@@ -309,7 +309,7 @@
 							</h:dataTable>
 						</div>
 					</h:panelGroup>
-				</ppd:modal>
+				</gs:modal>
 			</h:panelGroup>
 
 		</h:form>

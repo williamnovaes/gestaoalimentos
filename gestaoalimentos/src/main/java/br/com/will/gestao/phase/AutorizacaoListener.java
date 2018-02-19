@@ -6,7 +6,6 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletResponse;
-
 import br.com.will.gestao.bean.LoginBean;
 
 public class AutorizacaoListener implements PhaseListener {

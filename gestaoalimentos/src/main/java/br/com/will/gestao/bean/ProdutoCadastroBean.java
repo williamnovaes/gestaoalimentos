@@ -102,7 +102,7 @@ public class ProdutoCadastroBean extends BaseBean {
 				this.produto = produtoServico.salvar(this.produto);
 			}
 			
-//			salvarTamanhosAssociados(this.produto);
+			salvarTamanhosAssociados(this.produto);
 			
 			return "produtos?faces-redirect=true";
 		} catch (Exception e) {
