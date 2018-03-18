@@ -12,10 +12,10 @@ import javax.inject.Named;
 import br.com.will.gestao.entidade.Nivel;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.util.ENivel;
-import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.NivelServico;
 import br.com.will.gestao.servico.UsuarioServico;
 import br.com.will.gestao.servico.exception.BaseServicoException;
+import br.com.will.gestao.util.SistemaConstantes;
 
 @Named
 @ViewScoped
@@ -27,8 +27,6 @@ public class UsuarioCadastroBean extends BaseBean {
 	private UsuarioServico usuarioServico;
 	@EJB
 	private NivelServico nivelServico;
-	@EJB
-	private EmpresaServico empresaServico;
 
 	private Usuario usuario;
 	private List<Nivel> niveis;
@@ -69,10 +67,8 @@ public class UsuarioCadastroBean extends BaseBean {
 			Nivel nivel = null;
 			if (getLoginBean().getUsuarioLogado() != null) {
 				nivel = nivelServico.obterPorId(this.idNivelSelecionado);
-				usuario.setEmpresa(getLoginBean().getEmpresa());
 			} else {
 				nivel = nivelServico.obterPorDescricao("CLIENTE");
-				usuario.setEmpresa(empresaServico.obterPorId(1));
 				usuario.setLogin(usuario.getEmail());
 			}
 			
@@ -108,7 +104,7 @@ public class UsuarioCadastroBean extends BaseBean {
 			return;
 		}
 		
-		if (this.usuario.getSenha().length() < 5) {
+		if (this.usuario.getSenha().length() < SistemaConstantes.CINCO) {
 			adicionarWarn("A senha deve conter mais que 5 caracteres");
 			senhaValida = false;
 			return;

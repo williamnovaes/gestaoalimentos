@@ -11,7 +11,6 @@ import javax.inject.Named;
 
 import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.util.EBoolean;
-import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.IngredienteServico;
 
 @Named
@@ -22,8 +21,6 @@ public class IngredienteCadastroBean extends BaseBean {
 
 	@EJB
 	private IngredienteServico ingredienteServico;
-	@EJB
-	private EmpresaServico empresaServico;
 	
 	private Ingrediente ingrediente;
 	private EBoolean adicionalSelecionado;
@@ -43,7 +40,7 @@ public class IngredienteCadastroBean extends BaseBean {
 						ingrediente = ingredienteServico.obterCompletoPorId(Integer.parseInt(idParam));
 					} catch (Exception e) {
 						e.printStackTrace();
-						adicionarError("Erro ao Buscar Página ");
+						adicionarError("Erro ao Buscar Ingrediente ");
 					}
 				}
 				if (this.ingrediente == null) {
@@ -63,17 +60,16 @@ public class IngredienteCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			this.ingrediente.setEmpresa(getLoginBean().getEmpresa());
 			this.ingrediente.setAdicional(adicionalSelecionado);
 			if (this.valorAdicional != null && !this.valorAdicional.isEmpty()) {
 				this.ingrediente.setValorAdicional(new BigDecimal(this.valorAdicional));
 			}
 			if (this.ingrediente.getId() != null) {
 				ingredienteServico.alterar(this.ingrediente);
-				adicionarInfo("Produto " + this.ingrediente.getNome() + " alterado com sucesso");
+				adicionarInfo("Ingrediente " + this.ingrediente.getNome() + " alterado com sucesso");
 			} else {
 				ingredienteServico.salvar(this.ingrediente);
-				adicionarInfo("Produto cadastrado com sucesso");
+				adicionarInfo("Ingrediente cadastrado com sucesso");
 			}
 			
 			return "ingredientes";

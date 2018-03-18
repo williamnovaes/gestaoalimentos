@@ -29,6 +29,7 @@ import br.com.will.gestao.util.Util;
 @Entity
 @Table(name = "promocao", schema = "gestao")
 public class Promocao implements Serializable, SituacaoAlteravel, Paginavel {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,36 +40,35 @@ public class Promocao implements Serializable, SituacaoAlteravel, Paginavel {
 	@NotNull
 	@Column(name = "descricao", nullable = false, length = SistemaConstantes.DUZENTOS_CINQUENTA)
 	private String descricao;
-	
+
 	@NotNull
 	@Column(name = "observacao", nullable = false, length = SistemaConstantes.DUZENTOS_CINQUENTA)
-	private String observacao = 
-			"Cadastre o código [CODIGO] em;www.smingressos.com.br;e concorra a uma camisa oficial.";
-	
+	private String observacao;
+
 	@NotNull
 	@Column(name = "quantidade", nullable = false, updatable = false)
 	private Integer quantidade;
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_inicio", nullable = false)
 	private Calendar dataInicio;
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_fim", nullable = false)
 	private Calendar dataFim;
-	
+
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "_usuario", foreignKey = @ForeignKey(name = "fk_usuario"), nullable = false)
 	private Usuario usuario;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
-	
+
 	public Promocao() {
 
 	}
@@ -90,55 +90,55 @@ public class Promocao implements Serializable, SituacaoAlteravel, Paginavel {
 	public void setSituacao(ESituacao situacao) {
 		this.situacao = situacao;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public Calendar getDataInicio() {
 		return dataInicio;
 	}
-	
+
 	public void setDataInicio(Calendar dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	
+
 	public Calendar getDataFim() {
 		return dataFim;
 	}
-	
+
 	public void setDataFim(Calendar dataFim) {
 		this.dataFim = dataFim;
 	}
-	
+
 	public String getObservacao() {
 		return observacao;
 	}
-	
+
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}
-	
+
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Promocao [id=" + id + ", descricao=" + descricao + "]";

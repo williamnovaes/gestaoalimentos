@@ -5,17 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import br.com.will.gestao.componente.Credencial;
 import br.com.will.gestao.dto.ProdutoPedidoDTO;
 import br.com.will.gestao.entidade.Caixa;
-import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.permissao.Menu;
@@ -46,7 +43,6 @@ public class LoginBean extends BaseBean {
 	private boolean logado;
 	private List<Pagina> paginas;
 	private HashMap<Menu, List<Pagina>> paginasPorMenu;
-	private Empresa empresa;
 	private List<Produto> carrinho = new ArrayList<>();
 	private List<ProdutoPedidoDTO> carrinhoDto = new ArrayList<>();
 	private boolean exibirModalLogin = false;
@@ -107,13 +103,13 @@ public class LoginBean extends BaseBean {
 
 	public void carregarCaixa() {
 		try {
-			caixa = caixaServico.obterCaixaAberto(this.empresa);
+			caixa = caixaServico.obterCaixaAberto();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void configurarPermissao() {
+	public void configurarPermissao() {
 		try {
 			List<Pagina> paginasAuxiliar = new ArrayList<>();
 			paginasPorMenu = new HashMap<Menu, List<Pagina>>();
@@ -127,7 +123,6 @@ public class LoginBean extends BaseBean {
 				paginasAuxiliar.add(pagina);
 				paginasPorMenu.put(pagina.getMenu(), paginasAuxiliar);
 			}
-			this.empresa = usuarioLogado.getEmpresa();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -202,10 +197,6 @@ public class LoginBean extends BaseBean {
 		return false;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
 	public BigDecimal valorTotal() {
 		return null;
 	}
@@ -270,6 +261,10 @@ public class LoginBean extends BaseBean {
 
 	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
+	}
+	
+	public boolean isAberto() {
+		return this.caixa != null && this.caixa.isAberto();
 	}
 
 	public boolean isFuncionario() {

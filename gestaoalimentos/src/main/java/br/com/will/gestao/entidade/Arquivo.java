@@ -59,11 +59,6 @@ public class Arquivo implements Serializable, SituacaoAlteravel,
 	@ManyToOne(fetch = FetchType.LAZY)
 	private ArquivoTipo arquivoTipo;
 	
-	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
-	
 	public Arquivo() {
 
 	}
@@ -122,14 +117,6 @@ public class Arquivo implements Serializable, SituacaoAlteravel,
 
 	public void setSituacao(ESituacao situacao) {
 		this.situacao = situacao;
-	}
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 	
 	@Override

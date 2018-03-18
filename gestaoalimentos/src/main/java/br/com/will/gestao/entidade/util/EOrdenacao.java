@@ -1,19 +1,24 @@
 package br.com.will.gestao.entidade.util;
 
 public enum EOrdenacao {
-	DESCRICAO("descricao"),
-	INDEX("index"),
-	SEQUENCIA("sequencia"),
-	MAIOR_PRECO("maior preco"),
-	MENOR_PRECO("menor preco");
+	DESCRICAO("descricao", " descricao ASC "),
+	SEQUENCIA("sequencia", " sequencia ASC "),
+	MAIOR_PRECO("maior preco", " valor DESC "),
+	MENOR_PRECO("menor preco", " valor ASC ");
 	
 	private final String texto;
+	private final String order;
 	
-	EOrdenacao(String texto) {
+	EOrdenacao(String texto, String order) {
 		this.texto = texto;
+		this.order = order;
 	}
 
 	public String getTexto() {
 		return texto;
+	}
+	
+	public String getOrder() {
+		return order;
 	}
 }

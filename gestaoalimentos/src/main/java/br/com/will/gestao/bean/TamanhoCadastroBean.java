@@ -11,9 +11,10 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import br.com.will.gestao.entidade.Produto;
+import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Tamanho;
-import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoServico;
+import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.TamanhoServico;
 
 @Named
@@ -25,13 +26,15 @@ public class TamanhoCadastroBean extends BaseBean {
 	@EJB
 	private TamanhoServico tamanhoServico;
 	@EJB
-	private EmpresaServico empresaServico;
-	@EJB
 	private ProdutoServico produtoServico;
+	@EJB
+	private ProdutoTipoServico produtoTipoServico;
 	
 	private List<Produto> produtos;
+	private List<ProdutoTipo> tipos;
 	private Tamanho tamanho;
 	private Integer idProduto;
+	private Integer idTipo;
 	
 	private String preco = "0";
 
@@ -57,10 +60,14 @@ public class TamanhoCadastroBean extends BaseBean {
 					if (tamanho.getProduto() != null) {
 						idProduto = tamanho.getProduto().getId();
 					}
+					if (tamanho.getProdutoTipo() != null) {
+						idTipo = tamanho.getProdutoTipo().getId();
+					}
 					this.preco = tamanho.getPreco().toString();
 				}
 			}
 			produtos = produtoServico.obterTodos("sequencia");
+			tipos = produtoTipoServico.obterTodos("sequencia");
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
@@ -69,10 +76,14 @@ public class TamanhoCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			this.tamanho.setEmpresa(getLoginBean().getEmpresa());
 			if (idProduto != null && idProduto > 0) {
 				Produto produto = produtoServico.obterPorId(idProduto);
 				this.tamanho.setProduto(produto);
+			}
+			
+			if (idTipo != null && idTipo > 0) {
+				ProdutoTipo tipo = produtoTipoServico.obterPorId(idTipo);
+				this.tamanho.setProdutoTipo(tipo);
 			}
 			
 			if (this.preco != null && !this.preco.isEmpty()) {
@@ -115,5 +126,17 @@ public class TamanhoCadastroBean extends BaseBean {
 	
 	public void setPreco(String preco) {
 		this.preco = preco;
+	}
+	
+	public List<ProdutoTipo> getTipos() {
+		return tipos;
+	}
+	
+	public Integer getIdTipo() {
+		return idTipo;
+	}
+	
+	public void setIdTipo(Integer idTipo) {
+		this.idTipo = idTipo;
 	}
 }

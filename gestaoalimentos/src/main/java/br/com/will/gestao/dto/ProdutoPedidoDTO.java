@@ -3,6 +3,7 @@ package br.com.will.gestao.dto;
 import java.math.BigDecimal;
 import java.util.List;
 
+import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.entidade.Tamanho;
@@ -13,9 +14,11 @@ public class ProdutoPedidoDTO {
 	private Tamanho tamanho;
 	private Integer quantidade;
 	private String observacao;
+	private List<Ingrediente> adicionais;
 	private BigDecimal preco;
 	
-	public ProdutoPedidoDTO() {}
+	public ProdutoPedidoDTO() {
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -63,6 +66,14 @@ public class ProdutoPedidoDTO {
 	
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+	
+	public List<Ingrediente> getAdicionais() {
+		return adicionais;
+	}
+	
+	public void setAdicionais(List<Ingrediente> adicionais) {
+		this.adicionais = adicionais;
 	}
 	
 	public String getLabelProdutos() {

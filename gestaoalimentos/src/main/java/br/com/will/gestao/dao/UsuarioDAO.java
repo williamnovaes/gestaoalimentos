@@ -44,7 +44,6 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			sql.append(" SELECT u FROM Usuario u ");
 			sql.append(" JOIN FETCH u.nivel n ");
 			sql.append(" JOIN FETCH n.nivelTipo nt ");
-			sql.append(" LEFT JOIN FETCH u.empresa em ");
 			sql.append(" WHERE u.login =:_login ");
 			sql.append(" AND u.senha =:_senha ");
 			sql.append(" AND u.situacao =:_ativo ");
@@ -84,7 +83,6 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			sql.append(" SELECT u FROM Usuario u ");
 			sql.append(" JOIN FETCH u.nivel n ");
 			sql.append(" JOIN FETCH n.nivelTipo nt ");
-			sql.append(" LEFT JOIN FETCH u.empresa em ");
 			sql.append(" WHERE u.login =:_login ");
 			sql.append(" AND u.senha =:_senha ");
 			sql.append(" AND u.situacao =:_ativo ");
@@ -175,7 +173,6 @@ public class UsuarioDAO extends BaseDAO<Usuario> {
 			sql.append(" SELECT us FROM Usuario us ");
 			sql.append(" JOIN FETCH us.nivel n ");
 			sql.append(" JOIN FETCH n.nivelTipo nt ");
-			sql.append(" JOIN FETCH us.empresa em ");
 			sql.append(" WHERE us.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), Usuario.class)

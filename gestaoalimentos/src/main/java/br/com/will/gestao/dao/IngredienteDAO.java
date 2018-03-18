@@ -50,7 +50,6 @@ public class IngredienteDAO extends BaseDAO<Ingrediente> {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT i FROM Ingrediente i ");
-			sql.append(" JOIN FETCH i.empresa em ");
 			sql.append(" WHERE i.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), Ingrediente.class)

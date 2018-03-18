@@ -10,6 +10,7 @@ import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.dao.filtro.ESortedBy;
 import br.com.will.gestao.dao.filtro.SQLFilter;
 import br.com.will.gestao.entidade.Produto;
+import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -51,7 +52,6 @@ public class SaborDAO extends BaseDAO<Sabor> {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT s FROM Sabor s ");
-			sql.append(" JOIN FETCH s.empresa em ");
 			sql.append(" WHERE s.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), Sabor.class)
@@ -69,13 +69,14 @@ public class SaborDAO extends BaseDAO<Sabor> {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT s FROM Sabor s ");
-			sql.append(" JOIN FETCH s.produto p ");
-			sql.append(" JOIN FETCH s.empresa e ");
+			sql.append(" JOIN s.produto p ");
 			sql.append(" WHERE p =:_produto ");
-			sql.append(" ORDER BY s.index ");
+			sql.append(" AND s.situacao =:_situacao ");
+			sql.append(" ORDER BY s.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), Sabor.class)
 						  .setParameter("_produto", produto)
+						  .setParameter("_situacao", ESituacao.ATIVO)
 						  .getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
@@ -128,6 +129,41 @@ public class SaborDAO extends BaseDAO<Sabor> {
 				   .setParameter("_produto", sabor.getProduto())
 				   .setParameter("_idSabor", sabor.getId())
 				   .executeUpdate();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<Sabor> consultarPorProdutoSituacao(Produto produto, ESituacao situacao) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT s FROM Sabor s ");
+			sql.append(" JOIN s.produto p ");
+			sql.append(" WHERE p =:_produto ");
+			sql.append(" AND s.situacao =:_situacao ");
+			sql.append(" ORDER BY s.sequencia ");
+			
+			return getEm().createQuery(sql.toString(), Sabor.class)
+						  .setParameter("_produto", produto)
+						  .setParameter("_situacao", situacao)
+						  .getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<Sabor> consultarPorProdutoTipo(ProdutoTipo produtoTipo) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT s FROM Sabor s ");
+			sql.append(" JOIN s.produto p ");
+			sql.append(" JOIN p.produtoTipo pt ");
+			sql.append(" WHERE pt =:_tipo ");
+			sql.append(" ORDER BY s.sequencia ");
+			
+			return getEm().createQuery(sql.toString(), Sabor.class)
+						  .setParameter("_tipo", produtoTipo)
+						  .getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

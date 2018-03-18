@@ -10,10 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.entidade.Nivel;
 
 @Entity
 @Table(name = "pagina_nivel", schema = "permissao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class PaginaNivel implements Serializable {
 
 	private static final long serialVersionUID = 1L;

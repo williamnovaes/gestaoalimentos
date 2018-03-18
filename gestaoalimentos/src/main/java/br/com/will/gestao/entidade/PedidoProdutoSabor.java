@@ -21,45 +21,37 @@ public class PedidoProdutoSabor
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private PedidoProdutoPK id;
+	private PedidoProdutoSaborPK id;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_pedido", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_pedido"))
-	private Pedido pedido;
+	@JoinColumn(name = "_pedido_produto", updatable = false, insertable = false, foreignKey = @ForeignKey(name = "fk_pedido_produto"))
+	private PedidoProduto pedidoProduto;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_produto", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_produto"))
-	private Produto produto;
-	
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_saobor", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "fk_sabor"))
+	@JoinColumn(name = "_sabor",  updatable = false, insertable = false, foreignKey = @ForeignKey(name = "fk_sabor"))
 	private Sabor sabor;
-	
-	@Column(name = "referencia")
-	private Integer referencia;
 	
 	public PedidoProdutoSabor() {
 	}
 
-	public PedidoProdutoSabor(Pedido pedido, Produto produto) {
-		this.id = new PedidoProdutoPK(pedido.getId(), produto.getId());
-		this.produto = produto;
-		this.pedido = pedido;
+	public PedidoProdutoSabor(PedidoProduto pedidoProduto, Sabor sabor) {
+		this.id = new PedidoProdutoSaborPK(pedidoProduto.getId(), sabor.getId());
+		this.pedidoProduto = pedidoProduto;
+		this.sabor = sabor;
 	}
 
-	public PedidoProdutoPK getId() {
+	public PedidoProdutoSaborPK getId() {
 		return this.id;
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public PedidoProduto getPedidoProduto() {
+		return pedidoProduto;
 	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	
+	public void setPedidoProduto(PedidoProduto pedidoProduto) {
+		this.pedidoProduto = pedidoProduto;
 	}
 	
 	public Sabor getSabor() {
@@ -70,14 +62,6 @@ public class PedidoProdutoSabor
 		this.sabor = sabor;
 	}
 	
-	public Integer getReferencia() {
-		return referencia;
-	}
-	
-	public void setReferencia(Integer referencia) {
-		this.referencia = referencia;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -131,9 +115,10 @@ public class PedidoProdutoSabor
 	@Override
 	public String getJoin() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(" JOIN pps.pedido pd ");
-		sb.append(" JOIN pps.produto pr ");
-		sb.append(" JOIN pps.sabor sb ");
+		sb.append(" JOIN FETCH pps.pedidoProduto pd ");
+		sb.append(" JOIN FETCH pd.pedido pe ");
+		sb.append(" JOIN FETCH pd.produto pr ");
+		sb.append(" JOIN FETCH pps.sabor sb ");
 		return sb.toString();
 	}
 

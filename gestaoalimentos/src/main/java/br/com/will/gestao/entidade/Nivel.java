@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.permissao.PaginaNivel;
 import br.com.will.gestao.entidade.util.Descritivel;
@@ -29,6 +32,7 @@ import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "nivel", schema = "gestao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Nivel implements SituacaoAlteravel, Descritivel, Comparable<Nivel>, Paginavel, Identificavel {
 	private static final long serialVersionUID = 1L;
 

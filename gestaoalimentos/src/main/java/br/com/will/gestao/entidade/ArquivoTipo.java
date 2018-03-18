@@ -50,11 +50,6 @@ public class ArquivoTipo implements SituacaoAlteravel, Descritivel,
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
 	
-	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
-
 	@Column(name = "layout", columnDefinition = "TEXT")
 	private String layout;
 
@@ -104,14 +99,6 @@ public class ArquivoTipo implements SituacaoAlteravel, Descritivel,
 
 	public String getLayout() {
 		return layout;
-	}
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 
 	@Override

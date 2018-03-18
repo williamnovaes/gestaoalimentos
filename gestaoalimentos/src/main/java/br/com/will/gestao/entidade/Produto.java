@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,9 +20,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.ESituacao;
@@ -30,9 +34,9 @@ import br.com.will.gestao.util.SistemaConstantes;
 import br.com.will.gestao.util.Util;
 
 @Entity
-@Table(name = "produto", schema = "gestao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"_produto_tipo", "_empresa" }) })
-public class Produto implements SituacaoAlteravel, Paginavel {
+@Table(name = "produto", schema = "gestao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+public class Produto implements SituacaoAlteravel, Paginavel, Comparable<Produto> {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -63,11 +67,6 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	private BigDecimal preco;
 	
 	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
-	
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "permite_sabores", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean permiteSabores = EBoolean.FALSE;
@@ -86,6 +85,14 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@XmlTransient
 	@Transient
 	private String observacao;
+	
+	@XmlTransient
+	@Transient
+	private List<Sabor> saboresSelecionados;
+	
+	@XmlTransient
+	@Transient
+	private Tamanho tamanhoSelecionado;
 	
 	public Produto() {
 	}
@@ -147,14 +154,6 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
-	}
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 	
 	public EBoolean getPermiteSaboresEBool() {
@@ -222,6 +221,41 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 		this.observacao = observacao;
 	}
 	
+	public List<Sabor> getSaboresSelecionados() {
+		return saboresSelecionados;
+	}
+	
+	public void setSaboresSelecionados(List<Sabor> saboresSelecionados) {
+		this.saboresSelecionados = saboresSelecionados;
+	}
+	
+	public Tamanho getTamanhoSelecionado() {
+		return tamanhoSelecionado;
+	}
+	
+	public void setTamanhoSelecionado(Tamanho tamanhoSelecionado) {
+		this.tamanhoSelecionado = tamanhoSelecionado;
+	}
+	
+	public void adicionarSabor(Sabor sabor) {
+		if (saboresSelecionados == null) {
+			saboresSelecionados = new ArrayList<>();
+		}
+		saboresSelecionados.add(sabor);
+	}
+	
+	public boolean isAdiconaSabor() {
+		return tamanhoSelecionado != null && (tamanhoSelecionado.getLimiteSabores() > saboresSelecionados.size());
+	}
+	
+	public Integer getLimiteSabores() {
+		return getTamanhoSelecionado().getLimiteSabores();
+	}
+	
+	public Integer getLimiteSaboresDisponivel() {
+		return getTamanhoSelecionado().getLimiteSabores() - getSaboresSelecionados().size();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -280,8 +314,7 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH p.produtoTipo pt "
-			 + " JOIN FETCH p.empresa em ";
+		return " JOIN FETCH p.produtoTipo pt ";
 	}
 	
 	public static final Comparator<Produto> COMPARAR_POR_NOME = new Comparator<Produto>() {
@@ -295,4 +328,9 @@ public class Produto implements SituacaoAlteravel, Paginavel {
 			return 0;
 		}
 	};
+
+	@Override
+	public int compareTo(Produto o) {
+		return this.sequencia.compareTo(o.getSequencia());
+	}
 }

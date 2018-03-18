@@ -238,11 +238,6 @@ public final class Util {
 		return ddd;
 	}
 
-	private static String getDDDSemFormatacao(String telefone) {
-		String ddd = telefone.substring(SistemaConstantes.ZERO, SistemaConstantes.DOIS);
-		return ddd;
-	}
-
 	public static String removerFormatacaoTelefone(String value) {
 		if (value != null) {
 			value = removerNaoDigitos(value);
@@ -628,32 +623,6 @@ public final class Util {
 	public static String convertoToJson(Object object) {
 		Gson gson = new Gson();
 		return gson.toJson(object);
-	}
-
-	public static String converterNonoDigito(String telefone) {
-		if (validarTelefone(telefone) && !isFixo(telefone)) {
-			String telefoneSemDDD = telefone.substring(2);
-			String ddd = getDDDSemFormatacao(telefone);
-			if (isDDDNonoDigito(ddd) && telefoneSemDDD.length() == 8) {
-				telefone = ddd + "9" + telefone.substring(2);
-			}
-		}
-		return telefone;
-	}
-
-	public static boolean isDDDNonoDigito(String ddd) {
-		int dddInt = Integer.valueOf(ddd);
-		if ((dddInt >= 11 && dddInt <= 19) // SAO PAULO
-				|| (dddInt >= 21 && dddInt <= 24) // RIO DE JANEIRO
-				|| (dddInt >= 27 && dddInt <= 28) // ESPIRITO SANTOS
-				|| (dddInt >= 81 && dddInt <= 89) || (dddInt >= 31 && dddInt <= 35) || (dddInt >= 37 && dddInt <= 38)
-				|| (dddInt == 71 || dddInt == 73 || dddInt == 74 || dddInt == 75 || dddInt == 77 || dddInt == 79)
-				|| (dddInt >= 91 && dddInt <= 99)) { // AMAPA, AMAZONAS,
-														// MARANHAO, PARA,
-														// RORAIMA)
-			return true;
-		}
-		return false;
 	}
 
 	public static void downloadAudioFile(File file) {

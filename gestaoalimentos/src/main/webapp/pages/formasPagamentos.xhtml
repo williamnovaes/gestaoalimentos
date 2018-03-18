@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml"
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
+
+	<ui:param name="pagina" value="#{msg.txt_formas_pagamento}" />
+	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
+
+	<ui:define name="content">
+		<h:form id="formaPagamentoForm" prependId="false">
+
+			<div class="row wrap-btn-grid">
+				<div class="col-sm-8 esq">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true" action="home?faces-redirect=true"
+							styleClass="btn btn-default"
+							value="Voltar">
+						</h:commandLink>
+						<h:commandLink
+							styleClass="btn btn-default"
+							value="Buscar">
+							<f:ajax render="modosEntregaPG"
+								listener="#{formaPagamentoListagemBean.buscarRegistros()}" />
+						</h:commandLink>
+					</div>
+				</div>
+
+				<div class="col-sm-8 centro"></div>
+
+				<div class="col-sm-8 dir">
+					<div class="btn-group btn-group-sm">
+						<h:commandLink immediate="true"
+							action="formaPagamento?faces-redirect=true"
+							styleClass="btn btn-success" value="Novo">
+						</h:commandLink>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h:panelGroup id="formasPagamentosPG">
+					<gs:dataTable id="formaPagamentoDT" bean="#{formaPagamentoListagemBean}"
+						columnClass="text-center,,,text-center,text-center,text-center,text-center,text-center"
+						componenteBtn="false">
+
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_maiusc_id}" />
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_descricao}" />
+							</f:facet>
+							<h:outputText value="#{item.descricao}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_icone}" />
+							</f:facet>
+							<h:outputText value="#{item.icone}" />
+						</h:column>
+
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_situacao}" />
+							</f:facet>
+							<div class="align-center">
+								<gs:situacao item="#{item}" render="formasPagamentosPG"
+									bean="#{formaPagamentoListagemBean}" />
+							</div>
+						</h:column>
+
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_opcoes}" />
+							</f:facet>
+							<h:commandLink action="formaPagamento">
+								<img src="../resources/images/ico/16x16/pencil.png"
+									title="#{msg.txt_editar}" />
+								<f:param name="id" value="#{item.id}" />
+							</h:commandLink>
+						</h:column>
+					</gs:dataTable>
+				</h:panelGroup>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

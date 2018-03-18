@@ -19,6 +19,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -28,6 +31,7 @@ import br.com.will.gestao.util.Util;
 @Entity
 @Table(name = "tamanho", schema = "gestao", uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "descricao", "_produto" }) })
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
@@ -58,6 +62,10 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginave
 	@JoinColumn(name = "_produto", foreignKey = @ForeignKey(name = "fk_produto"))
 	private Produto produto;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_produto_tipo", foreignKey = @ForeignKey(name = "fk_produto_tipo"))
+	private ProdutoTipo produtoTipo;
+	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal preco = new BigDecimal(0);
 	
@@ -69,11 +77,6 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginave
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
-	
-	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
 	
 	public Tamanho(Integer id) {
 		this.id = id;
@@ -165,12 +168,12 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginave
 		this.situacao = Util.alteraSituacao(this.situacao);
 	}
 	
-	public Empresa getEmpresa() {
-		return empresa;
+	public ProdutoTipo getProdutoTipo() {
+		return produtoTipo;
 	}
 	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setProdutoTipo(ProdutoTipo produtoTipo) {
+		this.produtoTipo = produtoTipo;
 	}
 	
 	@Override
@@ -217,7 +220,7 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginave
 	@Override
 	@XmlTransient
 	public String getSqlCount() {
-		return "SELECT COUNT(DISTINCT t) FROM Tamanho t ";
+		return "SELECT COUNT(DISTINCT t.id) FROM Tamanho t ";
 	}
 
 	@Override
@@ -229,7 +232,9 @@ public class Tamanho implements Comparable<Tamanho>, SituacaoAlteravel, Paginave
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH t.empresa em ";
+		return " LEFT JOIN FETCH t.produto p "
+			 + " LEFT JOIN FETCH t.produtoTipo pt"
+			 + " LEFT JOIN FETCH t.tamanhoTipo tt ";
 	}
 
 	@Override

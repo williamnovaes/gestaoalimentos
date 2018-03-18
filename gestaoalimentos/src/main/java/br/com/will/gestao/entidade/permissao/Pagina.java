@@ -21,6 +21,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.EPaginaTipo;
 import br.com.will.gestao.entidade.util.ESituacao;
@@ -30,6 +33,7 @@ import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "pagina", schema = "permissao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	private static final long serialVersionUID = 1L;
 

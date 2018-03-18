@@ -40,11 +40,6 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 	private Integer id;
 
 	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
-
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name = "aberto", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
 	private EBoolean aberto = EBoolean.TRUE;
@@ -91,14 +86,6 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 
 	public EBoolean getAberto() {
@@ -228,7 +215,6 @@ public class Caixa implements Exportavel, SituacaoAlteravel, Paginavel {
 
 	@Override
 	public String getJoin() {
-		return " JOIN FETCH cx.empresa em " 
-			 + " JOIN FETCH cx.usuario us ";
+		return " JOIN FETCH cx.usuario us ";
 	}
 }

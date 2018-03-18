@@ -24,34 +24,153 @@
 					rendered="#{homeBean.produtos eq null 
 								or empty homeBean.produtos}" />
 								
-				<h:panelGroup id="produtosTipoPG"
+				<h:panelGroup id="produtosPG"
 					rendered="#{not empty homeBean.produtos}">
-					<ul class="nav nav-tabs">
-						<ui:repeat var="produto" value="#{homeBean.produtos}">
-							<li>
-								<h4>#{produto.nome}</h4> <ui:repeat var="sabor"
-									value="#{produto.sabores}">
-									<ul class="">
-										<!-- 									listar tamanhos disponiveis -->
-										<li>
-											<div>
-												<h1>#{sabor.index}</h1>
-											</div>
-											<div>#{sabor.nome}</div>
-											<div>
-												<h:commandLink
-													styleClass="glyphicon glyphicon-plus-sign btn">
-													<f:ajax event="click"
-														listener="#{homeBean.adiconarSabor(sabor)}" />
-												</h:commandLink>
-											</div>
-										</li>
-									</ul>
-								</ui:repeat>
-							</li>
-						</ui:repeat>
-					</ul>
+					<table class="nav nav-tabs">
+						<tbody>
+							<ui:repeat var="prod" value="#{homeBean.produtos}">
+								<tr>
+									<td>
+										<h3>#{prod.nome}</h3>
+										<h:panelGroup rendered="#{not empty prod.tamanhos}">
+											<table>
+												<tbody>
+													<tr>
+														<ui:repeat value="#{prod.tamanhos}" var="tam">
+															<td>#{tam.descricao}</td>
+														</ui:repeat>
+													</tr>
+												</tbody>
+											</table>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{not empty prod.produtoTipo.tamanhos}">
+											<table>
+												<tbody>
+													<tr>
+														<ui:repeat value="#{prod.produtoTipo.tamanhos}" var="tam">
+															<td>#{tam.descricao}</td>
+														</ui:repeat>
+													</tr>
+												</tbody>
+											</table>
+										</h:panelGroup>
+										<table>
+											<tbody>
+											<ui:repeat var="sabor" value="#{prod.sabores}">
+												<tr>
+													<td>
+														<span style="font-weight: 800; font-size: 200%">#{sabor.sequencia}</span>
+														<h:commandLink disabled="#{!loginBean.aberto}"
+															styleClass="glyphicon glyphicon-plus-sign btn">
+															<f:ajax event="click"
+																render="DetalhesModalPG detalhesModal"
+																listener="#{homeBean.adiconarSabor(sabor)}" />
+														</h:commandLink>
+													</td>
+												</tr>
+											</ui:repeat>
+										</tbody>
+										</table>
+									</td>
+								</tr>
+							</ui:repeat>
+						</tbody>
+					</table>
 				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup id="detalhesModalPG">
+				<gs:modal id="detalhesModal" 
+					titulo="Detalhes - #{homeBean.produtoSelecionado.nome}"
+					exibirModal="#{homeBean.exibirModalDetalhes}"
+					fecharModal="#{homeBean.fecharModal()}"
+					salvar="#{homeBean.adicionarSaber()}">
+					
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active"><a
+							href="#saboresDIV" data-toggle="tab">Sabores</a></li>
+						<li role="presentation"><a href="#adicionaisDIV"
+							data-toggle="tab">Adicionais</a></li>
+					</ul>
+					
+					<div class="tab-content">
+						<div id="saboresDIV" class="tab-pane fade in active">
+							<div class="scroll">
+								<h:dataTable id="saboresDT"
+									var="item"
+									styleClass="table table-striped table-hover"
+									value="#{homeBean.saboresDisponiveis}">
+
+									<h:column headerClass="text-center">
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_numero}" />
+											</div>
+										</f:facet>
+										<h:selectBooleanCheckbox value="#{item.marcado}">
+											<f:ajax render="" execute="@this"
+												listener="#{homeBean.marcarSabor(item)}"/>
+										</h:selectBooleanCheckbox>
+									</h:column>
+									
+									<h:column headerClass="text-center">
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_nome}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{item.nome}" />
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+						
+						<div id="adicionaisDIV" class="tab-pane fade">
+							<div class="scroll">
+								<h:dataTable id="ingredientesDT"
+									var="item"
+									styleClass="table table-striped table-hover"
+									value="#{homeBean.adicionais}">
+
+									<h:column headerClass="text-center">
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_numero}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{item.sequencia}" />
+									</h:column>
+									
+									<h:column headerClass="text-center">
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_nome}" />
+											</div>
+										</f:facet>
+										<h:outputText value="#{item.nome}" />
+									</h:column>
+									
+									<h:column headerClass="text-center">
+										<f:facet name="header">
+											<div class="align-center">
+												<h:outputText value="#{msg.txt_quantidade}" />
+											</div>
+										</f:facet>
+										<input type="number" disabled="#{item.quantidade ne 0}" 
+											value="#{item.quantidade}" />
+									</h:column>
+								</h:dataTable>
+							</div>
+							
+							<h:inputTextarea id="obsTA" rows="5" cols="6"
+								maxlength="3"
+								value="#{homeBean.observacao}"> 
+							</h:inputTextarea>
+						</div>
+					</div>
+				
+				</gs:modal>
+			
 			</h:panelGroup>
 
 			<!-- 			<h:panelGroup rendered="false"> -->

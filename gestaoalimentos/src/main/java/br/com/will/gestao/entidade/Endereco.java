@@ -55,9 +55,6 @@ public class Endereco implements Serializable, Cloneable {
 	@JoinColumn(name = "_cidade", nullable = false, foreignKey = @ForeignKey(name = "fk_cidade"))
 	private Cidade cidade;
 	
-	@OneToMany(mappedBy = "endereco", fetch = FetchType.LAZY)
-	private List<Empresa> empresas;
-
 	public Endereco() {
 
 	}
@@ -187,29 +184,6 @@ public class Endereco implements Serializable, Cloneable {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
-	}
-
-	public List<Empresa> getEmpresas() {
-		return this.empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
-	public Empresa adicionarEmpresa(Empresa empresa) {
-		getEmpresas().add(empresa);
-		empresa.setEndereco(this);
-
-		return empresa;
-	}
-
-	public Empresa removerEmpresa(
-			Empresa empresa) {
-		getEmpresas().remove(empresa);
-		empresa.setEndereco(null);
-
-		return empresa;
 	}
 
 	public Cidade getCidade() {

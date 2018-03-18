@@ -7,15 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -68,10 +65,9 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Column(name = "valor_adicional", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal valorAdicional = new BigDecimal(0);
 	
-	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
+	@XmlTransient
+	@Transient
+	private Integer quantidade = 0;
 	
 	public Ingrediente() {
 	}
@@ -145,14 +141,6 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 		this.sequencia = sequencia;
 	}
 	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-	
 	@Override
 	public void alterarSituacao() {
 		this.situacao = Util.alteraSituacao(this.situacao);
@@ -161,6 +149,14 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public ESituacao getSituacao() {
 		return this.situacao;
+	}
+	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+	
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 	@Override
@@ -219,7 +215,7 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	@XmlTransient
 	public String getJoin() {
-		return " JOIN FETCH i.empresa em ";
+		return " ";
 	}
 	
 	public static final Comparator<Ingrediente> COMPARAR_POR_DESCRICAO = new Comparator<Ingrediente>() {

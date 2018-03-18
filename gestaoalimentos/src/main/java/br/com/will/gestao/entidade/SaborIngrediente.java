@@ -12,11 +12,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
 @Table(name = "sabor_ingrediente", schema = "gestao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class SaborIngrediente implements Serializable, Paginavel, Exportavel {
 	private static final long serialVersionUID = 1L;
 

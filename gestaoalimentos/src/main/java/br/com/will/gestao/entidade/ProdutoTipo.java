@@ -2,21 +2,23 @@ package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.Descritivel;
 import br.com.will.gestao.entidade.util.EBoolean;
@@ -28,6 +30,7 @@ import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "produto_tipo", schema = "gestao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 
 	private static final long serialVersionUID = 1L;
@@ -41,10 +44,6 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@NotNull
 	@Column(length = SistemaConstantes.DESCRICAO, nullable = false, unique = true)
 	private String descricao;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"))
-	private Empresa empresa;
 	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal preco = new BigDecimal(0);
@@ -68,6 +67,9 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	
 	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
 	private List<Produto> produtos;
+	
+	@OneToMany(mappedBy = "produtoTipo", fetch = FetchType.LAZY)
+	private List<Tamanho> tamanhos;
 	
 	public ProdutoTipo() {
 	}
@@ -101,14 +103,6 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 		this.descricao = descricao;
 	}
 	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	@Override
 	public ESituacao getSituacao() {
 		return situacao;
@@ -146,12 +140,27 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 		this.somaPrecoSabor = somaPrecoSabor;
 	}
 	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+	
+	public List<Tamanho> getTamanhos() {
+		return tamanhos;
+	}
+	
+	public void setTamanhos(List<Tamanho> tamanhos) {
+		this.tamanhos = tamanhos;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -207,7 +216,7 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	@Override
 	public String getJoin() {
 		StringBuilder str = new StringBuilder();
-		str.append(" JOIN FETCH pt.empresa em ");
+		str.append(" ");
 		return str.toString();
 	}
 }

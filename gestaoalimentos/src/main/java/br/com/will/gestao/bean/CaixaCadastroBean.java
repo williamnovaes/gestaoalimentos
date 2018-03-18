@@ -47,7 +47,7 @@ public class CaixaCadastroBean extends BaseBean {
 					}
 				}
 				if (this.caixa == null) {
-					this.caixa= new Caixa();
+					this.caixa = new Caixa();
 				} else {
 					this.aberto = this.caixa.getAberto();
 					this.entrega = this.caixa.getEntrega();
@@ -65,7 +65,6 @@ public class CaixaCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			this.caixa.setEmpresa(getLoginBean().getEmpresa());
 			this.caixa.setUsuario(getLoginBean().getUsuarioLogado());
 			this.caixa.setAberto(this.aberto);
 			this.caixa.setEntrega(this.entrega);

@@ -1,20 +1,37 @@
 package br.com.will.gestao.entidade;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import br.com.will.gestao.componente.Paginavel;
+import br.com.will.gestao.entidade.util.ESituacao;
+import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 import br.com.will.gestao.util.SistemaConstantes;
+import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "forma_pagamento", schema = "gestao")
-public class FormaPagamento {
+public class FormaPagamento implements Paginavel, SituacaoAlteravel {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name = "formaPagamentoSeq", sequenceName = "forma_pagamento_id_multi_seq", allocationSize = 1, schema = "gestao")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "formaPagamentoSeq")
+	@Column(unique = true, nullable = false)
 	private Integer id;
 
 	@NotNull
@@ -23,6 +40,15 @@ public class FormaPagamento {
 
 	@Column(name = "icone", length = SistemaConstantes.DESCRICAO)
 	private String icone;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro")
+	private Calendar dataCadastro;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(name = "situacao", columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
+	private ESituacao situacao = ESituacao.ATIVO;
 
 	public FormaPagamento(Integer id) {
 		this.id = id;
@@ -64,10 +90,33 @@ public class FormaPagamento {
 	public void setIcone(String icone) {
 		this.icone = icone;
 	}
-
+	
+	public Calendar getDataCadastro() {
+		return dataCadastro;
+	}
+	
+	@PrePersist
+	public void setDataCadastro() {
+		this.dataCadastro = Calendar.getInstance();
+	}
+	
+	@Override
+	public ESituacao getSituacao() {
+		return this.situacao;
+	}
+	
+	public void setSituacao(ESituacao situacao) {
+		this.situacao = situacao;
+	}
+	
+	@Override
+	public void alterarSituacao() {
+		this.situacao = Util.alteraSituacao(this.situacao);
+	}
+	
 	@Override
 	public String toString() {
-		return "Situacao [id=" + id + "]";
+		return "FormaPagamento [id=" + id + "]";
 	}
 
 	@Override
@@ -102,5 +151,25 @@ public class FormaPagamento {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String getSqlSelect() {
+		return "SELECT fp FROM FormaPagamento fp ";
+	}
+
+	@Override
+	public String getSqlCount() {
+		return " SELECT count(distinct fp.id) FROM FormaPagamento fp ";
+	}
+
+	@Override
+	public String getObjetoRetorno() {
+		return " fp ";
+	}
+
+	@Override
+	public String getJoin() {
+		return "";
 	}
 }

@@ -1,11 +1,9 @@
 package br.com.will.gestao.servico;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-
 import br.com.will.gestao.dao.TamanhoDAO;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
@@ -58,9 +56,9 @@ public class TamanhoServico extends BaseServico<Tamanho> {
 		}
 	}
 
-	public List<Tamanho> obterPorProdutoAssociados(Produto produto) throws BaseServicoException {
+	public List<Tamanho> obterPorProduto(Produto produto) throws BaseServicoException {
 		try {
-			return tamanhoDao.consultarPorProdutoAssociados(produto);
+			return tamanhoDao.consultarPorProduto(produto);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}
@@ -77,6 +75,15 @@ public class TamanhoServico extends BaseServico<Tamanho> {
 	public void alterarProduto(Tamanho t) throws BaseServicoException {
 		try {
 			tamanhoDao.alterarProduto(t);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> obterPorProdutoSituacao(Produto produto, ESituacao situacao)
+			throws BaseServicoException {
+		try {
+			return tamanhoDao.consultarPorProdutoSituacao(produto, situacao);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

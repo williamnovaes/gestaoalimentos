@@ -43,7 +43,7 @@
 			<div>
 				<h:panelGroup id="tamanhosPG">
 					<gs:dataTable id="tamanhoDT" bean="#{tamanhoListagemBean}"
-						columnClass="text-center,,text-center,text-center,text-center,text-center,text-center,text-center"
+						columnClass="text-center,,text-center,,text-center,text-center,text-center,text-center,text-center"
 						componenteBtn="false">
 
 						<h:column headerClass="text-center">
@@ -65,6 +65,13 @@
 								<h:outputText value="#{msg.txt_tamanho}" />
 							</f:facet>
 							<h:outputText value="#{item.tamanho}" />
+						</h:column>
+						
+						<h:column headerClass="">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_produto_tipo}" />
+							</f:facet>
+							<h:outputText value="#{item.produtoTipo.descricao}" />
 						</h:column>
 
 						<h:column headerClass="text-center">

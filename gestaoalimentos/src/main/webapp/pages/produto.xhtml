@@ -63,7 +63,7 @@
 					<div class="form-group">
 						<h:outputLabel value="#{msg.txt_nome}" />
 						<h:inputText value="#{produtoCadastroBean.produto.nome}"
-							required="true" styleClass="form-control txt-transform-none" maxlength="70">
+							required="true" styleClass="form-control" maxlength="70">
 							<f:converter converterId="br.com.will.gestao.converter.InputNormalStringConverter" />
 						</h:inputText>
 					</div>
@@ -88,7 +88,7 @@
 
 				<div class="col-sm-8">
 					<div class="form-group">
-						<h:outputLabel value="#{msg.txt_permite_sabores}" />
+						<h:outputLabel value="#{msg.txt_selecao_sabores}" />
 						<h:selectOneMenu id="permiteSaborSOM"
 							styleClass="form-control form-white"
 							value="#{produtoCadastroBean.permiteSabor}">
@@ -119,10 +119,10 @@
 
 			<div class="row wrap-btn-form">
 				<div class="col-sm-8 esq">
-					<h:commandButton id="salvarBtn"
+					<h:commandLink id="salvarBtn"
 						action="#{produtoCadastroBean.salvar}" value="Salvar"
 						styleClass="btn btn-success btn-lg">
-					</h:commandButton>
+					</h:commandLink>
 				</div>
 
 				<div class="col-sm-8 centro"></div>

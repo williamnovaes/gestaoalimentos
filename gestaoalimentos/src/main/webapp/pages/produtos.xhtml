@@ -43,7 +43,7 @@
 			<div>
 				<h:panelGroup id="produtosPG">
 					<gs:dataTable id="produtoDT" bean="#{produtoListagemBean}"
-						columnClass="text-center,,,text-center,text-center,text-center,text-center"
+						columnClass="text-center,,,text-center,text-center,text-center,text-center,text-center"
 						componenteBtn="false">
 						
 						<h:column headerClass="text-center">
@@ -78,9 +78,16 @@
 						
 						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<h:outputText value="#{msg.txt_permitir_sabores}" />
+								<h:outputText value="#{msg.txt_selecao_sabores}" />
 							</f:facet>
 							<h:outputText value="#{item.permiteSaboresEBool.label}" />
+						</h:column>
+						
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_selecao_tamanhos}" />
+							</f:facet>
+							<h:outputText value="#{item.getTamanho().label}" />
 						</h:column>
 
 						<h:column headerClass="text-center">

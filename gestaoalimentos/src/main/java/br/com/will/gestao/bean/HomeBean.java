@@ -3,21 +3,24 @@ package br.com.will.gestao.bean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
 import br.com.will.gestao.dto.ProdutoPedidoDTO;
 import br.com.will.gestao.entidade.Caixa;
-import br.com.will.gestao.entidade.Empresa;
+import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.util.EOrdenacao;
+import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.servico.CaixaServico;
-import br.com.will.gestao.servico.EmpresaServico;
+import br.com.will.gestao.servico.IngredienteServico;
 import br.com.will.gestao.servico.ProdutoServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.SaborServico;
@@ -39,46 +42,68 @@ public class HomeBean extends BaseBean {
 	@EJB
 	private ProdutoTipoServico produtoTipoServico;
 	@EJB
-	private EmpresaServico empresaServico;
-	@EJB
 	private SaborServico saborServico;
 	@EJB
 	private TamanhoServico tamanhoServico;
+	@EJB
+	private IngredienteServico ingredienteServico;
 	
 	private List<Produto> produtos;
 	private Caixa caixa;
 	private List<Usuario> usuarios;
 	private List<ProdutoTipo> produtosTipo;
 	private Map<ProdutoTipo, List<Produto>> produtosCache;
-	private List<Empresa> empresas;
-	private boolean exibirModalSabores = false;
 	private List<Sabor> saboresDisponiveis;
 	private List<Sabor> saboresSelecionados;
 	private List<Tamanho> tamanhosDisponiveis;
-	private List<Integer> quantidade; 
+	private List<Integer> quantidade;
+	private Tamanho tamanhoSelecionado;
+	private List<Ingrediente> adicionais;
 
-	private Integer tamanhoSelecionado;
+	private Integer idTamanhoSelecionado;
 	private Integer limiteSabor;
 	private String observacao;
 	private Produto produtoSelecionado;
 	private Integer quantidadeSelecionada;
 	
 	private Integer abaSelecionada;
+	private boolean exibirModalDetalhes = false;
+	private boolean exibirSelecaoTamanho = false;
+	private boolean exibirSelecaoSabores = false;
 	private EOrdenacao ordemSelecionada;
-	
+	private EOrdenacao[] ordenacaoDisponivel = EOrdenacao.values();
 	
 	@PostConstruct
 	public void inicializar() {
 		try {
 			ordemSelecionada = EOrdenacao.SEQUENCIA;
-			produtos = produtoServico.obterTodosParaMenu(ordemSelecionada.getTexto());
+//			produtosTipo = produtoTipoServico.obterTodosAtivosComProduto();
+
+			produtos = produtoServico.obterTodosParaMenu(ordemSelecionada.getOrder());
+			carregarTamanhos();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	private void carregarTamanhos() {
+		try {
+			for (Produto prod : produtos) {
+				prod.setTamanhos(new ArrayList<>());
+				if (prod.isTamanho()) {
+					prod.setTamanhos(tamanhoServico.obterPorProdutoSituacao(prod,
+							ESituacao.ATIVO));
+				}
+			}
+		} catch (Exception e) {
+			getLog().error(e.getMessage());
+		}
+	}
+	
 	public void fecharModal() {
-		this.exibirModalSabores = false;
+		this.exibirModalDetalhes = false;
+		this.exibirSelecaoSabores = false;
+		this.exibirSelecaoTamanho = false;
  	}
 	
 	public List<Usuario> getUsuarios() {
@@ -113,10 +138,6 @@ public class HomeBean extends BaseBean {
 		return produtosCache;
 	}
 	
-	public List<Empresa> getEmpresas() {
-		return empresas;
-	}
-	
 	public List<ProdutoTipo> getProdutosTipoCache() {
 		List<ProdutoTipo> pts = new ArrayList<>();
 		for (ProdutoTipo produtoTipo : produtosCache.keySet()) {
@@ -129,31 +150,43 @@ public class HomeBean extends BaseBean {
 		return produtosCache.get(pt);
 	}
 	
-	public void adicionarSabor(Integer idSabor) {
+	public void adicionarProduto(Sabor sabor) {
 		try {
-			Sabor sabor = saborServico.obterCompletoPorId(idSabor);
-			this.getSaboresSelecionados().add(sabor);
+			exibirModalDetalhes = true;
+			this.produtoSelecionado = produtoServico.obterPorSabor(sabor);
+			saboresSelecionados.add(sabor);
+			
+			if (this.produtoSelecionado.isTamanho()) {
+				exibirSelecaoTamanho = true;
+				tamanhosDisponiveis = tamanhoServico.obterPorProduto(produtoSelecionado);
+				tamanhoSelecionado = tamanhosDisponiveis.get(0);
+				this.idTamanhoSelecionado = tamanhoSelecionado.getId();
+				this.limiteSabor = tamanhoSelecionado.getLimiteSabores();
+				if (produtoSelecionado.isPermiteSabores()) {
+					ProdutoTipo pt = produtoTipoServico.obterPorProduto(produtoSelecionado);
+					this.saboresDisponiveis = saborServico.obterPorProdutoTipo(pt);
+					exibirSelecaoSabores = true;
+				}
+			}
+			
+			
+//			if (!this.produtoSelecionado.isPermiteSabores() && !this.produtoSelecionado.isTamanho()) {
+//				adicionarProdutoSaborTamanho();
+//			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			adicionarError(e.getMessage());
 		}
 	}
 	
-	public void adicionarProduto(Sabor sabor) {
+	public boolean isPodeEscolherSabor() {
+		return this.limiteSabor < tamanhoSelecionado.getLimiteSabores()
+				|| saboresDisponiveis.containsAll(saboresSelecionados);
+	}
+	
+	public void marcarSabor(Sabor sabor) {
 		try {
-			this.produtoSelecionado = sabor.getProduto();
-			this.produtoSelecionado.getSabores().add(sabor);
-			
-			if (this.produtoSelecionado.isTamanho()) {
-				tamanhosDisponiveis = this.produtoSelecionado.getTamanhos();
-				this.tamanhoSelecionado = tamanhosDisponiveis.get(0).getId();
-			}
-			if (sabor.getProduto().isPermiteSabores()) {
-				this.saboresDisponiveis = saborServico.obterTodosPorProduto(this.produtoSelecionado);
-				this.limiteSabor = 1;
-			}
-			
-			if (!this.produtoSelecionado.isPermiteSabores() && !this.produtoSelecionado.isTamanho()) {
-				adicionarProdutoSaborTamanho();
+			if (saboresSelecionados != null && !saboresSelecionados.contains(sabor)) {
+				saboresSelecionados.add(sabor);
 			}
 		} catch (Exception e) {
 			adicionarError(e.getMessage());
@@ -168,22 +201,38 @@ public class HomeBean extends BaseBean {
 			produto.setProduto(this.produtoSelecionado);
 			produto.setQuantidade(this.quantidadeSelecionada);
 			produto.setSabores(this.saboresSelecionados);
-			if (this.tamanhoSelecionado != null && this.tamanhoSelecionado > 0) {
-				produto.setTamanho(tamanhoServico.obterPorId(this.tamanhoSelecionado));
+			if (this.idTamanhoSelecionado != null && this.idTamanhoSelecionado > 0) {
+				produto.setTamanho(tamanhoServico.obterPorId(this.idTamanhoSelecionado));
 			}
 			produto.setObservacao(this.getObservacao());
 			
 			getLoginBean().getCarrinhoDto().add(produto);
+			limparSelecionados();
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
 		}
 	}
 	
+	private void limparSelecionados() {
+		try {
+			saboresDisponiveis.clear();
+			saboresSelecionados.clear();
+			tamanhosDisponiveis.clear();
+			produtoSelecionado = null;
+			idTamanhoSelecionado = null;
+			observacao = null;
+			quantidadeSelecionada = 0;
+			this.fecharModal();
+		} catch (Exception e) {
+			getLog().error(e.getMessage());
+		}
+	}
+
 	public void verificarCamposObrigatorios() throws Exception {
 		try {
 			if (this.produtoSelecionado.isTamanho() 
-					&& (this.tamanhoSelecionado == null || this.tamanhoSelecionado <= 0)) {
+					&& (this.idTamanhoSelecionado == null || this.idTamanhoSelecionado <= 0)) {
 				throw new Exception("Escolha o Tamanho");
 			}
 			
@@ -198,23 +247,15 @@ public class HomeBean extends BaseBean {
 	
 	public void selecionarTamanho() {
 		try {
-			Tamanho tamanho = tamanhoServico.obterCompletoPorId(this.tamanhoSelecionado);
-			this.limiteSabor = tamanho.getLimiteSabores();
+			tamanhoSelecionado = tamanhoServico.obterPorId(this.idTamanhoSelecionado);
+			this.limiteSabor = tamanhoSelecionado.getLimiteSabores();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void abrirModalSabores(ProdutoTipo produtoTipo) {
-		this.setExibirModalSabores(true);
-	}
-	
-	public boolean isExibirModalSabores() {
-		return exibirModalSabores;
-	}
-	
-	public void setExibirModalSabores(boolean exibirModalSabres) {
-		this.exibirModalSabores = exibirModalSabres;
+	public boolean isExibirModalDetalhes() {
+		return exibirModalDetalhes;
 	}
 	
 	public List<Sabor> getSaboresDisponiveis() {
@@ -267,5 +308,33 @@ public class HomeBean extends BaseBean {
 	
 	public boolean isMaximoSaboresSelecionados() {
 		return this.limiteSabor == this.saboresSelecionados.size() ? true : false;
+	}
+	
+	public boolean isExibirSelecaoSabores() {
+		return exibirSelecaoSabores;
+	}
+	
+	public boolean isExibirSelecaoTamanho() {
+		return exibirSelecaoTamanho;
+	}
+	
+	public EOrdenacao getOrdemSelecionada() {
+		return ordemSelecionada;
+	}
+	
+	public void setOrdemSelecionada(EOrdenacao ordemSelecionada) {
+		this.ordemSelecionada = ordemSelecionada;
+	}
+	
+	public EOrdenacao[] getOrdenacaoDisponivel() {
+		return ordenacaoDisponivel;
+	}
+	
+	public Tamanho getTamanhoSelecionado() {
+		return tamanhoSelecionado;
+	}
+	
+	public List<Ingrediente> getAdicionais() {
+		return adicionais;
 	}
 }

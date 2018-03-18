@@ -71,7 +71,6 @@ public class SaborCadastroBean extends BaseBean {
 			if (this.sabor.getId() != null) {
 				saborServico.alterar(this.sabor);
 			} else {
-				this.sabor.setEmpresa(getLoginBean().getEmpresa());
 				this.sabor = saborServico.salvar(this.sabor);
 			}
 			

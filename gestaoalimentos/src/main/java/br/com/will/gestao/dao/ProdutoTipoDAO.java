@@ -7,7 +7,7 @@ import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.dao.filtro.ESortedBy;
 import br.com.will.gestao.dao.filtro.SQLFilter;
-import br.com.will.gestao.entidade.Empresa;
+import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -24,7 +24,6 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 	public List<? extends SituacaoAlteravel> consultarPorSituacao(ESituacao situacao) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT pt FROM ProdutoTipo pt ");
-		sql.append(" JOIN FETCH pt.empresa em ");
 		sql.append(" WHERE pt.situacao =:_situacao ");
 		sql.append(" ORDER BY pt.descricao ");
 		return getEm().createQuery(sql.toString(), ProdutoTipo.class)
@@ -52,17 +51,15 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 		}
 	}
 
-	public List<ProdutoTipo> consultarTodosAtivosPorEmpresa(Empresa empresa) {
+	public List<ProdutoTipo> consultarTodosAtivos() {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
 			sql.append(" WHERE pt.situacao =:_situacao ");
-			sql.append(" AND pt.empresa =:_empresa ");
 			sql.append(" ORDER BY pt.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
 						  .setParameter("_situacao", ESituacao.ATIVO)
-						  .setParameter("_empresa", empresa)
 						  .getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,7 +71,6 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT pt FROM ProdutoTipo pt ");
-			sql.append(" JOIN FETCH pt.empresa e ");
 			sql.append(" WHERE pt.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
@@ -89,22 +85,36 @@ public class ProdutoTipoDAO extends BaseDAO<ProdutoTipo> {
 		}
 	}
 
-	public List<ProdutoTipo> consultarTodosAtivosPorEmpresas(List<Empresa> empresas) {
+	public List<ProdutoTipo> consultarTodosAtivosComProduto() {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT pt FROM ProdutoTipo pt  ");
-			sql.append(" JOIN FETCH pt.empresa em ");
+			sql.append(" JOIN FETCH pt.produtos p ");
 			sql.append(" WHERE pt.situacao =:_situacao ");
-			sql.append(" AND em IN (:_empresa) ");
-			sql.append(" ORDER BY em.id, pt.index ");
+			sql.append(" ORDER BY pt.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
 						  .setParameter("_situacao", ESituacao.ATIVO)
-						  .setParameter("_empresa", empresas)
 						  .getResultList();
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
-}	
+
+	public ProdutoTipo consultarPorProduto(Produto produto) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT pt FROM Produto p ");
+			sql.append(" JOIN p.produtoTipo pt ");
+			sql.append(" WHERE p =:_produto ");
+			
+			return getEm().createQuery(sql.toString(), ProdutoTipo.class)
+						  .setParameter("_produto", produto)
+						  .getSingleResult();
+		} catch (NoResultException ne) {
+			return null;
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+}		

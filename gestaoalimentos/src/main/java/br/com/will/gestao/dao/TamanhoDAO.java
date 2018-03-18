@@ -1,9 +1,7 @@
 package br.com.will.gestao.dao;
 
 import java.util.List;
-
 import javax.persistence.NoResultException;
-
 import br.com.will.gestao.componente.Filtravel;
 import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
@@ -53,7 +51,6 @@ public class TamanhoDAO extends BaseDAO<Tamanho> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT t FROM Tamanho t ");
 			sql.append(" JOIN FETCH t.produtoTipo pt ");
-			sql.append(" JOIN FETCH pt.empresa e ");
 			sql.append(" WHERE pt =:_produtoTipo ");
 			
 			return getEm().createQuery(sql.toString(), Tamanho.class)
@@ -112,11 +109,12 @@ public class TamanhoDAO extends BaseDAO<Tamanho> {
 		}
 	}
 
-	public List<Tamanho> consultarPorProdutoAssociados(Produto produto) {
+	public List<Tamanho> consultarPorProduto(Produto produto) {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT tm FROM Tamanho tm ");
-			sql.append(" WHERE tm.produto =:_produto ");
+			sql.append(" JOIN tm.produto p ");
+			sql.append(" WHERE p =:_produto ");
 			sql.append(" ODER BY tm.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), Tamanho.class)
@@ -156,6 +154,24 @@ public class TamanhoDAO extends BaseDAO<Tamanho> {
 				   .setParameter("_produto", t.getProduto())
 				   .setParameter("_idTamanho", t.getId())
 				   .executeUpdate();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<Tamanho> consultarPorProdutoSituacao(Produto produto, ESituacao situacao) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT t FROM Tamanho t ");
+			sql.append(" JOIN t.produto p ");
+			sql.append(" WHERE p =:_produto ");
+			sql.append(" AND t.situacao =:_situacao ");
+			sql.append(" ORDER BY t.sequencia ");
+			
+			return getEm().createQuery(sql.toString(), Tamanho.class)
+						  .setParameter("_produto", produto)
+						  .setParameter("_situacao", situacao)
+						  .getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

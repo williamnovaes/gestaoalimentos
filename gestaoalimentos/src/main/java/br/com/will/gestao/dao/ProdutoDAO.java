@@ -10,6 +10,7 @@ import br.com.will.gestao.dao.filtro.ESortedBy;
 import br.com.will.gestao.dao.filtro.SQLFilter;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 
@@ -85,6 +86,7 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT p FROM Produto p ");
 			sql.append(" JOIN FETCH p.produtoTipo pt ");
+			sql.append(" LEFT JOIN FETCH p.tamanhos ts ");
 			sql.append(" WHERE p.id =:_id ");
 			
 			return getEm().createQuery(sql.toString(), Produto.class)
@@ -101,17 +103,34 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 	public List<Produto> consultarTodosParaMenu(String ordem) {
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append(" SELECT p FROM Produto p ");
-			sql.append(" JOIN FETCH p.empresa em ");
+			sql.append(" SELECT distinct(p) FROM Produto p ");
 			sql.append(" JOIN FETCH p.produtoTipo pt ");
-			sql.append(" LEFT JOIN FETCH p.tamanhos ts ");
-//			sql.append(" LEFT JOIN FETCH p.sabores sb ");
+			sql.append(" LEFT JOIN FETCH pt.tamanhos t ");
+			sql.append(" WHERE p.situacao =:_situacao ");
 			if (ordem != null && !ordem.isEmpty()) {
-				sql.append(" ORDER BY p." + ordem + " ASC");
+				sql.append(" ORDER BY p." + ordem);
 			}
 			
 			Query q = getEm().createQuery(sql.toString(), Produto.class);
+			q.setParameter("_situacao", ESituacao.ATIVO);
 			return q.getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public Produto consultarPorSabor(Sabor sabor) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT p FROM Sabor s ");
+			sql.append(" JOIN s.produto p ");
+			sql.append(" WHERE s =:_sabor ");
+			
+			return getEm().createQuery(sql.toString(), Produto.class)
+						  .setParameter("_sabor", sabor)
+						  .getSingleResult();
+		} catch (NoResultException ne) {
+			return null;
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());
 		}

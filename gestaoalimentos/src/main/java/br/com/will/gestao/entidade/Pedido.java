@@ -3,6 +3,7 @@ package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,9 +26,6 @@ import javax.validation.constraints.NotNull;
 
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.EBoolean;
-import br.com.will.gestao.entidade.util.EFormaPagamento;
-import br.com.will.gestao.entidade.util.EStatus;
-import br.com.will.gestao.entidade.util.ETipoEntrega;
 import br.com.will.gestao.util.SistemaConstantes;
 
 @Entity
@@ -45,18 +44,18 @@ public class Pedido implements Paginavel {
 	private Calendar dataCadastro;
 
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "pagamento_tipo", columnDefinition = SistemaConstantes.E_PAGAMENTO_DEFAULT_DINHEIRO)
-	private EFormaPagamento formaPagamento;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo_entrega", columnDefinition = SistemaConstantes.E_PAGAMENTO_DEFAULT_DINHEIRO)
-	private ETipoEntrega tipoEntrega;
-	
-	@NotNull
-	@JoinColumn(name = "_cliente", foreignKey = @ForeignKey(name = "fk_cliente"))
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_forma_pagamento", foreignKey = @ForeignKey(name = "fk_forma_pagamento"))
+	private FormaPagamento formaPagamento;
+	
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_modo_entrega", foreignKey = @ForeignKey(name = "fk_modo_entrega"))
+	private ModoEntrega modoEntrega;
+	
+	@NotNull
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_cliente", foreignKey = @ForeignKey(name = "fk_cliente"))
 	private Usuario cliente;
 	
 	@NotNull
@@ -72,14 +71,14 @@ public class Pedido implements Paginavel {
 	private BigDecimal valorDesconto = new BigDecimal("0");
 	
 	@NotNull
-	@JoinColumn(name = "_caixa", foreignKey = @ForeignKey(name = "fk_caixa"))
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_caixa", foreignKey = @ForeignKey(name = "fk_caixa"))
 	private Caixa caixa;
 	
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "status_atendimento", columnDefinition = SistemaConstantes.E_STATUS_DEFAULT_PENDENTE)
-	private EStatus statusAtendimento;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "_ultimo_status", foreignKey = @ForeignKey(name = "fk_ultimo_status"))
+	private StatusAtendimento ultimoStatus;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "cpf_nota_fiscal", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
@@ -87,6 +86,9 @@ public class Pedido implements Paginavel {
 	
 	@Column(name = "cpf_cnpj", length = SistemaConstantes.QUINZE)
 	private String cpfCnpj;
+	
+	@OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY)
+	private List<PedidoProduto> pedidosProdutos;
 	
 
 	public Pedido(Integer id) {
@@ -117,11 +119,11 @@ public class Pedido implements Paginavel {
 		}
 	}
 
-	public EFormaPagamento getFormaPagamento() {
+	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
-
-	public void setFormaPagamento(EFormaPagamento formaPagamento) {
+	
+	public void setFormaPagamento(FormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 	
@@ -149,14 +151,6 @@ public class Pedido implements Paginavel {
 		this.valorDesconto = valorDesconto;
 	}
 	
-	public ETipoEntrega getTipoEntrega() {
-		return tipoEntrega;
-	}
-	
-	public void setTipoEntrega(ETipoEntrega tipoEntrega) {
-		this.tipoEntrega = tipoEntrega;
-	}
-	
 	public Caixa getCaixa() {
 		return caixa;
 	}
@@ -165,12 +159,12 @@ public class Pedido implements Paginavel {
 		this.caixa = caixa;
 	}
 	
-	public EStatus getStatusAtendimento() {
-		return statusAtendimento;
+	public StatusAtendimento getUltimoStatus() {
+		return ultimoStatus;
 	}
 	
-	public void setStatusAtendimento(EStatus statusAtendimento) {
-		this.statusAtendimento = statusAtendimento;
+	public void setUltimoStatus(StatusAtendimento ultimoStatus) {
+		this.ultimoStatus = ultimoStatus;
 	}
 	
 	public Usuario getCliente() {
@@ -178,7 +172,7 @@ public class Pedido implements Paginavel {
 	}
 	
 	public void setCliente(Usuario cliente) {
-		this.cliente= cliente;
+		this.cliente = cliente;
 	}
 	
 	public EBoolean getCpfNotaFiscal() {
@@ -195,6 +189,22 @@ public class Pedido implements Paginavel {
 	
 	public void setCpfCnpj(String cpfCnpj) {
 		this.cpfCnpj = cpfCnpj;
+	}
+	
+	public List<PedidoProduto> getPedidosProdutos() {
+		return pedidosProdutos;
+	}
+	
+	public void setPedidosProdutos(List<PedidoProduto> pedidosProdutos) {
+		this.pedidosProdutos = pedidosProdutos;
+	}
+	
+	public ModoEntrega getModoEntrega() {
+		return modoEntrega;
+	}
+	
+	public void setModoEntrega(ModoEntrega modoEntrega) {
+		this.modoEntrega = modoEntrega;
 	}
 	
 	@Override
@@ -214,7 +224,14 @@ public class Pedido implements Paginavel {
 
 	@Override
 	public String getJoin() {
-		return "";
+		StringBuilder str = new StringBuilder();
+		str.append(" JOIN FETCH pd.formaPagamento fp ");
+		str.append(" JOIN FETCH pd.modoEntrega me ");
+		str.append(" JOIN FETCH pd.ultimoStatus sa ");
+		str.append(" JOIN FETCH pd.cliente cl ");
+		str.append(" JOIN pd.caixa cx ");
+		
+		return str.toString();
 	}
 
 	@Override

@@ -8,8 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
+import br.com.will.gestao.dao.BaseDAOException;
 import br.com.will.gestao.dao.ProdutoTipoDAO;
-import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.servico.exception.BaseServicoException;
@@ -22,31 +23,32 @@ public class ProdutoTipoServico extends BaseServico<ProdutoTipo> {
 	private ProdutoTipoDAO produtoTipoDao;
 	@EJB
 	private ProdutoServico produtoServico;
-	
+
 	@Override
 	@PostConstruct
 	public void inicializar() {
 		setDao(produtoTipoDao);
 	}
 
-	public List<ProdutoTipo> obterTodosAtivosPorEmpresa(Empresa empresa) throws BaseServicoException {
+	public List<ProdutoTipo> obterTodosAtivos() throws BaseServicoException {
 		try {
-			return produtoTipoDao.consultarTodosAtivosPorEmpresa(empresa);
+			return produtoTipoDao.consultarTodosAtivos();
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}
 	}
-	
-	public Map<ProdutoTipo, List<Produto>> obterTodosAtivosPorEmpresas(List<Empresa> empresas) throws BaseServicoException {
+
+	public Map<ProdutoTipo, List<Produto>> obterTodosAtivosCache()
+			throws BaseServicoException {
 		try {
 			Map<ProdutoTipo, List<Produto>> cacheProdutos = new HashMap<>();
-			List<ProdutoTipo> produtosTipo = produtoTipoDao.consultarTodosAtivosPorEmpresas(empresas);
+			List<ProdutoTipo> produtosTipo = produtoTipoDao.consultarTodosAtivos();
 			for (ProdutoTipo produtoTipo : produtosTipo) {
 				List<Produto> produtos = new ArrayList<>();
 				produtos = produtoServico.obterTodosPorTipo(produtoTipo);
 				cacheProdutos.put(produtoTipo, produtos);
 			}
-			
+
 			return cacheProdutos;
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
@@ -58,6 +60,22 @@ public class ProdutoTipoServico extends BaseServico<ProdutoTipo> {
 			return produtoTipoDao.consultarCompletoPorId(id);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<ProdutoTipo> obterTodosAtivosComProduto() throws BaseServicoException {
+		try {
+			return produtoTipoDao.consultarTodosAtivosComProduto();
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public ProdutoTipo obterPorProduto(Produto produto) throws BaseServicoException {
+		try {
+			return produtoTipoDao.consultarPorProduto(produto);
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
 		}
 	}
 }

@@ -69,10 +69,6 @@ public class Usuario implements Exportavel, SituacaoAlteravel, Paginavel {
 	@Column(name = "situacao", columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
 
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"))
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
-
 	@NotAudited
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "data_ultima_interacao")
@@ -173,14 +169,6 @@ public class Usuario implements Exportavel, SituacaoAlteravel, Paginavel {
 		this.situacao = situacao;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	public Calendar getDataUltimaInteracao() {
 		return dataUltimaInteracao;
 	}
@@ -254,7 +242,6 @@ public class Usuario implements Exportavel, SituacaoAlteravel, Paginavel {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
@@ -302,7 +289,6 @@ public class Usuario implements Exportavel, SituacaoAlteravel, Paginavel {
 	public String getJoin() {
 		StringBuilder str = new StringBuilder();
 		str.append(" JOIN FETCH u.nivel n ");
-		str.append(" JOIN FETCH u.empresa e ");
 		return str.toString();
 	}
 }

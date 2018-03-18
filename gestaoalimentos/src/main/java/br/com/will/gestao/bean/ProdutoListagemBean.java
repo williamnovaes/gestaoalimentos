@@ -66,11 +66,11 @@ public class ProdutoListagemBean extends BaseListagemBean implements Modable {
 		}
 	}
 	
-	public void abrirModalSabores(Produto produto) {
+	public void abrirModalSabores(Produto p) {
 		try {
 			fecharModal();
 			exibirModalSabores = true;
-			this.produto = produto;
+			this.produto = p;
 			carregarSabores();
 		} catch (Exception e) {
 			adicionarError(e.getMessage());
@@ -107,11 +107,11 @@ public class ProdutoListagemBean extends BaseListagemBean implements Modable {
 		}
 	}
 	
-	public void abrirModalTamanho(Produto produto) {
+	public void abrirModalTamanho(Produto p) {
 		try {
 			fecharModal();
 			exibirModalTamanhos = true;
-			this.produto = produto;
+			this.produto = p;
 			carregarTamanhos();
 		} catch (Exception e) {
 			adicionarError(e.getMessage());
@@ -120,7 +120,7 @@ public class ProdutoListagemBean extends BaseListagemBean implements Modable {
 	
 	private void carregarTamanhos() throws Exception {
 		try {
-			this.tamanhosAssociados = tamanhoServico.obterPorProdutoAssociados(this.produto);
+			this.tamanhosAssociados = tamanhoServico.obterPorProduto(this.produto);
 			this.tamanhosDisponiveis = tamanhoServico.obterTodosPorSituacao(ESituacao.ATIVO, true);
 			this.tamanhosDisponiveis.removeAll(tamanhosAssociados);
 		} catch (Exception e) {

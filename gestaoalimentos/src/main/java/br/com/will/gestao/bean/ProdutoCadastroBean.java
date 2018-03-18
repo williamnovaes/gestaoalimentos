@@ -14,7 +14,6 @@ import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.util.EBoolean;
-import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.TamanhoServico;
@@ -32,8 +31,6 @@ public class ProdutoCadastroBean extends BaseBean {
 	private ProdutoTipoServico produtoTipoServico;
 	@EJB
 	private TamanhoServico tamanhoServico;
-	@EJB
-	private EmpresaServico empresaServico;
 
 	private Produto produto;
 	private ProdutoTipo produtoTipo;
@@ -62,7 +59,7 @@ public class ProdutoCadastroBean extends BaseBean {
 						produto = produtoServico.obterCompletoPorId(Integer.parseInt(idParam));
 					} catch (Exception e) {
 						e.printStackTrace();
-						adicionarError("Erro ao Buscar Página ");
+						adicionarError("Erro ao Buscar Produto ");
 					}
 				}
 				if (this.produto == null) {
@@ -70,11 +67,13 @@ public class ProdutoCadastroBean extends BaseBean {
 					this.tamanhosAssociados = new ArrayList<>();
 				} else {
 					this.tamanhosAssociados = this.produto.getTamanhos();
-					this.permiteSabor = this.produto.getPermiteSaboresEBool();
 					this.preco = this.produto.getPreco().toString();
+					this.tamanho = this.produto.getTamanho();
+					this.permiteSabor = this.produto.getPermiteSaboresEBool();
+					this.produtoTipoSelecionado = this.produto.getProdutoTipo().getId();
 				}
 				
-				produtosTipos = produtoTipoServico.obterTodosAtivosPorEmpresa(getLoginBean().getEmpresa());
+				this.produtosTipos = produtoTipoServico.obterTodosAtivos();
 				this.tamanhosDisponiveis = tamanhoServico.obterTodosDisponiveis("tamanho");
 			}
 		} catch (Exception e) {
@@ -94,17 +93,19 @@ public class ProdutoCadastroBean extends BaseBean {
 			this.produto.setProdutoTipo(produtoTipo);
 			this.produto.setPermiteSaboresEBool(permiteSabor);
 			this.produto.setPreco(new BigDecimal(preco));
+			this.produto.setTamanho(tamanho);
 			
 			if (this.produto.getId() != null) {
 				produtoServico.alterar(this.produto);
+				adicionarInfo("Produto alterado com sucesso");
 			} else {
-				this.produto.setEmpresa(getLoginBean().getEmpresa());
 				this.produto = produtoServico.salvar(this.produto);
+				adicionarInfo("Produto cadastrado com sucesso");
 			}
 			
 			salvarTamanhosAssociados(this.produto);
 			
-			return "produtos?faces-redirect=true";
+			return "produtos";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());

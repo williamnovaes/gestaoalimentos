@@ -22,6 +22,9 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
+
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -30,6 +33,7 @@ import br.com.will.gestao.util.Util;
 
 @Entity
 @Table(name = "sabor", schema = "gestao")
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
 public class Sabor implements SituacaoAlteravel, Paginavel {
 	
 	private static final long serialVersionUID = 1L;
@@ -45,8 +49,8 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	private String nome;
 	
 	@NotNull
-	@Column(name = "index", nullable = false)
-	private Integer index;
+	@Column(name = "sequencia", nullable = false)
+	private Integer sequencia;
 
 	@NotNull
 	@Column(name = "descricao", length = SistemaConstantes.DESCRICAO)
@@ -64,11 +68,6 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	
 	@Column(name = "preco", precision = SistemaConstantes.DEZESSETE, scale = SistemaConstantes.DOIS)
 	private BigDecimal preco;
-	
-	@NotNull
-	@JoinColumn(name = "_empresa", foreignKey = @ForeignKey(name = "fk_empresa"), nullable = false)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Empresa empresa;
 	
 	@OneToMany(mappedBy = "sabor", fetch = FetchType.LAZY)
 	private List<SaborIngrediente> ingredientes;
@@ -109,12 +108,12 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 		this.nome = nome;
 	}
 	
-	public Integer getIndex() {
-		return index;
+	public Integer getSequencia() {
+		return sequencia;
 	}
 	
-	public void setIndex(Integer index) {
-		this.index = index;
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
 	}
 	
 	public String getDescricao() {
@@ -146,14 +145,6 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
-	}
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 	
 	@Override

@@ -91,6 +91,8 @@ public class PaginaCadastroBean extends BaseBean {
 					paginaServico.atualizarNiveis(pagina, niveisAssociados);
 				}
 			}
+			
+			getLoginBean().configurarPermissao();
 			return "paginas?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();

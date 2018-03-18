@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import br.com.will.gestao.dao.ProdutoDAO;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
+import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
@@ -56,6 +57,14 @@ public class ProdutoServico extends BaseServico<Produto> {
 				produto.setSabores(saborServico.obterTodosPorProduto(produto));
 			}
 			return produtos;
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public Produto obterPorSabor(Sabor sabor) throws BaseServicoException {
+		try {
+			return produtoDao.consultarPorSabor(sabor);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

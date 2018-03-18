@@ -37,7 +37,6 @@ public class PaginaListagemBean extends BaseListagemBean implements Modable {
 	@PostConstruct
 	public void inicializar() {
 		configurarPaginador(getFiltroPermissaoUsuario(), paginaServico, SistemaConstantes.DEZ);
-		buscarRegistros();
 	}
 
 	public void buscarRegistros() {

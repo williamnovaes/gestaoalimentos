@@ -8,11 +8,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import br.com.will.gestao.entidade.Empresa;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.EOrigemPreco;
-import br.com.will.gestao.servico.EmpresaServico;
 import br.com.will.gestao.servico.ProdutoTipoServico;
 import br.com.will.gestao.servico.TamanhoServico;
 
@@ -26,12 +24,8 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	private ProdutoTipoServico produtoTipoServico;
 	@EJB
 	private TamanhoServico tamanhoServico;
-	@EJB
-	private EmpresaServico empresaServico;
 
 	private ProdutoTipo produtoTipo;
-	private List<Empresa> empresas;
-	private Integer empresaSelecionada;
 	private EOrigemPreco[] origensPrecos = EOrigemPreco.values(); 
 	private EOrigemPreco origemPrecoSelecionado;
 	
@@ -71,7 +65,6 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 
 	public String salvar() {
 		try {
-			this.produtoTipo.setEmpresa(getLoginBean().getEmpresa());
 			this.produtoTipo.setOrigemPreco(this.origemPrecoSelecionado);
 			this.produtoTipo.setSomaPrecoSabor(this.somaPrecoSabor);
 			if (this.preco != null && !this.preco.isEmpty()) {
@@ -99,18 +92,6 @@ public class ProdutoTipoCadastroBean extends BaseBean {
 	
 	public void setProdutoTipo(ProdutoTipo produtoTipo) {
 		this.produtoTipo = produtoTipo;
-	}
-	
-	public List<Empresa> getEmpresas() {
-		return empresas;
-	}
-	
-	public Integer getEmpresaSelecionada() {
-		return empresaSelecionada;
-	}
-	
-	public void setEmpresaSelecionada(Integer empresaSelecionada) {
-		this.empresaSelecionada = empresaSelecionada;
 	}
 	
 	public EOrigemPreco[] getOrigensPrecos() {
