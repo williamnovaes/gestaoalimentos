@@ -27,7 +27,8 @@
 			<div class="modal-content modal-popup">
 				<h:commandLink title="Fechar" styleClass="close-link"
 					data-dismiss="modal">
-					<i class="glyphicon glyphicon-remove-circle"></i>
+					<img src="../resources/images/ico/16x16/cross.png"
+						title="#{msg.txt_remover}" />
 					<f:ajax execute="@this" event="click"
 						render="#{cc.attrs.id}:controleModalPG"
 						listener="#{cc.attrs.fecharModal}" />

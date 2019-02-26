@@ -50,11 +50,10 @@ public class LoginBean extends BaseBean {
 
 	public String fazerLogin() {
 		try {
-			exibirModalLogin = false;
 			if (credencial == null || credencial.getPasswordDescriptografado() == null
 					|| credencial.getPasswordDescriptografado().isEmpty() || credencial.getUsername() == null
 					|| credencial.getUsername().isEmpty()) {
-				adicionarInfo("Login e Senha obrigatorios");
+				adicionarInfo("Login e Senha obrigatórios");
 				return null;
 			}
 			usuarioLogado = usuarioServico.logar(credencial, getConfiguracaoApplication()
@@ -62,7 +61,11 @@ public class LoginBean extends BaseBean {
 			if (usuarioLogado != null) {
 				configurarPermissao();
 				logado = true;
+				exibirModalLogin = false;
+				adicionarInfo("Login realizado com sucesso");
 				return "home?faces-redirect=true";
+			} else {
+				adicionarWarn("Usuário e/ou senha incorreto");
 			}
 			return null;
 		} catch (Exception e) {
@@ -92,7 +95,7 @@ public class LoginBean extends BaseBean {
 			logado = false;
 			usuarioLogado = null;
 			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-			return "home.ppd?faces-redirect=true";
+			return "home.gs?faces-redirect=true";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
@@ -113,7 +116,7 @@ public class LoginBean extends BaseBean {
 		try {
 			List<Pagina> paginasAuxiliar = new ArrayList<>();
 			paginasPorMenu = new HashMap<Menu, List<Pagina>>();
-			paginas = paginaServico.obterPorNivel(this.usuarioLogado.getNivel());
+			paginas = paginaServico.obterPorNivelParaMenu(this.usuarioLogado.getNivel());
 			for (Pagina pagina : paginas) {
 				if (paginasPorMenu.containsKey(pagina.getMenu())) {
 					paginasAuxiliar = paginasPorMenu.get(pagina.getMenu());
@@ -123,6 +126,7 @@ public class LoginBean extends BaseBean {
 				paginasAuxiliar.add(pagina);
 				paginasPorMenu.put(pagina.getMenu(), paginasAuxiliar);
 			}
+			paginas = paginaServico.obterPorNivel(this.usuarioLogado.getNivel());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -148,7 +152,7 @@ public class LoginBean extends BaseBean {
 	}
 
 	public String irParaHome() {
-		return "/pages/home.ppd?faces-redirect=true";
+		return "/pages/home.gs?faces-redirect=true";
 	}
 
 	public Usuario getUsuarioLogado() {
@@ -270,6 +274,16 @@ public class LoginBean extends BaseBean {
 	public boolean isFuncionario() {
 		if (this.usuarioLogado != null && this.usuarioLogado.getTipoNivel().equals(ETipoNivel.FUNCIONARIO)) {
 			return true;
+		}
+		return false;
+	}
+
+	public boolean verificaPermissao(String currentPage) {
+		StringBuilder nomePagina = new StringBuilder(currentPage.split("\\.")[0].replaceAll("/pages/",""));
+		for (Pagina p : paginas) {
+			if (p.getNome().contains(nomePagina.toString())) {
+				return true;
+			}
 		}
 		return false;
 	}

@@ -105,7 +105,6 @@ public class ProdutoDAO extends BaseDAO<Produto> {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT distinct(p) FROM Produto p ");
 			sql.append(" JOIN FETCH p.produtoTipo pt ");
-			sql.append(" LEFT JOIN FETCH pt.tamanhos t ");
 			sql.append(" WHERE p.situacao =:_situacao ");
 			if (ordem != null && !ordem.isEmpty()) {
 				sql.append(" ORDER BY p." + ordem);

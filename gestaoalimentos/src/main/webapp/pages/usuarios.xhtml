@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/template/template.xhtml"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
 	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_usuarios}" />
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div class="table-responsive">
 				<h:panelGroup id="usuariosPG">
 					<gs:dataTable id="usuarioDT" bean="#{usuarioListagemBean}"
 						columnClass="text-center,,,,text-center,text-center"

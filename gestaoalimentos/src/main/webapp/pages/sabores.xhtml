@@ -3,8 +3,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/template/template.xhtml"
-	xmlns:ppd="http://java.sun.com/jsf/composite/components">
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
+	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_sabores}" />
 	<ui:param name="paginaTipo" value="#{msg.txt_listagem}" />
@@ -16,12 +16,12 @@
 				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-arrow-undo"
+							styleClass="btn btn-default"
 							value="Voltar">
 						</h:commandLink>
 						
 						<h:commandLink
-							styleClass="btn btn-default btn-icon icon-magnifier"
+							styleClass="btn btn-default"
 							value="Buscar">
 							<f:ajax render="saboresPG" 
 								listener="#{saborListagemBean.buscarRegistros()}" />
@@ -35,22 +35,21 @@
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
 							action="sabor?faces-redirect=true"
-							styleClass="btn btn-default btn-icon icon-plus" value="Novo">
+							styleClass="btn btn-success" value="Novo">
 						</h:commandLink>
 					</div>
 				</div>
 			</div>
-			<div>
+			
+			<div class="table-responsive">
 				<h:panelGroup id="saboresPG">
-					<ppd:dataTable id="saborDT" bean="#{saborListagemBean}"
-						columnClass="align-center,,align-center,align-center"
+					<gs:dataTable id="saborDT" bean="#{saborListagemBean}"
+						columnClass="text-center,,,text-center,,,text-center,text-center"
 						componenteBtn="false">
 						
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_maiusc_id}" />
-								</div>
+								<h:outputText value="#{msg.txt_maiusc_id}" />
 							</f:facet>
 							<h:outputText value="#{item.id}" />
 						</h:column>
@@ -69,11 +68,11 @@
 							<h:outputText value="#{item.descricao}" />
 						</h:column>
 						
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<h:outputText value="#{msg.txt_indice}" />
+								<h:outputText value="#{msg.txt_sequencia}" />
 							</f:facet>
-							<h:outputText value="#{item.index}" />
+							<h:outputText value="#{item.sequencia}" />
 						</h:column>
 						
 						<h:column>
@@ -92,23 +91,26 @@
 							<h:outputText value="#{item.produto.nome}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_situacao}" />
-								</div>
+								<h:outputText value="#{msg.txt_situacao}" />
 							</f:facet>
-							<ppd:situacao item="#{item}" render="saboresPG"
+							<gs:situacao item="#{item}" render="saboresPG"
 								bean="#{saborListagemBean}" />
 						</h:column>
 
-						<h:column>
+						<h:column headerClass="text-center">
 							<f:facet name="header">
-								<div class="align-center">
-									<h:outputText value="#{msg.txt_opcoes}" />
-								</div>
+								<h:outputText value="#{msg.txt_opcoes}" />
 							</f:facet>
 							<h:panelGroup>
+								<h:commandLink>
+									<img src="../resources/images/ico/16x16/text_list_bullets.png"
+										title="#{msg.txt_editar}" />
+									<f:ajax render="ingredientePG" event="click"
+										listener="#{saborListagemBean.abrirModalIngredientes(item)}" />
+								</h:commandLink>
+								
 								<h:commandLink action="sabor">
 									<img src="../resources/images/ico/16x16/pencil.png"
 										title="#{msg.txt_editar}" />
@@ -116,9 +118,142 @@
 								</h:commandLink>
 							</h:panelGroup>
 						</h:column>
-					</ppd:dataTable>
+					</gs:dataTable>
 				</h:panelGroup>
 			</div>
+			
+			<h:panelGroup id="ingredientePG">
+				<gs:modal id="ingredienteModal"
+					titulo="Ingredientes - #{saborListagemBean.sabor.descricao}"
+					exibirModal="#{saborListagemBean.exibirModalIngrediente}"
+					fecharModal="#{saborListagemBean.fecharModal}">
+<!-- 					salvar="#{saborListagemBean.salvarIngredientesAssociados()}" -->
+
+					<h:panelGroup id="ingredientesPG">
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active"><a
+								href="#ingredientesAssociadosDIV" data-toggle="tab">Associados</a></li>
+							<li role="presentation"><a href="#ingredientesDisponiveisDIV"
+								data-toggle="tab">Disponíveis</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div id="ingredientesAssociadosDIV" class="tab-pane fade in active">
+
+								<h:panelGroup
+									rendered="#{empty saborListagemBean.ingredientesAssociados}">
+									Não há Ingredientes Associados!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{not empty saborListagemBean.ingredientesAssociados}">
+									<div data-spy="scroll" class="table-responsive">
+										<h:dataTable id="ingredienteAssociadoDT"
+											value="#{saborListagemBean.ingredientesAssociados}" var="item"
+											columnClasses="text-center,,text-center,text-center" 
+											styleClass="table">
+
+											<h:column>
+												<f:facet name="header">
+													<div class="align-center">
+														<h:outputText value="#{msg.txt_ordem}" />
+													</div>
+												</f:facet>
+												<h:outputText value="#{item.sequencia}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_descricao}" />
+												</f:facet>
+												<h:outputText value="#{item.descricao}" />
+											</h:column>
+											
+											<h:column headerClass="text-center"> 
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_quantidade}" />
+												</f:facet>
+												<h:outputText value="#{item.quantidade}" />
+											</h:column>
+											
+											<h:column headerClass="text-center">
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_remover}" />
+												</f:facet>
+												<h:panelGroup>
+													<h:commandLink>
+														<img src="../resources/images/ico/16x16/cross.png"
+															title="#{msg.txt_niveis}" />
+														<f:ajax execute="@this" render="ingredienteModal:ingredientesPG"
+															listener="#{saborListagemBean.removerIngrediente(item)}" />
+													</h:commandLink>
+												</h:panelGroup>
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+
+							<div id="ingredientesDisponiveisDIV" class="tab-pane fade">
+								<h:panelGroup
+									rendered="#{empty saborListagemBean.ingredientesDisponiveis}">
+									Não há  mais Ingredientes Disponíveis!
+								</h:panelGroup>
+
+								<h:panelGroup
+									rendered="#{not empty saborListagemBean.ingredientesDisponiveis}">
+									<div class="scroll">
+										<h:dataTable id="ingredienteDisponivelDT"
+											value="#{saborListagemBean.ingredientesDisponiveis}" var="item"
+											columnClasses="text-center,,text-center,text-center" styleClass="table">
+
+											<h:column headerClass="text-center">
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_ordem}" />
+												</f:facet>
+												<h:outputText value="#{item.sequencia}" />
+											</h:column>
+
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_descricao}" />
+												</f:facet>
+												<h:outputText value="#{item.descricao}" />
+											</h:column>
+											
+											<h:column headerClass="text-center">
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_quantidade}" />
+												</f:facet>
+												<gs:inputQuantidade id="quantidade"
+													value="#{item.quantidade}"
+													adiciona="#{item.adicionarQuantidade()}"
+													remove="#{item.removerQuantidade()}"
+													adicionar="#{item.adicionar}"
+													deletar="#{item.remover}"/>
+											</h:column>
+											
+											<h:column headerClass="text-center">
+												<f:facet name="header">
+													<h:outputText value="#{msg.txt_adicionar}" />
+												</f:facet>
+												<h:panelGroup>
+													<h:commandLink>
+														<img src="../resources/images/ico/16x16/plus.png"
+															title="#{msg.txt_niveis}" />
+														<f:ajax execute="@this quantidadeIP" render="ingredienteModal:ingredientesPG"
+															listener="#{saborListagemBean.adicionarIngrediente(item)}" />
+													</h:commandLink>
+												</h:panelGroup>
+											</h:column>
+										</h:dataTable>
+									</div>
+								</h:panelGroup>
+							</div>
+						</div>
+					</h:panelGroup>
+				</gs:modal>
+			</h:panelGroup>
 		</h:form>
 	</ui:define>
 </ui:composition>

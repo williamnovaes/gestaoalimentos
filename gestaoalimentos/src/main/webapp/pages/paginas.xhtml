@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/template/template.xhtml"
+	template="#{pageContext.request.contextPath}/template/template.xhtml"
 	xmlns:gs="http://java.sun.com/jsf/composite/components">
 
 	<ui:param name="pagina" value="#{msg.txt_paginas}" />
@@ -16,114 +16,115 @@
 				<div class="col-sm-8 esq">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true" action="home?faces-redirect=true"
-							styleClass="btn btn-default"
-							value="Voltar">
+							styleClass="btn btn-default" value="Voltar">
 						</h:commandLink>
-						
-						<h:commandLink
-							styleClass="btn btn-default"
-							value="Buscar">
+
+						<h:commandLink styleClass="btn btn-default" value="Buscar">
 							<f:ajax render="paginasPG"
 								listener="#{paginaListagemBean.buscarRegistros()}" />
 						</h:commandLink>
 					</div>
 				</div>
-				
+
 				<div class="col-sm-8 centro"></div>
 
 				<div class="col-sm-8 dir">
 					<div class="btn-group btn-group-sm">
 						<h:commandLink immediate="true"
-							action="pagina?faces-redirect=true"
-							styleClass="btn btn-success" value="Novo">
+							action="pagina?faces-redirect=true" styleClass="btn btn-success"
+							value="Novo">
 						</h:commandLink>
 					</div>
 				</div>
 			</div>
 
-			<h:panelGroup id="paginasPG">
-				<gs:dataTable id="paginaDT" bean="#{paginaListagemBean}"
-					columnClass="text-center,text-center,,,,,text-center,text-center"
-					componenteBtn="false">
-					
-					<h:column headerClass="text-center">
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_maiusc_id}" />
-						</f:facet>
-						<h:outputText value="#{item.id}" />
-					</h:column>
+			<div class="table-responsive">
+				<h:panelGroup id="paginasPG">
+					<gs:dataTable id="paginaDT" bean="#{paginaListagemBean}"
+						columnClass="text-center,text-center,,,,,text-center,text-center"
+						componenteBtn="false">
 
-					<h:column headerClass="text-center">
-						<f:facet name="header">
-							<h:outputText value="Seq" />
-						</f:facet>
-						<h:outputText value="#{item.sequencia}" />
-					</h:column>
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_maiusc_id}" />
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_nome}" />
-						</f:facet>
-						<h:outputText value="#{item.nome}" />
-					</h:column>
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="Seq" />
+							</f:facet>
+							<h:outputText value="#{item.sequencia}" />
+						</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_bean}" />
-						</f:facet>
-						<h:outputText value="#{item.bean}" />
-					</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_nome}" />
+							</f:facet>
+							<h:outputText value="#{item.nome}" />
+						</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_rotulo}" />
-						</f:facet>
-						<h:outputText value="#{item.rotulo}" />
-					</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_bean}" />
+							</f:facet>
+							<h:outputText value="#{item.bean}" />
+						</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_menu}" />
-						</f:facet>
-						<h:outputText value="#{item.menu.nome}" />
-					</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_rotulo}" />
+							</f:facet>
+							<h:outputText value="#{item.rotulo}" />
+						</h:column>
 
-					<h:column headerClass="text-center">
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_situacao}" />
-						</f:facet>
-						<gs:situacao item="#{item}" render="paginasPG"
-							bean="#{paginaListagemBean}" />
-					</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_menu}" />
+							</f:facet>
+							<h:outputText value="#{item.menu.nome}" />
+						</h:column>
 
-					<h:column headerClass="text-center">
-						<f:facet name="header">
-							<h:outputText value="#{msg.txt_opcoes}" />
-						</f:facet>
-						<h:panelGroup>
-							<h:commandLink>
-								<img src="../resources/images/ico/16x16/layers.png"
-									title="Níveis" alt="Níveis" />
-								<f:ajax execute="@this" render="nivelPG"
-									listener="#{paginaListagemBean.obterNiveisPorPagina(item)}" />
-							</h:commandLink>
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_situacao}" />
+							</f:facet>
+							<gs:situacao item="#{item}" render="paginasPG"
+								bean="#{paginaListagemBean}" />
+						</h:column>
 
-							<h:commandLink>
-								<img src="../resources/images/ico/16x16/numeric_stepper.png"
-									title="Sequencia" alt="Sequência" />
-								<f:ajax execute="@this" render="posicaoPG"
-									listener="#{paginaListagemBean.abriModalPosicao(item)}" />
-							</h:commandLink>
-
-							<h:commandLink action="pagina">
-								<img src="../resources/images/ico/16x16/pencil.png"
-									title="#{msg.txt_editar}" />
-								<f:param name="id" value="#{item.id}" />
-							</h:commandLink>
-						</h:panelGroup>
-					</h:column>
-				</gs:dataTable>
-			</h:panelGroup>
+						<h:column headerClass="text-center">
+							<f:facet name="header">
+								<h:outputText value="#{msg.txt_opcoes}" />
+							</f:facet>
+							<h:panelGroup>
+								<div class="wrap-btn-inside-grid">
+									<h:commandLink>
+										<img src="../resources/images/ico/16x16/layers.png"
+											title="Níveis" alt="Níveis" />
+										<f:ajax execute="@this" render="nivelPG"
+											listener="#{paginaListagemBean.obterNiveisPorPagina(item)}" />
+									</h:commandLink>
+	
+									<h:commandLink>
+										<img src="../resources/images/ico/16x16/numeric_stepper.png"
+											title="Sequencia" alt="Sequência" />
+										<f:ajax execute="@this" render="posicaoPG"
+											listener="#{paginaListagemBean.abriModalPosicao(item)}" />
+									</h:commandLink>
+	
+									<h:commandLink action="pagina">
+										<img src="../resources/images/ico/16x16/pencil.png"
+											title="#{msg.txt_editar}" />
+										<f:param name="id" value="#{item.id}" />
+									</h:commandLink>
+								</div>
+							</h:panelGroup>
+						</h:column>
+					</gs:dataTable>
+				</h:panelGroup>
+			</div>
 
 			<h:panelGroup id="nivelPG">
 				<gs:modal id="nivelModal"
@@ -153,13 +154,11 @@
 									<div class="scroll">
 										<h:dataTable id="nivelAssociadoDT"
 											value="#{paginaListagemBean.niveisAssociados}" var="item"
-											columnClasses="align-center,,align-center" styleClass="table">
+											columnClasses="text-center,,text-center" styleClass="table">
 
-											<h:column>
+											<h:column  headerClass="text-center">
 												<f:facet name="header">
-													<div class="align-center">
-														<h:outputText value="#{msg.txt_maiusc_id}" />
-													</div>
+													<h:outputText value="#{msg.txt_maiusc_id}" />
 												</f:facet>
 												<h:outputText value="#{item.id}" />
 											</h:column>
@@ -170,11 +169,10 @@
 												</f:facet>
 												<h:outputText value="#{item.descricao}" />
 											</h:column>
-											<h:column>
+											
+											<h:column  headerClass="text-center">
 												<f:facet name="header">
-													<div class="align-center">
-														<h:outputText value="#{msg.txt_remover}" />
-													</div>
+													<h:outputText value="#{msg.txt_remover}" />
 												</f:facet>
 												<h:panelGroup>
 													<h:commandLink>
@@ -201,13 +199,11 @@
 									<div class="scroll">
 										<h:dataTable id="nivelDisponivelDT"
 											value="#{paginaListagemBean.niveisDisponiveis}" var="item"
-											columnClasses="align-center,,align-center" styleClass="table">
+											columnClasses="text-center,,text-center" styleClass="table">
 
-											<h:column>
+											<h:column  headerClass="text-center">
 												<f:facet name="header">
-													<div class="align-center">
-														<h:outputText value="#{msg.txt_maiusc_id}" />
-													</div>
+													<h:outputText value="#{msg.txt_maiusc_id}" />
 												</f:facet>
 												<h:outputText value="#{item.id}" />
 											</h:column>
@@ -218,11 +214,10 @@
 												</f:facet>
 												<h:outputText value="#{item.descricao}" />
 											</h:column>
-											<h:column>
+											
+											<h:column  headerClass="text-center">
 												<f:facet name="header">
-													<div class="align-center">
-														<h:outputText value="#{msg.txt_adicionar}" />
-													</div>
+													<h:outputText value="#{msg.txt_adicionar}" />
 												</f:facet>
 												<h:panelGroup>
 													<h:commandLink>
@@ -252,14 +247,12 @@
 					<h:panelGroup id="posicoesPG">
 						<div class="scroll">
 							<h:dataTable id="posicaoDT" value="#{paginaListagemBean.pagina}"
-								columnClasses="align-center,,align-center,align-center,align-right"
+								columnClasses="text-center,,text-center,text-center,text-right"
 								styleClass="table" var="item">
 
-								<h:column>
+								<h:column headerClass="text-center">
 									<f:facet name="header">
-										<div class="align-center">
-											<h:outputText value="#{msg.txt_maiusc_id}" />
-										</div>
+										<h:outputText value="#{msg.txt_maiusc_id}" />
 									</f:facet>
 									<h:outputText value="#{item.id}" />
 								</h:column>
@@ -271,29 +264,23 @@
 									<h:outputText value="#{item.nome}" />
 								</h:column>
 
-								<h:column>
+								<h:column headerClass="text-center">
 									<f:facet name="header">
-										<div class="align-center">
-											<h:outputText value="#{msg.txt_situacao}" />
-										</div>
+										<h:outputText value="#{msg.txt_situacao}" />
 									</f:facet>
 									<gs:situacao item="#{item}" />
 								</h:column>
 
-								<h:column>
+								<h:column  headerClass="text-center">
 									<f:facet name="header">
-										<div class="align-center">
-											<h:outputText value="Seq" />
-										</div>
+										<h:outputText value="Seq" />
 									</f:facet>
 									<h:outputText value="#{item.sequencia}" />
 								</h:column>
 
-								<h:column>
+								<h:column  headerClass="text-right">
 									<f:facet name="header">
-										<div class="align-right">
-											<h:outputText value="Nova Posição" />
-										</div>
+										<h:outputText value="Nova Posição" />
 									</f:facet>
 									<h:selectOneMenu id="posicaoSOM" styleClass="input-inside-grid"
 										value="#{paginaListagemBean.pagina.sequencia}" required="true">
@@ -311,7 +298,6 @@
 					</h:panelGroup>
 				</gs:modal>
 			</h:panelGroup>
-
 		</h:form>
 	</ui:define>
 </ui:composition>

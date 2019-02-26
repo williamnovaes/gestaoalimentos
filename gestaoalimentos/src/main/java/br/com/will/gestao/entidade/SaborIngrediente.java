@@ -51,6 +51,7 @@ public class SaborIngrediente implements Serializable, Paginavel, Exportavel {
 		this.id = new SaborIngredientePK(sabor.getId(), ingrediente.getId());
 		this.sabor = sabor;
 		this.ingrediente = ingrediente;
+		this.quantidade = ingrediente.getQuantidade();
 	}
 
 	public SaborIngredientePK getId() {

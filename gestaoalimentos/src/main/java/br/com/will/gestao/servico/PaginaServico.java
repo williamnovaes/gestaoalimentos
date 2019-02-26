@@ -49,6 +49,14 @@ public class PaginaServico extends BaseServico<Pagina> {
 		}
 	}
 	
+	public List<Pagina> obterPorNivelParaMenu(Nivel nivel) throws BaseServicoException {
+		try {
+			return paginaDao.consultarPorNivelParaMenu(nivel);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+	
 	public Pagina obterCompletoPorId(Integer id) throws BaseServicoException {
 		try {
 			return paginaDao.consultarCompletoPorId(id);

@@ -18,7 +18,6 @@ import br.com.will.gestao.entidade.Sabor;
 import br.com.will.gestao.entidade.Tamanho;
 import br.com.will.gestao.entidade.Usuario;
 import br.com.will.gestao.entidade.util.EOrdenacao;
-import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.servico.CaixaServico;
 import br.com.will.gestao.servico.IngredienteServico;
 import br.com.will.gestao.servico.ProdutoServico;
@@ -80,23 +79,8 @@ public class HomeBean extends BaseBean {
 //			produtosTipo = produtoTipoServico.obterTodosAtivosComProduto();
 
 			produtos = produtoServico.obterTodosParaMenu(ordemSelecionada.getOrder());
-			carregarTamanhos();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-	
-	private void carregarTamanhos() {
-		try {
-			for (Produto prod : produtos) {
-				prod.setTamanhos(new ArrayList<>());
-				if (prod.isTamanho()) {
-					prod.setTamanhos(tamanhoServico.obterPorProdutoSituacao(prod,
-							ESituacao.ATIVO));
-				}
-			}
-		} catch (Exception e) {
-			getLog().error(e.getMessage());
 		}
 	}
 	

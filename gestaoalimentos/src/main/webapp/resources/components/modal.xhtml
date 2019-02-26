@@ -26,7 +26,14 @@
 		aria-labelledby="modal" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h:commandLink title="Fechar" styleClass="close-link"
+					data-dismiss="modal">
+					<img src="../resources/images/ico/16x16/cross.png"
+						title="#{msg.txt_remover}" />
+					<f:ajax execute="@this" event="click"
+						render="#{cc.attrs.id}:controleModalPG"
+						listener="#{cc.attrs.fecharModal}" />
+				</h:commandLink>
 				<div class="modal-header">
 					<h4 class="modal-title"><h:outputText value="#{cc.attrs.titulo}" /></h4>
 				</div>

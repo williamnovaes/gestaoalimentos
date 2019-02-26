@@ -59,7 +59,8 @@
 						<h:panelGroup rendered="#{loginBean.usuarioLogado ne null and !loginBean.cliente}">
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-									Menu <span class="caret"></span>
+									<h:outputText value="#{loginBean.usuarioLogado eq null ? 'Menu' : loginBean.usuarioLogado.nome}" />
+									<span class="caret"></span>
 								</a>
 								
 								<ul class="dropdown-menu">
@@ -92,8 +93,7 @@
 								<h:commandLink title="#{msg.txt_login}">
 									<span class="glyphicon glyphicon-log-in"></span>
 									<f:ajax render="loginModalPG loginModal" 
-										execute="@this" 
-										event="click" 
+										execute="@this" event="click" 
 										listener="#{loginBean.abrirModalLogin()}" />
 								</h:commandLink>
 							</li>
@@ -118,12 +118,13 @@
 		<gs:loginModal id="loginModal"
 			exibirModal="#{loginBean.exibirModalLogin}" titulo="Login"
 			render="loginModalPG headerForm" botoes="true" botaoFechar="false"
-			styleBotao="btn btn-submit" salvar="#{loginBean.fazerLogin()}"
+			styleBotao="btn btn-success" salvar="#{loginBean.fazerLogin()}"
 			fecharModal="#{loginBean.fecharModalLogin()}">
 	
 			<div class="form-group">
 				<h:inputText id="login" class="form-control form-white"
-					pt:placeholder="Login" value="#{credencial.username}">
+					pt:placeholder="Login" value="#{credencial.username}"
+					autofocus="true">
 				</h:inputText>
 			</div>
 			

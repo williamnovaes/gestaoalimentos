@@ -67,7 +67,7 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	
 	@XmlTransient
 	@Transient
-	private Integer quantidade = 0;
+	private Integer quantidade = 1;
 	
 	public Ingrediente() {
 	}
@@ -157,6 +157,22 @@ public class Ingrediente implements SituacaoAlteravel, Descritivel, Paginavel {
 	
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public void adicionarQuantidade() {
+		this.quantidade++;
+	}
+	
+	public void removerQuantidade() {
+		this.quantidade--;
+	}
+	
+	public boolean isAdicionar() {
+		return this.quantidade != null && this.quantidade < 10;
+	}
+	
+	public boolean isRemover() {
+		return this.quantidade != null && this.quantidade > 1;
 	}
 	
 	@Override

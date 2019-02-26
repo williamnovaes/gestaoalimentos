@@ -1,6 +1,7 @@
 package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -158,6 +159,9 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	}
 	
 	public List<SaborIngrediente> getIngredientes() {
+		if (ingredientes == null) {
+			ingredientes = new ArrayList<>();
+		}
 		return ingredientes;
 	}
 	
@@ -172,6 +176,21 @@ public class Sabor implements SituacaoAlteravel, Paginavel {
 	public void setMarcado(boolean marcado) {
 		this.marcado = marcado;
 	}
+	
+	public String getListaIngredientes() {
+		StringBuilder str = new StringBuilder();
+		for (SaborIngrediente si : getIngredientes()) {
+			if (si.getQuantidade() > 1) {
+				str.append(si.getQuantidade()).append(" ");
+			}
+			str.append(si.getIngrediente().getNome());
+			if (ingredientes.indexOf(si) != (ingredientes.size() - 1)) {
+				str.append(", ");
+			}
+		}
+		return str.toString();
+	}
+	
 	
 	@Override
 	public int hashCode() {

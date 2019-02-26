@@ -1,14 +1,18 @@
 package br.com.will.gestao.servico;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
 import br.com.will.gestao.dao.ProdutoDAO;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Sabor;
+import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.servico.exception.BaseServicoException;
 
 @Stateless
@@ -19,6 +23,8 @@ public class ProdutoServico extends BaseServico<Produto> {
 	private ProdutoDAO produtoDao;
 	@EJB
 	private SaborServico saborServico;
+	@EJB
+	private TamanhoServico tamanhoServico;
 	
 	@Override
 	@PostConstruct
@@ -53,8 +59,20 @@ public class ProdutoServico extends BaseServico<Produto> {
 	public List<Produto> obterTodosParaMenu(String ordem) throws BaseServicoException {
 		try {
 			List<Produto> produtos = produtoDao.consultarTodosParaMenu(ordem);
+			for (Produto prod : produtos) {
+				prod.setTamanhos(new ArrayList<>());
+				prod.getProdutoTipo().setTamanhos(
+						tamanhoServico.obterPorProdutoTipo(prod.getProdutoTipo()));
+				if (prod.isTamanho()) {
+					prod.setTamanhos(tamanhoServico.obterPorProdutoSituacao(prod,
+							ESituacao.ATIVO));
+				}
+			}
 			for (Produto produto : produtos) {
 				produto.setSabores(saborServico.obterTodosPorProduto(produto));
+				for (Sabor s : produto.getSabores()) {
+					s.setIngredientes(saborServico.obterIngredientesPorSabor(s));
+				}
 			}
 			return produtos;
 		} catch (Exception e) {

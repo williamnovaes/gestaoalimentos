@@ -1,6 +1,7 @@
 package br.com.will.gestao.entidade;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -149,6 +150,9 @@ public class ProdutoTipo implements SituacaoAlteravel, Descritivel, Paginavel {
 	}
 	
 	public List<Tamanho> getTamanhos() {
+		if (tamanhos == null) {
+			tamanhos = new ArrayList<>();
+		}
 		return tamanhos;
 	}
 	

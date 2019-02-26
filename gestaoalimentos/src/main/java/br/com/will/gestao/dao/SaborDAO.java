@@ -9,9 +9,11 @@ import br.com.will.gestao.componente.Paginador;
 import br.com.will.gestao.componente.Paginavel;
 import br.com.will.gestao.dao.filtro.ESortedBy;
 import br.com.will.gestao.dao.filtro.SQLFilter;
+import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Sabor;
+import br.com.will.gestao.entidade.SaborIngrediente;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
 
@@ -38,7 +40,7 @@ public class SaborDAO extends BaseDAO<Sabor> {
 			return new SQLFilter.SQLFilterBuilder(Sabor.class, getEm(), filtravel)
 							    .setupPaginador(paginador)
 							    .filterSimpleBy("s.descricao")
-							    .orderBy("s.index")
+							    .orderBy("s.sequencia")
 							    .sortedBy(ESortedBy.ASC)
 							    .build()
 							    .dadosPaginados();
@@ -89,7 +91,7 @@ public class SaborDAO extends BaseDAO<Sabor> {
 			sql.append(" SELECT sb FROM Sabor sb ");
 			sql.append(" WHERE sb.produto =:_produto ");
 			sql.append(" AND sb.situacao =:_situacao ");
-			sql.append(" ORDER BY sb.index ");
+			sql.append(" ORDER BY sb.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), Sabor.class)
 						  .setParameter("_produto", produto)
@@ -108,7 +110,7 @@ public class SaborDAO extends BaseDAO<Sabor> {
 			if (desassociados) {
 				sql.append(" AND sb.produto IS NULL ");
 			}
-			sql.append(" ORDER BY sb.index ");
+			sql.append(" ORDER BY sb.sequencia ");
 			
 			return getEm().createQuery(sql.toString(), Sabor.class)
 						  .setParameter("_situacao", situacao)
@@ -163,6 +165,48 @@ public class SaborDAO extends BaseDAO<Sabor> {
 			
 			return getEm().createQuery(sql.toString(), Sabor.class)
 						  .setParameter("_tipo", produtoTipo)
+						  .getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public void deletarIngredientesPorSabor(Sabor sabor) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" DELETE FROM SaborIngrediente ");
+			sql.append(" WHERE sabor =:_sabor ");
+			
+			getEm().createQuery(sql.toString())
+					.setParameter("_sabor", sabor)
+					.executeUpdate();
+			
+			getEm().flush();
+			getEm().clear();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public void salvarSaborIngrediente(Sabor sabor, Ingrediente ingrediente) {
+		try {
+			getEm().persist(new SaborIngrediente(sabor, ingrediente));
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
+
+	public List<SaborIngrediente> consultarIngredientesPorSabor(Sabor sabor) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT si FROM SaborIngrediente si ");
+			sql.append(" JOIN si.sabor s ");
+			sql.append(" JOIN FETCH si.ingrediente i ");
+			sql.append(" WHERE s =:_sabor ");
+			sql.append(" ORDER BY i.sequencia ");
+			
+			return getEm().createQuery(sql.toString(), SaborIngrediente.class)
+						  .setParameter("_sabor", sabor)
 						  .getResultList();
 		} catch (Exception e) {
 			throw new BaseDAOException(e.getMessage());

@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+
+		<composite:attribute name="id" required="false" />
+		<composite:attribute name="value" required="true" />
+		<composite:attribute name="deletar" required="true" default="false"/>
+		<composite:attribute name="adicionar" required="true" default="true"/>
+		
+		<composite:attribute name="adiciona"
+			method-signature="java.lang.String  action()" required="true" />
+			
+		<composite:attribute name="remove"
+			method-signature="java.lang.String  action()" required="true" />
+		
+	</composite:interface>
+
+	<composite:implementation>
+		<h:panelGroup id="#{cc.attrs.id}PG">
+			<div class="btn-group">
+				<h:commandLink disabled="#{!cc.attrs.deletar}">
+					<img src="../resources/images/ico/16x16/delete.png"
+						title="#{msg.txt_remover}" />
+					<f:ajax execute="@this" render="#{cc.attrs.id}PG"
+						listener="#{cc.attrs.remove}" />
+				</h:commandLink>
+				
+				<h:outputText value="#{cc.attrs.value}"/>
+					
+				<h:commandLink disabled="#{!cc.attrs.adicionar}">
+					<img src="../resources/images/ico/16x16/add.png"
+						title="#{msg.txt_adicionar}" />
+					<f:ajax execute="@this" render="#{cc.attrs.id}PG"
+						listener="#{cc.attrs.adiciona}" />
+				</h:commandLink>
+			</div>
+		</h:panelGroup>
+	</composite:implementation>
+
+</ui:composition>

@@ -50,11 +50,13 @@ public class TamanhoDAO extends BaseDAO<Tamanho> {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT t FROM Tamanho t ");
-			sql.append(" JOIN FETCH t.produtoTipo pt ");
+			sql.append(" JOIN t.produtoTipo pt ");
 			sql.append(" WHERE pt =:_produtoTipo ");
+			sql.append(" AND t.situacao =:_situacao");
 			
 			return getEm().createQuery(sql.toString(), Tamanho.class)
 						  .setParameter("_produtoTipo", produtoTipo)
+						  .setParameter("_situacao", ESituacao.ATIVO)
 						  .getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();

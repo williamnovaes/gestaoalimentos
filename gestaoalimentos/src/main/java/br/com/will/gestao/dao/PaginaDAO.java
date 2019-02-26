@@ -106,6 +106,26 @@ public class PaginaDAO extends BaseDAO<Pagina> {
 			throw new BaseDAOException(e.getMessage());
 		}
 	}
+	
+	public List<Pagina> consultarPorNivelParaMenu(Nivel nivel) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" SELECT pg FROM Pagina pg  ");
+			sql.append(" JOIN FETCH pg.menu mn ");
+			sql.append(" JOIN FETCH pg.paginaNivel pn ");
+			sql.append(" JOIN FETCH pn.nivel n ");
+			sql.append(" WHERE n =:_nivel and pg.situacao =:_ativo and mn.situacao =:_ativo ");
+			sql.append(" AND pg.exibirMenu = 'TRUE' ");
+			sql.append(" ORDER BY mn.sequencia, pg.sequencia");
+			return getEm()
+					.createQuery(sql.toString(), Pagina.class)
+					.setParameter("_nivel", nivel)
+					.setParameter("_ativo", ESituacao.ATIVO)
+					.getResultList();
+		} catch (Exception e) {
+			throw new BaseDAOException(e.getMessage());
+		}
+	}
 
 	public Pagina consultarCompletoPorId(Integer id) {
 		try {

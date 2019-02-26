@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.font_menu {
+	font-family: "Snell Roundhand", "URW Chancery L", "cursive";
+}
+
 html {
 	position: relative;
 	min-height: 100%;
@@ -26,6 +30,12 @@ body {
 .wrap-btn-form {
 	margin-bottom: 20px;
 }
+
+.wrap-btn-inside-grid,
+.wrap-img-inside-grid {
+  text-align: center;
+  white-space: nowrap;
+  height: 20px; }
 
 .wrap-btn-grid .esq,
 .wrap-btn-form .esq {

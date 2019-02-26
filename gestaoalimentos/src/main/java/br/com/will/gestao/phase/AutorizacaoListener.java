@@ -1,11 +1,13 @@
 package br.com.will.gestao.phase;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletResponse;
+
 import br.com.will.gestao.bean.LoginBean;
 
 public class AutorizacaoListener implements PhaseListener {
@@ -20,50 +22,35 @@ public class AutorizacaoListener implements PhaseListener {
 			if (currentPage != null && !currentPage.startsWith("/home")) {
 				LoginBean loginBean = facesContext.getApplication().evaluateExpressionGet(facesContext, "#{loginBean}",
 						LoginBean.class);
-				loginBean.fecharModalLogin();
-//				if (!currentPage.contains("login") && !currentPage.contains("menu") && !currentPage.contains("error")) {
-//					if (loginBean == null || !loginBean.isLogado()) {
-//						facesContext.addMessage(null,
-//								new FacesMessage(FacesMessage.SEVERITY_ERROR,
-//										"É necessário estar autenticado para acessar este conteúdo."
-//												+ "Caso a dificuldade persista, por favor limpe o cache do navegador",
-//										null));
-//						redirecionar(facesContext, "/pages/home?faces-redirect=true");
-//						return;
-//					}
+//				loginBean.fecharModalLogin();
+				if (!currentPage.contains("login") && !currentPage.contains("menu") 
+						&& !currentPage.contains("error") && !currentPage.contains("home")) {
+					if (loginBean == null || !loginBean.isLogado()) {
+						facesContext.addMessage(null,
+								new FacesMessage(FacesMessage.SEVERITY_ERROR,
+										"É necessário estar autenticado para acessar este conteúdo."
+												+ "Caso a dificuldade persista, por favor limpe o cache do navegador",
+										null));
+						redirecionar(facesContext, "/pages/home.gs?faces-redirect=true");
+						return;
+					}
 					
-					// if (loginBean != null &&
-					// !loginBean.isChaveSessaoValida()) {
-					// facesContext.addMessage(null,
-					// new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					// "Alguém acessou o sistema utilizando as suas credenciais,
-					// para sua a segurança, acesse o sistema novamente"
-					// + "e faça a alteração da senha!",
-					// null));
-					// loginBean.fazerLogout();
-					//
-					// redirecionar(facesContext,
-					// "/pages/home?faces-redirect=true");
-					// return;
-					// }
-
 					// TODO: Descomentar depois que colocarmos o controle
 					// dinamico
 					// @marcelo
-					// currentPage = currentPage.replaceAll("xhtml","ppd");
-					// if (currentUser != null &&;
-					// !currentUser.verificaPermissao(currentPage)) {
-					// facesContext.addMessage(null,
-					// new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					// "Sem permissão de acesso à página: " + currentPage,
-					// null));
-					// redirecionar(facesContext,
-					// "/pages/home?faces-redirect=true");
-					// }
+					 currentPage = currentPage.replaceAll("xhtml","gs");
+					 if (loginBean != null && !loginBean.verificaPermissao(currentPage)) {
+						 facesContext.addMessage(null,
+								 new FacesMessage(FacesMessage.SEVERITY_ERROR,
+										 "Sem permissão de acesso à página: " + currentPage,
+										 null));
+						 redirecionar(facesContext, "/pages/home.gs?faces-redirect=true");
+					 }
 
-//				} else if (loginBean != null && loginBean.isLogado()) {
-					redirecionar(facesContext, "index?faces-redirect=true");
-//				}
+				} else if (loginBean != null && loginBean.isLogado()) {
+					currentPage = currentPage.replaceAll("xhtml", "gs");
+					redirecionar(facesContext, currentPage);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

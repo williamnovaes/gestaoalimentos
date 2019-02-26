@@ -7,9 +7,11 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.com.will.gestao.dao.SaborDAO;
+import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.ProdutoTipo;
 import br.com.will.gestao.entidade.Sabor;
+import br.com.will.gestao.entidade.SaborIngrediente;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.servico.exception.BaseServicoException;
 
@@ -78,6 +80,26 @@ public class SaborServico extends BaseServico<Sabor> {
 	public List<Sabor> obterPorProdutoTipo(ProdutoTipo produtoTipo) throws BaseServicoException {
 		try {
 			return saborDao.consultarPorProdutoTipo(produtoTipo);
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public void salvarSaborIngrediente(Sabor sabor, List<Ingrediente> ingredientesAssociados)
+			throws BaseServicoException {
+		try {
+			saborDao.deletarIngredientesPorSabor(sabor);
+			for (Ingrediente ingrediente : ingredientesAssociados) {
+				saborDao.salvarSaborIngrediente(sabor, ingrediente);
+			}
+		} catch (Exception e) {
+			throw new BaseServicoException(e.getMessage());
+		}
+	}
+
+	public List<SaborIngrediente> obterIngredientesPorSabor(Sabor sabor) throws BaseServicoException {
+		try {
+			return saborDao.consultarIngredientesPorSabor(sabor);
 		} catch (Exception e) {
 			throw new BaseServicoException(e.getMessage());
 		}

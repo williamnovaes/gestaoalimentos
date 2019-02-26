@@ -1,5 +1,6 @@
 package br.com.will.gestao.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,8 +10,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.com.will.gestao.entidade.Ingrediente;
 import br.com.will.gestao.entidade.Produto;
 import br.com.will.gestao.entidade.Sabor;
+import br.com.will.gestao.servico.IngredienteServico;
 import br.com.will.gestao.servico.ProdutoServico;
 import br.com.will.gestao.servico.SaborServico;
 
@@ -24,10 +27,15 @@ public class SaborCadastroBean extends BaseBean {
 	private SaborServico saborServico;
 	@EJB
 	private ProdutoServico produtoServico;
+	@EJB
+	private IngredienteServico ingredienteServico;
 
 	private List<Produto> produtos;
 	private Integer idProduto;
 	private Sabor sabor;
+	private List<Ingrediente> ingredientesDisponiveis;
+	private List<Ingrediente> ingredientesAssociados;
+	private Integer ingredienteSelecionado;
 	
 	@PostConstruct
 	public void inicializar() {
@@ -52,6 +60,7 @@ public class SaborCadastroBean extends BaseBean {
 			}
 			
 			produtos = produtoServico.obterTodos("sequencia");
+			carregarIngredientes();
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
@@ -70,15 +79,59 @@ public class SaborCadastroBean extends BaseBean {
 			
 			if (this.sabor.getId() != null) {
 				saborServico.alterar(this.sabor);
+				adicionarInfo("Sabor alterado com sucesso");
 			} else {
 				this.sabor = saborServico.salvar(this.sabor);
+				adicionarInfo("Sabor salvo com sucesso");
 			}
 			
-			return "produtos?faces-redirect=true";
+			saborServico.salvarSaborIngrediente(this.sabor, ingredientesAssociados);
+			
+			return "sabores";
 		} catch (Exception e) {
 			e.printStackTrace();
 			adicionarError(e.getMessage());
 			return null;
+		}
+	}
+	
+	public void associarIngrediente() {
+		try {
+			if (ingredienteSelecionado == null || ingredienteSelecionado <= 0) {
+				adicionarError("Selecione um ingrediente");
+				return;
+			}
+			Ingrediente ing = ingredienteServico.obterPorId(ingredienteSelecionado);
+			
+			if (!getIngredientesAssociados().contains(ing)) {
+				ingredientesAssociados.add(ing);
+				ingredientesDisponiveis.remove(ing);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void carregarIngredientes() {
+		try {
+			ingredientesDisponiveis = ingredienteServico.obterTodos("sequencia");
+			
+			if (this.sabor != null && this.sabor.getId() != null) {
+				ingredientesAssociados = ingredienteServico.obterAssociadosPorSabor(this.sabor);
+			}
+			
+			ingredientesDisponiveis.removeAll(getIngredientesAssociados());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removerIngrediente(Ingrediente ingrediente) {
+		try {
+			ingredientesAssociados.remove(ingrediente);
+			carregarIngredientes();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -96,5 +149,27 @@ public class SaborCadastroBean extends BaseBean {
 	
 	public List<Produto> getProdutos() {
 		return produtos;
+	}
+	
+	public List<Ingrediente> getIngredientesAssociados() {
+		if (ingredientesAssociados == null) {
+			ingredientesAssociados = new ArrayList<>();
+		}
+		return ingredientesAssociados;
+	}
+	
+	public Integer getIngredienteSelecionado() {
+		return ingredienteSelecionado;
+	}
+
+	public void setIngredienteSelecionado(Integer ingredienteSelecionado) {
+		this.ingredienteSelecionado = ingredienteSelecionado;
+	}
+	
+	public List<Ingrediente> getIngredientesDisponiveis() {
+		if (ingredientesDisponiveis == null) {
+			ingredientesDisponiveis = new ArrayList<>();
+		}
+		return ingredientesDisponiveis;
 	}
 }

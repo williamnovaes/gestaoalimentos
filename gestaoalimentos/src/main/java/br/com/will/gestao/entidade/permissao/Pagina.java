@@ -25,6 +25,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import br.com.will.gestao.componente.Paginavel;
+import br.com.will.gestao.entidade.util.EBoolean;
 import br.com.will.gestao.entidade.util.EPaginaTipo;
 import br.com.will.gestao.entidade.util.ESituacao;
 import br.com.will.gestao.entidade.util.SituacaoAlteravel;
@@ -79,9 +80,13 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = SistemaConstantes.E_SITUACAO_DEFAULT_ATIVO)
 	private ESituacao situacao = ESituacao.ATIVO;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	@Column(name = "exibir_menu", columnDefinition = SistemaConstantes.E_BOOLEAN_DEFAULT_FALSE)
+	private EBoolean exibirMenu = EBoolean.FALSE;
 
 	public Pagina() {
-
 	}
 
 	public String getNome() {
@@ -166,6 +171,14 @@ public class Pagina implements Serializable, SituacaoAlteravel, Paginavel {
 	@Override
 	public String toString() {
 		return "Pagina [id=" + id + "]";
+	}
+	
+	public EBoolean getExibirMenu() {
+		return exibirMenu;
+	}
+	
+	public void setExibirMenu(EBoolean exibirMenu) {
+		this.exibirMenu = exibirMenu;
 	}
 
 	@Override
